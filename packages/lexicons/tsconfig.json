@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.bun.json",
+  "compilerOptions": {
+    "noUnusedLocals": false
+  },
+  "include": ["src"]
+}

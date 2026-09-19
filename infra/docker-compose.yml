@@ -1,0 +1,88 @@
+# Local AT Protocol network for Authentiq.
+#
+#   postgres  :5442  AppView index (pgvector) + PLC directory storage
+#   plc       :2582  did:plc directory (so dev accounts never touch plc.directory)
+#   pds       :2583  Personal Data Server, handles are *.test
+#
+# Secrets live in infra/.env — generate with `bun run infra:env`.
+name: authentiq
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: authentiq
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?run `bun run infra:env` first}
+      POSTGRES_DB: authentiq
+    ports:
+      - "${POSTGRES_PORT:-5442}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U authentiq -d authentiq"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+
+  plc:
+    # did-method-plc publishes no stable image tag, so build from a pinned commit.
+    build:
+      context: https://github.com/did-method-plc/did-method-plc.git#996e23b5ced9c15b32bcc612dd304880342ca4ab
+      dockerfile: packages/server/Dockerfile
+    image: authentiq/plc:local
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PORT: 2582
+      ENABLE_MIGRATIONS: "true"
+      DB_CREDS_JSON: '{"username":"authentiq","password":"${POSTGRES_PASSWORD}","host":"postgres","port":"5432","database":"plc"}'
+      DB_MIGRATE_CREDS_JSON: '{"username":"authentiq","password":"${POSTGRES_PASSWORD}","host":"postgres","port":"5432","database":"plc"}'
+      DD_TRACE_ENABLED: "false"
+      LOG_ENABLED: "true"
+    ports:
+      - "2582:2582"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:2582/_health').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+
+  pds:
+    image: ghcr.io/bluesky-social/pds:0.4
+    restart: unless-stopped
+    depends_on:
+      plc:
+        condition: service_healthy
+    environment:
+      # hostname=localhost + dev mode => public URL http://localhost:2583, handles *.test
+      PDS_HOSTNAME: localhost
+      PDS_PORT: 2583
+      PDS_DEV_MODE: "true"
+      PDS_JWT_SECRET: ${PDS_JWT_SECRET:?run `bun run infra:env` first}
+      PDS_ADMIN_PASSWORD: ${PDS_ADMIN_PASSWORD:?run `bun run infra:env` first}
+      PDS_PLC_ROTATION_KEY_K256_PRIVATE_KEY_HEX: ${PDS_PLC_ROTATION_KEY_K256_PRIVATE_KEY_HEX:?run `bun run infra:env` first}
+      PDS_DATA_DIRECTORY: /pds
+      PDS_BLOBSTORE_DISK_LOCATION: /pds/blocks
+      PDS_BLOB_UPLOAD_LIMIT: 52428800
+      PDS_DID_PLC_URL: http://plc:2582
+      PDS_SERVICE_HANDLE_DOMAINS: .test
+      PDS_INVITE_REQUIRED: "false"
+      PDS_RATE_LIMITS_ENABLED: "false"
+      LOG_ENABLED: "true"
+    ports:
+      - "2583:2583"
+    volumes:
+      - pdsdata:/pds
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:2583/xrpc/_health"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  pgdata:
+  pdsdata:

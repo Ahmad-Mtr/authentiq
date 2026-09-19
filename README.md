@@ -1,21 +1,50 @@
-# shadcn/ui monorepo template
+# Authentiq
 
-This is a TanStack Start monorepo template with shadcn/ui.
+A professional network built on the [AT Protocol](https://atproto.com). Users
+own their profiles, posts and job postings in their own repos. Authentiq is an
+AppView and a set of feed generators on top.
 
-## Adding components
+- [Roadmap](docs/roadmap.md) — goals, phases, milestones
+- [Phase notes](docs/phases/) — what each stage built, and how it was verified
+- [ADR 0001](docs/adr/0001-appview-pds-split.md) — architecture, and what is public
 
-To add components to your app, run the following command at the root of your `web` app:
+## Layout
 
-```bash
-pnpm dlx shadcn@latest add button -c apps/web
+```
+apps/web          TanStack Start UI + BFF                  :3000
+apps/appview      Elysia: firehose indexer + XRPC API      :2584
+apps/feedgen      Elysia: feed generators                  :2585
+packages/lexicons app.authentiq.* lexicons + codegen
+packages/db       Drizzle schema (Postgres + pgvector)
+packages/atproto  identity helpers, local network constants
+packages/ai       Claude client, model choices
+packages/ui       shadcn/ui components
+infra/            docker compose: postgres :5442, plc :2582, pds :2583
 ```
 
-This will place the ui components in the `packages/ui/src/components` directory.
+## Getting started
 
-## Using components
+Requires bun and Docker.
 
-To use the components in your app, import them from the `ui` package.
+```bash
+bun install
+bun run infra:env        # generate secrets + .env files (never overwrites)
+bun run infra:up         # start postgres, plc, pds (first run builds plc, a few minutes)
+bun run seed             # create demo accounts: alice.test … (password: "password")
+bun run db:migrate       # apply AppView schema
+bun run dev              # infra:up + all apps
+bun run infra:status     # smoke check everything
+```
+
+Other scripts: `infra:down`, `infra:reset` (wipes volumes), `infra:logs`,
+`codegen`, `typecheck`, `lint`.
+
+## UI components
+
+```bash
+bunx shadcn@latest add button -c apps/web   # lands in packages/ui/src/components
+```
 
 ```tsx
-import { Button } from "@workspace/ui/components/button";
+import { Button } from "@workspace/ui/components/button"
 ```

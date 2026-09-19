@@ -4,6 +4,7 @@ dist
 dist-ssr
 *.local
 .env*
+!.env.example
 .tanstack
 .wrangler
 .output
@@ -16,3 +17,7 @@ todos.json
 
 # typescript
 *.tsbuildinfo
+
+# authentiq
+packages/lexicons/src/generated
+infra/seed/accounts.json

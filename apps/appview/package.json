@@ -1,0 +1,28 @@
+{
+  "name": "appview",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.4.2",
+    "@workspace/ai": "workspace:*",
+    "@workspace/atproto": "workspace:*",
+    "@workspace/db": "workspace:*",
+    "@workspace/lexicons": "workspace:*",
+    "elysia": "^1.4.30",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-config": "latest",
+    "@types/bun": "^1.4.2",
+    "eslint": "^9",
+    "typescript": "^6"
+  }
+}

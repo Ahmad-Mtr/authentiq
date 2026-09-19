@@ -1,0 +1,25 @@
+{
+  "name": "@workspace/lexicons",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "codegen": "lex build --lexicons ./lexicons --out ./src/generated --clear --index-file --import-ext .ts",
+    "lexicons:install": "lex install --save",
+    "lint": "eslint",
+    "format": "prettier --write \"src/*.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@atproto/lex": "^0.3.11"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-config": "latest",
+    "@types/bun": "^1.4.2",
+    "eslint": "^9",
+    "typescript": "^6"
+  }
+}
