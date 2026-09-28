@@ -1,4 +1,10 @@
-export { AtUri, isValidHandle, isValidNsid, ensureValidDid } from "@atproto/syntax"
+export {
+  AtUri,
+  isValidHandle,
+  isValidNsid,
+  ensureValidDid,
+  currentDatetimeString,
+} from "@atproto/syntax"
 export * from "./identity.ts"
 
 /** Default endpoints of the local network started by `bun run infra:up`. */
@@ -10,4 +16,4 @@ export const LOCAL_NETWORK = {
 } as const
 
 /** Every record type we own lives under this NSID authority. */
-export const NSID_PREFIX = "app.authentiq."
+export const NSID_PREFIX = "sh.authentiq."

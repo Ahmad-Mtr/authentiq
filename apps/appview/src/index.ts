@@ -2,11 +2,13 @@ import { cors } from "@elysiajs/cors"
 import { createDb, sql } from "@workspace/db"
 import { Elysia, status } from "elysia"
 import { env } from "./env.ts"
+import { getProfile } from "./xrpc/getProfile.ts"
 
 const db = createDb(env.DATABASE_URL)
 
 const app = new Elysia()
   .use(cors({ origin: env.WEB_ORIGIN }))
+  .use(getProfile)
   .get("/xrpc/_health", async () => {
     try {
       await db.execute(sql`select 1`)

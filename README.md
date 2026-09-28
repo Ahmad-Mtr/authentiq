@@ -11,10 +11,10 @@ AppView and a set of feed generators on top.
 ## Layout
 
 ```
-apps/web          TanStack Start UI + BFF                  :3000
+apps/web          TanStack Start UI + BFF                  :3000 (127.0.0.1)
 apps/appview      Elysia: firehose indexer + XRPC API      :2584
 apps/feedgen      Elysia: feed generators                  :2585
-packages/lexicons app.authentiq.* lexicons + codegen
+packages/lexicons sh.authentiq.* lexicons + codegen
 packages/db       Drizzle schema (Postgres + pgvector)
 packages/atproto  identity helpers, local network constants
 packages/ai       Claude client, model choices
@@ -34,6 +34,17 @@ bun run seed             # create demo accounts: alice.test … (password: "pass
 bun run db:migrate       # apply AppView schema
 bun run dev              # infra:up + all apps
 bun run infra:status     # smoke check everything
+```
+
+Then open **http://127.0.0.1:3000** (not `localhost` — ATProto loopback OAuth
+clients may only redirect to `127.0.0.1`) and sign in as `alice.test` /
+`password`.
+
+Verification scripts, both run against the live stack:
+
+```bash
+bun run verify:lexicons  # validators + a record round-trip through the PDS
+bun run verify:oauth     # the whole sign-in flow, headlessly
 ```
 
 Other scripts: `infra:down`, `infra:reset` (wipes volumes), `infra:logs`,

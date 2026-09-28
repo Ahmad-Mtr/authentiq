@@ -1,0 +1,42 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.actor.position",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A role the actor has held. One record per position.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["title", "organization", "startDate", "createdAt"],
+        "properties": {
+          "title": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+          "organization": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+          "employmentType": {
+            "type": "string",
+            "knownValues": ["full-time", "part-time", "contract", "internship", "freelance", "volunteer"]
+          },
+          "locationType": { "type": "string", "knownValues": ["onsite", "hybrid", "remote"] },
+          "location": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+          "startDate": {
+            "type": "string",
+            "description": "Year or year-month, e.g. 2024 or 2024-06. The AppView rejects other shapes.",
+            "maxLength": 7
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Same format as startDate. Absent means the actor still holds this position.",
+            "maxLength": 7
+          },
+          "description": { "type": "string", "maxGraphemes": 2000, "maxLength": 20000 },
+          "skills": {
+            "type": "array",
+            "maxLength": 25,
+            "items": { "type": "string", "maxGraphemes": 40, "maxLength": 400 }
+          },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}

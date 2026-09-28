@@ -1,0 +1,22 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.actor.getProfile",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "Get a hydrated profile. Served by the AppView, not the PDS.",
+      "parameters": {
+        "type": "params",
+        "required": ["actor"],
+        "properties": {
+          "actor": { "type": "string", "format": "at-identifier", "description": "Handle or DID." }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": { "type": "ref", "ref": "sh.authentiq.actor.defs#profileViewDetailed" }
+      },
+      "errors": [{ "name": "ActorNotFound" }]
+    }
+  }
+}

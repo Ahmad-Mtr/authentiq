@@ -1,6 +1,6 @@
 # @workspace/lexicons
 
-Source of truth for the `app.authentiq.*` schema. JSON lexicons live in
+Source of truth for the `sh.authentiq.*` schema. JSON lexicons live in
 `lexicons/` (one file per NSID, path mirrors the NSID). TypeScript validators
 and types are generated into `src/generated/` (git-ignored) by
 [`@atproto/lex`](https://www.npmjs.com/package/@atproto/lex).

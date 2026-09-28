@@ -1,0 +1,5 @@
+import { createDb } from "@workspace/db"
+import { env } from "./env.ts"
+
+export const db = createDb(env.DATABASE_URL)
+export { schema } from "@workspace/db"

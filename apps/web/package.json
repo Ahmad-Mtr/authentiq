@@ -12,6 +12,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@atproto/api": "^0.20.44",
+    "@atproto/oauth-client-node": "^0.5.7",
     "@phosphor-icons/react": "^2.1.10",
     "@tailwindcss/vite": "^4",
     "@tanstack/react-devtools": "latest",
@@ -19,10 +21,15 @@
     "@tanstack/react-router-devtools": "latest",
     "@tanstack/react-start": "latest",
     "@tanstack/router-plugin": "latest",
+    "@workspace/atproto": "workspace:*",
+    "@workspace/db": "workspace:*",
+    "@workspace/lexicons": "workspace:*",
     "@workspace/ui": "workspace:*",
+    "drizzle-orm": "^0.45.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tanstack/devtools-vite": "latest",

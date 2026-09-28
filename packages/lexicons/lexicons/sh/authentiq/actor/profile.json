@@ -1,0 +1,41 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.actor.profile",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A declaration of an actor's professional profile. One per repo.",
+      "key": "literal:self",
+      "record": {
+        "type": "object",
+        "required": ["displayName"],
+        "properties": {
+          "displayName": { "type": "string", "maxGraphemes": 64, "maxLength": 640 },
+          "headline": {
+            "type": "string",
+            "description": "One-line professional summary, e.g. 'Backend engineer at Acme'.",
+            "maxGraphemes": 120,
+            "maxLength": 1200
+          },
+          "about": { "type": "string", "maxGraphemes": 2000, "maxLength": 20000 },
+          "avatar": {
+            "type": "blob",
+            "accept": ["image/png", "image/jpeg", "image/webp"],
+            "maxSize": 1000000
+          },
+          "location": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+          "openToWork": {
+            "type": "boolean",
+            "description": "Whether the actor wants to be surfaced in talent search."
+          },
+          "skills": {
+            "type": "array",
+            "maxLength": 50,
+            "items": { "type": "string", "maxGraphemes": 40, "maxLength": 400 }
+          },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}

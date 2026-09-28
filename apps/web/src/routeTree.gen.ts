@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PActorRouteImport } from './routes/p.$actor'
+import { Route as ProfileEditRouteImport } from './routes/profile.edit'
+import { Route as ApiAuthLogoutRouteImport } from './routes/api.auth.logout'
+import { Route as ApiAuthSignupRouteImport } from './routes/api.auth.signup'
+import { Route as ApiAuthWhoamiRouteImport } from './routes/api.auth.whoami'
+import { Route as ApiOauthCallbackRouteImport } from './routes/api.oauth.callback'
+import { Route as ApiOauthLoginRouteImport } from './routes/api.oauth.login'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PActorRoute = PActorRouteImport.update({
+  id: '/p/$actor',
+  path: '/p/$actor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileEditRoute = ProfileEditRouteImport.update({
+  id: '/profile/edit',
+  path: '/profile/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
+  id: '/api/auth/logout',
+  path: '/api/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthSignupRoute = ApiAuthSignupRouteImport.update({
+  id: '/api/auth/signup',
+  path: '/api/auth/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthWhoamiRoute = ApiAuthWhoamiRouteImport.update({
+  id: '/api/auth/whoami',
+  path: '/api/auth/whoami',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiOauthCallbackRoute = ApiOauthCallbackRouteImport.update({
+  id: '/api/oauth/callback',
+  path: '/api/oauth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiOauthLoginRoute = ApiOauthLoginRouteImport.update({
+  id: '/api/oauth/login',
+  path: '/api/oauth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/p/$actor': typeof PActorRoute
+  '/profile/edit': typeof ProfileEditRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
+  '/api/auth/signup': typeof ApiAuthSignupRoute
+  '/api/auth/whoami': typeof ApiAuthWhoamiRoute
+  '/api/oauth/callback': typeof ApiOauthCallbackRoute
+  '/api/oauth/login': typeof ApiOauthLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/p/$actor': typeof PActorRoute
+  '/profile/edit': typeof ProfileEditRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
+  '/api/auth/signup': typeof ApiAuthSignupRoute
+  '/api/auth/whoami': typeof ApiAuthWhoamiRoute
+  '/api/oauth/callback': typeof ApiOauthCallbackRoute
+  '/api/oauth/login': typeof ApiOauthLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/p/$actor': typeof PActorRoute
+  '/profile/edit': typeof ProfileEditRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
+  '/api/auth/signup': typeof ApiAuthSignupRoute
+  '/api/auth/whoami': typeof ApiAuthWhoamiRoute
+  '/api/oauth/callback': typeof ApiOauthCallbackRoute
+  '/api/oauth/login': typeof ApiOauthLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/p/$actor'
+    | '/profile/edit'
+    | '/api/auth/logout'
+    | '/api/auth/signup'
+    | '/api/auth/whoami'
+    | '/api/oauth/callback'
+    | '/api/oauth/login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/p/$actor'
+    | '/profile/edit'
+    | '/api/auth/logout'
+    | '/api/auth/signup'
+    | '/api/auth/whoami'
+    | '/api/oauth/callback'
+    | '/api/oauth/login'
+  id:
+    | '__root__'
+    | '/'
+    | '/login'
+    | '/p/$actor'
+    | '/profile/edit'
+    | '/api/auth/logout'
+    | '/api/auth/signup'
+    | '/api/auth/whoami'
+    | '/api/oauth/callback'
+    | '/api/oauth/login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LoginRoute: typeof LoginRoute
+  PActorRoute: typeof PActorRoute
+  ProfileEditRoute: typeof ProfileEditRoute
+  ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
+  ApiAuthSignupRoute: typeof ApiAuthSignupRoute
+  ApiAuthWhoamiRoute: typeof ApiAuthWhoamiRoute
+  ApiOauthCallbackRoute: typeof ApiOauthCallbackRoute
+  ApiOauthLoginRoute: typeof ApiOauthLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/p/$actor': {
+      id: '/p/$actor'
+      path: '/p/$actor'
+      fullPath: '/p/$actor'
+      preLoaderRoute: typeof PActorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/edit': {
+      id: '/profile/edit'
+      path: '/profile/edit'
+      fullPath: '/profile/edit'
+      preLoaderRoute: typeof ProfileEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/logout': {
+      id: '/api/auth/logout'
+      path: '/api/auth/logout'
+      fullPath: '/api/auth/logout'
+      preLoaderRoute: typeof ApiAuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/signup': {
+      id: '/api/auth/signup'
+      path: '/api/auth/signup'
+      fullPath: '/api/auth/signup'
+      preLoaderRoute: typeof ApiAuthSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/whoami': {
+      id: '/api/auth/whoami'
+      path: '/api/auth/whoami'
+      fullPath: '/api/auth/whoami'
+      preLoaderRoute: typeof ApiAuthWhoamiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/oauth/callback': {
+      id: '/api/oauth/callback'
+      path: '/api/oauth/callback'
+      fullPath: '/api/oauth/callback'
+      preLoaderRoute: typeof ApiOauthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/oauth/login': {
+      id: '/api/oauth/login'
+      path: '/api/oauth/login'
+      fullPath: '/api/oauth/login'
+      preLoaderRoute: typeof ApiOauthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LoginRoute: LoginRoute,
+  PActorRoute: PActorRoute,
+  ProfileEditRoute: ProfileEditRoute,
+  ApiAuthLogoutRoute: ApiAuthLogoutRoute,
+  ApiAuthSignupRoute: ApiAuthSignupRoute,
+  ApiAuthWhoamiRoute: ApiAuthWhoamiRoute,
+  ApiOauthCallbackRoute: ApiOauthCallbackRoute,
+  ApiOauthLoginRoute: ApiOauthLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

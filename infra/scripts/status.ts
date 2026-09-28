@@ -67,4 +67,13 @@ for (const [name, url] of [
   }
 }
 
+try {
+  const res = await fetch("http://127.0.0.1:3000/login", {
+    signal: AbortSignal.timeout(5000),
+  })
+  report(res.ok, "web", "http://127.0.0.1:3000", false)
+} catch {
+  report(false, "web", "not running (start with `bun run dev`)", false)
+}
+
 process.exit(failed ? 1 : 0)

@@ -1,0 +1,24 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.actor.education",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A school the actor attended. One record per entry.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["school", "createdAt"],
+        "properties": {
+          "school": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+          "degree": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+          "fieldOfStudy": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+          "startDate": { "type": "string", "description": "Year or year-month.", "maxLength": 7 },
+          "endDate": { "type": "string", "description": "Year or year-month.", "maxLength": 7 },
+          "description": { "type": "string", "maxGraphemes": 1000, "maxLength": 10000 },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
