@@ -1,0 +1,34 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.feed.getFeedSkeleton",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "Implemented by feed generators, not the AppView. Returns references only: which posts or job postings, in which order. The AppView hydrates them and applies its own policy, so anything a skeleton names may still be left out. Personalised feeds take service auth: a token the viewer's PDS signed, with aud = the generator's DID and lxm = this NSID, which the AppView forwards.",
+      "parameters": {
+        "type": "params",
+        "required": ["feed"],
+        "properties": {
+          "feed": { "type": "string", "format": "at-uri", "description": "The sh.authentiq.feed.generator record's AT-URI." },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 100, "default": 50 },
+          "cursor": { "type": "string", "maxLength": 512 }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["feed"],
+          "properties": {
+            "cursor": { "type": "string", "maxLength": 512, "description": "Opaque to everyone but the generator." },
+            "feed": {
+              "type": "array",
+              "items": { "type": "union", "refs": ["sh.authentiq.feed.defs#skeletonPost", "sh.authentiq.feed.defs#skeletonJob"] }
+            }
+          }
+        }
+      },
+      "errors": [{ "name": "UnknownFeed" }]
+    }
+  }
+}

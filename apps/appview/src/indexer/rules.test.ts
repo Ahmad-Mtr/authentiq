@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test"
 import {
   checkFacets,
+  checkFeedGenerator,
   checkFollow,
   checkPostText,
   checkReply,
@@ -103,5 +104,27 @@ describe("replies and follows", () => {
   test("no self-follows", () => {
     expect(checkFollow("did:plc:a", "did:plc:a")).toMatch(/itself/)
     expect(checkFollow("did:plc:b", "did:plc:a")).toBeUndefined()
+  })
+})
+
+describe("feed generators", () => {
+  const gen = (did: string, displayName = "Feed") => ({ did, displayName })
+  test("accepts did:plc and path-less did:web, with or without a port", () => {
+    expect(checkFeedGenerator(gen("did:web:localhost%3A2585"))).toBeUndefined()
+    expect(checkFeedGenerator(gen("did:web:feeds.example.com"))).toBeUndefined()
+    expect(
+      checkFeedGenerator(gen("did:plc:4bmgs4jtk7p2lbgbzjlqjhxp"))
+    ).toBeUndefined()
+  })
+  test("leaves address checks to the fetch guard", () => {
+    // Syntactically fine; refused when the feed is read, not here.
+    expect(checkFeedGenerator(gen("did:web:169.254.169.254"))).toBeUndefined()
+  })
+  test("rejects DIDs that cannot name a service, and blank names", () => {
+    expect(checkFeedGenerator(gen("did:key:z6Mk"))).toMatch(/did:plc/)
+    expect(checkFeedGenerator(gen("did:web:host:path"))).toMatch(/path-less/)
+    expect(checkFeedGenerator(gen("did:web:localhost%3A2585", "  "))).toMatch(
+      /blank/
+    )
   })
 })

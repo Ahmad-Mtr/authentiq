@@ -8,12 +8,17 @@
     "start": "bun src/index.ts",
     "lint": "eslint",
     "format": "prettier --write \"**/*.ts\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "bun test"
   },
   "dependencies": {
+    "@atproto/identity": "^0.5.14",
+    "@atproto/xrpc-server": "^0.13.2",
     "@workspace/atproto": "workspace:*",
     "@workspace/db": "workspace:*",
     "@workspace/lexicons": "workspace:*",
+    "@workspace/rules": "workspace:*",
+    "drizzle-orm": "^0.45.2",
     "elysia": "^1.4.30",
     "zod": "^4.4.3"
   },

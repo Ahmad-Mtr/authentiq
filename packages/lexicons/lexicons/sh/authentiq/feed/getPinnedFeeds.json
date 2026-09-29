@@ -1,0 +1,20 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.feed.getPinnedFeeds",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "The caller's pinned feeds, in their order. Pins are private AppView state, not a repo record: which feeds someone reads (jobs-for-you, say) is not published. Requires service auth (lxm = this NSID). Feeds whose generator record is gone are left out.",
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["feeds"],
+          "properties": {
+            "feeds": { "type": "array", "items": { "type": "ref", "ref": "sh.authentiq.feed.defs#generatorView" } }
+          }
+        }
+      }
+    }
+  }
+}

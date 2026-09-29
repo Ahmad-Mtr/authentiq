@@ -1,0 +1,26 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.feed.describeFeedGenerator",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "Implemented by feed generators: the service's DID and the feeds it serves.",
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["did", "feeds"],
+          "properties": {
+            "did": { "type": "string", "format": "did" },
+            "feeds": { "type": "array", "items": { "type": "ref", "ref": "#feed" } }
+          }
+        }
+      }
+    },
+    "feed": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": { "uri": { "type": "string", "format": "at-uri" } }
+    }
+  }
+}

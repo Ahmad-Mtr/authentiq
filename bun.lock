@@ -48,11 +48,29 @@
       "name": "feedgen",
       "version": "0.0.1",
       "dependencies": {
+        "@atproto/identity": "^0.5.14",
+        "@atproto/xrpc-server": "^0.13.2",
         "@workspace/atproto": "workspace:*",
         "@workspace/db": "workspace:*",
         "@workspace/lexicons": "workspace:*",
+        "@workspace/rules": "workspace:*",
+        "drizzle-orm": "^0.45.2",
         "elysia": "^1.4.30",
         "zod": "^4.4.3",
+      },
+      "devDependencies": {
+        "@tanstack/eslint-config": "latest",
+        "@types/bun": "^1.4.2",
+        "eslint": "^9",
+        "typescript": "^6",
+      },
+    },
+    "apps/feedgen-thirdparty": {
+      "name": "feedgen-thirdparty",
+      "version": "0.0.1",
+      "dependencies": {
+        "@atproto/identity": "^0.5.14",
+        "@atproto/sync": "^0.4.11",
       },
       "devDependencies": {
         "@tanstack/eslint-config": "latest",
@@ -1087,6 +1105,8 @@
     "fdir": ["fdir@6.5.0", "", { "peerDependencies": { "picomatch": "^3 || ^4" }, "optionalPeers": ["picomatch"] }, "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg=="],
 
     "feedgen": ["feedgen@workspace:apps/feedgen"],
+
+    "feedgen-thirdparty": ["feedgen-thirdparty@workspace:apps/feedgen-thirdparty"],
 
     "fetchdts": ["fetchdts@0.1.7", "", {}, "sha512-YoZjBdafyLIop9lSxXVI33oLD5kN31q4Td+CasofLLYeLXRFeOsuOw0Uo+XNRi9PZlbfdlN2GmRtm4tCEQ9/KA=="],
 

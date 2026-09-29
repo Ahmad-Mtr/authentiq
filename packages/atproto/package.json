@@ -4,12 +4,14 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "test": "bun test",
     "lint": "eslint",
     "format": "prettier --write \"**/*.ts\"",
     "typecheck": "tsc --noEmit"
   },
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./fetch-guard": "./src/fetch-guard.ts"
   },
   "dependencies": {
     "@atproto/syntax": "^0.7.6"

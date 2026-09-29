@@ -1,0 +1,29 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.feed.putPinnedFeeds",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Replace the caller's pinned feeds with this ordered list. Requires service auth (lxm = this NSID). Every URI must name an indexed generator record.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["feeds"],
+          "properties": {
+            "feeds": { "type": "array", "maxLength": 10, "items": { "type": "string", "format": "at-uri" } }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["feeds"],
+          "properties": { "feeds": { "type": "array", "items": { "type": "string", "format": "at-uri" } } }
+        }
+      },
+      "errors": [{ "name": "UnknownFeed" }]
+    }
+  }
+}

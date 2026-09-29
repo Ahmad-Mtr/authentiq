@@ -12,7 +12,8 @@
   "exports": {
     "./salary": "./src/salary.ts",
     "./posting": "./src/posting.ts",
-    "./protected": "./src/protected.ts"
+    "./protected": "./src/protected.ts",
+    "./match": "./src/match.ts"
   },
   "devDependencies": {
     "@tanstack/eslint-config": "latest",

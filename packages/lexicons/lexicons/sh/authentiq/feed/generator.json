@@ -1,0 +1,21 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.feed.generator",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "Declares a feed, in the repo of the account that publishes it. The record's AT-URI is the feed's identity. `did` names the feed generator service: the AppView resolves it to a DID document, finds its #authentiq_fg service endpoint and calls sh.authentiq.feed.getFeedSkeleton there. Mirrors app.bsky.feed.generator.",
+      "key": "any",
+      "record": {
+        "type": "object",
+        "required": ["did", "displayName", "createdAt"],
+        "properties": {
+          "did": { "type": "string", "format": "did", "description": "The feed generator service (did:web or did:plc)." },
+          "displayName": { "type": "string", "minLength": 1, "maxGraphemes": 24, "maxLength": 240 },
+          "description": { "type": "string", "maxGraphemes": 300, "maxLength": 3000 },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}

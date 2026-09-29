@@ -13,6 +13,7 @@ import type {
 } from "../lib/social-types.ts"
 import { ApiError, appViewError, callAppView } from "./appview.ts"
 import { env } from "./env.ts"
+import { guardedFetch } from "./fetch.ts"
 import {
   buildCommunityRecord,
   buildFollowRecord,
@@ -111,14 +112,20 @@ export async function queryAppView<T>(
  */
 async function fetchRecord(uri: string) {
   const [, , repo, collection, rkey] = uri.split("/")
-  const doc = await resolveDid(repo, { plcUrl: env.PLC_URL })
+  // The URI came from the request: its DID and PDS go through the guard.
+  const doc = await resolveDid(repo, {
+    plcUrl: env.PLC_URL,
+    fetch: guardedFetch,
+  }).catch(() => {
+    throw new ApiError(400, "RecordNotFound", `Record not found: ${uri}`)
+  })
   const pds = getPdsEndpoint(doc) ?? env.PDS_URL
   const url = new URL("/xrpc/com.atproto.repo.getRecord", pds)
   url.searchParams.set("repo", repo)
   url.searchParams.set("collection", collection)
   url.searchParams.set("rkey", rkey)
-  const res = await fetch(url)
-  if (!res.ok) {
+  const res = await guardedFetch(url).catch(() => undefined)
+  if (!res?.ok) {
     throw new ApiError(400, "RecordNotFound", `Record not found: ${uri}`)
   }
   return (await res.json()) as { uri: string; cid: string; value: unknown }

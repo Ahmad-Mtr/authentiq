@@ -58,6 +58,7 @@ try {
 for (const [name, url] of [
   ["appview", "http://localhost:2584/xrpc/_health"],
   ["feedgen", "http://localhost:2585/xrpc/_health"],
+  ["feedgen-3p", "http://localhost:2586/xrpc/_health"],
 ] as const) {
   try {
     const health = await getJson(url)

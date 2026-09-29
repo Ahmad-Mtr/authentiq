@@ -1,0 +1,37 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.feed.getFeed",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "A feed, hydrated. Served by the AppView: it resolves the generator record to its service, calls getFeedSkeleton, and hydrates the result under its own policy (deleted records, deactivated authors, community hides, the non-member rule, closed postings), dropping whatever it cannot show. For a personalised feed, send a service auth token with aud = the generator's DID (generatorView.did) and lxm = sh.authentiq.feed.getFeedSkeleton; the AppView verifies it for viewer state and forwards it to the generator.",
+      "parameters": {
+        "type": "params",
+        "required": ["feed"],
+        "properties": {
+          "feed": { "type": "string", "format": "at-uri" },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 100, "default": 30 },
+          "cursor": { "type": "string", "maxLength": 512 }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["feed"],
+          "properties": {
+            "cursor": { "type": "string", "maxLength": 512 },
+            "feed": {
+              "type": "array",
+              "items": { "type": "union", "refs": ["sh.authentiq.feed.defs#feedViewPost", "sh.authentiq.job.defs#jobView"] }
+            }
+          }
+        }
+      },
+      "errors": [
+        { "name": "UnknownFeed", "description": "No valid generator record at that URI." },
+        { "name": "FeedUnavailable", "description": "The generator could not be resolved or reached, timed out, or answered with something that is not a skeleton." }
+      ]
+    }
+  }
+}

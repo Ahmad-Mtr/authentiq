@@ -25,7 +25,13 @@ export type AuthResult = { did: string } | { error: string; message: string }
 
 export async function verifyServiceAuth(
   authorization: string | undefined,
-  lxm: string
+  lxm: string,
+  /**
+   * The DID the token must be addressed to: this AppView unless given.
+   * `feed.getFeed` passes the feed generator's DID, because the token is the
+   * one the AppView forwards to it (see src/feeds).
+   */
+  audience: string = env.SERVICE_DID
 ): Promise<AuthResult> {
   const token = authorization?.match(/^Bearer (.+)$/)?.[1]
   if (!token) {
@@ -34,7 +40,7 @@ export async function verifyServiceAuth(
   try {
     const payload = await verifyJwt(
       token,
-      env.SERVICE_DID,
+      audience,
       lxm,
       async (iss, forceRefresh) =>
         idResolver.did.resolveAtprotoKey(iss.split("#")[0]!, forceRefresh)
@@ -76,10 +82,11 @@ export type ViewerResult =
  */
 export async function resolveViewer(
   authorization: string | undefined,
-  lxm: string
+  lxm: string,
+  audience?: string
 ): Promise<ViewerResult> {
   if (!authorization) return { viewer: undefined }
-  const auth = await verifyServiceAuth(authorization, lxm)
+  const auth = await verifyServiceAuth(authorization, lxm, audience)
   if (!("did" in auth)) return auth
   const [row] = await db
     .select({ active: schema.actor.active })

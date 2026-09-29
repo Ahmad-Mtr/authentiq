@@ -1,0 +1,24 @@
+{
+  "name": "feedgen-thirdparty",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts",
+    "publish-feed": "bun scripts/publish.ts",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@atproto/identity": "^0.5.14",
+    "@atproto/sync": "^0.4.11"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-config": "latest",
+    "@types/bun": "^1.4.2",
+    "eslint": "^9",
+    "typescript": "^6"
+  }
+}

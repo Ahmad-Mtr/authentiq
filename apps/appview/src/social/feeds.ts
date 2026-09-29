@@ -1,4 +1,4 @@
-import { and, desc, eq, exists, isNull, or, sql } from "drizzle-orm"
+import { and, desc, eq, exists, inArray, isNull, or, sql } from "drizzle-orm"
 import type { SQL } from "drizzle-orm"
 import { schema } from "@workspace/db"
 import { db } from "../db.ts"
@@ -47,11 +47,16 @@ async function page(where: SQL | undefined, limit: number, after?: string) {
 }
 
 /**
- * Feed items for a page of posts, with reply context. Posts hidden in the
- * community they are shown in are left out of every list, the author's own
- * included; they stay in the author's repo.
+ * Feed items for a page of posts, with reply context, in the order given.
+ * Posts hidden in the community they are shown in are left out of every
+ * list, the author's own included; they stay in the author's repo. Posts by
+ * inactive authors are left out. Phase 8's getFeed hydrates skeletons with
+ * this too, so a feed generator gets exactly the same policy.
  */
-async function feedItems(posts: Array<PostRow>, viewer: string | undefined) {
+export async function feedItems(
+  posts: Array<PostRow>,
+  viewer: string | undefined
+) {
   const context = await loadPosts(
     posts.flatMap((p) =>
       p.replyRootUri ? [p.replyRootUri, p.replyParentUri!] : []
@@ -136,6 +141,32 @@ export async function getCommunityPosts(opts: {
         )
       ),
       sql`not exists (select 1 from ${schema.communityHiddenPost} h where h.community_uri = ${uri} and h.post_uri = ${schema.post.uri})`
+    ),
+    opts.limit,
+    opts.cursor
+  )
+  return { cursor: next, feed: await feedItems(posts, opts.viewer) }
+}
+
+/**
+ * sh.authentiq.feed.getTimeline (phase 8): posts and replies by the accounts
+ * the viewer follows, newest first. Served here rather than by a feed
+ * generator, so the home page works whatever state the generators are in.
+ * It is the same definition as the first-party `following` feed. Follows of
+ * inactive accounts count for nothing, as everywhere else.
+ */
+export async function getTimeline(opts: {
+  viewer: string
+  limit: number
+  cursor?: string
+}) {
+  const { posts, cursor: next } = await page(
+    inArray(
+      schema.post.did,
+      db
+        .select({ subject: schema.follow.subject })
+        .from(schema.follow)
+        .where(eq(schema.follow.did, opts.viewer))
     ),
     opts.limit,
     opts.cursor

@@ -1,5 +1,6 @@
 import { and, eq, sql } from "drizzle-orm"
 import { schema } from "@workspace/db"
+import { matchLabel } from "@workspace/rules/match"
 import { stripJobQuery } from "@workspace/rules/protected"
 import { db } from "../db.ts"
 import { hydrateProfiles, searchTalent } from "../search/talent.ts"
@@ -97,22 +98,9 @@ export async function similarCandidates(opts: {
   }
 }
 
-/**
- * Bands of cosine similarity between a profile document and a posting
- * document (mistral-embed). Chosen from the distribution over the talent
- * corpus and the seeded postings: see the phase 7 doc, "Match score". A
- * label, not a percentage: the similarity of two embeddings is not a
- * probability of anything, and two decimals would claim a precision it
- * does not have.
- */
-export const MATCH_BANDS = { strong: 0.84, partial: 0.8 } as const
-
-export const matchLabel = (similarity: number) =>
-  similarity >= MATCH_BANDS.strong
-    ? "strong"
-    : similarity >= MATCH_BANDS.partial
-      ? "partial"
-      : "weak"
+// The bands moved to @workspace/rules/match in phase 8, so the feed
+// generator's jobs-for-you draws the line in the same place.
+export { MATCH_BANDS, matchLabel } from "@workspace/rules/match"
 
 /** How the caller's own profile matches a posting. */
 export async function matchFor(opts: { posting: string; caller: string }) {

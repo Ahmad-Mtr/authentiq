@@ -1,28 +1,43 @@
 import { Link, createFileRoute, useRouter } from "@tanstack/react-router"
-import { Badge } from "@workspace/ui/components/badge"
-import { buttonVariants } from "@workspace/ui/components/button"
+import { z } from "zod"
+import { FeedEntries } from "../components/feeds/feed-entries.tsx"
+import { FeedSwitcher } from "../components/feeds/feed-switcher.tsx"
 import { Composer } from "../components/social/composer.tsx"
-import { communityParams, postParams } from "../lib/actions.ts"
-import { getCommunities } from "../server/social-fns.ts"
+import { feedParams } from "../lib/feed-types.ts"
+import { postParams } from "../lib/actions.ts"
+import { getHome } from "../server/feeds-fns.ts"
+
+const search = z.object({
+  feed: z
+    .string()
+    .regex(/^at:\/\/[^/]+\/sh\.authentiq\.feed\.generator\/[^/]+$/)
+    .optional()
+    .catch(undefined),
+})
 
 export const Route = createFileRoute("/")({
-  loader: () => getCommunities(),
+  validateSearch: search,
+  loaderDeps: ({ search: s }) => ({ feed: s.feed }),
+  loader: ({ deps }) => getHome({ data: { feed: deps.feed } }),
   component: Home,
 })
 
 function Home() {
-  const { viewer } = Route.useLoaderData()
-  return viewer ? <SignedInHome viewer={viewer} /> : <Landing />
+  const home = Route.useLoaderData()
+  return home ? <SignedInHome home={home} /> : <Landing />
 }
 
+type HomeData = NonNullable<ReturnType<typeof Route.useLoaderData>>
+
 /**
- * No home timeline until feed composition (phase 8): a feed nobody chose
- * would be ranking by another name. Home is a composer and a way in.
+ * Signed in: the composer, then a feed. "Home" is the timeline (posts by the
+ * people you follow, newest first, served by the AppView); the other tabs are
+ * the feeds you pinned, each built by its own generator. Nothing is chosen
+ * for you: a feed you did not pick would be ranking by another name.
  */
-function SignedInHome({ viewer }: { viewer: string }) {
-  const { communities } = Route.useLoaderData()
+function SignedInHome({ home }: { home: HomeData }) {
   const router = useRouter()
-  const mine = communities.filter((c) => c.isCreator || c.membership)
+  const { viewer, pinned, selected, page } = home
   return (
     <main className="mx-auto max-w-2xl px-6 py-10">
       <h1 className="text-xl font-semibold">Write something worth reading</h1>
@@ -41,50 +56,38 @@ function SignedInHome({ viewer }: { viewer: string }) {
         />
       </div>
 
-      <div className="mt-10 flex flex-wrap gap-3">
-        <Link
-          to="/p/$actor"
-          params={{ actor: viewer }}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          Your posts
-        </Link>
-        <Link
-          to="/communities"
-          className={buttonVariants({ variant: "outline" })}
-        >
-          Browse communities
-        </Link>
-      </div>
-
-      <section className="mt-10">
-        <h2 className="font-medium">Your communities</h2>
-        <ul className="mt-3 grid gap-2">
-          {mine.map((c) => (
-            <li key={c.uri} className="flex items-center gap-2 text-sm">
-              <Link
-                to="/c/$actor/$rkey"
-                params={communityParams(c.uri)}
-                className="font-medium hover:underline"
-              >
-                {c.name}
-              </Link>
-              <Badge variant="outline">{c.topic}</Badge>
-              {c.isCreator ? (
-                <span className="text-xs text-muted-foreground">creator</span>
-              ) : null}
-            </li>
-          ))}
-          {mine.length === 0 ? (
-            <li className="text-sm text-muted-foreground">
-              None yet.{" "}
-              <Link to="/communities" className="underline">
-                Find one to join
-              </Link>
-              .
-            </li>
-          ) : null}
-        </ul>
+      <section className="mt-10 grid gap-4">
+        <FeedSwitcher pinned={pinned} selected={selected?.uri ?? null} />
+        {selected ? (
+          <p className="text-sm text-muted-foreground">
+            {selected.description}{" "}
+            <Link
+              to="/feeds/$actor/$rkey"
+              params={feedParams(selected.uri)}
+              className="underline"
+            >
+              About this feed
+            </Link>
+          </p>
+        ) : (
+          <p className="text-sm text-muted-foreground">
+            Posts from the people you follow, newest first.
+          </p>
+        )}
+        <FeedEntries
+          // Remount per feed, so "Load more" state does not carry over.
+          key={selected?.uri ?? "timeline"}
+          page={page}
+          source={
+            selected ? { kind: "feed", uri: selected.uri } : { kind: "timeline" }
+          }
+          viewer={viewer}
+          empty={
+            selected
+              ? "Nothing in this feed for you yet."
+              : "Nothing yet. Follow people from their profiles, or pin a feed."
+          }
+        />
       </section>
     </main>
   )
@@ -110,6 +113,9 @@ function Landing() {
         </Link>
         <Link to="/communities" className="rounded-md border px-4 py-2">
           Browse communities
+        </Link>
+        <Link to="/feeds" className="rounded-md border px-4 py-2">
+          Browse feeds
         </Link>
       </div>
       <p className="mt-10 text-xs text-muted-foreground">

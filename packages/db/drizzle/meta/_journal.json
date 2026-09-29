@@ -50,6 +50,20 @@
       "when": 1790710992410,
       "tag": "0006_breezy_steel_serpent",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1790717790327,
+      "tag": "0007_clean_donald_blake",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1790718816096,
+      "tag": "0008_strong_pyro",
+      "breakpoints": true
     }
   ]
 }

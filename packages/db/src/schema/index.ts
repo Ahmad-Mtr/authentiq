@@ -117,6 +117,22 @@ export const communityHiddenPost = pgTable(
   ]
 )
 
+/**
+ * A signed-in account's pinned feeds, in order (phase 8). Private AppView
+ * state behind service auth, deliberately not a repo record: which feeds
+ * someone reads (jobs-for-you, say) would otherwise be public. The price is
+ * that pins are not portable and a rebuild from repos does not restore them.
+ */
+export const feedPin = pgTable("feed_pin", {
+  /** Goes with the account: deleting it (or its index row) removes its pins. */
+  did: text()
+    .primaryKey()
+    .references(() => actor.did, { onDelete: "cascade" }),
+  /** Generator record AT-URIs, in the order the user pinned them. */
+  feeds: text().array().notNull(),
+  updatedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+})
+
 // --- AppView index ------------------------------------------------------------
 //
 // Everything below is derived from users' repos by the firehose indexer
@@ -353,6 +369,29 @@ export const jobPosting = pgTable(
       t.uri.desc()
     ),
     index("job_posting_search_idx").using("gin", t.search),
+  ]
+)
+
+/**
+ * `sh.authentiq.feed.generator` (phase 8): a feed declaration in its
+ * publisher's repo. `serviceDid` is the record's `did`, the feed generator
+ * service; it is resolved to an endpoint only when the feed is read, through
+ * the fetch guard (apps/appview/src/feeds/resolve.ts).
+ */
+export const feedGenerator = pgTable(
+  "feed_generator",
+  {
+    ...recordColumns(),
+    serviceDid: text().notNull(),
+    displayName: text().notNull(),
+    description: text(),
+    createdAt: timestamp({ withTimezone: true }).notNull(),
+    /** Discovery order: the earlier of createdAt and first indexing. */
+    sortAt: timestamp({ withTimezone: true }).notNull(),
+  },
+  (t) => [
+    index("feed_generator_did_idx").on(t.did),
+    index("feed_generator_sort_idx").on(t.sortAt, t.uri),
   ]
 )
 

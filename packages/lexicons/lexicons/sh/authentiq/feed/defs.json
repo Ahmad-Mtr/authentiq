@@ -92,6 +92,42 @@
           "items": { "type": "union", "refs": ["#threadViewPost", "#notFoundPost", "#hiddenPost"] }
         }
       }
+    },
+    "generatorView": {
+      "type": "object",
+      "description": "A feed declaration as indexed. Deliberately has no like or subscriber count.",
+      "required": ["uri", "cid", "did", "creator", "displayName", "indexedAt"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "cid": { "type": "string", "format": "cid" },
+        "did": {
+          "type": "string",
+          "format": "did",
+          "description": "The feed generator service. The audience of the service auth token for a personalised feed."
+        },
+        "creator": { "type": "ref", "ref": "sh.authentiq.actor.defs#profileView" },
+        "displayName": { "type": "string", "maxGraphemes": 24, "maxLength": 240 },
+        "description": { "type": "string", "maxGraphemes": 300, "maxLength": 3000 },
+        "indexedAt": { "type": "string", "format": "datetime" },
+        "viewer": { "type": "ref", "ref": "#generatorViewerState" }
+      }
+    },
+    "generatorViewerState": {
+      "type": "object",
+      "description": "Present only when the request carries service auth.",
+      "properties": { "pinned": { "type": "boolean" } }
+    },
+    "skeletonPost": {
+      "type": "object",
+      "description": "A skeleton item naming a sh.authentiq.feed.post.",
+      "required": ["post"],
+      "properties": { "post": { "type": "string", "format": "at-uri" } }
+    },
+    "skeletonJob": {
+      "type": "object",
+      "description": "A skeleton item naming a sh.authentiq.job.posting. It carries no score: ranking is expressed by order alone.",
+      "required": ["job"],
+      "properties": { "job": { "type": "string", "format": "at-uri" } }
     }
   }
 }

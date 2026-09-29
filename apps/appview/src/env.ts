@@ -12,6 +12,14 @@ export const env = z
     SERVICE_DID: z.string().default("did:web:localhost%3A2584"),
     /** Firehose to index. Defaults to the local PDS's subscribeRepos endpoint. */
     FIREHOSE_URL: z.url().optional(),
+    /**
+     * Development override for the fetch guard (src/fetch.ts): `host:port`
+     * or `host:lo-hi` entries that may be fetched over http and may resolve
+     * to loopback. The local feed generators (2585, 2586) and the ports
+     * `verify:feeds` runs its scripted generators on (2590–2594). PLC and
+     * PDS hosts are added from their URLs. Leave empty in a deployment.
+     */
+    FETCH_ALLOW: z.string().default("localhost:2585-2586,localhost:2590-2594"),
     /** Bearer token for /_admin/*. The admin routes are disabled when unset. */
     ADMIN_TOKEN: z.string().min(16).optional(),
   })

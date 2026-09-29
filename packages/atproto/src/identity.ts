@@ -5,6 +5,9 @@
  * them by asking the PDS directly. DIDs resolve through the local PLC.
  */
 
+/** A fetch to resolve with; pass the fetch guard for user-named DIDs and hosts. */
+type Fetch = (input: URL, init?: RequestInit) => Promise<Response>
+
 export type DidDocument = {
   id: string
   alsoKnownAs?: Array<string>
@@ -13,11 +16,11 @@ export type DidDocument = {
 
 export async function resolveHandle(
   handle: string,
-  opts: { pdsUrl: string }
+  opts: { pdsUrl: string; fetch?: Fetch }
 ): Promise<string> {
   const url = new URL("/xrpc/com.atproto.identity.resolveHandle", opts.pdsUrl)
   url.searchParams.set("handle", handle)
-  const res = await fetch(url)
+  const res = await (opts.fetch ?? fetch)(url)
   if (!res.ok) throw new Error(`Could not resolve handle ${handle}: ${res.status}`)
   const { did } = (await res.json()) as { did: string }
   return did
@@ -25,7 +28,7 @@ export async function resolveHandle(
 
 export async function resolveDid(
   did: string,
-  opts: { plcUrl: string }
+  opts: { plcUrl: string; fetch?: Fetch }
 ): Promise<DidDocument> {
   let url: URL
   if (did.startsWith("did:plc:")) {
@@ -37,7 +40,7 @@ export async function resolveDid(
   } else {
     throw new Error(`Unsupported DID method: ${did}`)
   }
-  const res = await fetch(url)
+  const res = await (opts.fetch ?? fetch)(url)
   if (!res.ok) throw new Error(`Could not resolve ${did}: ${res.status}`)
   return (await res.json()) as DidDocument
 }

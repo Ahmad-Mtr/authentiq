@@ -9,17 +9,22 @@ import {
   resolveHandle,
 } from "@workspace/atproto"
 import { env } from "../env.ts"
+import { guardedFetch } from "../fetch.ts"
 import type { Tx } from "./collections.ts"
 
 /**
  * Used by `@atproto/sync` to fetch signing keys and verify commits, through
- * the local PLC. Its default fetch adds SSRF protection that cannot run under
- * Bun (it throws "requires Node.js 20.6+"), so it gets the global fetch.
+ * the local PLC, and by service auth (src/auth.ts) to fetch the key of a
+ * token's `iss`, which is whatever DID the caller wrote into the token. Its
+ * default fetch adds SSRF protection that cannot run under Bun (it throws
+ * "requires Node.js 20.6+"). Until phase 8 it got the global fetch, so a
+ * forged token naming `did:web:10.0.0.1` made the AppView fetch that host.
+ * It now gets the fetch guard (src/fetch.ts).
  */
 export const idResolver = new IdResolver({
   plcUrl: env.PLC_URL,
   didCache: new MemoryCache(),
-  fetch: globalThis.fetch,
+  fetch: guardedFetch,
 })
 
 /**
@@ -30,12 +35,15 @@ export const idResolver = new IdResolver({
 export async function resolveIdentity(
   did: string
 ): Promise<{ handle: string | null; pds: string }> {
-  const doc = await resolveDid(did, { plcUrl: env.PLC_URL })
+  const doc = await resolveDid(did, { plcUrl: env.PLC_URL, fetch: guardedFetch })
   const pds = getPdsEndpoint(doc) ?? env.PDS_URL
   const claimed = getHandle(doc)?.toLowerCase()
   if (!claimed || !isValidHandle(claimed)) return { handle: null, pds }
   try {
-    const resolved = await resolveHandle(claimed, { pdsUrl: pds })
+    const resolved = await resolveHandle(claimed, {
+      pdsUrl: pds,
+      fetch: guardedFetch,
+    })
     return { handle: resolved === did ? claimed : null, pds }
   } catch {
     return { handle: null, pds }

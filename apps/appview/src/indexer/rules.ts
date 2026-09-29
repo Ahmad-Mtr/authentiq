@@ -195,3 +195,25 @@ export function checkCommunity(v: { name: string; topic: string }) {
  * too, so there is one definition and the form refuses what we would drop.
  */
 export { checkPosting as checkJobPosting } from "@workspace/rules/posting"
+
+// --- Feed generators (phase 8) -----------------------------------------------
+
+const DID_PLC = /^did:plc:[a-z2-7]{24}$/
+// One host segment, optionally with a %3A-encoded port. atproto does not
+// support did:web paths (`did:web:host:path`).
+const DID_WEB = /^did:web:[a-z0-9.-]+(%3[aA]\d{1,5})?$/
+
+/**
+ * A generator record's `did` must be something a service can be found
+ * through: did:plc or a path-less did:web. Whether its host may be fetched
+ * is not decided here but when the feed is read, by the fetch guard, which
+ * is the one place those rules live (and where they can change without
+ * re-indexing).
+ */
+export function checkFeedGenerator(v: { did: string; displayName: string }) {
+  if (v.displayName.trim() === "") return "feed displayName is blank"
+  if (!DID_PLC.test(v.did) && !DID_WEB.test(v.did)) {
+    return `feed service ${JSON.stringify(v.did)} is not a did:plc or a path-less did:web`
+  }
+  return undefined
+}

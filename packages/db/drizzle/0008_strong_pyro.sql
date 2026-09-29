@@ -1,0 +1,1 @@
+ALTER TABLE "feed_pin" ADD CONSTRAINT "feed_pin_did_actor_did_fk" FOREIGN KEY ("did") REFERENCES "public"."actor"("did") ON DELETE cascade ON UPDATE no action;

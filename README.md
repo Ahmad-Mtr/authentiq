@@ -13,7 +13,8 @@ AppView and a set of feed generators on top.
 ```
 apps/web          TanStack Start UI + BFF                  :3000 (127.0.0.1)
 apps/appview      Elysia: firehose indexer + XRPC API      :2584
-apps/feedgen      Elysia: feed generators                  :2585
+apps/feedgen      Elysia: first-party feed generators      :2585 (read-only Postgres role)
+apps/feedgen-thirdparty  a third party's feed generator  :2586 (public firehose only)
 packages/lexicons sh.authentiq.* lexicons + codegen
 packages/db       Drizzle schema (Postgres + pgvector)
 packages/atproto  identity helpers, local network constants
@@ -35,7 +36,8 @@ bun run seed             # create demo accounts: alice.test … (password: "pass
 bun run seed:talent      # 84 synthetic candidates tal-001.test … for search (needs dev running)
 bun run seed:social      # communities, posts, threads, likes, follows (needs seed + seed:talent, dev running)
 bun run seed:jobs        # 17 job postings + 7 deliberately invalid ones (needs seed + seed:talent, dev running)
-bun run db:migrate       # apply AppView schema
+bun run seed:feeds       # feed generator records, a third party's feed, follows and pins (needs the seeds above, dev running)
+bun run db:migrate       # apply AppView schema, and create the feedgen's read-only role
 bun run dev              # infra:up + all apps
 bun run infra:status     # smoke check everything
 ```
@@ -58,6 +60,8 @@ bun run eval:search      # nDCG@10 / recall@10 / MRR for vector, FTS and hybrid 
 bun run verify:social    # posts, threads, out-of-order indexing, facets, invalid records, no counts, communities, hiding, deactivation
 bun run verify:jobs      # the salary-less curl demo, invalid postings, edit/delete, salary floor across periods, close dates,
                          # deactivation, similar candidates, match score privacy, the agent's get_job
+bun run verify:feeds     # record → DID → endpoint, following, viewer tokens, jobs-for-you, the AppView overriding a
+                         # skeleton, failing generators, SSRF, cursors, pins, and the third-party feed
 ```
 
 `verify:indexer` stops and restarts the indexer through the AppView's admin
@@ -93,6 +97,19 @@ seven that break a salary-transparency rule on purpose. The PDS stores
 those; the AppView never shows them. It is idempotent. `verify:jobs` needs
 `seed:jobs`, `seed:talent` and `bun run dev`, and calls the recruiting agent
 (so `MISTRAL_API_KEY`). The job board is at http://127.0.0.1:3000/jobs.
+
+`seed:feeds` creates `authentiq-feeds.test`, which publishes the four
+first-party `sh.authentiq.feed.generator` records (following, my communities,
+jobs for you, industry pulse), adds follows, and pins two feeds for
+alice.test. It also runs the third party's own publish script
+(`apps/feedgen-thirdparty`, `link-roundup.test`, "Posts with a link").
+`bun run dev` starts both feed generators. `db:migrate` creates the
+`feedgen_reader` role the first-party generator connects as, and points
+`apps/feedgen/.env` at it the first time. `verify:feeds` runs scripted
+generators and a canary on ports 2590–2594 and 2599, which the AppView's
+`FETCH_ALLOW` development allowlist names; `THIRDPARTY_BASE=<git tree>`
+additionally checks the third-party step's diff. Feeds are at
+http://127.0.0.1:3000/feeds, and pinned feeds are tabs on the home page.
 
 Other scripts: `infra:down`, `infra:reset` (wipes volumes), `infra:logs`,
 `codegen`, `test` (unit tests), `typecheck`, `lint`.

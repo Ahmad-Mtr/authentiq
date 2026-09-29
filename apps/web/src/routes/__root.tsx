@@ -50,6 +50,9 @@ function RootLayout() {
             <Link to="/communities" className="hover:underline">
               Communities
             </Link>
+            <Link to="/feeds" className="hover:underline">
+              Feeds
+            </Link>
             {viewer ? (
               <>
                 <Link
