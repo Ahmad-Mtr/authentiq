@@ -43,6 +43,13 @@
       "when": 1790687022903,
       "tag": "0005_organic_the_captain",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1790710992410,
+      "tag": "0006_breezy_steel_serpent",
+      "breakpoints": true
     }
   ]
 }

@@ -3,7 +3,7 @@ import type { SQL } from "drizzle-orm"
 import { schema } from "@workspace/db"
 import { sh } from "@workspace/lexicons"
 import { db } from "../db.ts"
-import { stripQuery } from "../embed/protected.ts"
+import { stripQuery } from "@workspace/rules/protected"
 import { embedQuery } from "../embed/query.ts"
 
 /**
@@ -24,7 +24,7 @@ import { embedQuery } from "../embed/query.ts"
  * one ranks only eligible actors. Only active actors with an indexed profile
  * record (public repo data) are ever candidates. Protected-attribute terms
  * are removed from the query before either retriever sees it
- * (./embed/protected.ts), and never reach the documents either.
+ * (@workspace/rules/protected), and never reach the documents either.
  */
 
 export const RRF_K = 60
@@ -41,6 +41,8 @@ export type TalentFilters = {
   openToWork?: boolean
   location?: string
   skills?: Array<string>
+  /** Actors to leave out, e.g. a posting's author (phase 7). */
+  exclude?: Array<string>
 }
 export type TalentHit = {
   did: string
@@ -54,6 +56,11 @@ export class SearchUnavailableError extends Error {}
 
 export async function searchTalent(opts: {
   q: string
+  /**
+   * A stored embedding to search with instead of embedding `q` (phase 7: a
+   * posting's vector for similar candidates). `q` still drives full-text.
+   */
+  vector?: Array<number>
   filters?: TalentFilters
   mode?: TalentMode
   limit?: number
@@ -69,11 +76,11 @@ export async function searchTalent(opts: {
   let ftsDids: Array<string> = []
   let degraded = false
 
-  if (text) {
+  if (text || opts.vector) {
     const [v, f] = await Promise.all([
       mode === "fts"
         ? []
-        : vectorRetriever(text, where).catch((err: unknown) => {
+        : vectorRetriever(opts.vector ?? text, where).catch((err: unknown) => {
             // The model is down or slow. Hybrid degrades to full-text only;
             // vector-only has nothing to fall back on.
             if (mode === "vector")
@@ -81,7 +88,7 @@ export async function searchTalent(opts: {
             degraded = true
             return []
           }),
-      mode === "vector" ? [] : ftsRetriever(text, where),
+      mode === "vector" || !text ? [] : ftsRetriever(text, where),
     ])
     vectorDids = v
     ftsDids = f
@@ -131,14 +138,17 @@ function filterSql(f: TalentFilters): SQL {
       sql`exists (select 1 from unnest(p.skills) s where lower(s) = lower(${skill.trim()}))`
     )
   }
+  for (const did of f.exclude ?? []) parts.push(sql`e.subject <> ${did}`)
   return sql.join(parts, sql` and `)
 }
 
 async function vectorRetriever(
-  text: string,
+  query: string | Array<number>,
   where: SQL
 ): Promise<Array<string>> {
-  const vector = JSON.stringify(await embedQuery(text))
+  const vector = JSON.stringify(
+    typeof query === "string" ? await embedQuery(query) : query
+  )
   return db.transaction(async (tx) => {
     // Filters apply after the HNSW scan; iterative scans keep reading the
     // index until enough rows pass them (pgvector ≥ 0.8).

@@ -24,6 +24,7 @@
     "@workspace/atproto": "workspace:*",
     "@workspace/db": "workspace:*",
     "@workspace/lexicons": "workspace:*",
+    "@workspace/rules": "workspace:*",
     "@workspace/ui": "workspace:*",
     "drizzle-orm": "^0.45.2",
     "react": "^19.2.6",

@@ -1,5 +1,6 @@
 import * as actor from "./actor.ts"
 import type { CollectionHandler } from "./collections.ts"
+import * as jobs from "./jobs.ts"
 import * as social from "./social.ts"
 
 /**
@@ -17,5 +18,6 @@ export const collections: ReadonlyMap<string, CollectionHandler> = new Map(
     social.follow,
     social.community,
     social.membership,
+    jobs.posting,
   ].map((h) => [h.collection, h])
 )

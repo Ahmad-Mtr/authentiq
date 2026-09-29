@@ -1,0 +1,66 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.job.listPostings",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "The job board: open postings that passed validation, by active authors. Served by the AppView. Amounts in different currencies are never compared: minSalary and sort=salary need a currency, and only postings in that currency match.",
+      "parameters": {
+        "type": "params",
+        "properties": {
+          "q": { "type": "string", "maxLength": 200, "description": "Words that must appear in the title, organization, description or skills (English stemming)." },
+          "minSalary": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Salary floor, in whole units of currency per salaryPeriod. A posting matches when the bottom of its range, converted to a year, is at least the floor converted to a year."
+          },
+          "currency": { "type": "string", "minLength": 3, "maxLength": 3, "description": "ISO 4217 code. Required with minSalary or sort=salary; alone, it filters to postings in that currency." },
+          "salaryPeriod": {
+            "type": "string",
+            "knownValues": ["hour", "day", "week", "month", "year"],
+            "default": "year",
+            "description": "The period minSalary is stated in."
+          },
+          "locationType": {
+            "type": "array",
+            "maxLength": 3,
+            "items": { "type": "string", "knownValues": ["onsite", "hybrid", "remote"] }
+          },
+          "location": { "type": "string", "maxLength": 100, "description": "Case-insensitive substring of the posting's location." },
+          "employmentType": {
+            "type": "array",
+            "maxLength": 6,
+            "items": { "type": "string", "knownValues": ["full-time", "part-time", "contract", "internship", "freelance", "volunteer"] }
+          },
+          "skills": {
+            "type": "array",
+            "maxLength": 10,
+            "items": { "type": "string", "maxLength": 40 },
+            "description": "Every one must be on the posting's skills list (case-insensitive)."
+          },
+          "author": { "type": "string", "format": "at-identifier", "description": "Only this account's postings." },
+          "sort": {
+            "type": "string",
+            "knownValues": ["newest", "salary"],
+            "default": "newest",
+            "description": "newest: most recent first. salary: highest yearly minimum first, then highest yearly maximum (needs currency)."
+          },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 100, "default": 30 },
+          "cursor": { "type": "string", "maxLength": 300 }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["postings"],
+          "properties": {
+            "cursor": { "type": "string" },
+            "postings": { "type": "array", "items": { "type": "ref", "ref": "sh.authentiq.job.defs#jobView" } }
+          }
+        }
+      },
+      "errors": [{ "name": "InvalidRequest" }]
+    }
+  }
+}

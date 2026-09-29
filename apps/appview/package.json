@@ -21,6 +21,7 @@
     "@workspace/atproto": "workspace:*",
     "@workspace/db": "workspace:*",
     "@workspace/lexicons": "workspace:*",
+    "@workspace/rules": "workspace:*",
     "drizzle-orm": "^0.45.2",
     "elysia": "^1.4.30",
     "mammoth": "^1.13.0",

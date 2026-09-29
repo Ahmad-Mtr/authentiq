@@ -49,3 +49,33 @@ describe("checkCitations", () => {
     expect(r.dropped).toHaveLength(1)
   })
 })
+
+describe("checkCitations with job postings (phase 7)", () => {
+  const job = {
+    kind: "job" as const,
+    uri: "at://did:plc:ada/sh.authentiq.job.posting/3mvvqk2qn5s2k",
+    did: "did:plc:ada",
+    handle: "ada.test",
+    displayName: "Site Reliability Engineer",
+  }
+  const both = { toolUris: new Map([[job.uri, job]]) }
+
+  test("keeps links to postings a tool returned", () => {
+    const r = checkCitations(`See [the SRE role](${job.uri}).`, both)
+    expect(r.citations).toEqual([job])
+    expect(r.dropped).toEqual([])
+  })
+
+  test("unlinks a posting no tool returned", () => {
+    const fake = "at://did:plc:ada/sh.authentiq.job.posting/3zzzzzzzzzzzz"
+    const r = checkCitations(`See [a role](${fake}).`, both)
+    expect(r.text).toBe("See a role [unverified].")
+    expect(r.dropped).toEqual([fake])
+  })
+
+  test("a bare at://did is a person, never their posting", () => {
+    const r = checkCitations(`[Ada](at://did:plc:ada)`, both)
+    expect(r.citations).toEqual([])
+    expect(r.dropped).toEqual(["at://did:plc:ada"])
+  })
+})

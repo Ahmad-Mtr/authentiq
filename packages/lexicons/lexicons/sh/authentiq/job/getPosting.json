@@ -1,0 +1,20 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.job.getPosting",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "One job posting. Served by the AppView. A posting that failed validation (for example, one without a salary), was deleted, or whose author is deactivated is not found. A closed posting is returned with closed: true. Optional service auth (lxm = this NSID) adds viewer state.",
+      "parameters": {
+        "type": "params",
+        "required": ["uri"],
+        "properties": { "uri": { "type": "string", "format": "at-uri" } }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": { "type": "ref", "ref": "sh.authentiq.job.defs#jobView" }
+      },
+      "errors": [{ "name": "PostingNotFound" }]
+    }
+  }
+}

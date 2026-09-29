@@ -1,0 +1,23 @@
+{
+  "name": "@workspace/rules",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "bun test",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "exports": {
+    "./salary": "./src/salary.ts",
+    "./posting": "./src/posting.ts",
+    "./protected": "./src/protected.ts"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-config": "latest",
+    "@types/bun": "^1.4.2",
+    "eslint": "^9",
+    "typescript": "^6"
+  }
+}

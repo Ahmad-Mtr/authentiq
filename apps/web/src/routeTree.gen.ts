@@ -14,10 +14,13 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as RecruitRouteImport } from './routes/recruit'
 import { Route as ApiCommunitiesRouteImport } from './routes/api.communities'
 import { Route as ApiFollowsRouteImport } from './routes/api.follows'
+import { Route as ApiJobsRouteImport } from './routes/api.jobs'
 import { Route as ApiLikesRouteImport } from './routes/api.likes'
 import { Route as ApiPostsRouteImport } from './routes/api.posts'
 import { Route as CommunitiesIndexRouteImport } from './routes/communities.index'
 import { Route as CommunitiesNewRouteImport } from './routes/communities.new'
+import { Route as JobsIndexRouteImport } from './routes/jobs.index'
+import { Route as JobsNewRouteImport } from './routes/jobs.new'
 import { Route as PActorRouteImport } from './routes/p.$actor'
 import { Route as ProfileEditRouteImport } from './routes/profile.edit'
 import { Route as ProfileImportRouteImport } from './routes/profile.import'
@@ -27,6 +30,10 @@ import { Route as ApiAuthSignupRouteImport } from './routes/api.auth.signup'
 import { Route as ApiAuthWhoamiRouteImport } from './routes/api.auth.whoami'
 import { Route as ApiCommunitiesHideRouteImport } from './routes/api.communities.hide'
 import { Route as ApiCommunitiesJoinRouteImport } from './routes/api.communities.join'
+import { Route as ApiJobsDeleteRouteImport } from './routes/api.jobs.delete'
+import { Route as ApiJobsMatchRouteImport } from './routes/api.jobs.match'
+import { Route as ApiJobsSimilarRouteImport } from './routes/api.jobs.similar'
+import { Route as ApiJobsUpdateRouteImport } from './routes/api.jobs.update'
 import { Route as ApiOauthCallbackRouteImport } from './routes/api.oauth.callback'
 import { Route as ApiOauthLoginRouteImport } from './routes/api.oauth.login'
 import { Route as ApiRecordsDeleteRouteImport } from './routes/api.records.delete'
@@ -34,7 +41,9 @@ import { Route as ApiResumeCancelRouteImport } from './routes/api.resume.cancel'
 import { Route as ApiResumeConfirmRouteImport } from './routes/api.resume.confirm'
 import { Route as ApiResumeUploadRouteImport } from './routes/api.resume.upload'
 import { Route as CActorRkeyRouteImport } from './routes/c.$actor.$rkey'
+import { Route as JobsActorRkeyRouteImport } from './routes/jobs.$actor.$rkey'
 import { Route as PostActorRkeyRouteImport } from './routes/post.$actor.$rkey'
+import { Route as JobsEditActorRkeyRouteImport } from './routes/jobs.edit.$actor.$rkey'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -61,6 +70,11 @@ const ApiFollowsRoute = ApiFollowsRouteImport.update({
   path: '/api/follows',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiJobsRoute = ApiJobsRouteImport.update({
+  id: '/api/jobs',
+  path: '/api/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiLikesRoute = ApiLikesRouteImport.update({
   id: '/api/likes',
   path: '/api/likes',
@@ -79,6 +93,16 @@ const CommunitiesIndexRoute = CommunitiesIndexRouteImport.update({
 const CommunitiesNewRoute = CommunitiesNewRouteImport.update({
   id: '/communities/new',
   path: '/communities/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsIndexRoute = JobsIndexRouteImport.update({
+  id: '/jobs/',
+  path: '/jobs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsNewRoute = JobsNewRouteImport.update({
+  id: '/jobs/new',
+  path: '/jobs/new',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PActorRoute = PActorRouteImport.update({
@@ -126,6 +150,26 @@ const ApiCommunitiesJoinRoute = ApiCommunitiesJoinRouteImport.update({
   path: '/join',
   getParentRoute: () => ApiCommunitiesRoute,
 } as any)
+const ApiJobsDeleteRoute = ApiJobsDeleteRouteImport.update({
+  id: '/delete',
+  path: '/delete',
+  getParentRoute: () => ApiJobsRoute,
+} as any)
+const ApiJobsMatchRoute = ApiJobsMatchRouteImport.update({
+  id: '/match',
+  path: '/match',
+  getParentRoute: () => ApiJobsRoute,
+} as any)
+const ApiJobsSimilarRoute = ApiJobsSimilarRouteImport.update({
+  id: '/similar',
+  path: '/similar',
+  getParentRoute: () => ApiJobsRoute,
+} as any)
+const ApiJobsUpdateRoute = ApiJobsUpdateRouteImport.update({
+  id: '/update',
+  path: '/update',
+  getParentRoute: () => ApiJobsRoute,
+} as any)
 const ApiOauthCallbackRoute = ApiOauthCallbackRouteImport.update({
   id: '/api/oauth/callback',
   path: '/api/oauth/callback',
@@ -161,9 +205,19 @@ const CActorRkeyRoute = CActorRkeyRouteImport.update({
   path: '/c/$actor/$rkey',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JobsActorRkeyRoute = JobsActorRkeyRouteImport.update({
+  id: '/jobs/$actor/$rkey',
+  path: '/jobs/$actor/$rkey',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PostActorRkeyRoute = PostActorRkeyRouteImport.update({
   id: '/post/$actor/$rkey',
   path: '/post/$actor/$rkey',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsEditActorRkeyRoute = JobsEditActorRkeyRouteImport.update({
+  id: '/jobs/edit/$actor/$rkey',
+  path: '/jobs/edit/$actor/$rkey',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -173,19 +227,26 @@ export interface FileRoutesByFullPath {
   '/recruit': typeof RecruitRoute
   '/api/communities': typeof ApiCommunitiesRouteWithChildren
   '/api/follows': typeof ApiFollowsRoute
+  '/api/jobs': typeof ApiJobsRouteWithChildren
   '/api/likes': typeof ApiLikesRoute
   '/api/posts': typeof ApiPostsRoute
   '/communities/new': typeof CommunitiesNewRoute
+  '/jobs/new': typeof JobsNewRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
   '/profile/import': typeof ProfileImportRoute
   '/communities/': typeof CommunitiesIndexRoute
+  '/jobs/': typeof JobsIndexRoute
   '/api/agent/chat': typeof ApiAgentChatRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
   '/api/communities/hide': typeof ApiCommunitiesHideRoute
   '/api/communities/join': typeof ApiCommunitiesJoinRoute
+  '/api/jobs/delete': typeof ApiJobsDeleteRoute
+  '/api/jobs/match': typeof ApiJobsMatchRoute
+  '/api/jobs/similar': typeof ApiJobsSimilarRoute
+  '/api/jobs/update': typeof ApiJobsUpdateRoute
   '/api/oauth/callback': typeof ApiOauthCallbackRoute
   '/api/oauth/login': typeof ApiOauthLoginRoute
   '/api/records/delete': typeof ApiRecordsDeleteRoute
@@ -193,7 +254,9 @@ export interface FileRoutesByFullPath {
   '/api/resume/confirm': typeof ApiResumeConfirmRoute
   '/api/resume/upload': typeof ApiResumeUploadRoute
   '/c/$actor/$rkey': typeof CActorRkeyRoute
+  '/jobs/$actor/$rkey': typeof JobsActorRkeyRoute
   '/post/$actor/$rkey': typeof PostActorRkeyRoute
+  '/jobs/edit/$actor/$rkey': typeof JobsEditActorRkeyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -201,19 +264,26 @@ export interface FileRoutesByTo {
   '/recruit': typeof RecruitRoute
   '/api/communities': typeof ApiCommunitiesRouteWithChildren
   '/api/follows': typeof ApiFollowsRoute
+  '/api/jobs': typeof ApiJobsRouteWithChildren
   '/api/likes': typeof ApiLikesRoute
   '/api/posts': typeof ApiPostsRoute
   '/communities/new': typeof CommunitiesNewRoute
+  '/jobs/new': typeof JobsNewRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
   '/profile/import': typeof ProfileImportRoute
   '/communities': typeof CommunitiesIndexRoute
+  '/jobs': typeof JobsIndexRoute
   '/api/agent/chat': typeof ApiAgentChatRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
   '/api/communities/hide': typeof ApiCommunitiesHideRoute
   '/api/communities/join': typeof ApiCommunitiesJoinRoute
+  '/api/jobs/delete': typeof ApiJobsDeleteRoute
+  '/api/jobs/match': typeof ApiJobsMatchRoute
+  '/api/jobs/similar': typeof ApiJobsSimilarRoute
+  '/api/jobs/update': typeof ApiJobsUpdateRoute
   '/api/oauth/callback': typeof ApiOauthCallbackRoute
   '/api/oauth/login': typeof ApiOauthLoginRoute
   '/api/records/delete': typeof ApiRecordsDeleteRoute
@@ -221,7 +291,9 @@ export interface FileRoutesByTo {
   '/api/resume/confirm': typeof ApiResumeConfirmRoute
   '/api/resume/upload': typeof ApiResumeUploadRoute
   '/c/$actor/$rkey': typeof CActorRkeyRoute
+  '/jobs/$actor/$rkey': typeof JobsActorRkeyRoute
   '/post/$actor/$rkey': typeof PostActorRkeyRoute
+  '/jobs/edit/$actor/$rkey': typeof JobsEditActorRkeyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -230,19 +302,26 @@ export interface FileRoutesById {
   '/recruit': typeof RecruitRoute
   '/api/communities': typeof ApiCommunitiesRouteWithChildren
   '/api/follows': typeof ApiFollowsRoute
+  '/api/jobs': typeof ApiJobsRouteWithChildren
   '/api/likes': typeof ApiLikesRoute
   '/api/posts': typeof ApiPostsRoute
   '/communities/new': typeof CommunitiesNewRoute
+  '/jobs/new': typeof JobsNewRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
   '/profile/import': typeof ProfileImportRoute
   '/communities/': typeof CommunitiesIndexRoute
+  '/jobs/': typeof JobsIndexRoute
   '/api/agent/chat': typeof ApiAgentChatRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
   '/api/communities/hide': typeof ApiCommunitiesHideRoute
   '/api/communities/join': typeof ApiCommunitiesJoinRoute
+  '/api/jobs/delete': typeof ApiJobsDeleteRoute
+  '/api/jobs/match': typeof ApiJobsMatchRoute
+  '/api/jobs/similar': typeof ApiJobsSimilarRoute
+  '/api/jobs/update': typeof ApiJobsUpdateRoute
   '/api/oauth/callback': typeof ApiOauthCallbackRoute
   '/api/oauth/login': typeof ApiOauthLoginRoute
   '/api/records/delete': typeof ApiRecordsDeleteRoute
@@ -250,7 +329,9 @@ export interface FileRoutesById {
   '/api/resume/confirm': typeof ApiResumeConfirmRoute
   '/api/resume/upload': typeof ApiResumeUploadRoute
   '/c/$actor/$rkey': typeof CActorRkeyRoute
+  '/jobs/$actor/$rkey': typeof JobsActorRkeyRoute
   '/post/$actor/$rkey': typeof PostActorRkeyRoute
+  '/jobs/edit/$actor/$rkey': typeof JobsEditActorRkeyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -260,19 +341,26 @@ export interface FileRouteTypes {
     | '/recruit'
     | '/api/communities'
     | '/api/follows'
+    | '/api/jobs'
     | '/api/likes'
     | '/api/posts'
     | '/communities/new'
+    | '/jobs/new'
     | '/p/$actor'
     | '/profile/edit'
     | '/profile/import'
     | '/communities/'
+    | '/jobs/'
     | '/api/agent/chat'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
     | '/api/communities/hide'
     | '/api/communities/join'
+    | '/api/jobs/delete'
+    | '/api/jobs/match'
+    | '/api/jobs/similar'
+    | '/api/jobs/update'
     | '/api/oauth/callback'
     | '/api/oauth/login'
     | '/api/records/delete'
@@ -280,7 +368,9 @@ export interface FileRouteTypes {
     | '/api/resume/confirm'
     | '/api/resume/upload'
     | '/c/$actor/$rkey'
+    | '/jobs/$actor/$rkey'
     | '/post/$actor/$rkey'
+    | '/jobs/edit/$actor/$rkey'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -288,19 +378,26 @@ export interface FileRouteTypes {
     | '/recruit'
     | '/api/communities'
     | '/api/follows'
+    | '/api/jobs'
     | '/api/likes'
     | '/api/posts'
     | '/communities/new'
+    | '/jobs/new'
     | '/p/$actor'
     | '/profile/edit'
     | '/profile/import'
     | '/communities'
+    | '/jobs'
     | '/api/agent/chat'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
     | '/api/communities/hide'
     | '/api/communities/join'
+    | '/api/jobs/delete'
+    | '/api/jobs/match'
+    | '/api/jobs/similar'
+    | '/api/jobs/update'
     | '/api/oauth/callback'
     | '/api/oauth/login'
     | '/api/records/delete'
@@ -308,7 +405,9 @@ export interface FileRouteTypes {
     | '/api/resume/confirm'
     | '/api/resume/upload'
     | '/c/$actor/$rkey'
+    | '/jobs/$actor/$rkey'
     | '/post/$actor/$rkey'
+    | '/jobs/edit/$actor/$rkey'
   id:
     | '__root__'
     | '/'
@@ -316,19 +415,26 @@ export interface FileRouteTypes {
     | '/recruit'
     | '/api/communities'
     | '/api/follows'
+    | '/api/jobs'
     | '/api/likes'
     | '/api/posts'
     | '/communities/new'
+    | '/jobs/new'
     | '/p/$actor'
     | '/profile/edit'
     | '/profile/import'
     | '/communities/'
+    | '/jobs/'
     | '/api/agent/chat'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
     | '/api/communities/hide'
     | '/api/communities/join'
+    | '/api/jobs/delete'
+    | '/api/jobs/match'
+    | '/api/jobs/similar'
+    | '/api/jobs/update'
     | '/api/oauth/callback'
     | '/api/oauth/login'
     | '/api/records/delete'
@@ -336,7 +442,9 @@ export interface FileRouteTypes {
     | '/api/resume/confirm'
     | '/api/resume/upload'
     | '/c/$actor/$rkey'
+    | '/jobs/$actor/$rkey'
     | '/post/$actor/$rkey'
+    | '/jobs/edit/$actor/$rkey'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -345,13 +453,16 @@ export interface RootRouteChildren {
   RecruitRoute: typeof RecruitRoute
   ApiCommunitiesRoute: typeof ApiCommunitiesRouteWithChildren
   ApiFollowsRoute: typeof ApiFollowsRoute
+  ApiJobsRoute: typeof ApiJobsRouteWithChildren
   ApiLikesRoute: typeof ApiLikesRoute
   ApiPostsRoute: typeof ApiPostsRoute
   CommunitiesNewRoute: typeof CommunitiesNewRoute
+  JobsNewRoute: typeof JobsNewRoute
   PActorRoute: typeof PActorRoute
   ProfileEditRoute: typeof ProfileEditRoute
   ProfileImportRoute: typeof ProfileImportRoute
   CommunitiesIndexRoute: typeof CommunitiesIndexRoute
+  JobsIndexRoute: typeof JobsIndexRoute
   ApiAgentChatRoute: typeof ApiAgentChatRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthSignupRoute: typeof ApiAuthSignupRoute
@@ -363,7 +474,9 @@ export interface RootRouteChildren {
   ApiResumeConfirmRoute: typeof ApiResumeConfirmRoute
   ApiResumeUploadRoute: typeof ApiResumeUploadRoute
   CActorRkeyRoute: typeof CActorRkeyRoute
+  JobsActorRkeyRoute: typeof JobsActorRkeyRoute
   PostActorRkeyRoute: typeof PostActorRkeyRoute
+  JobsEditActorRkeyRoute: typeof JobsEditActorRkeyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -403,6 +516,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiFollowsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/jobs': {
+      id: '/api/jobs'
+      path: '/api/jobs'
+      fullPath: '/api/jobs'
+      preLoaderRoute: typeof ApiJobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/likes': {
       id: '/api/likes'
       path: '/api/likes'
@@ -429,6 +549,20 @@ declare module '@tanstack/react-router' {
       path: '/communities/new'
       fullPath: '/communities/new'
       preLoaderRoute: typeof CommunitiesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs/': {
+      id: '/jobs/'
+      path: '/jobs'
+      fullPath: '/jobs/'
+      preLoaderRoute: typeof JobsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs/new': {
+      id: '/jobs/new'
+      path: '/jobs/new'
+      fullPath: '/jobs/new'
+      preLoaderRoute: typeof JobsNewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/p/$actor': {
@@ -494,6 +628,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiCommunitiesJoinRouteImport
       parentRoute: typeof ApiCommunitiesRoute
     }
+    '/api/jobs/delete': {
+      id: '/api/jobs/delete'
+      path: '/delete'
+      fullPath: '/api/jobs/delete'
+      preLoaderRoute: typeof ApiJobsDeleteRouteImport
+      parentRoute: typeof ApiJobsRoute
+    }
+    '/api/jobs/match': {
+      id: '/api/jobs/match'
+      path: '/match'
+      fullPath: '/api/jobs/match'
+      preLoaderRoute: typeof ApiJobsMatchRouteImport
+      parentRoute: typeof ApiJobsRoute
+    }
+    '/api/jobs/similar': {
+      id: '/api/jobs/similar'
+      path: '/similar'
+      fullPath: '/api/jobs/similar'
+      preLoaderRoute: typeof ApiJobsSimilarRouteImport
+      parentRoute: typeof ApiJobsRoute
+    }
+    '/api/jobs/update': {
+      id: '/api/jobs/update'
+      path: '/update'
+      fullPath: '/api/jobs/update'
+      preLoaderRoute: typeof ApiJobsUpdateRouteImport
+      parentRoute: typeof ApiJobsRoute
+    }
     '/api/oauth/callback': {
       id: '/api/oauth/callback'
       path: '/api/oauth/callback'
@@ -543,11 +705,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CActorRkeyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/jobs/$actor/$rkey': {
+      id: '/jobs/$actor/$rkey'
+      path: '/jobs/$actor/$rkey'
+      fullPath: '/jobs/$actor/$rkey'
+      preLoaderRoute: typeof JobsActorRkeyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/post/$actor/$rkey': {
       id: '/post/$actor/$rkey'
       path: '/post/$actor/$rkey'
       fullPath: '/post/$actor/$rkey'
       preLoaderRoute: typeof PostActorRkeyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs/edit/$actor/$rkey': {
+      id: '/jobs/edit/$actor/$rkey'
+      path: '/jobs/edit/$actor/$rkey'
+      fullPath: '/jobs/edit/$actor/$rkey'
+      preLoaderRoute: typeof JobsEditActorRkeyRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -567,19 +743,39 @@ const ApiCommunitiesRouteWithChildren = ApiCommunitiesRoute._addFileChildren(
   ApiCommunitiesRouteChildren,
 )
 
+interface ApiJobsRouteChildren {
+  ApiJobsDeleteRoute: typeof ApiJobsDeleteRoute
+  ApiJobsMatchRoute: typeof ApiJobsMatchRoute
+  ApiJobsSimilarRoute: typeof ApiJobsSimilarRoute
+  ApiJobsUpdateRoute: typeof ApiJobsUpdateRoute
+}
+
+const ApiJobsRouteChildren: ApiJobsRouteChildren = {
+  ApiJobsDeleteRoute: ApiJobsDeleteRoute,
+  ApiJobsMatchRoute: ApiJobsMatchRoute,
+  ApiJobsSimilarRoute: ApiJobsSimilarRoute,
+  ApiJobsUpdateRoute: ApiJobsUpdateRoute,
+}
+
+const ApiJobsRouteWithChildren =
+  ApiJobsRoute._addFileChildren(ApiJobsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
   RecruitRoute: RecruitRoute,
   ApiCommunitiesRoute: ApiCommunitiesRouteWithChildren,
   ApiFollowsRoute: ApiFollowsRoute,
+  ApiJobsRoute: ApiJobsRouteWithChildren,
   ApiLikesRoute: ApiLikesRoute,
   ApiPostsRoute: ApiPostsRoute,
   CommunitiesNewRoute: CommunitiesNewRoute,
+  JobsNewRoute: JobsNewRoute,
   PActorRoute: PActorRoute,
   ProfileEditRoute: ProfileEditRoute,
   ProfileImportRoute: ProfileImportRoute,
   CommunitiesIndexRoute: CommunitiesIndexRoute,
+  JobsIndexRoute: JobsIndexRoute,
   ApiAgentChatRoute: ApiAgentChatRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthSignupRoute: ApiAuthSignupRoute,
@@ -591,7 +787,9 @@ const rootRouteChildren: RootRouteChildren = {
   ApiResumeConfirmRoute: ApiResumeConfirmRoute,
   ApiResumeUploadRoute: ApiResumeUploadRoute,
   CActorRkeyRoute: CActorRkeyRoute,
+  JobsActorRkeyRoute: JobsActorRkeyRoute,
   PostActorRkeyRoute: PostActorRkeyRoute,
+  JobsEditActorRkeyRoute: JobsEditActorRkeyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

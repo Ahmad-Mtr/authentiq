@@ -1,7 +1,13 @@
 import { describe, expect, test } from "bun:test"
-import { buildProfileDocument, hashDocument } from "./document.ts"
+import {
+  JOB_DOCUMENT_VERSION,
+  buildJobDocument,
+  buildProfileDocument,
+  hashDocument,
+  seniorityOf,
+} from "./document.ts"
 import type { ProfileSource } from "./document.ts"
-import { redactDocument, stripQuery } from "./protected.ts"
+import { redactDocument, stripQuery } from "@workspace/rules/protected"
 
 const source = (over: Partial<ProfileSource> = {}): ProfileSource => ({
   profile: {
@@ -134,5 +140,49 @@ describe("protected terms", () => {
     expect(
       redactDocument("Graduated 2012, aged 34, a 40-year-old in her 40s")
     ).toBe("Graduated, a in")
+  })
+})
+
+describe("buildJobDocument (phase 7)", () => {
+  const job = {
+    title: "Senior Site Reliability Engineer",
+    description: "Own the on-call rotation and our Terraform.",
+    employmentType: "full-time",
+    locationType: "remote",
+    skills: ["Terraform", "Kubernetes", "terraform"],
+  }
+
+  test("lays out the work, with seniority read from the title", () => {
+    expect(buildJobDocument(job)).toBe(
+      [
+        "Role: Senior Site Reliability Engineer",
+        "Seniority: senior",
+        "Type: full-time, remote",
+        "Skills: Terraform, Kubernetes",
+        "Description: Own the on-call rotation and our Terraform.",
+      ].join("\n")
+    )
+  })
+
+  test("protected wording cannot change the document", () => {
+    const worded = {
+      ...job,
+      description: `${job.description}\nYoung, energetic, native English speaker.`,
+    }
+    expect(buildJobDocument(worded)).toBe(buildJobDocument(job))
+  })
+
+  test("seniority cues", () => {
+    expect(seniorityOf("Staff Backend Engineer")).toBe("lead")
+    expect(seniorityOf("Junior Frontend Developer")).toBe("junior")
+    expect(seniorityOf("Software Engineering Intern")).toBe("internship")
+    expect(seniorityOf("Sr. Accountant")).toBe("senior")
+    expect(seniorityOf("Backend Engineer")).toBeUndefined()
+  })
+
+  test("job and profile documents hash with their own builder versions", () => {
+    expect(hashDocument("m", "doc", JOB_DOCUMENT_VERSION + 1)).not.toBe(
+      hashDocument("m", "doc")
+    )
   })
 })

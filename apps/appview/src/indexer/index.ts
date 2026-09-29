@@ -6,6 +6,7 @@ import { NSID_PREFIX } from "@workspace/atproto"
 import { db } from "../db.ts"
 import { env } from "../env.ts"
 import {
+  markActorSubjectsDirty,
   markDirty,
   markExistingDirty,
   removeActorEmbeddings,
@@ -192,7 +193,7 @@ async function onAccount(evt: AccountEvt) {
     })
     // Hidden actors leave search at once; reactivated ones are re-embedded.
     if (evt.active) {
-      await markDirty(tx, "actor", evt.did, evt.did)
+      await markActorSubjectsDirty(tx, evt.did)
       await markExistingDirty(tx, evt.did)
     } else {
       await removeActorEmbeddings(tx, evt.did)

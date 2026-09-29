@@ -1,0 +1,30 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.job.getSimilarCandidates",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "People whose public profiles resemble a posting, for the posting's author only. Requires service auth (lxm = this NSID) from the author. Hybrid search: the posting's embedding against profile embeddings, plus full-text search on its title and skills, fused with RRF. Only people whose profile says they are open to work are included, and the author is left out. Protected-attribute wording in the posting has no effect. Candidates come in rank order; no score is given for any person.",
+      "parameters": {
+        "type": "params",
+        "required": ["posting"],
+        "properties": {
+          "posting": { "type": "string", "format": "at-uri" },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 20, "default": 10 }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["candidates"],
+          "properties": {
+            "candidates": { "type": "array", "items": { "type": "ref", "ref": "sh.authentiq.actor.defs#profileView" } },
+            "pending": { "type": "boolean", "description": "The posting has not been embedded yet; try again shortly." }
+          }
+        }
+      },
+      "errors": [{ "name": "PostingNotFound" }, { "name": "NotPostingAuthor" }]
+    }
+  }
+}

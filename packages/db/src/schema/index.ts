@@ -1,6 +1,7 @@
 import { sql } from "drizzle-orm"
 import type { SQL } from "drizzle-orm"
 import {
+  bigint,
   boolean,
   customType,
   index,
@@ -303,10 +304,63 @@ export const membership = pgTable(
 )
 
 /**
+ * `sh.authentiq.job.posting` (phase 7). Only postings that pass the salary
+ * transparency rules (@workspace/rules) are here; a record that breaks them
+ * stays in its author's repo and is never indexed. Amounts are whole units
+ * of `salaryCurrency`. `annualMin`/`annualMax` are the same range per year
+ * (2080 hours, 260 days, 52 weeks, 12 months), for the salary floor and the
+ * salary sort, which only ever compare within one currency. Postings are
+ * editable, so every update replaces the row.
+ */
+export const jobPosting = pgTable(
+  "job_posting",
+  {
+    ...recordColumns(),
+    title: text().notNull(),
+    organization: text().notNull(),
+    description: text(),
+    location: text(),
+    locationType: text(),
+    employmentType: text(),
+    skills: text().array(),
+    salaryMin: bigint({ mode: "number" }).notNull(),
+    salaryMax: bigint({ mode: "number" }).notNull(),
+    salaryCurrency: text().notNull(),
+    salaryPeriod: text().notNull(),
+    annualMin: bigint({ mode: "number" }).notNull(),
+    annualMax: bigint({ mode: "number" }).notNull(),
+    applyUrl: text(),
+    /** `YYYY-MM-DD` as written. */
+    closeDate: text(),
+    /** When the close date has ended everywhere on Earth; null = no close date. */
+    closesAt: timestamp({ withTimezone: true }),
+    /** Title, organization, description and skills, for the board's `q`. */
+    searchText: text().notNull(),
+    search: tsvector().generatedAlwaysAs(
+      (): SQL => sql`to_tsvector('english', ${jobPosting.searchText})`
+    ),
+    createdAt: timestamp({ withTimezone: true }).notNull(),
+    /** Board order: the earlier of createdAt and first indexing, as for posts. */
+    sortAt: timestamp({ withTimezone: true }).notNull(),
+  },
+  (t) => [
+    index("job_posting_did_idx").on(t.did),
+    index("job_posting_sort_idx").on(t.sortAt.desc(), t.uri.desc()),
+    index("job_posting_salary_idx").on(
+      t.salaryCurrency,
+      t.annualMin.desc(),
+      t.annualMax.desc(),
+      t.uri.desc()
+    ),
+    index("job_posting_search_idx").using("gin", t.search),
+  ]
+)
+
+/**
  * Search documents and their vectors (phase 5). One row per embedded subject:
  * for `kind = "actor"` the subject is the actor's DID and the document is
- * built from their profile, positions and education. Phase 7 adds job
- * postings as another kind, keyed by record URI.
+ * built from their profile, positions and education. For `kind = "job"`
+ * (phase 7) the subject is the posting's AT-URI and `did` its author.
  *
  * The indexer only sets `dirtyAt`; a worker builds the document, and embeds it
  * when `contentHash` differs from `embeddedHash`. So a model outage delays

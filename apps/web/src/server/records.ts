@@ -1,5 +1,7 @@
 import { sh } from "@workspace/lexicons"
 import { currentDatetimeString } from "@workspace/atproto"
+import { checkApplyUrl, checkCloseDate } from "@workspace/rules/posting"
+import { salaryIssues } from "@workspace/rules/salary"
 import { z } from "zod"
 import {
   POST_MAX_BYTES,
@@ -258,4 +260,103 @@ export const buildMembershipRecord = (community: StrongRef) =>
     $type: MEMBERSHIP.$type,
     community,
     createdAt: currentDatetimeString(),
+  })
+
+// --- Job postings (phase 7) ----------------------------------------------------
+
+const JOB = sh.authentiq.job.posting
+
+/** A form number: blank is "missing", anything else must parse. */
+const formNumber = z.preprocess(
+  (v) => (v === "" || v === null || v === undefined ? undefined : Number(v)),
+  z.number().optional()
+)
+
+/**
+ * The posting form. The salary rules are the AppView's own
+ * (@workspace/rules/salary), so the form refuses exactly what the indexer
+ * would drop, field by field, before anything reaches the repo.
+ */
+export const jobInput = z
+  .object({
+    title: z.string().trim().min(1, "Give the role a title").max(100),
+    organization: z.string().trim().min(1, "Say who is hiring").max(100),
+    description: z
+      .string()
+      .trim()
+      .min(1, "Describe the role")
+      .max(5000, "At most 5000 characters"),
+    location: optionalText(100),
+    locationType: z.enum(["onsite", "hybrid", "remote"]).optional(),
+    employmentType: z
+      .enum([
+        "full-time",
+        "part-time",
+        "contract",
+        "internship",
+        "freelance",
+        "volunteer",
+      ])
+      .optional(),
+    skills: skillList.pipe(z.array(z.string().max(40)).max(25).optional()),
+    salary: z.object({
+      min: formNumber,
+      max: formNumber,
+      currency: z
+        .string()
+        .trim()
+        .transform((c) => c.toUpperCase()),
+      period: z.string().trim(),
+    }),
+    applyUrl: optionalText(2000),
+    closeDate: z
+      .string()
+      .trim()
+      .optional()
+      .transform((v) => (v ? v : undefined)),
+  })
+  .superRefine((v, ctx) => {
+    for (const issue of salaryIssues(v.salary)) {
+      ctx.addIssue({
+        code: "custom",
+        message: issue.message,
+        path: issue.field === "salary" ? ["salary"] : ["salary", issue.field],
+      })
+    }
+    const close = checkCloseDate(v.closeDate)
+    if (close)
+      ctx.addIssue({ code: "custom", message: close, path: ["closeDate"] })
+    const apply = checkApplyUrl(v.applyUrl)
+    if (apply)
+      ctx.addIssue({ code: "custom", message: apply, path: ["applyUrl"] })
+  })
+
+export const jobUpdateInput = z.object({ uri: atUri(JOB.$nsid) }).and(jobInput)
+
+/**
+ * The record, validated against the lexicon as well. `createdAt` is kept
+ * across edits: it is when the posting went up.
+ */
+export const buildJobRecord = (
+  data: z.output<typeof jobInput>,
+  createdAt?: string
+) =>
+  JOB.$parse({
+    $type: JOB.$type,
+    title: data.title,
+    organization: data.organization,
+    description: data.description,
+    location: data.location,
+    locationType: data.locationType,
+    employmentType: data.employmentType,
+    skills: data.skills?.length ? data.skills : undefined,
+    salary: {
+      min: data.salary.min,
+      max: data.salary.max,
+      currency: data.salary.currency,
+      period: data.salary.period,
+    },
+    applyUrl: data.applyUrl,
+    closeDate: data.closeDate,
+    createdAt: createdAt ?? currentDatetimeString(),
   })

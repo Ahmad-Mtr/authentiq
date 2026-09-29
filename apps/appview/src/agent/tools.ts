@@ -2,9 +2,12 @@ import { eq } from "drizzle-orm"
 import type { ChatTool } from "@workspace/ai"
 import { schema } from "@workspace/db"
 import type { sh } from "@workspace/lexicons"
+import { stripQuery } from "@workspace/rules/protected"
+import { formatSalary } from "@workspace/rules/salary"
 import { z } from "zod"
 import { db } from "../db.ts"
-import { stripQuery } from "../embed/protected.ts"
+import { getPosting, loadPosting } from "../jobs/board.ts"
+import { ftsQueryFor, vectorOf } from "../jobs/match.ts"
 import { hydrateProfiles, searchTalent } from "../search/talent.ts"
 import { loadProfileView } from "../xrpc/getProfile.ts"
 import type { Candidate } from "./conversations.ts"
@@ -12,7 +15,7 @@ import type { Candidate } from "./conversations.ts"
 /**
  * The recruiting agent's tools. Each one validates its arguments with zod
  * and calls the same AppView functions the XRPC endpoints use
- * (`searchTalent`, `loadProfileView`). The model never writes SQL and never
+ * (`searchTalent`, `loadProfileView`, and in phase 7 `getPosting`). The model never writes SQL and never
  * reaches a repo: every tool is read-only, and `draft_outreach` returns
  * material for a draft, not a message.
  *
@@ -45,11 +48,16 @@ const fn = (
 export const TOOLS: Array<ChatTool> = [
   fn(
     "search_talent",
-    "Hybrid search over public professional profiles. Returns candidates ranked by relevance. Put what the recruiter wants in query; set a filter only for a constraint the recruiter actually stated, otherwise null.",
+    "Hybrid search over public professional profiles. Returns candidates ranked by relevance. Put what the recruiter wants in query; set a filter only for a constraint the recruiter actually stated, otherwise null. To find people for one of the recruiter's own job postings, pass its uri as job.",
     {
       query: {
         type: "string",
         description: "The skills, role or experience wanted, in words.",
+      },
+      job: {
+        type: ["string", "null"],
+        description:
+          "The uri of one of the recruiter's own job postings (at://…/sh.authentiq.job.posting/…) to search for people similar to it; otherwise null.",
       },
       openToWork: {
         type: ["boolean", "null"],
@@ -80,6 +88,17 @@ export const TOOLS: Array<ChatTool> = [
       actor: {
         type: "string",
         description: "The candidate's uri, DID or handle.",
+      },
+    }
+  ),
+  fn(
+    "get_job",
+    "A public job posting: title, organization, salary range, location, skills and description.",
+    {
+      uri: {
+        type: "string",
+        description:
+          "The posting's uri, at://<did>/sh.authentiq.job.posting/<key>.",
       },
     }
   ),
@@ -135,15 +154,29 @@ export type ToolOutcome = {
 }
 
 const actorRef = z.string().trim().min(1).max(300)
+const jobUri = z
+  .string()
+  .trim()
+  .regex(
+    /^at:\/\/[^/]+\/sh\.authentiq\.job\.posting\/[^/]+$/,
+    "Not a job posting uri"
+  )
 const ARGS = {
-  search_talent: z.object({
-    query: z.string().trim().min(1).max(500),
-    openToWork: z.boolean().nullable().optional(),
-    location: z.string().trim().max(100).nullable().optional(),
-    skills: z.array(z.string().trim().max(40)).max(10).nullable().optional(),
-    limit: z.number().int().nullable().optional(),
-  }),
+  search_talent: z
+    .object({
+      // With a job, the posting is the query; the words are optional.
+      query: z.string().trim().max(500),
+      job: jobUri.nullable().optional(),
+      openToWork: z.boolean().nullable().optional(),
+      location: z.string().trim().max(100).nullable().optional(),
+      skills: z.array(z.string().trim().max(40)).max(10).nullable().optional(),
+      limit: z.number().int().nullable().optional(),
+    })
+    .refine((a) => a.query !== "" || Boolean(a.job), {
+      message: "query is required unless job is given",
+    }),
   get_profile: z.object({ actor: actorRef }),
+  get_job: z.object({ uri: jobUri }),
   compare_candidates: z.object({
     actors: z.array(actorRef).min(2).max(5),
     criteria: z.string().trim().min(1).max(500),
@@ -157,10 +190,14 @@ const ARGS = {
 
 export class ToolArgumentError extends Error {}
 
+/** Who is asking: the conversation's owner. */
+export type ToolContext = { caller: string }
+
 /** Runs one tool call. Throws ToolArgumentError for arguments the schema rejects. */
 export async function runTool(
   name: string,
-  rawArgs: unknown
+  rawArgs: unknown,
+  ctx: ToolContext
 ): Promise<ToolOutcome> {
   const args =
     typeof rawArgs === "string"
@@ -169,12 +206,30 @@ export async function runTool(
   switch (name) {
     case "search_talent": {
       const a = parse(ARGS.search_talent, args)
+      // A job posting searches with its own embedding and skills, like
+      // similar candidates, and like it only for the posting's author.
+      const job = a.job ? await loadPosting(a.job) : undefined
+      if (a.job && !job) return jobNotFound(a.job)
+      if (job && job.did !== ctx.caller) {
+        return {
+          content: {
+            error:
+              "Candidates for a posting are only for its author. Describe the role in query instead.",
+            job: a.job,
+          },
+          summary: "not the recruiter's posting",
+          candidates: [],
+        }
+      }
+      const vector = job ? await vectorOf(job.uri) : undefined
       const result = await searchTalent({
-        q: a.query,
+        q: job ? ftsQueryFor(job) || a.query : a.query,
+        vector: vector ?? undefined,
         filters: {
           openToWork: a.openToWork ?? undefined,
           location: a.location ?? undefined,
           skills: a.skills ?? undefined,
+          exclude: job ? [job.did] : undefined,
         },
         limit: Math.min(Math.max(a.limit ?? 8, 1), 10),
       })
@@ -199,9 +254,15 @@ export async function runTool(
       const ignored = result.ignoredTerms.length
         ? `; ignored ${result.ignoredTerms.map((t) => `“${t}”`).join(", ")}`
         : ""
+      const jobRef = job ? await jobCandidate(job.uri) : undefined
       return {
         content: {
-          searchedFor: result.effectiveQuery,
+          job: jobRef
+            ? { uri: jobRef.uri, title: jobRef.displayName }
+            : undefined,
+          searchedFor: job
+            ? `people similar to the posting${vector ? "" : " (not embedded yet: full-text on its skills only)"}`
+            : result.effectiveQuery,
           ignoredTerms: result.ignoredTerms.length
             ? {
                 terms: result.ignoredTerms,
@@ -212,13 +273,16 @@ export async function runTool(
           degraded: result.degraded || undefined,
           results,
         },
-        summary: `${results.length} candidate(s) for “${result.effectiveQuery}”${ignored}`,
-        candidates: results.map((r) => ({
-          uri: r.uri,
-          did: r.uri.split("/")[2]!,
-          handle: r.handle,
-          displayName: r.displayName,
-        })),
+        summary: `${results.length} candidate(s) for ${jobRef ? `the posting “${jobRef.displayName}”` : `“${result.effectiveQuery}”`}${ignored}`,
+        candidates: [
+          ...(jobRef ? [jobRef] : []),
+          ...results.map((r) => ({
+            uri: r.uri,
+            did: r.uri.split("/")[2]!,
+            handle: r.handle,
+            displayName: r.displayName,
+          })),
+        ],
         effectiveQuery: result.effectiveQuery,
         ignoredTerms: result.ignoredTerms,
       }
@@ -231,6 +295,41 @@ export async function runTool(
         content: agentView(view),
         summary: `profile of ${view.displayName ?? view.handle}`,
         candidates: [candidate(view)],
+      }
+    }
+    case "get_job": {
+      const a = parse(ARGS.get_job, args)
+      const view = await getPosting(a.uri, undefined)
+      if (!view) return jobNotFound(a.uri)
+      return {
+        content: {
+          uri: view.uri,
+          title: view.title,
+          organization: view.organization,
+          postedBy: view.author.handle,
+          salary: formatSalary(view.salary),
+          salaryPerYear:
+            view.salary.period === "year"
+              ? undefined
+              : `${view.salary.currency} ${view.annualSalary.min}–${view.annualSalary.max} a year (full-time assumption)`,
+          location: view.location,
+          locationType: view.locationType,
+          employmentType: view.employmentType,
+          skills: view.skills,
+          closed: view.closed || undefined,
+          closeDate: view.closeDate,
+          description: view.description,
+        },
+        summary: `posting “${view.title}” at ${view.organization}`,
+        candidates: [
+          {
+            kind: "job",
+            uri: view.uri,
+            did: view.author.did,
+            handle: view.author.handle,
+            displayName: view.title,
+          },
+        ],
       }
     }
     case "compare_candidates": {
@@ -313,6 +412,28 @@ function parse<T>(argsSchema: z.ZodType<T>, args: unknown): T {
 function toActorId(ref: string) {
   const m = ref.match(/^at:\/\/([^/]+)/)
   return m ? m[1]! : ref.replace(/^@/, "")
+}
+
+function jobNotFound(uri: string): ToolOutcome {
+  return {
+    content: { error: "Job posting not found", uri },
+    summary: "job posting not found",
+    candidates: [],
+  }
+}
+
+/** A posting as something the agent may cite. */
+async function jobCandidate(uri: string): Promise<Candidate | undefined> {
+  const view = await getPosting(uri, undefined)
+  return view
+    ? {
+        kind: "job",
+        uri: view.uri,
+        did: view.author.did,
+        handle: view.author.handle,
+        displayName: view.title,
+      }
+    : undefined
 }
 
 function notFound(ref: string): ToolOutcome {

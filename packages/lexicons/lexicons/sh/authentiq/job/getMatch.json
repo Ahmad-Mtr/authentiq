@@ -1,0 +1,37 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.job.getMatch",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "How the caller's own public profile matches a posting, as a coarse label. Requires service auth (lxm = this NSID); the caller is the token's issuer, and there is deliberately no parameter to ask about anyone else. Unknown parameters are refused.",
+      "parameters": {
+        "type": "params",
+        "required": ["posting"],
+        "properties": { "posting": { "type": "string", "format": "at-uri" } }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["posting"],
+          "properties": {
+            "posting": { "type": "string", "format": "at-uri" },
+            "label": {
+              "type": "string",
+              "knownValues": ["strong", "partial", "weak"],
+              "description": "A coarse band of the similarity between the two documents, not a percentage. Absent while pending."
+            },
+            "matchedSkills": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "The posting's skills that the caller's profile also lists."
+            },
+            "pending": { "type": "boolean", "description": "The posting or the caller's profile has not been embedded yet." }
+          }
+        }
+      },
+      "errors": [{ "name": "PostingNotFound" }, { "name": "ProfileNotFound" }]
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.job.defs",
+  "defs": {
+    "jobView": {
+      "type": "object",
+      "description": "A job posting as the AppView shows it. Only postings that passed salary-transparency validation exist as views.",
+      "required": ["uri", "cid", "author", "title", "organization", "salary", "annualSalary", "closed", "createdAt", "indexedAt"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "cid": { "type": "string", "format": "cid" },
+        "author": { "type": "ref", "ref": "sh.authentiq.actor.defs#profileView" },
+        "title": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "organization": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "description": { "type": "string", "maxGraphemes": 5000, "maxLength": 50000 },
+        "location": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "locationType": { "type": "string", "knownValues": ["onsite", "hybrid", "remote"] },
+        "employmentType": {
+          "type": "string",
+          "knownValues": ["full-time", "part-time", "contract", "internship", "freelance", "volunteer"]
+        },
+        "skills": {
+          "type": "array",
+          "maxLength": 25,
+          "items": { "type": "string", "maxGraphemes": 40, "maxLength": 400 }
+        },
+        "salary": { "type": "ref", "ref": "sh.authentiq.job.posting#salary" },
+        "annualSalary": {
+          "type": "ref",
+          "ref": "#annualRange",
+          "description": "The range per year in the same currency, with the stated assumptions (2080 hours, 260 days, 52 weeks, 12 months). Currencies are never converted."
+        },
+        "applyUrl": { "type": "string", "format": "uri" },
+        "closeDate": { "type": "string", "maxLength": 10 },
+        "closed": { "type": "boolean", "description": "The close date has passed. Closed postings are not listed on the board." },
+        "createdAt": { "type": "string", "format": "datetime" },
+        "indexedAt": { "type": "string", "format": "datetime" },
+        "viewer": { "type": "ref", "ref": "#viewerState" }
+      }
+    },
+    "annualRange": {
+      "type": "object",
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "integer" },
+        "max": { "type": "integer" }
+      }
+    },
+    "viewerState": {
+      "type": "object",
+      "description": "Present only when the request carries service auth.",
+      "properties": {
+        "isAuthor": { "type": "boolean" },
+        "ignoredTerms": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Author only: wording in the posting that refers to a protected attribute (age, gender, national origin, …). It is ignored for matching, and shown so the author can rephrase it."
+        }
+      }
+    }
+  }
+}

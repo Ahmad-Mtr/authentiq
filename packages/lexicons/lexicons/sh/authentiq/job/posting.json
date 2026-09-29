@@ -1,0 +1,74 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.job.posting",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A job posting, in the poster's repo. Salary transparency is required: a posting must state a salary range. The PDS stores any record, so the AppView enforces the rules this schema cannot express (a positive minimum, minimum ≤ maximum, maximum at most 2 × minimum, an ISO 4217 currency, a known period) and never shows a posting that breaks them. Postings can be edited (putRecord on the same key); every version is re-validated.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["title", "organization", "salary", "createdAt"],
+        "properties": {
+          "title": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+          "organization": {
+            "type": "string",
+            "description": "Who is hiring, as the poster states it. Not verified.",
+            "maxGraphemes": 100,
+            "maxLength": 1000
+          },
+          "description": { "type": "string", "maxGraphemes": 5000, "maxLength": 50000 },
+          "location": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+          "locationType": {
+            "type": "string",
+            "description": "Same vocabulary as sh.authentiq.actor.position#locationType.",
+            "knownValues": ["onsite", "hybrid", "remote"]
+          },
+          "employmentType": {
+            "type": "string",
+            "description": "Same vocabulary as sh.authentiq.actor.position#employmentType.",
+            "knownValues": ["full-time", "part-time", "contract", "internship", "freelance", "volunteer"]
+          },
+          "skills": {
+            "type": "array",
+            "maxLength": 25,
+            "items": { "type": "string", "maxGraphemes": 40, "maxLength": 400 }
+          },
+          "salary": { "type": "ref", "ref": "#salary" },
+          "applyUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Where to apply: an http(s) or mailto: link.",
+            "maxLength": 2000
+          },
+          "closeDate": {
+            "type": "string",
+            "description": "Last day to apply, as YYYY-MM-DD. The posting leaves the board once that date has ended everywhere on Earth (UTC−12). Absent means open until deleted.",
+            "maxLength": 10
+          },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    },
+    "salary": {
+      "type": "object",
+      "description": "The pay range, in whole units of the currency (85000 means 85,000; there are no minor units, and the data model has no floats).",
+      "required": ["min", "max", "currency", "period"],
+      "properties": {
+        "min": { "type": "integer", "minimum": 1 },
+        "max": { "type": "integer", "minimum": 1, "description": "At least min, and at most 2 × min." },
+        "currency": {
+          "type": "string",
+          "description": "ISO 4217 alphabetic code, upper case, e.g. USD, EUR, JPY.",
+          "minLength": 3,
+          "maxLength": 3
+        },
+        "period": {
+          "type": "string",
+          "description": "What the amounts are per.",
+          "knownValues": ["hour", "day", "week", "month", "year"]
+        }
+      }
+    }
+  }
+}

@@ -11,6 +11,15 @@
  *   - `stripQuery` removes them from search queries, so asking for "young
  *     women engineers" searches for "engineers" and says what it dropped.
  *
+ * Job postings (phase 7) get the same list plus wording that is common in job
+ * ads and codes for age or national origin ("energetic", "recent graduate",
+ * "native English speaker"): `redactJobText` for their documents, and
+ * `findProtectedTerms` to show the poster what will be ignored. That extra
+ * list is not applied to profiles, so talent search is unchanged by it.
+ *
+ * Moved here from the AppView in phase 7 so the web app can flag wording
+ * while a posting is being written. Pure and browser-safe.
+ *
  * A word list is blunt. It misses paraphrases ("fresh-faced", "recent
  * immigrant") and removes some innocent uses ("church" in an employer's name,
  * "women's health" as a nursing specialty). The misses are the known gap; the
@@ -253,4 +262,67 @@ export function stripQuery(query: string): {
       .replace(TERM_RE, keep)
   )
   return { text, removed: [...removed] }
+}
+
+// --- Job postings (phase 7) ---------------------------------------------------
+
+/**
+ * Phrases common in job ads that stand in for age or national origin. A
+ * language requirement is job-related ("fluent English"); being a *native*
+ * speaker is where you were born. "Energetic" and "recent graduate" are the
+ * classic age-coded ad words.
+ */
+const JOB_AD_RE =
+  /(?<![\p{L}\p{N}])(?:native(?:[\s-]+\p{L}+)?[\s-]+speakers?|native[\s-]+(?:level|tongue)|mother[\s-]+tongue|(?:high[\s-]+)?energetic|high[\s-]+energy|(?:recent|fresh)[\s-]+(?:graduates?|grads?))(?![\p{L}\p{N}])/giu
+
+/** A line with no letters or digits left after redaction says nothing. */
+const dropEmptyLines = (s: string) =>
+  s
+    .split("\n")
+    .filter((line) => /[\p{L}\p{N}]/u.test(line))
+    .join("\n")
+
+/**
+ * Job-posting text for documents: the profile redaction plus the job-ad
+ * phrases, with lines that are left with nothing but punctuation dropped.
+ */
+export function redactJobText(text: string): string {
+  return dropEmptyLines(redactDocument(text.replace(JOB_AD_RE, " ")))
+}
+
+/** `stripQuery` plus the job-ad phrases, for queries built from a posting. */
+export function stripJobQuery(query: string) {
+  const removed: Array<string> = []
+  const first = query.replace(JOB_AD_RE, (m) => {
+    removed.push(m.toLowerCase().replace(/\s+/g, " "))
+    return " "
+  })
+  const rest = stripQuery(first)
+  return {
+    text: rest.text,
+    removed: [...new Set([...removed, ...rest.removed])],
+  }
+}
+
+/**
+ * The protected wording in a text, to show its author (lower-cased,
+ * deduplicated, in order of appearance). Bare calendar years and decades are
+ * stripped from documents but not reported: "starts in 2027" is not a
+ * problem to flag.
+ */
+export function findProtectedTerms(text: string): Array<string> {
+  const found: Array<{ at: number; end: number; term: string }> = []
+  for (const re of [JOB_AD_RE, PRONOUNS_RE, AGE_RE, TERM_RE]) {
+    for (const m of text.matchAll(re)) {
+      if (re === AGE_RE && /^(?:\d0s|(?:19|20)\d{2}s?)$/i.test(m[0])) continue
+      // A shorter match inside a job-ad phrase is the same finding.
+      if (found.some((f) => m.index >= f.at && m.index < f.end)) continue
+      found.push({
+        at: m.index,
+        end: m.index + m[0].length,
+        term: m[0].toLowerCase().replace(/\s+/g, " "),
+      })
+    }
+  }
+  return [...new Set(found.sort((a, b) => a.at - b.at).map((f) => f.term))]
 }

@@ -180,3 +180,18 @@ export function checkCommunity(v: { name: string; topic: string }) {
   if (v.topic.trim() === "") return "community topic is blank"
   return undefined
 }
+
+// --- Job postings (phase 7) --------------------------------------------------
+
+/**
+ * Salary transparency (G5), enforced here because the PDS stores whatever it
+ * is given. A posting is dropped, and an indexed version removed, when it has
+ * no salary or a salary missing min, max, currency or period; a minimum of 0
+ * or less; a minimum above the maximum; a maximum over 2 × the minimum (a
+ * range that says nothing); an unknown ISO 4217 currency or pay period; or a
+ * malformed close date or apply link.
+ *
+ * The rules themselves live in @workspace/rules, which the web form runs
+ * too, so there is one definition and the form refuses what we would drop.
+ */
+export { checkPosting as checkJobPosting } from "@workspace/rules/posting"

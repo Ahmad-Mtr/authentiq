@@ -96,7 +96,7 @@ export function createEmbedder() {
         stats.removed++
         continue
       }
-      const hash = hashDocument(MODELS.embedding, document)
+      const hash = hashDocument(MODELS.embedding, document, kind!.version)
       if (hash === row.embeddedHash && row.vector) {
         await db
           .update(schema.embedding)
@@ -186,13 +186,19 @@ export function createEmbedder() {
 
   /**
    * Queues what predates this worker: every indexed actor with a profile and
-   * no embedding row, and every vector made by another model.
+   * every indexed job posting (phase 7) that has no embedding row, and every
+   * vector made by another model.
    */
   async function enqueueMissing() {
     const queued = await db.execute(sql`
       insert into embedding (subject, kind, did, dirty_at, next_attempt_at)
       select p.did, 'actor', p.did, date_trunc('milliseconds', now()), now()
       from profile p join actor a on a.did = p.did and a.active
+      on conflict (subject) do nothing`)
+    const jobs = await db.execute(sql`
+      insert into embedding (subject, kind, did, dirty_at, next_attempt_at)
+      select j.uri, 'job', j.did, date_trunc('milliseconds', now()), now()
+      from job_posting j join actor a on a.did = j.did and a.active
       on conflict (subject) do nothing`)
     await db
       .update(schema.embedding)
@@ -206,6 +212,9 @@ export function createEmbedder() {
     const n = (queued as unknown as { count?: number }).count ?? 0
     if (n > 0)
       console.log(`[embed] queued ${n} actor(s) indexed before embeddings`)
+    const j = (jobs as unknown as { count?: number }).count ?? 0
+    if (j > 0)
+      console.log(`[embed] queued ${j} job posting(s) not yet embedded`)
   }
 
   return {

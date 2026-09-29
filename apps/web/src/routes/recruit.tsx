@@ -16,6 +16,7 @@ export const Route = createFileRoute("/recruit")({
 })
 
 type Candidate = {
+  kind?: "actor" | "job"
   uri: string
   did: string
   handle: string
@@ -256,19 +257,15 @@ function TurnView({ turn, streaming }: { turn: Turn; streaming: boolean }) {
 
       {turn.final && turn.final.citations.length > 0 ? (
         <div className="grid gap-1" data-testid="citations">
-          <p className="text-xs text-muted-foreground">Cited candidates</p>
+          <p className="text-xs text-muted-foreground">Cited</p>
           <ul className="flex flex-wrap gap-2 text-sm">
             {turn.final.citations.map((c) => (
               <li key={c.uri}>
-                <Link
-                  to="/p/$actor"
-                  params={{ actor: c.did }}
-                  className="underline"
-                >
-                  {c.displayName ?? c.handle}
-                </Link>{" "}
+                <CitationLink c={c}>{c.displayName ?? c.handle}</CitationLink>{" "}
                 <span className="text-xs text-muted-foreground">
-                  @{c.handle}
+                  {c.kind === "job"
+                    ? `posting by @${c.handle}`
+                    : `@${c.handle}`}
                 </span>
               </li>
             ))}
@@ -345,14 +342,9 @@ function inline(
       const c = citations.get(m[2])
       parts.push(
         c ? (
-          <Link
-            key={m.index}
-            to="/p/$actor"
-            params={{ actor: c.did }}
-            className="underline"
-          >
+          <CitationLink key={m.index} c={c}>
             {m[1]}
-          </Link>
+          </CitationLink>
         ) : (
           <Fragment key={m.index}>
             {m[1]}
@@ -391,4 +383,26 @@ async function* readEvents(body: ReadableStream<Uint8Array>) {
       if (data) yield { event, data: JSON.parse(data) as unknown }
     }
   }
+}
+
+/** A verified citation: a candidate's profile, or a job posting's page (phase 7). */
+function CitationLink(props: { c: Candidate; children: ReactNode }) {
+  const { c } = props
+  if (c.kind === "job") {
+    const [, , actor, , rkey] = c.uri.split("/")
+    return (
+      <Link
+        to="/jobs/$actor/$rkey"
+        params={{ actor: actor, rkey: rkey }}
+        className="underline"
+      >
+        {props.children}
+      </Link>
+    )
+  }
+  return (
+    <Link to="/p/$actor" params={{ actor: c.did }} className="underline">
+      {props.children}
+    </Link>
+  )
 }

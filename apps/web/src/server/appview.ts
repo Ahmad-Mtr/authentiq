@@ -23,7 +23,7 @@ export class ApiError extends Error {
 export async function callAppView(
   agent: Agent,
   lxm: string,
-  init: RequestInit & { query?: Record<string, string> } = {}
+  init: RequestInit & { query?: Record<string, string | Array<string>> } = {}
 ) {
   const { data } = await agent.com.atproto.server.getServiceAuth({
     aud: env.APPVIEW_DID,
@@ -31,8 +31,9 @@ export async function callAppView(
     exp: Math.floor(Date.now() / 1000) + 60,
   })
   const url = new URL(`/xrpc/${lxm}`, env.APPVIEW_URL)
+  // Array values repeat the parameter, as XRPC encodes arrays.
   for (const [k, v] of Object.entries(init.query ?? {})) {
-    url.searchParams.set(k, v)
+    for (const x of [v].flat()) url.searchParams.append(k, x)
   }
   return fetch(url, {
     ...init,

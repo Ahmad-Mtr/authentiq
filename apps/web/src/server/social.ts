@@ -69,24 +69,34 @@ export function parseInput<T extends z.ZodType>(schema: T, raw: unknown) {
 export async function queryAppView<T>(
   agent: Agent | undefined,
   lxm: string,
-  params: Record<string, string | number | undefined>
-): Promise<{ ok: true; data: T } | { ok: false; error: string }> {
+  params: Record<string, string | number | Array<string> | undefined>
+): Promise<
+  { ok: true; data: T } | { ok: false; error: string; message?: string }
+> {
   const query = Object.fromEntries(
     Object.entries(params).flatMap(([k, v]) =>
-      v === undefined ? [] : [[k, String(v)]]
+      v === undefined ? [] : [[k, Array.isArray(v) ? v : String(v)]]
     )
-  )
+  ) as Record<string, string | Array<string>>
   let res: Response
   if (agent) {
     res = await callAppView(agent, lxm, { query })
   } else {
     const url = new URL(`/xrpc/${lxm}`, env.APPVIEW_URL)
-    for (const [k, v] of Object.entries(query)) url.searchParams.set(k, v)
+    for (const [k, v] of Object.entries(query))
+      for (const x of [v].flat()) url.searchParams.append(k, x)
     res = await fetch(url)
   }
   if (res.status === 400) {
-    const body = (await res.json().catch(() => ({}))) as { error?: string }
-    return { ok: false, error: body.error ?? "InvalidRequest" }
+    const body = (await res.json().catch(() => ({}))) as {
+      error?: string
+      message?: string
+    }
+    return {
+      ok: false,
+      error: body.error ?? "InvalidRequest",
+      message: body.message,
+    }
   }
   if (!res.ok) throw await appViewError(res)
   return { ok: true, data: (await res.json()) as T }
@@ -119,7 +129,7 @@ async function fetchRecord(uri: string) {
  * page the user lands on includes it. The write has already succeeded; a
  * slow index only means the page shows it a moment later.
  */
-async function waitFor(probe: () => Promise<boolean>, timeoutMs = 5000) {
+export async function waitFor(probe: () => Promise<boolean>, timeoutMs = 5000) {
   const started = Date.now()
   while (Date.now() - started < timeoutMs) {
     if (await probe().catch(() => false)) return true

@@ -18,6 +18,7 @@ packages/lexicons sh.authentiq.* lexicons + codegen
 packages/db       Drizzle schema (Postgres + pgvector)
 packages/atproto  identity helpers, local network constants
 packages/ai       Mistral client, model choices
+packages/rules    business rules shared by AppView and web (salary transparency, protected terms)
 packages/ui       shadcn/ui components
 infra/            docker compose: postgres :5442, plc :2582, pds :2583
 ```
@@ -33,6 +34,7 @@ bun run infra:up         # start postgres, plc, pds (first run builds plc, a few
 bun run seed             # create demo accounts: alice.test … (password: "password")
 bun run seed:talent      # 84 synthetic candidates tal-001.test … for search (needs dev running)
 bun run seed:social      # communities, posts, threads, likes, follows (needs seed + seed:talent, dev running)
+bun run seed:jobs        # 17 job postings + 7 deliberately invalid ones (needs seed + seed:talent, dev running)
 bun run db:migrate       # apply AppView schema
 bun run dev              # infra:up + all apps
 bun run infra:status     # smoke check everything
@@ -54,6 +56,8 @@ bun run verify:search    # embed on write, re-embed on change only, filters, fus
 bun run verify:agent     # agent auth, streamed tool calls, citations, hostile profile, protected attributes
 bun run eval:search      # nDCG@10 / recall@10 / MRR for vector, FTS and hybrid on 28 labelled queries
 bun run verify:social    # posts, threads, out-of-order indexing, facets, invalid records, no counts, communities, hiding, deactivation
+bun run verify:jobs      # the salary-less curl demo, invalid postings, edit/delete, salary floor across periods, close dates,
+                         # deactivation, similar candidates, match score privacy, the agent's get_job
 ```
 
 `verify:indexer` stops and restarts the indexer through the AppView's admin
@@ -82,6 +86,13 @@ accounts (alice.test, bob.test, … and some `tal-*` people), so run `seed` and
 stop the indexer and backfill repos in a chosen order, and signs in to the
 web app, so it needs `bun run dev`. Communities are at
 http://127.0.0.1:3000/communities.
+
+`seed:jobs` writes synthetic postings across currencies, pay periods and
+workplace types as the seeded accounts and a few `tal-*` recruiters, plus
+seven that break a salary-transparency rule on purpose. The PDS stores
+those; the AppView never shows them. It is idempotent. `verify:jobs` needs
+`seed:jobs`, `seed:talent` and `bun run dev`, and calls the recruiting agent
+(so `MISTRAL_API_KEY`). The job board is at http://127.0.0.1:3000/jobs.
 
 Other scripts: `infra:down`, `infra:reset` (wipes volumes), `infra:logs`,
 `codegen`, `test` (unit tests), `typecheck`, `lint`.
