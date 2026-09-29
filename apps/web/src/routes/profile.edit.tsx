@@ -1,4 +1,4 @@
-import { createFileRoute, redirect, useRouter } from "@tanstack/react-router"
+import { Link, createFileRoute, redirect, useRouter } from "@tanstack/react-router"
 import { Button } from "@workspace/ui/components/button"
 import { Input } from "@workspace/ui/components/input"
 import { Label } from "@workspace/ui/components/label"
@@ -49,7 +49,10 @@ function EditProfile() {
       <h1 className="text-xl font-semibold">Edit profile</h1>
       <p className="text-muted-foreground mt-1 text-sm">
         Every change here is written as a record in your repo at{" "}
-        <code className="text-xs">{data.did}</code>.
+        <code className="text-xs">{data.did}</code>.{" "}
+        <Link to="/profile/import" search={{ draft: undefined }} className="underline">
+          Import from a resume
+        </Link>
       </p>
 
       {error ? (

@@ -1,0 +1,33 @@
+{
+  "profile": {
+    "displayName": "Beatriz Nakamura-Osei",
+    "headline": "Freelance Technical Writer",
+    "location": "Montevideo, Uruguay",
+    "skills": ["API documentation", "Docs-as-code", "Markdown", "OpenAPI", "Technical editing"]
+  },
+  "positions": [
+    {
+      "title": "Technical Writer",
+      "organization": "Quillstone APIs",
+      "employmentType": "contract",
+      "locationType": "remote",
+      "startDate": "2023-05",
+      "description": "Wrote the public API reference and getting-started guides."
+    },
+    {
+      "title": "Documentation Lead",
+      "organization": "Paperkite Labs",
+      "employmentType": "part-time",
+      "locationType": "hybrid",
+      "location": "Montevideo",
+      "startDate": "2021-01",
+      "endDate": "2023-04",
+      "description": "Moved the docs to a docs-as-code pipeline."
+    },
+    { "title": "Freelance Writer", "organization": "Self-employed", "employmentType": "freelance", "startDate": "2018", "endDate": "2020" },
+    { "title": "Volunteer Editor", "organization": "Open Maps Uruguay", "employmentType": "volunteer", "startDate": "2017", "endDate": "2019" }
+  ],
+  "education": [
+    { "school": "Universidad de la República", "degree": "Licenciatura", "fieldOfStudy": "Letras", "startDate": "2012", "endDate": "2017" }
+  ]
+}

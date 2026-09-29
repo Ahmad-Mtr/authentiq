@@ -1,0 +1,27 @@
+{
+  "profile": {
+    "displayName": "Oluwaseun Marchetti",
+    "headline": "Kitchen Manager",
+    "about": "Kitchen manager with experience running high-volume brasseries and training new line cooks.",
+    "location": "Cork, Ireland",
+    "skills": ["Menu costing", "HACCP", "Staff training", "Inventory management"]
+  },
+  "positions": [
+    {
+      "title": "Kitchen Manager",
+      "organization": "The Salted Heron",
+      "location": "Cork",
+      "description": "Ran a 14-person kitchen serving 300 covers a night.\nCut food waste by a third with a new prep system."
+    },
+    {
+      "title": "Sous Chef",
+      "organization": "Bramble & Rye",
+      "location": "Dublin",
+      "description": "Managed ordering and the weekly rota."
+    },
+    { "title": "Line Cook", "organization": "Harbour Street Brasserie", "location": "Galway" }
+  ],
+  "education": [
+    { "school": "Galway-Mayo Institute of Technology", "degree": "Higher Certificate", "fieldOfStudy": "Culinary Arts" }
+  ]
+}

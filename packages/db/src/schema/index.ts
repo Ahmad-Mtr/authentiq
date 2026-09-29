@@ -55,6 +55,31 @@ export const webSession = pgTable(
   (t) => [index("web_session_did_idx").on(t.did)]
 )
 
+// --- AppView private state ----------------------------------------------------
+//
+// Not derived from repos and not public (ADR 0001). Short-lived by design.
+
+/**
+ * A parsed resume awaiting the user's review (phase 4). Holds only the
+ * structured draft: the uploaded file and its extracted text are never
+ * stored. Deleted on confirm or discard; expired rows are swept by the
+ * AppView and are never served.
+ */
+export const resumeDraft = pgTable(
+  "resume_draft",
+  {
+    id: text().primaryKey(),
+    did: text().notNull(),
+    draft: jsonb().notNull(),
+    createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+    expiresAt: timestamp({ withTimezone: true }).notNull(),
+  },
+  (t) => [
+    index("resume_draft_did_idx").on(t.did),
+    index("resume_draft_expires_at_idx").on(t.expiresAt),
+  ]
+)
+
 // --- AppView index ------------------------------------------------------------
 //
 // Everything below is derived from users' repos by the firehose indexer

@@ -1,0 +1,27 @@
+{
+  "profile": {
+    "displayName": "Dmitri Vasquez-Holm",
+    "headline": "Sales Operations Manager",
+    "about": "Sales operations manager who builds forecasting and territory models that sales teams actually use.",
+    "location": "Austin, TX",
+    "skills": ["Salesforce", "Forecasting", "SQL", "Territory planning"]
+  },
+  "positions": [
+    {
+      "title": "Sales Operations Manager",
+      "organization": "Lonestar Fixtures",
+      "startDate": "2020-02",
+      "description": "Rebuilt the quarterly forecast; error fell from 18% to 6%."
+    },
+    {
+      "title": "Sales Analyst",
+      "organization": "Pecan Grove Software",
+      "startDate": "2016-08",
+      "endDate": "2020-01",
+      "description": "Territory planning for 40 account executives."
+    }
+  ],
+  "education": [
+    { "school": "Texas State University", "degree": "BBA", "fieldOfStudy": "Marketing", "startDate": "2012", "endDate": "2016" }
+  ]
+}

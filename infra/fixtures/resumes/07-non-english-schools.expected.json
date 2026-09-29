@@ -1,0 +1,28 @@
+{
+  "profile": {
+    "displayName": "Rafael Quispe Andrade",
+    "headline": "Structural Engineer",
+    "about": "Structural engineer specialising in seismic design of mid-rise concrete buildings.",
+    "location": "Lima, Peru",
+    "skills": ["ETABS", "SAP2000", "Seismic design", "AutoCAD", "Revit"]
+  },
+  "positions": [
+    {
+      "title": "Ingeniero Estructural Senior",
+      "organization": "Constructora Andina del Sur S.A.C.",
+      "startDate": "2020-01",
+      "description": "Diseño sísmico de edificios de 8 a 20 pisos."
+    },
+    {
+      "title": "Structural Engineer",
+      "organization": "Vértice Ingeniería",
+      "startDate": "2015",
+      "endDate": "2019",
+      "description": "Retrofit assessments for schools and clinics."
+    }
+  ],
+  "education": [
+    { "school": "École des Ponts ParisTech", "degree": "Mastère Spécialisé", "fieldOfStudy": "Génie Parasismique", "startDate": "2014", "endDate": "2015" },
+    { "school": "Pontificia Universidad Católica del Perú", "degree": "Bachiller", "fieldOfStudy": "Ingeniería Civil", "startDate": "2008", "endDate": "2013" }
+  ]
+}

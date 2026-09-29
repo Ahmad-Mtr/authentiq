@@ -1,0 +1,18 @@
+{
+  "profile": {
+    "displayName": "ANDERS FOLAU-BERGSTRÖM",
+    "headline": "Head of Finance",
+    "location": "Wellington, New Zealand",
+    "skills": ["IFRS", "Financial modelling", "Xero", "Board reporting"]
+  },
+  "positions": [
+    { "title": "Head of Finance", "organization": "KAURI MUTUAL INSURANCE", "location": "Wellington", "startDate": "2022" },
+    { "title": "Finance Manager", "organization": "KAURI MUTUAL INSURANCE", "location": "Wellington", "startDate": "2019", "endDate": "2022" },
+    { "title": "Senior Accountant", "organization": "KAURI MUTUAL INSURANCE", "location": "Wellington", "startDate": "2017", "endDate": "2019" },
+    { "title": "Audit Associate", "organization": "TASMAN AUDIT PARTNERS", "location": "Auckland", "startDate": "2014", "endDate": "2017" }
+  ],
+  "education": [
+    { "school": "Victoria University of Wellington", "degree": "Bachelor of Commerce", "fieldOfStudy": "Accounting", "startDate": "2010", "endDate": "2013" },
+    { "school": "Chartered Accountants ANZ", "degree": "CA qualification", "endDate": "2016" }
+  ]
+}

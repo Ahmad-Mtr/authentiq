@@ -1,0 +1,25 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.resume.uploadResume",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Parse a resume into a draft for review. Served by the AppView, never the PDS: repo blobs are public. The file is held in memory only and dropped once parsed. Requires service auth from the uploader's PDS (lxm = this NSID).",
+      "input": {
+        "encoding": "*/*",
+        "description": "A PDF or DOCX, at most 5 MB. The type is detected from the bytes."
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": { "type": "ref", "ref": "sh.authentiq.resume.defs#draftView" }
+      },
+      "errors": [
+        { "name": "UnsupportedFileType" },
+        { "name": "FileTooLarge" },
+        { "name": "NoTextFound", "description": "Scanned or image-only documents are not supported." },
+        { "name": "RateLimitExceeded" },
+        { "name": "ParseFailed" }
+      ]
+    }
+  }
+}

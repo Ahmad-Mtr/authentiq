@@ -1,0 +1,81 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.resume.defs",
+  "defs": {
+    "draftView": {
+      "type": "object",
+      "description": "A parsed resume awaiting review. AppView-private and short-lived: it is never written to a repo, and it is deleted on confirm, on discard, or at expiresAt.",
+      "required": ["id", "expiresAt", "draft"],
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "expiresAt": { "type": "string", "format": "datetime" },
+        "draft": { "type": "ref", "ref": "#draft" }
+      }
+    },
+    "draft": {
+      "type": "object",
+      "description": "Proposed profile fields and entries. Shapes mirror sh.authentiq.actor.{profile,position,education}, but anything a resume may omit is optional here: the user fills it in before confirming.",
+      "required": ["profile", "positions", "education"],
+      "properties": {
+        "profile": { "type": "ref", "ref": "#profileDraft" },
+        "positions": {
+          "type": "array",
+          "maxLength": 30,
+          "items": { "type": "ref", "ref": "#positionDraft" }
+        },
+        "education": {
+          "type": "array",
+          "maxLength": 15,
+          "items": { "type": "ref", "ref": "#educationDraft" }
+        }
+      }
+    },
+    "profileDraft": {
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string", "maxGraphemes": 64, "maxLength": 640 },
+        "headline": { "type": "string", "maxGraphemes": 120, "maxLength": 1200 },
+        "about": { "type": "string", "maxGraphemes": 2000, "maxLength": 20000 },
+        "location": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "skills": {
+          "type": "array",
+          "maxLength": 50,
+          "items": { "type": "string", "maxGraphemes": 40, "maxLength": 400 }
+        }
+      }
+    },
+    "positionDraft": {
+      "type": "object",
+      "description": "startDate is optional because resumes omit it; sh.authentiq.actor.position requires it, so the review step asks for one.",
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "organization": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "employmentType": {
+          "type": "string",
+          "knownValues": ["full-time", "part-time", "contract", "internship", "freelance", "volunteer"]
+        },
+        "locationType": { "type": "string", "knownValues": ["onsite", "hybrid", "remote"] },
+        "location": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "startDate": { "type": "string", "description": "YYYY or YYYY-MM.", "maxLength": 7 },
+        "endDate": {
+          "type": "string",
+          "description": "YYYY or YYYY-MM. Absent means current.",
+          "maxLength": 7
+        },
+        "description": { "type": "string", "maxGraphemes": 2000, "maxLength": 20000 }
+      }
+    },
+    "educationDraft": {
+      "type": "object",
+      "required": ["school"],
+      "properties": {
+        "school": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "degree": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "fieldOfStudy": { "type": "string", "maxGraphemes": 100, "maxLength": 1000 },
+        "startDate": { "type": "string", "description": "YYYY or YYYY-MM.", "maxLength": 7 },
+        "endDate": { "type": "string", "description": "YYYY or YYYY-MM.", "maxLength": 7 }
+      }
+    }
+  }
+}

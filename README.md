@@ -17,7 +17,7 @@ apps/feedgen      Elysia: feed generators                  :2585
 packages/lexicons sh.authentiq.* lexicons + codegen
 packages/db       Drizzle schema (Postgres + pgvector)
 packages/atproto  identity helpers, local network constants
-packages/ai       Claude client, model choices
+packages/ai       Mistral client, model choices
 packages/ui       shadcn/ui components
 infra/            docker compose: postgres :5442, plc :2582, pds :2583
 ```
@@ -46,12 +46,21 @@ Verification scripts, all run against the live stack:
 bun run verify:lexicons  # validators + a record round-trip through the PDS
 bun run verify:oauth     # the whole sign-in flow, headlessly
 bun run verify:indexer   # firehose → index → getProfile, invalid records, restart, backfill
+bun run verify:resume    # resume upload → draft → confirm, auth, privacy, injection, file checks
+bun run eval:resume      # parser accuracy on infra/fixtures/resumes: precision/recall per field
 ```
 
 `verify:indexer` stops and restarts the indexer through the AppView's admin
 routes, so it needs `ADMIN_TOKEN` in `apps/appview/.env`. `infra:env` generates
 it for new setups. An existing `.env` needs the line added by hand, then an
 AppView restart.
+
+Resume parsing calls Mistral, so `verify:resume` and `eval:resume` need
+`MISTRAL_API_KEY` in `apps/appview/.env` (the AppView reads it, and the eval
+loads it from there). Each run costs well under a cent. `eval:resume` takes
+`--verbose` (print every mismatch) and `--only 02,09` (a subset), and
+`RESUME_PARSER_MODEL=…` compares another model. `fixtures:resumes` regenerates
+the fixture files; their expected annotations are hand-written.
 
 Other scripts: `infra:down`, `infra:reset` (wipes volumes), `infra:logs`,
 `codegen`, `typecheck`, `lint`.

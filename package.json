@@ -17,6 +17,9 @@
     "verify:lexicons": "bun infra/scripts/verify-lexicons.ts",
     "verify:oauth": "bun infra/scripts/verify-oauth.ts",
     "verify:indexer": "bun infra/scripts/verify-indexer.ts",
+    "verify:resume": "bun infra/scripts/verify-resume.ts",
+    "eval:resume": "bun infra/scripts/eval-resume.ts",
+    "fixtures:resumes": "bun infra/scripts/gen-resume-fixtures.ts",
     "db:generate": "bun --filter @workspace/db db:generate",
     "db:migrate": "bun --filter @workspace/db db:migrate",
     "lint": "turbo lint",
@@ -24,8 +27,11 @@
     "typecheck": "turbo typecheck"
   },
   "devDependencies": {
+    "@atproto/crypto": "^0.5.5",
     "@workspace/atproto": "workspace:*",
     "@workspace/lexicons": "workspace:*",
+    "docx": "^9.8.1",
+    "pdf-lib": "^1.17.1",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "turbo": "^2.9.18",

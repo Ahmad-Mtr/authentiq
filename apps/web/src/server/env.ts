@@ -9,5 +9,7 @@ export const env = z
     PDS_URL: z.url().default(LOCAL_NETWORK.pdsUrl),
     PLC_URL: z.url().default(LOCAL_NETWORK.plcUrl),
     APPVIEW_URL: z.url().default(LOCAL_NETWORK.appviewUrl),
+    /** Audience for service auth tokens sent to the AppView (resume upload). */
+    APPVIEW_DID: z.string().default("did:web:localhost%3A2584"),
   })
   .parse(process.env)

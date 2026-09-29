@@ -1,0 +1,20 @@
+{
+  "profile": {
+    "displayName": "Caoimhe Delacroix-Nwosu",
+    "headline": "VP of Engineering",
+    "about": "Engineering leader who has grown teams from 5 to 80 engineers without losing the habit of shipping weekly.",
+    "location": "Berlin, Germany",
+    "skills": ["Engineering leadership", "Hiring", "Platform strategy", "Kotlin", "AWS"]
+  },
+  "positions": [
+    { "title": "VP of Engineering", "organization": "Lindwurm Mobility", "startDate": "2023-01" },
+    { "title": "Director of Engineering", "organization": "Lindwurm Mobility", "startDate": "2020-03", "endDate": "2022-12" },
+    { "title": "Engineering Manager", "organization": "Spreewald Data GmbH", "startDate": "2017-07", "endDate": "2020-02" },
+    { "title": "Senior Software Engineer", "organization": "Spreewald Data GmbH", "startDate": "2015-01", "endDate": "2017-06" },
+    { "title": "Software Engineer", "organization": "Quayside Games", "startDate": "2011-09", "endDate": "2014-12" },
+    { "title": "Software Engineering Intern", "organization": "Quayside Games", "employmentType": "internship", "startDate": "2010-06", "endDate": "2010-08" }
+  ],
+  "education": [
+    { "school": "Trinity College Dublin", "degree": "BA (Mod)", "fieldOfStudy": "Computer Science", "startDate": "2007", "endDate": "2011" }
+  ]
+}

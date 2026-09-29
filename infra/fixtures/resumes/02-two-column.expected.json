@@ -1,0 +1,35 @@
+{
+  "profile": {
+    "displayName": "Tomás Adeyemi-Costa",
+    "headline": "Product Designer",
+    "about": "Product designer focused on accessible, data-heavy tools for operations teams. I run research, write the specs and ship the components.",
+    "location": "Lisbon, Portugal",
+    "skills": ["Figma", "User research", "Design systems", "Prototyping", "Accessibility (WCAG)", "HTML/CSS"]
+  },
+  "positions": [
+    {
+      "title": "Lead Product Designer",
+      "organization": "Orbitalis Health",
+      "startDate": "2022-01",
+      "description": "Redesigned the clinic scheduling tool used by 400 staff.\nStarted the shared design system."
+    },
+    {
+      "title": "Product Designer",
+      "organization": "Marés Software",
+      "location": "Porto",
+      "startDate": "2018-04",
+      "endDate": "2021-12",
+      "description": "Owned the reporting dashboards."
+    },
+    {
+      "title": "UX Designer",
+      "organization": "Ninho Digital",
+      "startDate": "2014",
+      "endDate": "2018",
+      "description": "Designed booking flows for travel clients."
+    }
+  ],
+  "education": [
+    { "school": "Universidade de Lisboa", "degree": "BA", "fieldOfStudy": "Communication Design", "startDate": "2010", "endDate": "2014" }
+  ]
+}

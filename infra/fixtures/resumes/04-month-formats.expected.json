@@ -1,0 +1,34 @@
+{
+  "profile": {
+    "displayName": "Hana Kowalczyk-Reyes",
+    "headline": "Data Analyst",
+    "location": "Denver, CO",
+    "skills": ["SQL", "Python", "dbt", "Looker", "A/B testing"]
+  },
+  "positions": [
+    {
+      "title": "Senior Data Analyst",
+      "organization": "Ridgeline Outdoor Co.",
+      "startDate": "2022-10",
+      "description": "Built the weekly demand forecast used by the buying team."
+    },
+    {
+      "title": "Data Analyst",
+      "organization": "Stonebrook Credit Union",
+      "startDate": "2019-07",
+      "endDate": "2022-09",
+      "description": "Automated branch performance reports in dbt and Looker."
+    },
+    {
+      "title": "Analytics Intern",
+      "organization": "Mile High Transit Lab",
+      "employmentType": "internship",
+      "startDate": "2018",
+      "endDate": "2018",
+      "description": "Cleaned ridership data for a fare study."
+    }
+  ],
+  "education": [
+    { "school": "University of Colorado Boulder", "degree": "BS", "fieldOfStudy": "Statistics", "endDate": "2019-05" }
+  ]
+}

@@ -14,6 +14,7 @@
     "@atproto/identity": "^0.5.14",
     "@atproto/repo": "^0.10.14",
     "@atproto/sync": "^0.4.11",
+    "@atproto/xrpc-server": "^0.13.2",
     "@elysiajs/cors": "^1.4.2",
     "@workspace/ai": "workspace:*",
     "@workspace/atproto": "workspace:*",
@@ -21,6 +22,8 @@
     "@workspace/lexicons": "workspace:*",
     "drizzle-orm": "^0.45.2",
     "elysia": "^1.4.30",
+    "mammoth": "^1.13.0",
+    "unpdf": "^1.8.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {

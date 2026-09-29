@@ -8,6 +8,8 @@ export const env = z
     PDS_URL: z.url().default(LOCAL_NETWORK.pdsUrl),
     PLC_URL: z.url().default(LOCAL_NETWORK.plcUrl),
     WEB_ORIGIN: z.url().default("http://localhost:3000"),
+    /** did:web identity; the audience of service auth tokens (phase 4). */
+    SERVICE_DID: z.string().default("did:web:localhost%3A2584"),
     /** Firehose to index. Defaults to the local PDS's subscribeRepos endpoint. */
     FIREHOSE_URL: z.url().optional(),
     /** Bearer token for /_admin/*. The admin routes are disabled when unset. */

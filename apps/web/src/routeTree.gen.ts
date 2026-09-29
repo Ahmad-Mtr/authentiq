@@ -13,11 +13,15 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PActorRouteImport } from './routes/p.$actor'
 import { Route as ProfileEditRouteImport } from './routes/profile.edit'
+import { Route as ProfileImportRouteImport } from './routes/profile.import'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api.auth.logout'
 import { Route as ApiAuthSignupRouteImport } from './routes/api.auth.signup'
 import { Route as ApiAuthWhoamiRouteImport } from './routes/api.auth.whoami'
 import { Route as ApiOauthCallbackRouteImport } from './routes/api.oauth.callback'
 import { Route as ApiOauthLoginRouteImport } from './routes/api.oauth.login'
+import { Route as ApiResumeCancelRouteImport } from './routes/api.resume.cancel'
+import { Route as ApiResumeConfirmRouteImport } from './routes/api.resume.confirm'
+import { Route as ApiResumeUploadRouteImport } from './routes/api.resume.upload'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -37,6 +41,11 @@ const PActorRoute = PActorRouteImport.update({
 const ProfileEditRoute = ProfileEditRouteImport.update({
   id: '/profile/edit',
   path: '/profile/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileImportRoute = ProfileImportRouteImport.update({
+  id: '/profile/import',
+  path: '/profile/import',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
@@ -64,28 +73,51 @@ const ApiOauthLoginRoute = ApiOauthLoginRouteImport.update({
   path: '/api/oauth/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiResumeCancelRoute = ApiResumeCancelRouteImport.update({
+  id: '/api/resume/cancel',
+  path: '/api/resume/cancel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiResumeConfirmRoute = ApiResumeConfirmRouteImport.update({
+  id: '/api/resume/confirm',
+  path: '/api/resume/confirm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiResumeUploadRoute = ApiResumeUploadRouteImport.update({
+  id: '/api/resume/upload',
+  path: '/api/resume/upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
+  '/profile/import': typeof ProfileImportRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
   '/api/oauth/callback': typeof ApiOauthCallbackRoute
   '/api/oauth/login': typeof ApiOauthLoginRoute
+  '/api/resume/cancel': typeof ApiResumeCancelRoute
+  '/api/resume/confirm': typeof ApiResumeConfirmRoute
+  '/api/resume/upload': typeof ApiResumeUploadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
+  '/profile/import': typeof ProfileImportRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
   '/api/oauth/callback': typeof ApiOauthCallbackRoute
   '/api/oauth/login': typeof ApiOauthLoginRoute
+  '/api/resume/cancel': typeof ApiResumeCancelRoute
+  '/api/resume/confirm': typeof ApiResumeConfirmRoute
+  '/api/resume/upload': typeof ApiResumeUploadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -93,11 +125,15 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
+  '/profile/import': typeof ProfileImportRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
   '/api/oauth/callback': typeof ApiOauthCallbackRoute
   '/api/oauth/login': typeof ApiOauthLoginRoute
+  '/api/resume/cancel': typeof ApiResumeCancelRoute
+  '/api/resume/confirm': typeof ApiResumeConfirmRoute
+  '/api/resume/upload': typeof ApiResumeUploadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -106,33 +142,45 @@ export interface FileRouteTypes {
     | '/login'
     | '/p/$actor'
     | '/profile/edit'
+    | '/profile/import'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
     | '/api/oauth/callback'
     | '/api/oauth/login'
+    | '/api/resume/cancel'
+    | '/api/resume/confirm'
+    | '/api/resume/upload'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
     | '/p/$actor'
     | '/profile/edit'
+    | '/profile/import'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
     | '/api/oauth/callback'
     | '/api/oauth/login'
+    | '/api/resume/cancel'
+    | '/api/resume/confirm'
+    | '/api/resume/upload'
   id:
     | '__root__'
     | '/'
     | '/login'
     | '/p/$actor'
     | '/profile/edit'
+    | '/profile/import'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
     | '/api/oauth/callback'
     | '/api/oauth/login'
+    | '/api/resume/cancel'
+    | '/api/resume/confirm'
+    | '/api/resume/upload'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -140,11 +188,15 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   PActorRoute: typeof PActorRoute
   ProfileEditRoute: typeof ProfileEditRoute
+  ProfileImportRoute: typeof ProfileImportRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthSignupRoute: typeof ApiAuthSignupRoute
   ApiAuthWhoamiRoute: typeof ApiAuthWhoamiRoute
   ApiOauthCallbackRoute: typeof ApiOauthCallbackRoute
   ApiOauthLoginRoute: typeof ApiOauthLoginRoute
+  ApiResumeCancelRoute: typeof ApiResumeCancelRoute
+  ApiResumeConfirmRoute: typeof ApiResumeConfirmRoute
+  ApiResumeUploadRoute: typeof ApiResumeUploadRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -175,6 +227,13 @@ declare module '@tanstack/react-router' {
       path: '/profile/edit'
       fullPath: '/profile/edit'
       preLoaderRoute: typeof ProfileEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/import': {
+      id: '/profile/import'
+      path: '/profile/import'
+      fullPath: '/profile/import'
+      preLoaderRoute: typeof ProfileImportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/auth/logout': {
@@ -212,6 +271,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiOauthLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/resume/cancel': {
+      id: '/api/resume/cancel'
+      path: '/api/resume/cancel'
+      fullPath: '/api/resume/cancel'
+      preLoaderRoute: typeof ApiResumeCancelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/resume/confirm': {
+      id: '/api/resume/confirm'
+      path: '/api/resume/confirm'
+      fullPath: '/api/resume/confirm'
+      preLoaderRoute: typeof ApiResumeConfirmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/resume/upload': {
+      id: '/api/resume/upload'
+      path: '/api/resume/upload'
+      fullPath: '/api/resume/upload'
+      preLoaderRoute: typeof ApiResumeUploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -220,11 +300,15 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   PActorRoute: PActorRoute,
   ProfileEditRoute: ProfileEditRoute,
+  ProfileImportRoute: ProfileImportRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthSignupRoute: ApiAuthSignupRoute,
   ApiAuthWhoamiRoute: ApiAuthWhoamiRoute,
   ApiOauthCallbackRoute: ApiOauthCallbackRoute,
   ApiOauthLoginRoute: ApiOauthLoginRoute,
+  ApiResumeCancelRoute: ApiResumeCancelRoute,
+  ApiResumeConfirmRoute: ApiResumeConfirmRoute,
+  ApiResumeUploadRoute: ApiResumeUploadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

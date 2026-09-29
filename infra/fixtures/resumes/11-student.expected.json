@@ -1,0 +1,38 @@
+{
+  "profile": {
+    "displayName": "Yusuf Adebayo-Karlsson",
+    "about": "Final-year computer engineering student looking for a new-graduate role in embedded systems.",
+    "location": "Toronto, ON",
+    "skills": ["C", "Embedded Rust", "RTOS", "PCB bring-up", "Oscilloscopes", "Python"]
+  },
+  "positions": [
+    {
+      "title": "Embedded Software Intern",
+      "organization": "Northwind Silicon",
+      "employmentType": "internship",
+      "location": "Ottawa",
+      "startDate": "2025-01",
+      "endDate": "2025-04",
+      "description": "Wrote a DMA driver for a custom sensor board."
+    },
+    {
+      "title": "Firmware Intern",
+      "organization": "Maple Circuits",
+      "employmentType": "internship",
+      "location": "Toronto",
+      "startDate": "2024-05",
+      "endDate": "2024-08",
+      "description": "Bring-up and test scripts for a BLE module."
+    },
+    {
+      "title": "Teaching Assistant",
+      "organization": "University of Waterloo",
+      "employmentType": "part-time",
+      "startDate": "2024-09",
+      "endDate": "2024-12"
+    }
+  ],
+  "education": [
+    { "school": "University of Waterloo", "degree": "Bachelor of Applied Science", "fieldOfStudy": "Computer Engineering", "startDate": "2022-09", "endDate": "2027-04" }
+  ]
+}

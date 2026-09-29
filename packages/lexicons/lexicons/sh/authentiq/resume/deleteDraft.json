@@ -1,0 +1,26 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.resume.deleteDraft",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Delete a resume draft, after the user confirms or discards it. Idempotent. Requires service auth.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["id"],
+          "properties": { "id": { "type": "string", "maxLength": 64 } }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["deleted"],
+          "properties": { "deleted": { "type": "boolean" } }
+        }
+      }
+    }
+  }
+}

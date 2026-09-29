@@ -1,0 +1,20 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.resume.getDraft",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "The caller's pending resume draft. Requires service auth; a draft is only visible to the DID that uploaded it.",
+      "parameters": {
+        "type": "params",
+        "required": ["id"],
+        "properties": { "id": { "type": "string", "maxLength": 64 } }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": { "type": "ref", "ref": "sh.authentiq.resume.defs#draftView" }
+      },
+      "errors": [{ "name": "DraftNotFound", "description": "Unknown, expired, or not the caller's." }]
+    }
+  }
+}

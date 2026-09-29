@@ -1,0 +1,28 @@
+{
+  "profile": {
+    "displayName": "Ingrid Solberg-Mbeki",
+    "headline": "Registered Nurse",
+    "about": "Registered nurse returning to acute care after a two-year career break to care for a family member. Current on all certifications.",
+    "location": "Bergen, Norway",
+    "skills": ["Acute care", "Triage", "Wound care", "Medication administration", "Patient education"]
+  },
+  "positions": [
+    {
+      "title": "Staff Nurse",
+      "organization": "Nordlys Care Centre",
+      "startDate": "2023-03",
+      "description": "Day and night shifts on a 30-bed rehabilitation ward."
+    },
+    {
+      "title": "Charge Nurse",
+      "organization": "Fjordvik Regional Hospital",
+      "startDate": "2015-08",
+      "endDate": "2021-03",
+      "description": "Led a team of 12 nurses in the emergency department."
+    },
+    { "title": "Staff Nurse", "organization": "Fjordvik Regional Hospital", "startDate": "2011-06", "endDate": "2015-07" }
+  ],
+  "education": [
+    { "school": "Høgskulen på Vestlandet", "degree": "Bachelor", "fieldOfStudy": "Nursing", "startDate": "2008", "endDate": "2011" }
+  ]
+}

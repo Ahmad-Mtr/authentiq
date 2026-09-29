@@ -1,0 +1,27 @@
+{
+  "profile": {
+    "displayName": "Aiko Brandt-Tanaka",
+    "headline": "Robotics Software Engineer",
+    "location": "Munich, Germany",
+    "skills": ["C++", "ROS 2", "Motion planning", "Python", "Computer vision"]
+  },
+  "positions": [
+    {
+      "title": "Robotics Software Engineer",
+      "organization": "Kranich Automation GmbH",
+      "startDate": "2021-04",
+      "description": "Motion planning for pick-and-place arms in ROS 2."
+    },
+    {
+      "title": "Research Assistant",
+      "organization": "Hoshino Robotics Lab",
+      "startDate": "2019-04",
+      "endDate": "2021-03",
+      "description": "Grasp detection with depth cameras."
+    }
+  ],
+  "education": [
+    { "school": "東京大学", "degree": "Master of Engineering", "fieldOfStudy": "Mechanical Engineering", "startDate": "2019", "endDate": "2021" },
+    { "school": "Technische Universität München", "degree": "B.Sc.", "fieldOfStudy": "Maschinenwesen", "startDate": "2014", "endDate": "2018" }
+  ]
+}

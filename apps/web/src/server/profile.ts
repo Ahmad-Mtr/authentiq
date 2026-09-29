@@ -1,40 +1,21 @@
 import { createServerFn } from "@tanstack/react-start"
 import { redirect } from "@tanstack/react-router"
 import { sh } from "@workspace/lexicons"
-import { currentDatetimeString } from "@workspace/atproto"
 import { z } from "zod"
 import { env } from "./env.ts"
+import {
+  buildEducationRecord,
+  buildPositionRecord,
+  buildProfileRecord,
+  educationInput,
+  positionInput,
+  profileInput,
+} from "./records.ts"
 import { getSessionAgent, getSessionDid } from "./session.ts"
 
 const PROFILE = sh.authentiq.actor.profile
 const POSITION = sh.authentiq.actor.position
 const EDUCATION = sh.authentiq.actor.education
-
-/** Year or year-month, matching the lexicon's documented date shape. */
-const partialDate = z
-  .string()
-  .regex(/^\d{4}(-(0[1-9]|1[0-2]))?$/, "Use YYYY or YYYY-MM")
-
-const optionalText = (max: number) =>
-  z
-    .string()
-    .trim()
-    .max(max)
-    .optional()
-    .transform((v) => (v ? v : undefined))
-
-const skillList = z
-  .string()
-  .optional()
-  .transform((v) =>
-    v
-      ? v
-          .split(",")
-          .map((s) => s.trim())
-          .filter(Boolean)
-          .slice(0, 50)
-      : undefined
-  )
 
 async function requireAgent() {
   const agent = await getSessionAgent()
@@ -103,32 +84,17 @@ export const getMyRecords = createServerFn().handler(async () => {
 })
 
 export const saveProfile = createServerFn({ method: "POST" })
-  .validator(
-    z.object({
-      displayName: z.string().trim().min(1).max(64),
-      headline: optionalText(120),
-      about: optionalText(2000),
-      location: optionalText(100),
-      openToWork: z.boolean().default(false),
-      skills: skillList,
-    })
-  )
+  .validator(profileInput)
   .handler(async ({ data }) => {
     const agent = await requireAgent()
-
-    // Validate against the lexicon before it ever reaches the PDS — the PDS
-    // itself cannot check our schemas.
-    const record = PROFILE.$parse({
-      $type: PROFILE.$type,
+    const record = buildProfileRecord({
       displayName: data.displayName,
       headline: data.headline,
       about: data.about,
       location: data.location,
       openToWork: data.openToWork,
       skills: data.skills,
-      createdAt: currentDatetimeString(),
     })
-
     await agent.com.atproto.repo.putRecord({
       repo: agent.assertDid,
       collection: PROFILE.$nsid,
@@ -139,55 +105,25 @@ export const saveProfile = createServerFn({ method: "POST" })
   })
 
 export const addPosition = createServerFn({ method: "POST" })
-  .validator(
-    z.object({
-      title: z.string().trim().min(1).max(100),
-      organization: z.string().trim().min(1).max(100),
-      employmentType: optionalText(40),
-      locationType: optionalText(40),
-      location: optionalText(100),
-      startDate: partialDate,
-      endDate: partialDate.optional().or(z.literal("").transform(() => undefined)),
-      description: optionalText(2000),
-      skills: skillList,
-    })
-  )
+  .validator(positionInput)
   .handler(async ({ data }) => {
     const agent = await requireAgent()
-    const record = POSITION.$parse({
-      $type: POSITION.$type,
-      ...data,
-      createdAt: currentDatetimeString(),
-    })
     await agent.com.atproto.repo.createRecord({
       repo: agent.assertDid,
       collection: POSITION.$nsid,
-      record,
+      record: buildPositionRecord(data),
     })
     return { ok: true }
   })
 
 export const addEducation = createServerFn({ method: "POST" })
-  .validator(
-    z.object({
-      school: z.string().trim().min(1).max(100),
-      degree: optionalText(100),
-      fieldOfStudy: optionalText(100),
-      startDate: partialDate.optional().or(z.literal("").transform(() => undefined)),
-      endDate: partialDate.optional().or(z.literal("").transform(() => undefined)),
-    })
-  )
+  .validator(educationInput)
   .handler(async ({ data }) => {
     const agent = await requireAgent()
-    const record = EDUCATION.$parse({
-      $type: EDUCATION.$type,
-      ...data,
-      createdAt: currentDatetimeString(),
-    })
     await agent.com.atproto.repo.createRecord({
       repo: agent.assertDid,
       collection: EDUCATION.$nsid,
-      record,
+      record: buildEducationRecord(data),
     })
     return { ok: true }
   })
