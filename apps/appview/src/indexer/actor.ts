@@ -3,11 +3,19 @@ import { sh } from "@workspace/lexicons"
 import { defineCollection } from "./collections.ts"
 import { checkDateRange } from "./rules.ts"
 
-/** `sh.authentiq.actor.*` record collections. */
+/**
+ * `sh.authentiq.actor.*` record collections. All three feed one search
+ * subject: the actor's profile document.
+ */
+const actorDocument = (ref: { did: string }) => ({
+  kind: "actor",
+  subject: ref.did,
+})
 
 export const profile = defineCollection({
   schema: sh.authentiq.actor.profile,
   table: schema.profile,
+  embeds: actorDocument,
   toRow: (v) => ({
     displayName: v.displayName,
     headline: v.headline,
@@ -25,6 +33,7 @@ export const profile = defineCollection({
 export const position = defineCollection({
   schema: sh.authentiq.actor.position,
   table: schema.position,
+  embeds: actorDocument,
   rules: (v) => checkDateRange(v.startDate, v.endDate),
   toRow: (v) => ({
     title: v.title,
@@ -43,6 +52,7 @@ export const position = defineCollection({
 export const education = defineCollection({
   schema: sh.authentiq.actor.education,
   table: schema.education,
+  embeds: actorDocument,
   rules: (v) => checkDateRange(v.startDate, v.endDate),
   toRow: (v) => ({
     school: v.school,

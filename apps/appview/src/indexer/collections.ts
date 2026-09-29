@@ -19,7 +19,11 @@ export type CollectionHandler = {
   delete: (tx: Tx, uri: string) => Promise<void>
   /** Backfill: drop this actor's rows whose URIs are no longer in the repo. */
   prune: (tx: Tx, did: string, keep: Array<string>) => Promise<void>
+  /** The search subject a record feeds, if any (phase 5 embeddings). */
+  embeds?: (ref: { uri: string; did: string }) => EmbedTarget
 }
+
+export type EmbedTarget = { kind: string; subject: string }
 
 /** The parts of a generated lexicon record module the indexer needs. */
 type RecordModule<TValue> = {
@@ -41,6 +45,7 @@ export function defineCollection<TValue, TTable extends RecordTable>(opts: {
   schema: RecordModule<TValue>
   table: TTable
   rules?: (value: TValue) => string | undefined
+  embeds?: (ref: { uri: string; did: string }) => EmbedTarget
   toRow: (
     value: TValue
   ) => Omit<TTable["$inferInsert"], "uri" | "cid" | "did" | "indexedAt">
@@ -48,6 +53,7 @@ export function defineCollection<TValue, TTable extends RecordTable>(opts: {
   const { schema, table } = opts
   return {
     collection: schema.$nsid,
+    embeds: opts.embeds,
     validate(rkey, record) {
       const parsed = schema.$safeParse(record)
       if (!parsed.success) return { ok: false, reason: parsed.message }

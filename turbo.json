@@ -3,25 +3,58 @@
   "ui": "tui",
   "tasks": {
     "codegen": {
-      "inputs": ["lexicons/**", "lexicons.json"],
-      "outputs": ["src/generated/**"]
+      "inputs": [
+        "lexicons/**",
+        "lexicons.json"
+      ],
+      "outputs": [
+        "src/generated/**"
+      ]
     },
     "build": {
-      "dependsOn": ["^build", "^codegen", "codegen"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".output/**"]
+      "dependsOn": [
+        "^build",
+        "^codegen",
+        "codegen"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ],
+      "outputs": [
+        ".output/**"
+      ]
     },
     "lint": {
-      "dependsOn": ["^lint", "^codegen", "codegen"]
+      "dependsOn": [
+        "^lint",
+        "^codegen",
+        "codegen"
+      ]
     },
     "format": {
-      "dependsOn": ["^format"]
+      "dependsOn": [
+        "^format"
+      ]
     },
     "typecheck": {
-      "dependsOn": ["^typecheck", "^codegen", "codegen"]
+      "dependsOn": [
+        "^typecheck",
+        "^codegen",
+        "codegen"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^codegen",
+        "codegen"
+      ]
     },
     "dev": {
-      "dependsOn": ["^codegen", "codegen"],
+      "dependsOn": [
+        "^codegen",
+        "codegen"
+      ],
       "cache": false,
       "persistent": true
     }

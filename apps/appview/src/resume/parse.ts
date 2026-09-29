@@ -1,4 +1,4 @@
-import { MODELS, getMistral } from "@workspace/ai"
+import { MODELS, getMistral, mistralRetries } from "@workspace/ai"
 import { sh } from "@workspace/lexicons"
 import { z } from "zod"
 import { checkDateRange } from "../indexer/rules.ts"
@@ -142,20 +142,7 @@ export async function parseResumeText(resumeText: string): Promise<{
       ],
       responseFormat: ModelResume,
     },
-    {
-      timeoutMs: 90_000,
-      retries: {
-        strategy: "backoff",
-        backoff: {
-          initialInterval: 1000,
-          maxInterval: 8000,
-          exponent: 2,
-          maxElapsedTime: 60_000,
-        },
-        retryConnectionErrors: true,
-      },
-      retryCodes: ["429", "5XX"],
-    }
+    { timeoutMs: 90_000, ...mistralRetries() }
   )
   const choice = res.choices?.[0]
   const usage = {

@@ -1,14 +1,17 @@
 import { timingSafeEqual } from "node:crypto"
 import { Elysia, status, t } from "elysia"
 import { env } from "./env.ts"
+import type { Embedder } from "./embed/worker.ts"
 import type { Indexer } from "./indexer/index.ts"
 
 /**
- * Operator routes for the indexer, behind `Authorization: Bearer $ADMIN_TOKEN`.
- * Not mounted at all when ADMIN_TOKEN is unset. `bun run verify:indexer` uses
- * stop/start to prove the saved cursor survives a restart.
+ * Operator routes for the indexer and the embedding worker, behind
+ * `Authorization: Bearer $ADMIN_TOKEN`. Not mounted at all when ADMIN_TOKEN is
+ * unset. `bun run verify:indexer` uses stop/start to prove the saved cursor
+ * survives a restart; `bun run verify:search` points the embedding client at
+ * a dead URL to prove an outage delays vectors without blocking indexing.
  */
-export const admin = (indexer: Indexer) =>
+export const admin = (indexer: Indexer, embedder: Embedder) =>
   new Elysia({ prefix: "/_admin" })
     .onBeforeHandle(({ headers }) => {
       if (!authorized(headers.authorization)) {
@@ -25,6 +28,20 @@ export const admin = (indexer: Indexer) =>
         return { did: body.did, backfilled: true }
       },
       { body: t.Object({ did: t.String({ pattern: "^did:" }) }) }
+    )
+    .get("/embedder", () => embedder.status())
+    .post(
+      "/embedder/endpoint",
+      async ({ body }) => {
+        await embedder.setServerURL(body.url)
+        return embedder.status()
+      },
+      // Omit url to go back to Mistral.
+      {
+        body: t.Object({
+          url: t.Optional(t.String({ pattern: "^https?://" })),
+        }),
+      }
     )
 
 function authorized(header: string | undefined) {

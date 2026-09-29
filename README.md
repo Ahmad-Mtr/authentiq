@@ -31,6 +31,7 @@ bun install
 bun run infra:env        # generate secrets + .env files (never overwrites)
 bun run infra:up         # start postgres, plc, pds (first run builds plc, a few minutes)
 bun run seed             # create demo accounts: alice.test … (password: "password")
+bun run seed:talent      # 84 synthetic candidates tal-001.test … for search (needs dev running)
 bun run db:migrate       # apply AppView schema
 bun run dev              # infra:up + all apps
 bun run infra:status     # smoke check everything
@@ -48,6 +49,9 @@ bun run verify:oauth     # the whole sign-in flow, headlessly
 bun run verify:indexer   # firehose → index → getProfile, invalid records, restart, backfill
 bun run verify:resume    # resume upload → draft → confirm, auth, privacy, injection, file checks
 bun run eval:resume      # parser accuracy on infra/fixtures/resumes: precision/recall per field
+bun run verify:search    # embed on write, re-embed on change only, filters, fusion, API outage
+bun run verify:agent     # agent auth, streamed tool calls, citations, hostile profile, protected attributes
+bun run eval:search      # nDCG@10 / recall@10 / MRR for vector, FTS and hybrid on 28 labelled queries
 ```
 
 `verify:indexer` stops and restarts the indexer through the AppView's admin
@@ -62,8 +66,16 @@ loads it from there). Each run costs well under a cent. `eval:resume` takes
 `RESUME_PARSER_MODEL=…` compares another model. `fixtures:resumes` regenerates
 the fixture files; their expected annotations are hand-written.
 
+`verify:search`, `verify:agent` and `eval:search` need the talent corpus
+(`bun run seed:talent`, idempotent, run with the stack up). `verify:search`
+also uses `ADMIN_TOKEN`, to point the embedding client at a dead URL and back.
+Embeddings use `mistral-embed-2312` and the agent uses the model in
+`MODELS.recruitingAgent` (`packages/ai`); both read `MISTRAL_API_KEY` from
+`apps/appview/.env`. The recruiting assistant is at
+http://127.0.0.1:3000/recruit.
+
 Other scripts: `infra:down`, `infra:reset` (wipes volumes), `infra:logs`,
-`codegen`, `typecheck`, `lint`.
+`codegen`, `test` (unit tests), `typecheck`, `lint`.
 
 ## UI components
 

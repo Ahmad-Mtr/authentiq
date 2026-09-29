@@ -4,18 +4,24 @@ import { Elysia, status } from "elysia"
 import { admin } from "./admin.ts"
 import { db } from "./db.ts"
 import { env } from "./env.ts"
+import { createEmbedder } from "./embed/worker.ts"
 import { createIndexer } from "./indexer/index.ts"
 import { startDraftSweeper } from "./resume/drafts.ts"
+import { agentRoute } from "./xrpc/agent.ts"
 import { getProfile } from "./xrpc/getProfile.ts"
 import { resume } from "./xrpc/resume.ts"
+import { searchTalentRoute } from "./xrpc/searchTalent.ts"
 
 const indexer = createIndexer()
+const embedder = createEmbedder()
 
 const app = new Elysia()
   .use(cors({ origin: env.WEB_ORIGIN }))
   .use(getProfile)
   .use(resume)
-  .use(env.ADMIN_TOKEN ? admin(indexer) : new Elysia())
+  .use(searchTalentRoute)
+  .use(agentRoute)
+  .use(env.ADMIN_TOKEN ? admin(indexer, embedder) : new Elysia())
   // did:web document, so the DID service auth tokens are addressed to
   // resolves to this service.
   .get("/.well-known/did.json", () => ({
@@ -33,11 +39,13 @@ const app = new Elysia()
     try {
       await db.execute(sql`select 1`)
       const { running, cursor } = indexer.status()
+      const { pending, embeddedSubjects } = await embedder.status()
       return {
         service: "appview",
         version: "0.0.1",
         db: "ok",
         indexer: { running, cursor },
+        embedder: { pending, embedded: embeddedSubjects },
       }
     } catch {
       return status(503, { service: "appview", db: "unreachable" })
@@ -48,12 +56,14 @@ const app = new Elysia()
 console.log(`appview listening on http://localhost:${app.server?.port}`)
 
 await indexer.start()
+await embedder.start()
 const stopSweeper = startDraftSweeper()
 
 // Let in-flight events finish so the saved cursor is exact on shutdown.
 for (const signal of ["SIGINT", "SIGTERM"] as const) {
   process.once(signal, async () => {
     stopSweeper()
+    embedder.stop()
     await indexer.stop()
     process.exit(0)
   })

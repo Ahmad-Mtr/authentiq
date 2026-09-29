@@ -56,6 +56,9 @@ function RootLayout() {
                 <Link to="/profile/edit" className="hover:underline">
                   Edit
                 </Link>
+                <Link to="/recruit" className="hover:underline">
+                  Recruit
+                </Link>
                 <form method="post" action="/api/auth/logout">
                   <button className="text-muted-foreground hover:underline">
                     Sign out

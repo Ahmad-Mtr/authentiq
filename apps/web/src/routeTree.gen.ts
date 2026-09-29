@@ -11,9 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as RecruitRouteImport } from './routes/recruit'
 import { Route as PActorRouteImport } from './routes/p.$actor'
 import { Route as ProfileEditRouteImport } from './routes/profile.edit'
 import { Route as ProfileImportRouteImport } from './routes/profile.import'
+import { Route as ApiAgentChatRouteImport } from './routes/api.agent.chat'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api.auth.logout'
 import { Route as ApiAuthSignupRouteImport } from './routes/api.auth.signup'
 import { Route as ApiAuthWhoamiRouteImport } from './routes/api.auth.whoami'
@@ -33,6 +35,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecruitRoute = RecruitRouteImport.update({
+  id: '/recruit',
+  path: '/recruit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PActorRoute = PActorRouteImport.update({
   id: '/p/$actor',
   path: '/p/$actor',
@@ -46,6 +53,11 @@ const ProfileEditRoute = ProfileEditRouteImport.update({
 const ProfileImportRoute = ProfileImportRouteImport.update({
   id: '/profile/import',
   path: '/profile/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAgentChatRoute = ApiAgentChatRouteImport.update({
+  id: '/api/agent/chat',
+  path: '/api/agent/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
@@ -92,9 +104,11 @@ const ApiResumeUploadRoute = ApiResumeUploadRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/recruit': typeof RecruitRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
   '/profile/import': typeof ProfileImportRoute
+  '/api/agent/chat': typeof ApiAgentChatRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
@@ -107,9 +121,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/recruit': typeof RecruitRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
   '/profile/import': typeof ProfileImportRoute
+  '/api/agent/chat': typeof ApiAgentChatRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
@@ -123,9 +139,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/recruit': typeof RecruitRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
   '/profile/import': typeof ProfileImportRoute
+  '/api/agent/chat': typeof ApiAgentChatRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
@@ -140,9 +158,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/login'
+    | '/recruit'
     | '/p/$actor'
     | '/profile/edit'
     | '/profile/import'
+    | '/api/agent/chat'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
@@ -155,9 +175,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/login'
+    | '/recruit'
     | '/p/$actor'
     | '/profile/edit'
     | '/profile/import'
+    | '/api/agent/chat'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
@@ -170,9 +192,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/login'
+    | '/recruit'
     | '/p/$actor'
     | '/profile/edit'
     | '/profile/import'
+    | '/api/agent/chat'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
@@ -186,9 +210,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LoginRoute: typeof LoginRoute
+  RecruitRoute: typeof RecruitRoute
   PActorRoute: typeof PActorRoute
   ProfileEditRoute: typeof ProfileEditRoute
   ProfileImportRoute: typeof ProfileImportRoute
+  ApiAgentChatRoute: typeof ApiAgentChatRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthSignupRoute: typeof ApiAuthSignupRoute
   ApiAuthWhoamiRoute: typeof ApiAuthWhoamiRoute
@@ -215,6 +241,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/recruit': {
+      id: '/recruit'
+      path: '/recruit'
+      fullPath: '/recruit'
+      preLoaderRoute: typeof RecruitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/p/$actor': {
       id: '/p/$actor'
       path: '/p/$actor'
@@ -234,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/profile/import'
       fullPath: '/profile/import'
       preLoaderRoute: typeof ProfileImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/agent/chat': {
+      id: '/api/agent/chat'
+      path: '/api/agent/chat'
+      fullPath: '/api/agent/chat'
+      preLoaderRoute: typeof ApiAgentChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/auth/logout': {
@@ -298,9 +338,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
+  RecruitRoute: RecruitRoute,
   PActorRoute: PActorRoute,
   ProfileEditRoute: ProfileEditRoute,
   ProfileImportRoute: ProfileImportRoute,
+  ApiAgentChatRoute: ApiAgentChatRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthSignupRoute: ApiAuthSignupRoute,
   ApiAuthWhoamiRoute: ApiAuthWhoamiRoute,

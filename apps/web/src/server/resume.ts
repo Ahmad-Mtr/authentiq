@@ -1,7 +1,7 @@
 import type { Agent } from "@atproto/api"
 import { sh } from "@workspace/lexicons"
 import { z } from "zod"
-import { env } from "./env.ts"
+import { ApiError, appViewError, callAppView } from "./appview.ts"
 import {
   buildEducationRecord,
   buildPositionRecord,
@@ -18,9 +18,8 @@ import {
  *   review page ◀── draft                                   (never the PDS)
  *   browser ──confirmed entries──▶ /api/resume/confirm ──applyWrites──▶ user's PDS
  *
- * Calls to the AppView carry an ATProto service auth token that the user's
- * PDS mints for exactly one method (`lxm`) and 60 seconds. The resume never
- * goes near `uploadBlob`: repo blobs are public (ADR 0001).
+ * Calls to the AppView go through ./appview.ts (service auth). The resume
+ * never goes near `uploadBlob`: repo blobs are public (ADR 0001).
  */
 
 const RESUME = sh.authentiq.resume
@@ -31,49 +30,6 @@ const EDUCATION = sh.authentiq.actor.education
 export const MAX_RESUME_BYTES = 5 * 1024 * 1024
 
 export type DraftView = sh.authentiq.resume.defs.DraftView
-
-export class ResumeError extends Error {
-  constructor(
-    readonly status: number,
-    readonly error: string,
-    message: string,
-    readonly issues?: Array<{ path: string; message: string }>
-  ) {
-    super(message)
-  }
-}
-
-async function callAppView(
-  agent: Agent,
-  lxm: string,
-  init: RequestInit & { query?: Record<string, string> } = {}
-) {
-  const { data } = await agent.com.atproto.server.getServiceAuth({
-    aud: env.APPVIEW_DID,
-    lxm,
-    exp: Math.floor(Date.now() / 1000) + 60,
-  })
-  const url = new URL(`/xrpc/${lxm}`, env.APPVIEW_URL)
-  for (const [k, v] of Object.entries(init.query ?? {})) {
-    url.searchParams.set(k, v)
-  }
-  return fetch(url, {
-    ...init,
-    headers: { ...init.headers, authorization: `Bearer ${data.token}` },
-  })
-}
-
-async function appViewError(res: Response) {
-  const body = (await res.json().catch(() => ({}))) as {
-    error?: string
-    message?: string
-  }
-  return new ResumeError(
-    res.status,
-    body.error ?? "AppViewError",
-    body.message ?? `AppView returned ${res.status}`
-  )
-}
 
 /** Sends the file to the AppView for parsing. The BFF keeps no copy. */
 export async function uploadResume(
@@ -139,7 +95,7 @@ export type ConfirmInput = z.input<typeof confirmInput>
 export async function confirmResume(agent: Agent, raw: unknown) {
   const parsed = confirmInput.safeParse(raw)
   if (!parsed.success) {
-    throw new ResumeError(
+    throw new ApiError(
       400,
       "InvalidEntries",
       "Some entries need fixing",
@@ -153,7 +109,7 @@ export async function confirmResume(agent: Agent, raw: unknown) {
   const did = agent.assertDid
 
   if (!(await fetchDraft(agent, input.draftId))) {
-    throw new ResumeError(
+    throw new ApiError(
       410,
       "DraftNotFound",
       "This import has expired. Upload the resume again."
@@ -188,12 +144,9 @@ export async function confirmResume(agent: Agent, raw: unknown) {
     }
     const displayName = profile.displayName ?? existing?.displayName
     if (!displayName) {
-      throw new ResumeError(
-        400,
-        "InvalidEntries",
-        "A display name is required",
-        [{ path: "profile.displayName", message: "Required for a new profile" }]
-      )
+      throw new ApiError(400, "InvalidEntries", "A display name is required", [
+        { path: "profile.displayName", message: "Required for a new profile" },
+      ])
     }
     const { $type: _, ...rest } = existing ?? {}
     writes.push({

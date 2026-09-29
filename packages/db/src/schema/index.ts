@@ -1,12 +1,25 @@
+import { sql } from "drizzle-orm"
+import type { SQL } from "drizzle-orm"
 import {
   boolean,
+  customType,
   index,
+  integer,
   jsonb,
   pgTable,
   text,
   timestamp,
   uniqueIndex,
+  vector,
 } from "drizzle-orm/pg-core"
+
+/** Postgres full-text search vector; Drizzle has no built-in type for it. */
+const tsvector = customType<{ data: string }>({
+  dataType: () => "tsvector",
+})
+
+/** Must equal `EMBEDDING_DIMENSIONS` in packages/ai (mistral-embed). */
+export const EMBEDDING_COLUMN_DIMENSIONS = 1024
 
 /**
  * Small key/value store for service bookkeeping, e.g. the AppView's firehose
@@ -168,4 +181,59 @@ export const education = pgTable(
     createdAt: timestamp({ withTimezone: true }).notNull(),
   },
   (t) => [index("education_did_idx").on(t.did)]
+)
+
+/**
+ * Search documents and their vectors (phase 5). One row per embedded subject:
+ * for `kind = "actor"` the subject is the actor's DID and the document is
+ * built from their profile, positions and education. Phase 7 adds job
+ * postings as another kind, keyed by record URI.
+ *
+ * The indexer only sets `dirtyAt`; a worker builds the document, and embeds it
+ * when `contentHash` differs from `embeddedHash`. So a model outage delays
+ * vectors but never blocks or loses firehose events, and FTS (over `search`)
+ * is current as soon as the document is rebuilt. Rows go with the actor.
+ */
+export const embedding = pgTable(
+  "embedding",
+  {
+    subject: text().primaryKey(),
+    kind: text().notNull(),
+    did: text()
+      .notNull()
+      .references(() => actor.did, { onDelete: "cascade" }),
+    /** Canonical document; null until the worker first builds it. */
+    document: text(),
+    search: tsvector().generatedAlwaysAs(
+      (): SQL =>
+        sql`to_tsvector('english', coalesce(${embedding.document}, ''))`
+    ),
+    /** sha256 of model, builder version and document. */
+    contentHash: text(),
+    /** The hash `vector` was computed from; differs from contentHash while stale. */
+    embeddedHash: text(),
+    model: text(),
+    vector: vector({ dimensions: EMBEDDING_COLUMN_DIMENSIONS }),
+    /** Model calls that produced a vector for this subject, for verification. */
+    embedCount: integer().notNull().default(0),
+    /** Set when the source records change; cleared once processed. */
+    dirtyAt: timestamp({ withTimezone: true }),
+    attempts: integer().notNull().default(0),
+    nextAttemptAt: timestamp({ withTimezone: true }),
+    /** Error type of the last failed attempt; never content. */
+    lastError: text(),
+    embeddedAt: timestamp({ withTimezone: true }),
+    updatedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("embedding_did_idx").on(t.did),
+    index("embedding_vector_idx").using(
+      "hnsw",
+      t.vector.op("vector_cosine_ops")
+    ),
+    index("embedding_search_idx").using("gin", t.search),
+    index("embedding_dirty_idx")
+      .on(t.nextAttemptAt)
+      .where(sql`${t.dirtyAt} is not null`),
+  ]
 )

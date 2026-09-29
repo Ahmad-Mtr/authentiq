@@ -1,0 +1,406 @@
+{
+ "description": "Hand-labelled relevance for bun run eval:search, against infra/fixtures/talent/corpus.ts (bun run seed:talent). Grades: 3 highly relevant, 2 relevant, 1 marginal; unlisted = 0. Written by reading the corpus table (field, seniority, headline, skills, about, position descriptions), before any eval run. A person who fails a query's filters is not labelled for it.",
+ "queries": [
+  {
+   "id": "q01",
+   "type": "exact",
+   "q": "Terraform",
+   "filters": {},
+   "relevance": {
+    "tal-026.test": 3,
+    "tal-027.test": 3,
+    "tal-028.test": 3,
+    "tal-029.test": 3,
+    "tal-030.test": 3,
+    "tal-081.test": 3,
+    "tal-005.test": 2,
+    "tal-025.test": 2
+   }
+  },
+  {
+   "id": "q02",
+   "type": "exact",
+   "q": "Salesforce CPQ",
+   "filters": {},
+   "relevance": {
+    "tal-041.test": 3,
+    "tal-043.test": 3,
+    "tal-044.test": 3,
+    "tal-045.test": 3,
+    "tal-042.test": 1
+   }
+  },
+  {
+   "id": "q03",
+   "type": "exact",
+   "q": "IFRS 16",
+   "filters": {},
+   "relevance": {
+    "tal-051.test": 3,
+    "tal-052.test": 3,
+    "tal-053.test": 3,
+    "tal-055.test": 3,
+    "tal-083.test": 3,
+    "tal-054.test": 1
+   }
+  },
+  {
+   "id": "q04",
+   "type": "exact",
+   "q": "PyTorch",
+   "filters": {},
+   "relevance": {
+    "tal-017.test": 3,
+    "tal-018.test": 3,
+    "tal-020.test": 3,
+    "tal-016.test": 1,
+    "tal-019.test": 1
+   }
+  },
+  {
+   "id": "q05",
+   "type": "exact",
+   "q": "SwiftUI",
+   "filters": {},
+   "relevance": {
+    "tal-011.test": 3,
+    "tal-012.test": 3,
+    "tal-013.test": 3,
+    "tal-014.test": 3,
+    "tal-015.test": 3
+   }
+  },
+  {
+   "id": "q06",
+   "type": "exact",
+   "q": "WCAG",
+   "filters": {},
+   "relevance": {
+    "tal-007.test": 3,
+    "tal-008.test": 3,
+    "tal-009.test": 3,
+    "tal-010.test": 3,
+    "tal-082.test": 3,
+    "tal-006.test": 1,
+    "tal-033.test": 1,
+    "tal-034.test": 1
+   }
+  },
+  {
+   "id": "q07",
+   "type": "exact",
+   "q": "Airflow",
+   "filters": {},
+   "relevance": {
+    "tal-021.test": 3,
+    "tal-022.test": 3,
+    "tal-023.test": 3,
+    "tal-024.test": 3,
+    "tal-025.test": 3
+   }
+  },
+  {
+   "id": "q08",
+   "type": "exact",
+   "q": "GD&T",
+   "filters": {},
+   "relevance": {
+    "tal-079.test": 3,
+    "tal-080.test": 3,
+    "tal-076.test": 1,
+    "tal-077.test": 1,
+    "tal-078.test": 1
+   }
+  },
+  {
+   "id": "q09",
+   "type": "exact",
+   "q": "Greenhouse",
+   "filters": {},
+   "relevance": {
+    "tal-071.test": 3,
+    "tal-072.test": 3,
+    "tal-073.test": 3,
+    "tal-075.test": 3,
+    "tal-074.test": 1
+   }
+  },
+  {
+   "id": "q10",
+   "type": "concept",
+   "q": "someone who gets woken up at night when production breaks and fixes the outage",
+   "filters": {},
+   "relevance": {
+    "tal-026.test": 3,
+    "tal-027.test": 3,
+    "tal-028.test": 3,
+    "tal-029.test": 3,
+    "tal-030.test": 3,
+    "tal-081.test": 3,
+    "tal-001.test": 1,
+    "tal-002.test": 1,
+    "tal-003.test": 1,
+    "tal-004.test": 1,
+    "tal-005.test": 1
+   }
+  },
+  {
+   "id": "q11",
+   "type": "concept",
+   "q": "a person to make our product's screens look good and easy to use",
+   "filters": {},
+   "relevance": {
+    "tal-031.test": 3,
+    "tal-032.test": 3,
+    "tal-033.test": 3,
+    "tal-034.test": 3,
+    "tal-035.test": 3,
+    "tal-006.test": 1,
+    "tal-007.test": 1,
+    "tal-008.test": 1,
+    "tal-009.test": 1,
+    "tal-010.test": 1,
+    "tal-082.test": 1
+   }
+  },
+  {
+   "id": "q12",
+   "type": "concept",
+   "q": "helps a company close its books at the end of every month",
+   "filters": {},
+   "relevance": {
+    "tal-051.test": 3,
+    "tal-052.test": 3,
+    "tal-053.test": 3,
+    "tal-054.test": 3,
+    "tal-055.test": 3,
+    "tal-083.test": 3
+   }
+  },
+  {
+   "id": "q13",
+   "type": "concept",
+   "q": "teaches teenagers algebra",
+   "filters": {},
+   "relevance": {
+    "tal-061.test": 3,
+    "tal-062.test": 3,
+    "tal-063.test": 3,
+    "tal-064.test": 3,
+    "tal-065.test": 3
+   }
+  },
+  {
+   "id": "q14",
+   "type": "concept",
+   "q": "predict which customers are about to cancel",
+   "filters": {},
+   "relevance": {
+    "tal-016.test": 3,
+    "tal-017.test": 3,
+    "tal-018.test": 3,
+    "tal-019.test": 3,
+    "tal-020.test": 3,
+    "tal-038.test": 1,
+    "tal-040.test": 1
+   }
+  },
+  {
+   "id": "q15",
+   "type": "concept",
+   "q": "looks after critically ill patients in a hospital",
+   "filters": {},
+   "relevance": {
+    "tal-056.test": 3,
+    "tal-057.test": 3,
+    "tal-058.test": 3,
+    "tal-059.test": 3,
+    "tal-060.test": 3
+   }
+  },
+  {
+   "id": "q16",
+   "type": "concept",
+   "q": "negotiates contracts for a software company",
+   "filters": {},
+   "relevance": {
+    "tal-066.test": 3,
+    "tal-069.test": 3,
+    "tal-067.test": 2,
+    "tal-068.test": 2,
+    "tal-070.test": 2,
+    "tal-042.test": 1,
+    "tal-043.test": 1
+   }
+  },
+  {
+   "id": "q17",
+   "type": "concept",
+   "q": "finds and hires engineers for a startup",
+   "filters": {},
+   "relevance": {
+    "tal-071.test": 3,
+    "tal-072.test": 3,
+    "tal-073.test": 3,
+    "tal-074.test": 3,
+    "tal-075.test": 3
+   }
+  },
+  {
+   "id": "q18",
+   "type": "concept",
+   "q": "designs physical machine parts and gets them ready for the factory",
+   "filters": {},
+   "relevance": {
+    "tal-076.test": 3,
+    "tal-077.test": 3,
+    "tal-078.test": 3,
+    "tal-079.test": 3,
+    "tal-080.test": 3
+   }
+  },
+  {
+   "id": "q19",
+   "type": "concept",
+   "q": "grow our organic website traffic",
+   "filters": {},
+   "relevance": {
+    "tal-046.test": 3,
+    "tal-047.test": 3,
+    "tal-049.test": 3,
+    "tal-048.test": 2,
+    "tal-050.test": 2
+   }
+  },
+  {
+   "id": "q20",
+   "type": "mixed",
+   "q": "Go developer who knows Kafka and event-driven design",
+   "filters": {},
+   "relevance": {
+    "tal-001.test": 3,
+    "tal-002.test": 3,
+    "tal-003.test": 3,
+    "tal-004.test": 2,
+    "tal-005.test": 2,
+    "tal-021.test": 1,
+    "tal-025.test": 1,
+    "tal-027.test": 1,
+    "tal-028.test": 1,
+    "tal-029.test": 1,
+    "tal-030.test": 1,
+    "tal-081.test": 1
+   }
+  },
+  {
+   "id": "q21",
+   "type": "mixed",
+   "q": "experimentation and A/B testing to measure product changes",
+   "filters": {},
+   "relevance": {
+    "tal-017.test": 3,
+    "tal-020.test": 3,
+    "tal-018.test": 2,
+    "tal-036.test": 2,
+    "tal-037.test": 2,
+    "tal-039.test": 2,
+    "tal-016.test": 1,
+    "tal-019.test": 1
+   }
+  },
+  {
+   "id": "q22",
+   "type": "filtered",
+   "q": "senior backend engineer",
+   "filters": {
+    "location": "Warsaw"
+   },
+   "relevance": {
+    "tal-004.test": 3,
+    "tal-005.test": 3,
+    "tal-026.test": 1
+   }
+  },
+  {
+   "id": "q23",
+   "type": "filtered",
+   "q": "machine learning",
+   "filters": {
+    "openToWork": true
+   },
+   "relevance": {
+    "tal-016.test": 3,
+    "tal-017.test": 3,
+    "tal-019.test": 3,
+    "tal-020.test": 3
+   }
+  },
+  {
+   "id": "q24",
+   "type": "filtered",
+   "q": "nurse",
+   "filters": {
+    "skills": [
+     "ICU"
+    ]
+   },
+   "relevance": {
+    "tal-056.test": 3,
+    "tal-057.test": 3,
+    "tal-058.test": 3,
+    "tal-059.test": 3,
+    "tal-060.test": 3
+   }
+  },
+  {
+   "id": "q25",
+   "type": "filtered",
+   "q": "product designer",
+   "filters": {
+    "location": "Amsterdam",
+    "openToWork": true
+   },
+   "relevance": {
+    "tal-034.test": 3
+   }
+  },
+  {
+   "id": "q26",
+   "type": "filtered",
+   "q": "frontend developer",
+   "filters": {
+    "skills": [
+     "WCAG"
+    ]
+   },
+   "relevance": {
+    "tal-009.test": 3,
+    "tal-010.test": 3,
+    "tal-082.test": 3
+   }
+  },
+  {
+   "id": "q27",
+   "type": "filtered",
+   "q": "accountant",
+   "filters": {
+    "location": "Dublin"
+   },
+   "relevance": {
+    "tal-052.test": 3,
+    "tal-053.test": 3
+   }
+  },
+  {
+   "id": "q28",
+   "type": "filtered",
+   "q": "Kubernetes",
+   "filters": {
+    "openToWork": true
+   },
+   "relevance": {
+    "tal-030.test": 3
+   }
+  }
+ ]
+}

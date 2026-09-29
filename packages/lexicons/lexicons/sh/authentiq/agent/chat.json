@@ -1,0 +1,27 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.agent.chat",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "One turn of the recruiting agent. Served by the AppView and requires service auth (lxm = this NSID). The response streams as server-sent events: turn {conversationId}, text {delta}, tool_call {id, name, arguments}, tool_result {id, name, summary, uris}, final {text, citations, dropped}, done {steps, tokens}, error {message}. The agent reads public records only, drafts text only, and never writes to a repo.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["message"],
+          "properties": {
+            "conversationId": {
+              "type": "string",
+              "maxLength": 64,
+              "description": "Continue a conversation. Conversations live in AppView memory for 30 minutes and belong to the DID that started them."
+            },
+            "message": { "type": "string", "minLength": 1, "maxLength": 2000 }
+          }
+        }
+      },
+      "output": { "encoding": "text/event-stream" },
+      "errors": [{ "name": "RateLimitExceeded" }, { "name": "ConversationNotFound" }]
+    }
+  }
+}

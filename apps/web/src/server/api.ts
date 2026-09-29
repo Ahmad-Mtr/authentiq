@@ -1,5 +1,5 @@
 import { env } from "./env.ts"
-import { ResumeError } from "./resume.ts"
+import { ApiError } from "./appview.ts"
 import { getSessionAgent } from "./session.ts"
 
 /**
@@ -25,14 +25,14 @@ export async function apiSession(request: Request) {
 }
 
 export function errorResponse(err: unknown) {
-  if (err instanceof ResumeError) {
+  if (err instanceof ApiError) {
     return Response.json(
       { error: err.error, message: err.message, issues: err.issues },
       { status: err.status }
     )
   }
-  // Never echo or log request content: it may be a resume.
-  console.error("[resume] request failed:", (err as Error).name)
+  // Never echo or log request content: it may be a resume or a conversation.
+  console.error("[api] request failed:", (err as Error).name)
   return Response.json(
     { error: "InternalError", message: "Something went wrong" },
     { status: 500 }

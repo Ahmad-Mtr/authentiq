@@ -5,6 +5,11 @@ import { schema } from "@workspace/db"
 import { NSID_PREFIX } from "@workspace/atproto"
 import { db } from "../db.ts"
 import { env } from "../env.ts"
+import {
+  markDirty,
+  markExistingDirty,
+  removeActorEmbeddings,
+} from "../embed/subjects.ts"
 import { backfillKnownRepos, backfillRepo } from "./backfill.ts"
 import { logInvalid } from "./collections.ts"
 import { idResolver, resolveIdentity, upsertActor } from "./identity.ts"
@@ -137,6 +142,10 @@ async function indexCommit(evt: CommitEvt) {
         await handler.delete(tx, uri)
       }
     }
+    // Same transaction as the write: the embedding worker picks it up later,
+    // so a model outage never holds up or loses a firehose event.
+    const target = handler.embeds?.({ uri, did: evt.did })
+    if (target) await markDirty(tx, target.kind, target.subject, evt.did)
     await tx
       .update(schema.actor)
       .set({ rev: evt.rev })
@@ -167,12 +176,19 @@ async function onAccount(evt: AccountEvt) {
     await db.delete(schema.actor).where(eq(schema.actor.did, evt.did))
     return
   }
-  await db.transaction((tx) =>
-    upsertActor(tx, evt.did, {
+  await db.transaction(async (tx) => {
+    await upsertActor(tx, evt.did, {
       active: evt.active,
       status: evt.active ? null : (evt.status ?? null),
     })
-  )
+    // Hidden actors leave search at once; reactivated ones are re-embedded.
+    if (evt.active) {
+      await markDirty(tx, "actor", evt.did, evt.did)
+      await markExistingDirty(tx, evt.did)
+    } else {
+      await removeActorEmbeddings(tx, evt.did)
+    }
+  })
   if (!evt.active) return
   const [actor] = await db
     .select({ backfilledAt: schema.actor.backfilledAt })

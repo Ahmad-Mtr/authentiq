@@ -1,6 +1,7 @@
 import { Elysia, status, t } from "elysia"
 import { sh } from "@workspace/lexicons"
 import { verifyServiceAuth } from "../auth.ts"
+import { createRateLimiter } from "../ratelimit.ts"
 import { deleteDraft, getDraft, saveDraft } from "../resume/drafts.ts"
 import {
   MAX_RESUME_BYTES,
@@ -23,15 +24,7 @@ const RESUME = sh.authentiq.resume
  */
 
 /** Each parse costs a model call, so uploads are rate limited per user. */
-const UPLOADS_PER_HOUR = 10
-const uploads = new Map<string, Array<number>>()
-function allowUpload(did: string) {
-  const since = Date.now() - 60 * 60 * 1000
-  const recent = (uploads.get(did) ?? []).filter((at) => at > since)
-  if (recent.length >= UPLOADS_PER_HOUR) return false
-  uploads.set(did, [...recent, Date.now()])
-  return true
-}
+const uploads = createRateLimiter(10, 60 * 60 * 1000)
 
 const unauthorized = (auth: { error: string; message: string }) =>
   status(401, auth)
@@ -60,10 +53,10 @@ export const resume = new Elysia()
           message: `Resumes are limited to ${MAX_RESUME_BYTES / 1024 / 1024} MB`,
         })
       }
-      if (!allowUpload(did)) {
+      if (!uploads.allow(did)) {
         return status(429, {
           error: "RateLimitExceeded",
-          message: `At most ${UPLOADS_PER_HOUR} resume uploads per hour`,
+          message: `At most ${uploads.limit} resume uploads per hour`,
         })
       }
 

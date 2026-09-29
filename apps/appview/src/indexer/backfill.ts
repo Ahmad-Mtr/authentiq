@@ -5,6 +5,11 @@ import { schema } from "@workspace/db"
 import { AtUri } from "@workspace/atproto"
 import { db } from "../db.ts"
 import { env } from "../env.ts"
+import {
+  markDirty,
+  markExistingDirty,
+  removeActorEmbeddings,
+} from "../embed/subjects.ts"
 import { logInvalid } from "./collections.ts"
 import { idResolver, resolveIdentity, upsertActor } from "./identity.ts"
 import { collections } from "./registry.ts"
@@ -40,9 +45,10 @@ export async function backfillRepo(did: string) {
       return
     }
     if (status) {
-      await db.transaction((tx) =>
-        upsertActor(tx, did, { handle, active: false, status })
-      )
+      await db.transaction(async (tx) => {
+        await upsertActor(tx, did, { handle, active: false, status })
+        await removeActorEmbeddings(tx, did)
+      })
       return
     }
     throw new Error(`getRepo ${did}: ${res.status} ${body.error ?? ""}`)
@@ -85,7 +91,18 @@ export async function backfillRepo(did: string) {
         indexed++
       }
       await handler.prune(tx, did, keep)
+      // Every subject the snapshot feeds is rebuilt; so are subjects whose
+      // records were pruned, which then drop out.
+      for (const target of new Map(
+        keep.flatMap((uri) => {
+          const t = handler.embeds?.({ uri, did })
+          return t ? [[t.subject, t] as const] : []
+        })
+      ).values()) {
+        await markDirty(tx, target.kind, target.subject, did)
+      }
     }
+    await markExistingDirty(tx, did)
   })
   console.log(
     `[indexer] backfilled ${handle ?? did} at rev ${repo.commit.rev}: ${indexed} records, ${invalid} invalid`
