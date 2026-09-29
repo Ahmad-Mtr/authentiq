@@ -1,0 +1,97 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.feed.defs",
+  "defs": {
+    "postView": {
+      "type": "object",
+      "description": "A post as the AppView shows it. Deliberately has no like count and no author follower count: views carry the viewer's own state only.",
+      "required": ["uri", "cid", "author", "record", "indexedAt"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "cid": { "type": "string", "format": "cid" },
+        "author": { "type": "ref", "ref": "sh.authentiq.actor.defs#profileView" },
+        "record": { "type": "unknown", "description": "The sh.authentiq.feed.post record as indexed." },
+        "embed": { "type": "union", "refs": ["sh.authentiq.embed.external#view"] },
+        "community": {
+          "type": "ref",
+          "ref": "sh.authentiq.community.defs#communityViewBasic",
+          "description": "The community the post is shown in: the post's own for a top-level post, its root's for a reply. Absent when the author is not a member, so a non-member cannot claim a community."
+        },
+        "replyCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Visible direct replies. Thread navigation: it says there is a conversation to open. Nothing is ranked by it."
+        },
+        "indexedAt": { "type": "string", "format": "datetime" },
+        "viewer": { "type": "ref", "ref": "#viewerState" }
+      }
+    },
+    "viewerState": {
+      "type": "object",
+      "description": "The requesting account's relationship to the post. Present only when the request carries service auth.",
+      "properties": {
+        "like": { "type": "string", "format": "at-uri", "description": "The viewer's like record, if they liked the post." }
+      }
+    },
+    "feedViewPost": {
+      "type": "object",
+      "required": ["post"],
+      "properties": {
+        "post": { "type": "ref", "ref": "#postView" },
+        "reply": { "type": "ref", "ref": "#replyContext" }
+      }
+    },
+    "replyContext": {
+      "type": "object",
+      "required": ["root", "parent"],
+      "properties": {
+        "root": { "type": "union", "refs": ["#postView", "#notFoundPost", "#hiddenPost"] },
+        "parent": { "type": "union", "refs": ["#postView", "#notFoundPost", "#hiddenPost"] }
+      }
+    },
+    "threadViewPost": {
+      "type": "object",
+      "required": ["post"],
+      "properties": {
+        "post": { "type": "ref", "ref": "#postView" },
+        "parent": { "type": "union", "refs": ["#threadViewPost", "#notFoundPost", "#hiddenPost"] },
+        "replies": {
+          "type": "array",
+          "items": { "type": "union", "refs": ["#threadViewPost", "#notFoundPost", "#hiddenPost"] }
+        }
+      }
+    },
+    "notFoundPost": {
+      "type": "object",
+      "description": "A post the thread refers to that is not available: deleted, not indexed yet, invalid, or by an account that is deactivated or gone. Replies to it are still shown under it.",
+      "required": ["uri", "notFound"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "notFound": { "type": "boolean", "const": true },
+        "replies": {
+          "type": "array",
+          "items": { "type": "union", "refs": ["#threadViewPost", "#notFoundPost", "#hiddenPost"] }
+        }
+      }
+    },
+    "hiddenPost": {
+      "type": "object",
+      "description": "A post the community's creator hid. The record is still in its author's repo; this AppView does not show it in the community.",
+      "required": ["uri", "hidden"],
+      "properties": {
+        "uri": { "type": "string", "format": "at-uri" },
+        "hidden": { "type": "boolean", "const": true },
+        "reason": { "type": "string", "knownValues": ["community-moderation"] },
+        "community": {
+          "type": "string",
+          "format": "at-uri",
+          "description": "The community whose creator hid it. Its URI names the creator, who can unhide it."
+        },
+        "replies": {
+          "type": "array",
+          "items": { "type": "union", "refs": ["#threadViewPost", "#notFoundPost", "#hiddenPost"] }
+        }
+      }
+    }
+  }
+}

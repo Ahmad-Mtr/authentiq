@@ -1,17 +1,30 @@
-import { createFileRoute, notFound } from "@tanstack/react-router"
+import { createFileRoute, getRouteApi, notFound, useRouter } from "@tanstack/react-router"
+import { Separator } from "@workspace/ui/components/separator"
+import { Composer } from "../components/social/composer.tsx"
+import { FollowButton } from "../components/social/follow-button.tsx"
+import { PostCard } from "../components/social/post-card.tsx"
 import { getProfileView } from "../server/profile.ts"
+import { getAuthorFeed } from "../server/social-fns.ts"
 
 export const Route = createFileRoute("/p/$actor")({
   loader: async ({ params }) => {
-    const profile = await getProfileView({ data: { actor: params.actor } })
+    const [profile, feed] = await Promise.all([
+      getProfileView({ data: { actor: params.actor } }),
+      getAuthorFeed({ data: { actor: params.actor } }),
+    ])
     if (!profile) throw notFound()
-    return profile
+    return { profile, feed }
   },
   component: ProfilePage,
 })
 
+const root = getRouteApi("__root__")
+
 function ProfilePage() {
-  const profile = Route.useLoaderData()
+  const { profile, feed } = Route.useLoaderData()
+  const viewer = root.useLoaderData()?.did ?? null
+  const router = useRouter()
+  const isSelf = viewer === profile.did
 
   return (
     <main className="mx-auto max-w-2xl px-6 py-10">
@@ -28,6 +41,15 @@ function ProfilePage() {
           <span className="mt-3 inline-block rounded-full border px-2 py-0.5 text-xs">
             Open to work
           </span>
+        ) : null}
+        {viewer && !isSelf ? (
+          <div className="mt-4">
+            <FollowButton
+              key={profile.did}
+              subject={profile.did}
+              following={profile.viewer?.following}
+            />
+          </div>
         ) : null}
       </header>
 
@@ -86,6 +108,30 @@ function ProfilePage() {
           </ul>
         </section>
       ) : null}
+
+      <Separator className="my-10" />
+
+      <section>
+        <h2 className="font-medium">Posts</h2>
+        {isSelf ? (
+          <div className="mt-4">
+            <Composer onPosted={() => router.invalidate()} />
+          </div>
+        ) : null}
+        <div className="mt-4 grid gap-3">
+          {feed.map((item) => (
+            <PostCard
+              key={item.post.uri}
+              post={item.post}
+              replyTo={item.replyTo}
+              viewer={viewer}
+            />
+          ))}
+          {feed.length === 0 ? (
+            <p className="text-muted-foreground text-sm">No posts yet.</p>
+          ) : null}
+        </div>
+      </section>
 
       <p className="text-muted-foreground mt-12 text-xs">
         Served by the AppView · <code>{profile.did}</code>

@@ -1,0 +1,23 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.feed.like",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "The author likes a post. Likes are public records, but the AppView never shows a count: views only say whether the viewer liked a post.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["subject", "createdAt"],
+        "properties": {
+          "subject": {
+            "type": "ref",
+            "ref": "com.atproto.repo.strongRef",
+            "description": "A sh.authentiq.feed.post."
+          },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}

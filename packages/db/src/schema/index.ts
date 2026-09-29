@@ -7,6 +7,7 @@ import {
   integer,
   jsonb,
   pgTable,
+  primaryKey,
   text,
   timestamp,
   uniqueIndex,
@@ -90,6 +91,28 @@ export const resumeDraft = pgTable(
   (t) => [
     index("resume_draft_did_idx").on(t.did),
     index("resume_draft_expires_at_idx").on(t.expiresAt),
+  ]
+)
+
+/**
+ * Posts a community's creator hid (phase 6): a moderation label, not a repo
+ * record, so a replay does not rebuild it. It only applies while the post is
+ * shown in `communityUri` (checked when views are built), so a creator cannot
+ * hide anything outside their own community. The post stays in its author's
+ * repo.
+ */
+export const communityHiddenPost = pgTable(
+  "community_hidden_post",
+  {
+    communityUri: text().notNull(),
+    postUri: text().notNull(),
+    /** The creator's DID at the time; the community URI already names them. */
+    hiddenBy: text().notNull(),
+    createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.communityUri, t.postUri] }),
+    index("community_hidden_post_post_idx").on(t.postUri),
   ]
 )
 
@@ -181,6 +204,102 @@ export const education = pgTable(
     createdAt: timestamp({ withTimezone: true }).notNull(),
   },
   (t) => [index("education_did_idx").on(t.did)]
+)
+
+/**
+ * `sh.authentiq.feed.post` (phase 6). Reply and community references are
+ * stored as the URIs and CIDs the record names, and never checked against
+ * other rows when indexed: events arrive out of order across repos, so a
+ * reply can be indexed before its parent. Threads, communities and
+ * visibility are resolved when a view is built (apps/appview/src/social).
+ */
+export const post = pgTable(
+  "post",
+  {
+    ...recordColumns(),
+    text: text().notNull(),
+    facets: jsonb(),
+    replyRootUri: text(),
+    replyRootCid: text(),
+    replyParentUri: text(),
+    replyParentCid: text(),
+    communityUri: text(),
+    communityCid: text(),
+    embed: jsonb(),
+    createdAt: timestamp({ withTimezone: true }).notNull(),
+    /**
+     * Feed order: the earlier of createdAt and the time it was first indexed,
+     * so a future-dated createdAt cannot pin a post to the top.
+     */
+    sortAt: timestamp({ withTimezone: true }).notNull(),
+  },
+  (t) => [
+    index("post_did_sort_idx").on(t.did, t.sortAt.desc(), t.uri.desc()),
+    index("post_reply_root_idx").on(t.replyRootUri),
+    index("post_reply_parent_idx").on(t.replyParentUri),
+    index("post_community_sort_idx")
+      .on(t.communityUri, t.sortAt.desc(), t.uri.desc())
+      .where(sql`${t.communityUri} is not null and ${t.replyRootUri} is null`),
+  ]
+)
+
+/** `sh.authentiq.feed.like`. Only ever read as viewer state; never counted. */
+export const postLike = pgTable(
+  "post_like",
+  {
+    ...recordColumns(),
+    subjectUri: text().notNull(),
+    subjectCid: text().notNull(),
+    createdAt: timestamp({ withTimezone: true }).notNull(),
+  },
+  (t) => [index("post_like_did_subject_idx").on(t.did, t.subjectUri)]
+)
+
+/** `sh.authentiq.graph.follow`. Only ever read as viewer state; never counted. */
+export const follow = pgTable(
+  "follow",
+  {
+    ...recordColumns(),
+    subject: text().notNull(),
+    createdAt: timestamp({ withTimezone: true }).notNull(),
+  },
+  (t) => [
+    index("follow_did_subject_idx").on(t.did, t.subject),
+    index("follow_subject_idx").on(t.subject),
+  ]
+)
+
+/** `sh.authentiq.community.declaration`. `did` is the creator. */
+export const community = pgTable(
+  "community",
+  {
+    ...recordColumns(),
+    name: text().notNull(),
+    description: text(),
+    topic: text().notNull(),
+    rules: text().array(),
+    createdAt: timestamp({ withTimezone: true }).notNull(),
+    sortAt: timestamp({ withTimezone: true }).notNull(),
+  },
+  (t) => [
+    index("community_did_idx").on(t.did),
+    index("community_sort_idx").on(t.sortAt.desc(), t.uri.desc()),
+  ]
+)
+
+/** `sh.authentiq.community.membership`, in the member's repo. */
+export const membership = pgTable(
+  "membership",
+  {
+    ...recordColumns(),
+    communityUri: text().notNull(),
+    communityCid: text().notNull(),
+    createdAt: timestamp({ withTimezone: true }).notNull(),
+  },
+  (t) => [
+    index("membership_community_did_idx").on(t.communityUri, t.did),
+    index("membership_did_idx").on(t.did),
+  ]
 )
 
 /**

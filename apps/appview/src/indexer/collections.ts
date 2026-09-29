@@ -10,12 +10,23 @@ export type RecordRef = { uri: string; cid: string; did: string }
 export type Validation =
   { ok: true; value: unknown } | { ok: false; reason: string }
 
+/** Where a record lives, for rules that depend on its author or URI. */
+export type RecordLocation = { uri: string; did: string; rkey: string }
+
 /** How the indexer treats one record collection. */
 export type CollectionHandler = {
   collection: string
+  /**
+   * Create-only records (posts): the first valid version indexed is kept,
+   * and later updates to it are ignored.
+   */
+  immutable: boolean
   /** Lexicon validation, then the record-key shape, then business rules. */
-  validate: (rkey: string, record: unknown) => Validation
+  validate: (at: RecordLocation, record: unknown) => Validation
+  /** Inserts, or replaces the indexed version unless the collection is immutable. */
   upsert: (tx: Tx, ref: RecordRef, value: unknown) => Promise<void>
+  /** Whether a record is indexed. */
+  exists: (tx: Tx, uri: string) => Promise<boolean>
   delete: (tx: Tx, uri: string) => Promise<void>
   /** Backfill: drop this actor's rows whose URIs are no longer in the repo. */
   prune: (tx: Tx, did: string, keep: Array<string>) => Promise<void>
@@ -44,7 +55,9 @@ type RecordTable = PgTable & { uri: AnyPgColumn; did: AnyPgColumn }
 export function defineCollection<TValue, TTable extends RecordTable>(opts: {
   schema: RecordModule<TValue>
   table: TTable
-  rules?: (value: TValue) => string | undefined
+  /** Business rules (./rules.ts); a returned string is the reason to drop it. */
+  rules?: (value: TValue, at: RecordLocation) => string | undefined
+  immutable?: boolean
   embeds?: (ref: { uri: string; did: string }) => EmbedTarget
   toRow: (
     value: TValue
@@ -53,12 +66,14 @@ export function defineCollection<TValue, TTable extends RecordTable>(opts: {
   const { schema, table } = opts
   return {
     collection: schema.$nsid,
+    immutable: opts.immutable ?? false,
     embeds: opts.embeds,
-    validate(rkey, record) {
+    validate(at, record) {
       const parsed = schema.$safeParse(record)
       if (!parsed.success) return { ok: false, reason: parsed.message }
       const reason =
-        checkRecordKey(schema.main.key, rkey) ?? opts.rules?.(parsed.value)
+        checkRecordKey(schema.main.key, at.rkey) ??
+        opts.rules?.(parsed.value, at)
       return reason ? { ok: false, reason } : { ok: true, value: parsed.value }
     },
     async upsert(tx, ref, value) {
@@ -67,10 +82,20 @@ export function defineCollection<TValue, TTable extends RecordTable>(opts: {
         ...opts.toRow(value as TValue),
         indexedAt: new Date(),
       } as TTable["$inferInsert"]
-      await tx
-        .insert(table)
-        .values(row)
-        .onConflictDoUpdate({ target: table.uri, set: row })
+      const insert = tx.insert(table).values(row)
+      await (opts.immutable
+        ? insert.onConflictDoNothing({ target: table.uri })
+        : insert.onConflictDoUpdate({ target: table.uri, set: row }))
+    },
+    async exists(tx, uri) {
+      // Widened: drizzle's `from` cannot see through the generic table type.
+      const source: PgTable = table
+      const rows = await tx
+        .select({ uri: table.uri })
+        .from(source)
+        .where(eq(table.uri, uri))
+        .limit(1)
+      return rows.length > 0
     },
     async delete(tx, uri) {
       await tx.delete(table).where(eq(table.uri, uri))

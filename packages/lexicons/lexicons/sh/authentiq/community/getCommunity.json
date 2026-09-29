@@ -1,0 +1,20 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.community.getCommunity",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "One community. Served by the AppView. Optional service auth (lxm = this NSID) adds viewer state.",
+      "parameters": {
+        "type": "params",
+        "required": ["uri"],
+        "properties": { "uri": { "type": "string", "format": "at-uri" } }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": { "type": "ref", "ref": "sh.authentiq.community.defs#communityView" }
+      },
+      "errors": [{ "name": "CommunityNotFound" }]
+    }
+  }
+}

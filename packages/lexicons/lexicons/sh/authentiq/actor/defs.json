@@ -45,7 +45,15 @@
           "maxLength": 50,
           "items": { "type": "ref", "ref": "#educationView" }
         },
-        "indexedAt": { "type": "string", "format": "datetime" }
+        "indexedAt": { "type": "string", "format": "datetime" },
+        "viewer": { "type": "ref", "ref": "#viewerState" }
+      }
+    },
+    "viewerState": {
+      "type": "object",
+      "description": "The requesting account's relationship to this actor. Present only when the request carries service auth. There is deliberately no follower count.",
+      "properties": {
+        "following": { "type": "string", "format": "at-uri", "description": "The viewer's follow record for this actor, if any." }
       }
     },
     "positionView": {

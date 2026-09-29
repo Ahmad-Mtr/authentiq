@@ -1,0 +1,31 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.community.getPosts",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "Top-level posts written into a community, newest first. Served by the AppView. Only posts by current members (and the creator) are listed, decided when this is called; posts the creator hid are left out. Optional service auth (lxm = this NSID) adds viewer state.",
+      "parameters": {
+        "type": "params",
+        "required": ["community"],
+        "properties": {
+          "community": { "type": "string", "format": "at-uri" },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 100, "default": 30 },
+          "cursor": { "type": "string", "maxLength": 200 }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["feed"],
+          "properties": {
+            "cursor": { "type": "string" },
+            "feed": { "type": "array", "items": { "type": "ref", "ref": "sh.authentiq.feed.defs#feedViewPost" } }
+          }
+        }
+      },
+      "errors": [{ "name": "CommunityNotFound" }]
+    }
+  }
+}

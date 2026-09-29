@@ -44,6 +44,9 @@ function RootLayout() {
             professional identity you own
           </span>
           <div className="ml-auto flex items-center gap-3">
+            <Link to="/communities" className="hover:underline">
+              Communities
+            </Link>
             {viewer ? (
               <>
                 <Link

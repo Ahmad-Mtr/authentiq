@@ -1,0 +1,51 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.feed.post",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A post: long-form text first. Posts are create-only; the AppView keeps the first version it indexes and ignores later updates. There is no repost record and no quote embed: Authentiq has no reshares.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["text", "createdAt"],
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "The post's text. At most 3000 graphemes (and 30000 UTF-8 bytes). Must not be blank.",
+            "minLength": 1,
+            "maxGraphemes": 3000,
+            "maxLength": 30000
+          },
+          "facets": {
+            "type": "array",
+            "description": "Mentions and links in the text, as UTF-8 byte ranges.",
+            "maxLength": 100,
+            "items": { "type": "ref", "ref": "sh.authentiq.richtext.facet" }
+          },
+          "reply": { "type": "ref", "ref": "#replyRef" },
+          "community": {
+            "type": "ref",
+            "ref": "com.atproto.repo.strongRef",
+            "description": "The sh.authentiq.community.declaration this post is written into. Top-level posts only: a reply belongs to its root's community, and a reply that sets this is dropped by the AppView."
+          },
+          "embed": {
+            "type": "union",
+            "description": "Open union; only external link cards exist so far.",
+            "refs": ["sh.authentiq.embed.external"]
+          },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    },
+    "replyRef": {
+      "type": "object",
+      "description": "Where a reply sits: the thread's first post (root) and the post it answers (parent). For a direct reply to the root, both are the same strongRef.",
+      "required": ["root", "parent"],
+      "properties": {
+        "root": { "type": "ref", "ref": "com.atproto.repo.strongRef" },
+        "parent": { "type": "ref", "ref": "com.atproto.repo.strongRef" }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.community.membership",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "The author is a member of a community. Lives in the member's repo; deleting it leaves the community. Only members' top-level posts appear in a community.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["community", "createdAt"],
+        "properties": {
+          "community": {
+            "type": "ref",
+            "ref": "com.atproto.repo.strongRef",
+            "description": "A sh.authentiq.community.declaration."
+          },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}

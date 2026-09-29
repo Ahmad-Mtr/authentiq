@@ -1,0 +1,41 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.richtext.facet",
+  "defs": {
+    "main": {
+      "type": "object",
+      "description": "Annotation of a sub-string within rich text. Mirrors app.bsky.richtext.facet.",
+      "required": ["index", "features"],
+      "properties": {
+        "index": { "type": "ref", "ref": "#byteSlice" },
+        "features": {
+          "type": "array",
+          "minLength": 1,
+          "maxLength": 4,
+          "items": { "type": "union", "refs": ["#mention", "#link"] }
+        }
+      }
+    },
+    "mention": {
+      "type": "object",
+      "description": "A mention of an account. The handle is resolved to a DID when the post is written; the DID is what the facet stores.",
+      "required": ["did"],
+      "properties": { "did": { "type": "string", "format": "did" } }
+    },
+    "link": {
+      "type": "object",
+      "description": "A hyperlink. The AppView only indexes http and https links.",
+      "required": ["uri"],
+      "properties": { "uri": { "type": "string", "format": "uri", "maxLength": 3000 } }
+    },
+    "byteSlice": {
+      "type": "object",
+      "description": "A text segment, as UTF-8 byte offsets (not UTF-16 code units, not graphemes). Start is inclusive, end exclusive. Both must fall on character boundaries inside the text; the AppView drops posts whose facets do not.",
+      "required": ["byteStart", "byteEnd"],
+      "properties": {
+        "byteStart": { "type": "integer", "minimum": 0 },
+        "byteEnd": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

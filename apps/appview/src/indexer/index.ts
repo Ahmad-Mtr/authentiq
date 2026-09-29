@@ -131,8 +131,17 @@ async function indexCommit(evt: CommitEvt) {
   await db.transaction(async (tx) => {
     if (evt.event === "delete") {
       await handler.delete(tx, uri)
+    } else if (
+      evt.event === "update" &&
+      handler.immutable &&
+      (await handler.exists(tx, uri))
+    ) {
+      // Posts are create-only: replies and likes point at the version that
+      // was published, so an edit written straight to the PDS is not shown.
+      console.warn(`[indexer] ignored update to create-only record ${uri}`)
     } else {
-      const result = handler.validate(evt.rkey, evt.record)
+      const at = { uri, did: evt.did, rkey: evt.rkey }
+      const result = handler.validate(at, evt.record)
       if (result.ok) {
         const ref = { uri, cid: evt.cid.toString(), did: evt.did }
         await handler.upsert(tx, ref, result.value)

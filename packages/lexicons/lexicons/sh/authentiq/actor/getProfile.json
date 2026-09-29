@@ -4,7 +4,7 @@
   "defs": {
     "main": {
       "type": "query",
-      "description": "Get a hydrated profile. Served by the AppView, not the PDS.",
+      "description": "Get a hydrated profile. Served by the AppView, not the PDS. Optional service auth (lxm = this NSID) adds viewer state.",
       "parameters": {
         "type": "params",
         "required": ["actor"],

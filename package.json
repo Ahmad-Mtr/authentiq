@@ -15,6 +15,7 @@
     "infra:status": "bun infra/scripts/status.ts",
     "seed": "bun infra/scripts/seed-accounts.ts",
     "seed:talent": "bun infra/scripts/seed-talent.ts",
+    "seed:social": "bun infra/scripts/seed-social.ts",
     "verify:lexicons": "bun infra/scripts/verify-lexicons.ts",
     "verify:oauth": "bun infra/scripts/verify-oauth.ts",
     "verify:indexer": "bun infra/scripts/verify-indexer.ts",
@@ -23,6 +24,7 @@
     "fixtures:resumes": "bun infra/scripts/gen-resume-fixtures.ts",
     "verify:search": "bun infra/scripts/verify-search.ts",
     "verify:agent": "bun infra/scripts/verify-agent.ts",
+    "verify:social": "bun infra/scripts/verify-social.ts",
     "eval:search": "bun infra/scripts/eval-search.ts",
     "db:generate": "bun --filter @workspace/db db:generate",
     "db:migrate": "bun --filter @workspace/db db:migrate",
@@ -32,6 +34,7 @@
     "test": "turbo test"
   },
   "devDependencies": {
+    "@atproto/api": "^0.20.44",
     "@atproto/crypto": "^0.5.5",
     "@workspace/atproto": "workspace:*",
     "@workspace/lexicons": "workspace:*",

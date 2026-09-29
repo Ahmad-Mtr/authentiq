@@ -12,6 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RecruitRouteImport } from './routes/recruit'
+import { Route as ApiCommunitiesRouteImport } from './routes/api.communities'
+import { Route as ApiFollowsRouteImport } from './routes/api.follows'
+import { Route as ApiLikesRouteImport } from './routes/api.likes'
+import { Route as ApiPostsRouteImport } from './routes/api.posts'
+import { Route as CommunitiesIndexRouteImport } from './routes/communities.index'
+import { Route as CommunitiesNewRouteImport } from './routes/communities.new'
 import { Route as PActorRouteImport } from './routes/p.$actor'
 import { Route as ProfileEditRouteImport } from './routes/profile.edit'
 import { Route as ProfileImportRouteImport } from './routes/profile.import'
@@ -19,11 +25,16 @@ import { Route as ApiAgentChatRouteImport } from './routes/api.agent.chat'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api.auth.logout'
 import { Route as ApiAuthSignupRouteImport } from './routes/api.auth.signup'
 import { Route as ApiAuthWhoamiRouteImport } from './routes/api.auth.whoami'
+import { Route as ApiCommunitiesHideRouteImport } from './routes/api.communities.hide'
+import { Route as ApiCommunitiesJoinRouteImport } from './routes/api.communities.join'
 import { Route as ApiOauthCallbackRouteImport } from './routes/api.oauth.callback'
 import { Route as ApiOauthLoginRouteImport } from './routes/api.oauth.login'
+import { Route as ApiRecordsDeleteRouteImport } from './routes/api.records.delete'
 import { Route as ApiResumeCancelRouteImport } from './routes/api.resume.cancel'
 import { Route as ApiResumeConfirmRouteImport } from './routes/api.resume.confirm'
 import { Route as ApiResumeUploadRouteImport } from './routes/api.resume.upload'
+import { Route as CActorRkeyRouteImport } from './routes/c.$actor.$rkey'
+import { Route as PostActorRkeyRouteImport } from './routes/post.$actor.$rkey'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -38,6 +49,36 @@ const LoginRoute = LoginRouteImport.update({
 const RecruitRoute = RecruitRouteImport.update({
   id: '/recruit',
   path: '/recruit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiCommunitiesRoute = ApiCommunitiesRouteImport.update({
+  id: '/api/communities',
+  path: '/api/communities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiFollowsRoute = ApiFollowsRouteImport.update({
+  id: '/api/follows',
+  path: '/api/follows',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLikesRoute = ApiLikesRouteImport.update({
+  id: '/api/likes',
+  path: '/api/likes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPostsRoute = ApiPostsRouteImport.update({
+  id: '/api/posts',
+  path: '/api/posts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunitiesIndexRoute = CommunitiesIndexRouteImport.update({
+  id: '/communities/',
+  path: '/communities/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunitiesNewRoute = CommunitiesNewRouteImport.update({
+  id: '/communities/new',
+  path: '/communities/new',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PActorRoute = PActorRouteImport.update({
@@ -75,6 +116,16 @@ const ApiAuthWhoamiRoute = ApiAuthWhoamiRouteImport.update({
   path: '/api/auth/whoami',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCommunitiesHideRoute = ApiCommunitiesHideRouteImport.update({
+  id: '/hide',
+  path: '/hide',
+  getParentRoute: () => ApiCommunitiesRoute,
+} as any)
+const ApiCommunitiesJoinRoute = ApiCommunitiesJoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => ApiCommunitiesRoute,
+} as any)
 const ApiOauthCallbackRoute = ApiOauthCallbackRouteImport.update({
   id: '/api/oauth/callback',
   path: '/api/oauth/callback',
@@ -83,6 +134,11 @@ const ApiOauthCallbackRoute = ApiOauthCallbackRouteImport.update({
 const ApiOauthLoginRoute = ApiOauthLoginRouteImport.update({
   id: '/api/oauth/login',
   path: '/api/oauth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiRecordsDeleteRoute = ApiRecordsDeleteRouteImport.update({
+  id: '/api/records/delete',
+  path: '/api/records/delete',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiResumeCancelRoute = ApiResumeCancelRouteImport.update({
@@ -100,58 +156,101 @@ const ApiResumeUploadRoute = ApiResumeUploadRouteImport.update({
   path: '/api/resume/upload',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CActorRkeyRoute = CActorRkeyRouteImport.update({
+  id: '/c/$actor/$rkey',
+  path: '/c/$actor/$rkey',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostActorRkeyRoute = PostActorRkeyRouteImport.update({
+  id: '/post/$actor/$rkey',
+  path: '/post/$actor/$rkey',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/recruit': typeof RecruitRoute
+  '/api/communities': typeof ApiCommunitiesRouteWithChildren
+  '/api/follows': typeof ApiFollowsRoute
+  '/api/likes': typeof ApiLikesRoute
+  '/api/posts': typeof ApiPostsRoute
+  '/communities/new': typeof CommunitiesNewRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
   '/profile/import': typeof ProfileImportRoute
+  '/communities/': typeof CommunitiesIndexRoute
   '/api/agent/chat': typeof ApiAgentChatRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
+  '/api/communities/hide': typeof ApiCommunitiesHideRoute
+  '/api/communities/join': typeof ApiCommunitiesJoinRoute
   '/api/oauth/callback': typeof ApiOauthCallbackRoute
   '/api/oauth/login': typeof ApiOauthLoginRoute
+  '/api/records/delete': typeof ApiRecordsDeleteRoute
   '/api/resume/cancel': typeof ApiResumeCancelRoute
   '/api/resume/confirm': typeof ApiResumeConfirmRoute
   '/api/resume/upload': typeof ApiResumeUploadRoute
+  '/c/$actor/$rkey': typeof CActorRkeyRoute
+  '/post/$actor/$rkey': typeof PostActorRkeyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/recruit': typeof RecruitRoute
+  '/api/communities': typeof ApiCommunitiesRouteWithChildren
+  '/api/follows': typeof ApiFollowsRoute
+  '/api/likes': typeof ApiLikesRoute
+  '/api/posts': typeof ApiPostsRoute
+  '/communities/new': typeof CommunitiesNewRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
   '/profile/import': typeof ProfileImportRoute
+  '/communities': typeof CommunitiesIndexRoute
   '/api/agent/chat': typeof ApiAgentChatRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
+  '/api/communities/hide': typeof ApiCommunitiesHideRoute
+  '/api/communities/join': typeof ApiCommunitiesJoinRoute
   '/api/oauth/callback': typeof ApiOauthCallbackRoute
   '/api/oauth/login': typeof ApiOauthLoginRoute
+  '/api/records/delete': typeof ApiRecordsDeleteRoute
   '/api/resume/cancel': typeof ApiResumeCancelRoute
   '/api/resume/confirm': typeof ApiResumeConfirmRoute
   '/api/resume/upload': typeof ApiResumeUploadRoute
+  '/c/$actor/$rkey': typeof CActorRkeyRoute
+  '/post/$actor/$rkey': typeof PostActorRkeyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/recruit': typeof RecruitRoute
+  '/api/communities': typeof ApiCommunitiesRouteWithChildren
+  '/api/follows': typeof ApiFollowsRoute
+  '/api/likes': typeof ApiLikesRoute
+  '/api/posts': typeof ApiPostsRoute
+  '/communities/new': typeof CommunitiesNewRoute
   '/p/$actor': typeof PActorRoute
   '/profile/edit': typeof ProfileEditRoute
   '/profile/import': typeof ProfileImportRoute
+  '/communities/': typeof CommunitiesIndexRoute
   '/api/agent/chat': typeof ApiAgentChatRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/auth/whoami': typeof ApiAuthWhoamiRoute
+  '/api/communities/hide': typeof ApiCommunitiesHideRoute
+  '/api/communities/join': typeof ApiCommunitiesJoinRoute
   '/api/oauth/callback': typeof ApiOauthCallbackRoute
   '/api/oauth/login': typeof ApiOauthLoginRoute
+  '/api/records/delete': typeof ApiRecordsDeleteRoute
   '/api/resume/cancel': typeof ApiResumeCancelRoute
   '/api/resume/confirm': typeof ApiResumeConfirmRoute
   '/api/resume/upload': typeof ApiResumeUploadRoute
+  '/c/$actor/$rkey': typeof CActorRkeyRoute
+  '/post/$actor/$rkey': typeof PostActorRkeyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -159,70 +258,112 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/recruit'
+    | '/api/communities'
+    | '/api/follows'
+    | '/api/likes'
+    | '/api/posts'
+    | '/communities/new'
     | '/p/$actor'
     | '/profile/edit'
     | '/profile/import'
+    | '/communities/'
     | '/api/agent/chat'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
+    | '/api/communities/hide'
+    | '/api/communities/join'
     | '/api/oauth/callback'
     | '/api/oauth/login'
+    | '/api/records/delete'
     | '/api/resume/cancel'
     | '/api/resume/confirm'
     | '/api/resume/upload'
+    | '/c/$actor/$rkey'
+    | '/post/$actor/$rkey'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
     | '/recruit'
+    | '/api/communities'
+    | '/api/follows'
+    | '/api/likes'
+    | '/api/posts'
+    | '/communities/new'
     | '/p/$actor'
     | '/profile/edit'
     | '/profile/import'
+    | '/communities'
     | '/api/agent/chat'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
+    | '/api/communities/hide'
+    | '/api/communities/join'
     | '/api/oauth/callback'
     | '/api/oauth/login'
+    | '/api/records/delete'
     | '/api/resume/cancel'
     | '/api/resume/confirm'
     | '/api/resume/upload'
+    | '/c/$actor/$rkey'
+    | '/post/$actor/$rkey'
   id:
     | '__root__'
     | '/'
     | '/login'
     | '/recruit'
+    | '/api/communities'
+    | '/api/follows'
+    | '/api/likes'
+    | '/api/posts'
+    | '/communities/new'
     | '/p/$actor'
     | '/profile/edit'
     | '/profile/import'
+    | '/communities/'
     | '/api/agent/chat'
     | '/api/auth/logout'
     | '/api/auth/signup'
     | '/api/auth/whoami'
+    | '/api/communities/hide'
+    | '/api/communities/join'
     | '/api/oauth/callback'
     | '/api/oauth/login'
+    | '/api/records/delete'
     | '/api/resume/cancel'
     | '/api/resume/confirm'
     | '/api/resume/upload'
+    | '/c/$actor/$rkey'
+    | '/post/$actor/$rkey'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LoginRoute: typeof LoginRoute
   RecruitRoute: typeof RecruitRoute
+  ApiCommunitiesRoute: typeof ApiCommunitiesRouteWithChildren
+  ApiFollowsRoute: typeof ApiFollowsRoute
+  ApiLikesRoute: typeof ApiLikesRoute
+  ApiPostsRoute: typeof ApiPostsRoute
+  CommunitiesNewRoute: typeof CommunitiesNewRoute
   PActorRoute: typeof PActorRoute
   ProfileEditRoute: typeof ProfileEditRoute
   ProfileImportRoute: typeof ProfileImportRoute
+  CommunitiesIndexRoute: typeof CommunitiesIndexRoute
   ApiAgentChatRoute: typeof ApiAgentChatRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthSignupRoute: typeof ApiAuthSignupRoute
   ApiAuthWhoamiRoute: typeof ApiAuthWhoamiRoute
   ApiOauthCallbackRoute: typeof ApiOauthCallbackRoute
   ApiOauthLoginRoute: typeof ApiOauthLoginRoute
+  ApiRecordsDeleteRoute: typeof ApiRecordsDeleteRoute
   ApiResumeCancelRoute: typeof ApiResumeCancelRoute
   ApiResumeConfirmRoute: typeof ApiResumeConfirmRoute
   ApiResumeUploadRoute: typeof ApiResumeUploadRoute
+  CActorRkeyRoute: typeof CActorRkeyRoute
+  PostActorRkeyRoute: typeof PostActorRkeyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -246,6 +387,48 @@ declare module '@tanstack/react-router' {
       path: '/recruit'
       fullPath: '/recruit'
       preLoaderRoute: typeof RecruitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/communities': {
+      id: '/api/communities'
+      path: '/api/communities'
+      fullPath: '/api/communities'
+      preLoaderRoute: typeof ApiCommunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/follows': {
+      id: '/api/follows'
+      path: '/api/follows'
+      fullPath: '/api/follows'
+      preLoaderRoute: typeof ApiFollowsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/likes': {
+      id: '/api/likes'
+      path: '/api/likes'
+      fullPath: '/api/likes'
+      preLoaderRoute: typeof ApiLikesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/posts': {
+      id: '/api/posts'
+      path: '/api/posts'
+      fullPath: '/api/posts'
+      preLoaderRoute: typeof ApiPostsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/communities/': {
+      id: '/communities/'
+      path: '/communities'
+      fullPath: '/communities/'
+      preLoaderRoute: typeof CommunitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/communities/new': {
+      id: '/communities/new'
+      path: '/communities/new'
+      fullPath: '/communities/new'
+      preLoaderRoute: typeof CommunitiesNewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/p/$actor': {
@@ -297,6 +480,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthWhoamiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/communities/hide': {
+      id: '/api/communities/hide'
+      path: '/hide'
+      fullPath: '/api/communities/hide'
+      preLoaderRoute: typeof ApiCommunitiesHideRouteImport
+      parentRoute: typeof ApiCommunitiesRoute
+    }
+    '/api/communities/join': {
+      id: '/api/communities/join'
+      path: '/join'
+      fullPath: '/api/communities/join'
+      preLoaderRoute: typeof ApiCommunitiesJoinRouteImport
+      parentRoute: typeof ApiCommunitiesRoute
+    }
     '/api/oauth/callback': {
       id: '/api/oauth/callback'
       path: '/api/oauth/callback'
@@ -309,6 +506,13 @@ declare module '@tanstack/react-router' {
       path: '/api/oauth/login'
       fullPath: '/api/oauth/login'
       preLoaderRoute: typeof ApiOauthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/records/delete': {
+      id: '/api/records/delete'
+      path: '/api/records/delete'
+      fullPath: '/api/records/delete'
+      preLoaderRoute: typeof ApiRecordsDeleteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/resume/cancel': {
@@ -332,25 +536,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiResumeUploadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/c/$actor/$rkey': {
+      id: '/c/$actor/$rkey'
+      path: '/c/$actor/$rkey'
+      fullPath: '/c/$actor/$rkey'
+      preLoaderRoute: typeof CActorRkeyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/post/$actor/$rkey': {
+      id: '/post/$actor/$rkey'
+      path: '/post/$actor/$rkey'
+      fullPath: '/post/$actor/$rkey'
+      preLoaderRoute: typeof PostActorRkeyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
+
+interface ApiCommunitiesRouteChildren {
+  ApiCommunitiesHideRoute: typeof ApiCommunitiesHideRoute
+  ApiCommunitiesJoinRoute: typeof ApiCommunitiesJoinRoute
+}
+
+const ApiCommunitiesRouteChildren: ApiCommunitiesRouteChildren = {
+  ApiCommunitiesHideRoute: ApiCommunitiesHideRoute,
+  ApiCommunitiesJoinRoute: ApiCommunitiesJoinRoute,
+}
+
+const ApiCommunitiesRouteWithChildren = ApiCommunitiesRoute._addFileChildren(
+  ApiCommunitiesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
   RecruitRoute: RecruitRoute,
+  ApiCommunitiesRoute: ApiCommunitiesRouteWithChildren,
+  ApiFollowsRoute: ApiFollowsRoute,
+  ApiLikesRoute: ApiLikesRoute,
+  ApiPostsRoute: ApiPostsRoute,
+  CommunitiesNewRoute: CommunitiesNewRoute,
   PActorRoute: PActorRoute,
   ProfileEditRoute: ProfileEditRoute,
   ProfileImportRoute: ProfileImportRoute,
+  CommunitiesIndexRoute: CommunitiesIndexRoute,
   ApiAgentChatRoute: ApiAgentChatRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthSignupRoute: ApiAuthSignupRoute,
   ApiAuthWhoamiRoute: ApiAuthWhoamiRoute,
   ApiOauthCallbackRoute: ApiOauthCallbackRoute,
   ApiOauthLoginRoute: ApiOauthLoginRoute,
+  ApiRecordsDeleteRoute: ApiRecordsDeleteRoute,
   ApiResumeCancelRoute: ApiResumeCancelRoute,
   ApiResumeConfirmRoute: ApiResumeConfirmRoute,
   ApiResumeUploadRoute: ApiResumeUploadRoute,
+  CActorRkeyRoute: CActorRkeyRoute,
+  PostActorRkeyRoute: PostActorRkeyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

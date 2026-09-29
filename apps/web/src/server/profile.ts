@@ -2,7 +2,6 @@ import { createServerFn } from "@tanstack/react-start"
 import { redirect } from "@tanstack/react-router"
 import { sh } from "@workspace/lexicons"
 import { z } from "zod"
-import { env } from "./env.ts"
 import {
   buildEducationRecord,
   buildPositionRecord,
@@ -12,6 +11,7 @@ import {
   profileInput,
 } from "./records.ts"
 import { getSessionAgent, getSessionDid } from "./session.ts"
+import { queryAppView } from "./social.ts"
 
 const PROFILE = sh.authentiq.actor.profile
 const POSITION = sh.authentiq.actor.position
@@ -147,15 +147,20 @@ export const deleteRecord = createServerFn({ method: "POST" })
     return { ok: true }
   })
 
-/** Hydrated profile from the AppView — the read path, per ADR 0001. */
+/**
+ * Hydrated profile from the AppView — the read path, per ADR 0001. Signed in,
+ * the request carries service auth so it includes whether the viewer
+ * follows this actor (phase 6).
+ */
 export const getProfileView = createServerFn()
   .validator(z.object({ actor: z.string() }))
   .handler(async ({ data }) => {
-    const url = new URL("/xrpc/sh.authentiq.actor.getProfile", env.APPVIEW_URL)
-    url.searchParams.set("actor", data.actor)
-    const res = await fetch(url)
-    if (!res.ok) return null
-    return (await res.json()) as sh.authentiq.actor.defs.ProfileViewDetailed
+    const res = await queryAppView<sh.authentiq.actor.defs.ProfileViewDetailed>(
+      await getSessionAgent(),
+      sh.authentiq.actor.getProfile.$lxm,
+      { actor: data.actor }
+    )
+    return res.ok ? res.data : null
   })
 
 /** Who is signed in, for the nav. */

@@ -1,0 +1,29 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.community.list",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "Communities, newest first. Served by the AppView. Optional service auth (lxm = this NSID) adds viewer state.",
+      "parameters": {
+        "type": "params",
+        "properties": {
+          "topic": { "type": "string", "maxLength": 640, "description": "Only communities with this topic (case-insensitive)." },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 100, "default": 50 },
+          "cursor": { "type": "string", "maxLength": 200 }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["communities"],
+          "properties": {
+            "cursor": { "type": "string" },
+            "communities": { "type": "array", "items": { "type": "ref", "ref": "sh.authentiq.community.defs#communityView" } }
+          }
+        }
+      }
+    }
+  }
+}

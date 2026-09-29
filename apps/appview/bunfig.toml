@@ -1,2 +1,6 @@
 # Runs before the entrypoint's module graph is loaded. See src/bun-compat.ts.
 preload = ["./src/bun-compat.ts"]
+
+[test]
+# Tests import modules that load undici too (via @atproto/xrpc-server).
+preload = ["./src/bun-compat.ts"]

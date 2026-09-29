@@ -1,0 +1,35 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.embed.external",
+  "defs": {
+    "main": {
+      "type": "object",
+      "description": "A link card: an external web page shown under a post. The title and description are what the author wrote; the AppView does not fetch the page.",
+      "required": ["external"],
+      "properties": { "external": { "type": "ref", "ref": "#external" } }
+    },
+    "external": {
+      "type": "object",
+      "required": ["uri", "title"],
+      "properties": {
+        "uri": { "type": "string", "format": "uri", "maxLength": 3000 },
+        "title": { "type": "string", "maxGraphemes": 300, "maxLength": 3000 },
+        "description": { "type": "string", "maxGraphemes": 1000, "maxLength": 10000 }
+      }
+    },
+    "view": {
+      "type": "object",
+      "required": ["external"],
+      "properties": { "external": { "type": "ref", "ref": "#viewExternal" } }
+    },
+    "viewExternal": {
+      "type": "object",
+      "required": ["uri", "title"],
+      "properties": {
+        "uri": { "type": "string", "format": "uri" },
+        "title": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

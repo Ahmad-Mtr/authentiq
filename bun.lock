@@ -5,6 +5,7 @@
     "": {
       "name": "start-monorepo",
       "devDependencies": {
+        "@atproto/api": "^0.20.44",
         "@atproto/crypto": "^0.5.5",
         "@workspace/atproto": "workspace:*",
         "@workspace/lexicons": "workspace:*",

@@ -1,3 +1,4 @@
+import type { Agent } from "@atproto/api"
 import { env } from "./env.ts"
 import { ApiError } from "./appview.ts"
 import { getSessionAgent } from "./session.ts"
@@ -54,4 +55,40 @@ export async function readCapped(request: Request, max: number) {
     chunks.push(chunk)
   }
   return Buffer.concat(chunks)
+}
+
+/**
+ * A JSON POST API route that acts for the signed-in user: session and Origin
+ * check, a capped body, then `fn`. Used by the phase 6 write routes, which
+ * `bun run verify:social` calls the way the browser does.
+ */
+export function jsonAction(
+  fn: (agent: Agent, body: unknown) => Promise<unknown>,
+  maxBytes = 128 * 1024
+) {
+  return async ({ request }: { request: Request }) => {
+    const session = await apiSession(request)
+    if ("response" in session) return session.response
+    try {
+      const raw = await readCapped(request, maxBytes)
+      if (!raw) {
+        return Response.json(
+          { error: "PayloadTooLarge", message: "Request body is too large" },
+          { status: 413 }
+        )
+      }
+      let body: unknown
+      try {
+        body = JSON.parse(new TextDecoder().decode(raw))
+      } catch {
+        return Response.json(
+          { error: "InvalidRequest", message: "Send a JSON body" },
+          { status: 400 }
+        )
+      }
+      return Response.json(await fn(session.agent, body))
+    } catch (err) {
+      return errorResponse(err)
+    }
+  }
 }

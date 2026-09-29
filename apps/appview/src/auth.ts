@@ -1,4 +1,7 @@
 import { AuthRequiredError, verifyJwt } from "@atproto/xrpc-server"
+import { eq } from "drizzle-orm"
+import { schema } from "@workspace/db"
+import { db } from "./db.ts"
 import { env } from "./env.ts"
 import { idResolver } from "./indexer/identity.ts"
 
@@ -59,4 +62,28 @@ export async function verifyServiceAuth(
       message: "Could not verify service auth token",
     }
   }
+}
+
+export type ViewerResult =
+  { viewer: string | undefined } | { error: string; message: string }
+
+/**
+ * Queries that add viewer state (phase 6: did I like this, do I follow them)
+ * take optional service auth for their own method. No token means a logged-out
+ * view. A token that fails verification is an error, not a silent downgrade.
+ * An account the index has deactivated gets no viewer state: its likes,
+ * follows and memberships are hidden everywhere, including from itself.
+ */
+export async function resolveViewer(
+  authorization: string | undefined,
+  lxm: string
+): Promise<ViewerResult> {
+  if (!authorization) return { viewer: undefined }
+  const auth = await verifyServiceAuth(authorization, lxm)
+  if (!("did" in auth)) return auth
+  const [row] = await db
+    .select({ active: schema.actor.active })
+    .from(schema.actor)
+    .where(eq(schema.actor.did, auth.did))
+  return { viewer: row && !row.active ? undefined : auth.did }
 }

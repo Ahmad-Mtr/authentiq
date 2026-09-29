@@ -34,3 +34,149 @@ export function checkDateRange(
   }
   return undefined
 }
+
+// --- Social records (phase 6) ------------------------------------------------
+
+/** Long-form text first: the lexicon's limits on `feed.post#text`. */
+export const POST_MAX_GRAPHEMES = 3000
+export const POST_MAX_BYTES = 30000
+
+const POST_NSID = "sh.authentiq.feed.post"
+const COMMUNITY_NSID = "sh.authentiq.community.declaration"
+
+const utf8 = new TextEncoder()
+const graphemes = new Intl.Segmenter(undefined, { granularity: "grapheme" })
+
+export function graphemeLength(text: string) {
+  let n = 0
+  for (const _ of graphemes.segment(text)) n++
+  return n
+}
+
+/**
+ * Text limits. The generated lexicon validator already enforces both, so
+ * this is a second line that keeps the product rule in one readable place.
+ */
+export function checkPostText(text: string): string | undefined {
+  if (text.trim() === "") return "text is blank"
+  const bytes = utf8.encode(text).byteLength
+  if (bytes > POST_MAX_BYTES) {
+    return `text is ${bytes} bytes (maximum ${POST_MAX_BYTES})`
+  }
+  const count = graphemeLength(text)
+  if (count > POST_MAX_GRAPHEMES) {
+    return `text is ${count} graphemes (maximum ${POST_MAX_GRAPHEMES})`
+  }
+  return undefined
+}
+
+type Facet = {
+  index: { byteStart: number; byteEnd: number }
+  features: Array<{ $type?: string; uri?: unknown }>
+}
+
+/**
+ * Facet ranges are UTF-8 byte offsets. Each must be a non-empty range inside
+ * the text whose ends fall on character boundaries: never inside a
+ * multi-byte sequence, where it would split an emoji or an Arabic letter.
+ * Links must be http(s), since they are rendered as anchors.
+ */
+export function checkFacets(
+  text: string,
+  facets: ReadonlyArray<Facet> | undefined
+): string | undefined {
+  if (!facets?.length) return undefined
+  const bytes = utf8.encode(text)
+  // A continuation byte is 0b10xxxxxx; any other position starts a character.
+  const onBoundary = (i: number) =>
+    i === bytes.length || ((bytes[i] ?? 0) & 0xc0) !== 0x80
+  for (const [n, { index, features }] of facets.entries()) {
+    const { byteStart, byteEnd } = index
+    if (byteStart >= byteEnd) {
+      return `facet ${n} is empty or reversed (${byteStart}–${byteEnd})`
+    }
+    if (byteEnd > bytes.length) {
+      return `facet ${n} ends at byte ${byteEnd}, past the text's ${bytes.length}`
+    }
+    if (!onBoundary(byteStart) || !onBoundary(byteEnd)) {
+      return `facet ${n} (${byteStart}–${byteEnd}) splits a character`
+    }
+    for (const feature of features) {
+      if (
+        feature.$type === "sh.authentiq.richtext.facet#link" &&
+        !isHttpUri(feature.uri)
+      ) {
+        return `facet ${n} links to a non-http(s) URI`
+      }
+    }
+  }
+  return undefined
+}
+
+export const isHttpUri = (uri: unknown) =>
+  typeof uri === "string" && /^https?:\/\//i.test(uri)
+
+/** Collection and repo of an AT-URI, or undefined if it is not one. */
+function parseAtUri(uri: string) {
+  const m = /^at:\/\/([^/]+)\/([^/]+)\/([^/]+)$/.exec(uri)
+  return m ? { repo: m[1]!, collection: m[2]!, rkey: m[3]! } : undefined
+}
+
+const pointsAt = (uri: string, collection: string) =>
+  parseAtUri(uri)?.collection === collection
+
+type StrongRef = { uri: string; cid: string }
+
+/**
+ * What can be checked about a reply from the record alone. Whether the
+ * parent really belongs to that root needs the parent, which may not be
+ * indexed yet, so that half is checked when a thread is built.
+ */
+export function checkReply(
+  reply: { root: StrongRef; parent: StrongRef } | undefined,
+  community: StrongRef | undefined,
+  selfUri: string
+): string | undefined {
+  if (!reply) {
+    if (community && !pointsAt(community.uri, COMMUNITY_NSID)) {
+      return `community ${community.uri} is not a ${COMMUNITY_NSID}`
+    }
+    return undefined
+  }
+  const { root, parent } = reply
+  for (const [name, ref] of [
+    ["root", root],
+    ["parent", parent],
+  ] as const) {
+    if (!pointsAt(ref.uri, POST_NSID)) {
+      return `reply ${name} ${ref.uri} is not a ${POST_NSID}`
+    }
+    if (ref.uri === selfUri) return `reply ${name} is the post itself`
+  }
+  if (root.uri === parent.uri && root.cid !== parent.cid) {
+    return "reply root and parent name the same post with different CIDs"
+  }
+  if (community) {
+    return "a reply cannot set community; it belongs to its root's community"
+  }
+  return undefined
+}
+
+export const checkLikeSubject = (subject: StrongRef) =>
+  pointsAt(subject.uri, POST_NSID)
+    ? undefined
+    : `like subject ${subject.uri} is not a ${POST_NSID}`
+
+export const checkFollow = (subject: string, author: string) =>
+  subject === author ? "an account cannot follow itself" : undefined
+
+export const checkMembership = (community: StrongRef) =>
+  pointsAt(community.uri, COMMUNITY_NSID)
+    ? undefined
+    : `membership points at ${community.uri}, not a ${COMMUNITY_NSID}`
+
+export function checkCommunity(v: { name: string; topic: string }) {
+  if (v.name.trim() === "") return "community name is blank"
+  if (v.topic.trim() === "") return "community topic is blank"
+  return undefined
+}

@@ -1,7 +1,8 @@
 import { Elysia, status, t } from "elysia"
-import { desc, eq } from "drizzle-orm"
+import { and, desc, eq } from "drizzle-orm"
 import { schema } from "@workspace/db"
 import { sh } from "@workspace/lexicons"
+import { resolveViewer } from "../auth.ts"
 import { db } from "../db.ts"
 
 /**
@@ -15,7 +16,8 @@ import { db } from "../db.ts"
  * shared by the XRPC route below and the recruiting agent's tools.
  */
 export async function loadProfileView(
-  actorId: string
+  actorId: string,
+  viewer?: string
 ): Promise<sh.authentiq.actor.defs.ProfileViewDetailed | null> {
   const identifier = actorId.toLowerCase()
   const [actor] = await db
@@ -28,7 +30,7 @@ export async function loadProfileView(
     )
   if (!actor?.active) return null
 
-  const [[profile], positions, education] = await Promise.all([
+  const [[profile], positions, education, [follow]] = await Promise.all([
     db.select().from(schema.profile).where(eq(schema.profile.did, actor.did)),
     db.select().from(schema.position).where(eq(schema.position.did, actor.did)),
     db
@@ -37,6 +39,19 @@ export async function loadProfileView(
       .where(eq(schema.education.did, actor.did))
       // TIDs sort by creation time: newest entry first.
       .orderBy(desc(schema.education.uri)),
+    // Viewer state only: whether *I* follow them. Never a follower count.
+    viewer
+      ? db
+          .select({ uri: schema.follow.uri })
+          .from(schema.follow)
+          .where(
+            and(
+              eq(schema.follow.did, viewer),
+              eq(schema.follow.subject, actor.did)
+            )
+          )
+          .limit(1)
+      : [],
   ])
 
   // Built as a plain object, then parsed through the generated view schema:
@@ -77,16 +92,26 @@ export async function loadProfileView(
       description: e.description ?? undefined,
     })),
     indexedAt: (profile?.indexedAt ?? actor.indexedAt).toISOString(),
+    viewer: viewer ? { following: follow?.uri } : undefined,
   })
 }
 
 export const getProfile = new Elysia().get(
-  "/xrpc/sh.authentiq.actor.getProfile",
-  async ({ query }) =>
-    (await loadProfileView(query.actor)) ??
-    status(400, {
-      error: "ActorNotFound",
-      message: `Unknown actor: ${query.actor}`,
-    }),
+  `/xrpc/${sh.authentiq.actor.getProfile.$lxm}`,
+  async ({ query, headers }) => {
+    // Optional service auth adds viewer state (phase 6).
+    const auth = await resolveViewer(
+      headers.authorization,
+      sh.authentiq.actor.getProfile.$lxm
+    )
+    if (!("viewer" in auth)) return status(401, auth)
+    return (
+      (await loadProfileView(query.actor, auth.viewer)) ??
+      status(400, {
+        error: "ActorNotFound",
+        message: `Unknown actor: ${query.actor}`,
+      })
+    )
+  },
   { query: t.Object({ actor: t.String() }) }
 )

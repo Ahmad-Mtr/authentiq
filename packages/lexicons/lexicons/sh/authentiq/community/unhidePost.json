@@ -1,0 +1,35 @@
+{
+  "lexicon": 1,
+  "id": "sh.authentiq.community.unhidePost",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Undo hidePost. Same authorization. Idempotent.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["community", "post"],
+          "properties": {
+            "community": { "type": "string", "format": "at-uri" },
+            "post": { "type": "string", "format": "at-uri" }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["hidden"],
+          "properties": { "hidden": { "type": "boolean" } }
+        }
+      },
+      "errors": [
+        { "name": "CommunityNotFound" },
+        { "name": "NotCommunityCreator", "description": "The caller did not create this community." },
+        { "name": "PostNotFound" },
+        { "name": "NotInCommunity", "description": "The post is not shown in this community." }
+      ]
+    }
+  }
+}

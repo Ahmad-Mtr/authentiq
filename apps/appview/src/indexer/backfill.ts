@@ -76,7 +76,10 @@ export async function backfillRepo(did: string) {
         const bytes = repo.commit.newBlocks.get(entry.cid)
         if (!bytes) continue
         const uri = AtUri.make(did, entry.collection, entry.rkey).toString()
-        const result = handler.validate(entry.rkey, cborToLexRecord(bytes))
+        const result = handler.validate(
+          { uri, did, rkey: entry.rkey },
+          cborToLexRecord(bytes)
+        )
         if (!result.ok) {
           logInvalid(uri, result.reason)
           invalid++
@@ -109,20 +112,36 @@ export async function backfillRepo(did: string) {
   )
 }
 
+/** The registered collections the last complete startup pass indexed. */
+const COLLECTIONS_KEY = "indexer:collections"
+
 /**
  * Startup pass: every repo on the PDS that the index has not backfilled yet.
- * On a real network this would list repos from a relay; locally the PDS is
- * the only host.
+ * When the set of registered collections has changed since the last pass (a
+ * phase added lexicons), every repo is read again instead: repos backfilled
+ * before a handler existed hold records it has never seen, and the firehose
+ * will not replay them. On a real network this would list repos from a
+ * relay; locally the PDS is the only host.
  */
 export async function backfillKnownRepos(runner: MemoryRunner) {
-  const done = new Set(
-    (
-      await db
-        .select({ did: schema.actor.did })
-        .from(schema.actor)
-        .where(isNotNull(schema.actor.backfilledAt))
-    ).map((r) => r.did)
-  )
+  const registered = [...collections.keys()].sort()
+  const [saved] = await db
+    .select({ value: schema.serviceState.value })
+    .from(schema.serviceState)
+    .where(eq(schema.serviceState.key, COLLECTIONS_KEY))
+  const rereadAll =
+    JSON.stringify(saved?.value ?? null) !== JSON.stringify(registered)
+
+  const done = rereadAll
+    ? new Set<string>()
+    : new Set(
+        (
+          await db
+            .select({ did: schema.actor.did })
+            .from(schema.actor)
+            .where(isNotNull(schema.actor.backfilledAt))
+        ).map((r) => r.did)
+      )
 
   const pending: Array<string> = []
   let cursor: string | undefined
@@ -142,29 +161,53 @@ export async function backfillKnownRepos(runner: MemoryRunner) {
     cursor = page.repos.length ? page.cursor : undefined
   } while (cursor)
 
-  if (pending.length === 0) return
-  console.log(`[indexer] backfilling ${pending.length} repo(s)`)
-
-  // A few at a time; each one still runs in its actor's partition.
-  const workers = Array.from({ length: 4 }, async () => {
-    for (let did = pending.shift(); did; did = pending.shift()) {
-      const target = did
-      await runner.addTask(target, () => backfillIfNeeded(target))
-    }
-  })
-  await Promise.all(workers)
+  if (pending.length > 0) {
+    console.log(
+      `[indexer] backfilling ${pending.length} repo(s)` +
+        (rereadAll ? " (registered collections changed)" : "")
+    )
+    let failed = 0
+    // A few at a time; each one still runs in its actor's partition.
+    const workers = Array.from({ length: 4 }, async () => {
+      for (let did = pending.shift(); did; did = pending.shift()) {
+        const target = did
+        await runner.addTask(target, async () => {
+          if (!(await backfillIfNeeded(target, rereadAll))) failed++
+        })
+      }
+    })
+    await Promise.all(workers)
+    // A repo that failed is retried by the next start.
+    if (failed > 0) return
+  }
+  if (rereadAll) {
+    await db
+      .insert(schema.serviceState)
+      .values({ key: COLLECTIONS_KEY, value: registered })
+      .onConflictDoUpdate({
+        target: schema.serviceState.key,
+        set: { value: registered, updatedAt: new Date() },
+      })
+  }
 }
 
-/** Re-checked inside the partition: a firehose event may have got there first. */
-async function backfillIfNeeded(did: string) {
-  const [row] = await db
-    .select({ backfilledAt: schema.actor.backfilledAt })
-    .from(schema.actor)
-    .where(eq(schema.actor.did, did))
-  if (row?.backfilledAt) return
+/**
+ * Re-checked inside the partition: a firehose event may have got there
+ * first. Returns false if the backfill failed.
+ */
+async function backfillIfNeeded(did: string, force: boolean) {
+  if (!force) {
+    const [row] = await db
+      .select({ backfilledAt: schema.actor.backfilledAt })
+      .from(schema.actor)
+      .where(eq(schema.actor.did, did))
+    if (row?.backfilledAt) return true
+  }
   try {
     await backfillRepo(did)
+    return true
   } catch (err) {
     console.error(`[indexer] backfill of ${did} failed:`, err)
+    return false
   }
 }

@@ -11,6 +11,7 @@ import { agentRoute } from "./xrpc/agent.ts"
 import { getProfile } from "./xrpc/getProfile.ts"
 import { resume } from "./xrpc/resume.ts"
 import { searchTalentRoute } from "./xrpc/searchTalent.ts"
+import { socialRoutes } from "./xrpc/social.ts"
 
 const indexer = createIndexer()
 const embedder = createEmbedder()
@@ -21,6 +22,7 @@ const app = new Elysia()
   .use(resume)
   .use(searchTalentRoute)
   .use(agentRoute)
+  .use(socialRoutes)
   .use(env.ADMIN_TOKEN ? admin(indexer, embedder) : new Elysia())
   // did:web document, so the DID service auth tokens are addressed to
   // resolves to this service.
