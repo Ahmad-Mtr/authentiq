@@ -21,3 +21,6 @@ todos.json
 # authentiq
 packages/lexicons/src/generated
 infra/seed/accounts.json
+
+# local notes
+docs/
