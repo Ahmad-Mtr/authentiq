@@ -40,12 +40,18 @@ Then open **http://127.0.0.1:3000** (not `localhost` — ATProto loopback OAuth
 clients may only redirect to `127.0.0.1`) and sign in as `alice.test` /
 `password`.
 
-Verification scripts, both run against the live stack:
+Verification scripts, all run against the live stack:
 
 ```bash
 bun run verify:lexicons  # validators + a record round-trip through the PDS
 bun run verify:oauth     # the whole sign-in flow, headlessly
+bun run verify:indexer   # firehose → index → getProfile, invalid records, restart, backfill
 ```
+
+`verify:indexer` stops and restarts the indexer through the AppView's admin
+routes, so it needs `ADMIN_TOKEN` in `apps/appview/.env`. `infra:env` generates
+it for new setups. An existing `.env` needs the line added by hand, then an
+AppView restart.
 
 Other scripts: `infra:down`, `infra:reset` (wipes volumes), `infra:logs`,
 `codegen`, `typecheck`, `lint`.

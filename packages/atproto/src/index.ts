@@ -2,6 +2,8 @@ export {
   AtUri,
   isValidHandle,
   isValidNsid,
+  isValidRecordKey,
+  isValidTid,
   ensureValidDid,
   currentDatetimeString,
 } from "@atproto/syntax"

@@ -1,0 +1,2 @@
+# Runs before the entrypoint's module graph is loaded. See src/bun-compat.ts.
+preload = ["./src/bun-compat.ts"]

@@ -15,6 +15,13 @@
       "when": 1789857624413,
       "tag": "0001_curious_jamie_braddock",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790633004079,
+      "tag": "0002_slim_rachel_grey",
+      "breakpoints": true
     }
   ]
 }

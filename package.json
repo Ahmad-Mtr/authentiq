@@ -16,6 +16,7 @@
     "seed": "bun infra/scripts/seed-accounts.ts",
     "verify:lexicons": "bun infra/scripts/verify-lexicons.ts",
     "verify:oauth": "bun infra/scripts/verify-oauth.ts",
+    "verify:indexer": "bun infra/scripts/verify-indexer.ts",
     "db:generate": "bun --filter @workspace/db db:generate",
     "db:migrate": "bun --filter @workspace/db db:migrate",
     "lint": "turbo lint",

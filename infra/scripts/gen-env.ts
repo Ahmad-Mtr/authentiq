@@ -53,6 +53,7 @@ const substitutions: Record<string, string> = {
   __POSTGRES_PASSWORD__: infraEnv.POSTGRES_PASSWORD ?? "",
   __POSTGRES_PORT__: infraEnv.POSTGRES_PORT ?? "5442",
   __PDS_ADMIN_PASSWORD__: infraEnv.PDS_ADMIN_PASSWORD ?? "",
+  __ADMIN_TOKEN__: hex(16),
 }
 
 for await (const example of new Glob("{apps,packages}/*/.env.example").scan(

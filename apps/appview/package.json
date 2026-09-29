@@ -11,11 +11,15 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@atproto/identity": "^0.5.14",
+    "@atproto/repo": "^0.10.14",
+    "@atproto/sync": "^0.4.11",
     "@elysiajs/cors": "^1.4.2",
     "@workspace/ai": "workspace:*",
     "@workspace/atproto": "workspace:*",
     "@workspace/db": "workspace:*",
     "@workspace/lexicons": "workspace:*",
+    "drizzle-orm": "^0.45.2",
     "elysia": "^1.4.30",
     "zod": "^4.4.3"
   },
