@@ -1,0 +1,847 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------------------------------------------------------------------------
+% Packages
+% ---------------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{etoolbox}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{docs/}}
+\onehalfspacing
+
+% Tables and figures are set single-spaced in a slightly smaller size.
+\AtBeginEnvironment{table}{\setstretch{1}\small}
+\AtBeginEnvironment{figure}{\setstretch{1}}
+\AtBeginEnvironment{sidewaysfigure}{\setstretch{1}}
+\renewcommand{\arraystretch}{1.2}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  frame=lines,
+  framesep=4pt,
+  xleftmargin=4pt,
+  xrightmargin=4pt,
+  aboveskip=0.8em,
+  belowskip=0.8em,
+}
+
+% Paths and identifiers break at slashes and dots.
+\urlstyle{tt}
+\newcommand{\code}[1]{\texttt{#1}}
+
+% References: \refs{L1,P2} renders [L1, P2] with links to the reference list.
+\newcommand{\reflink}[1]{\hyperlink{ref:#1}{#1}}
+\newcommand{\refsep}{}
+\newcommand{\refs}[1]{\begingroup
+  \gdef\refsep{}%
+  \renewcommand*{\do}[1]{\refsep\reflink{##1}\gdef\refsep{, }}%
+  [\docsvlist{#1}]\endgroup}
+\newenvironment{reflist}{%
+  \begin{list}{}{%
+    \setlength{\labelwidth}{2.8em}%
+    \setlength{\leftmargin}{3.4em}%
+    \setlength{\labelsep}{0.6em}%
+    \setlength{\itemsep}{0.25em}%
+    \renewcommand{\makelabel}[1]{##1\hfil}}}
+  {\end{list}}
+\newcommand{\refitem}[1]{\item[\hypertarget{ref:#1}{[#1]}]}
+
+% Visible marker for text the author still has to write.
+\newcommand{\authortodo}[1]{%
+  \par\noindent\fcolorbox{orange!70!black}{orange!8}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\textbf{[To be completed by the author]} #1}}\par}
+
+\hypersetup{
+  pdftitle={Design and Prototype Implementation of a Professional Network Based on the AT Protocol},
+  pdfauthor={Ahmad Mahmoud},
+}
+
+% ---------------------------------------------------------------------------
+\begin{document}
+
+% Title page ----------------------------------------------------------------
+\begin{titlepage}
+  \centering
+  \vspace*{5cm}
+  {\LARGE\bfseries Design and Prototype Implementation of a Professional Network Based on the AT Protocol\par}
+  \vspace{2.5cm}
+  {\large Ahmad Mahmoud\par}
+  \vspace{0.3cm}
+  {\large Student ID: 491857\par}
+  \vfill
+\end{titlepage}
+
+\pagenumbering{roman}
+
+% Abstract ------------------------------------------------------------------
+\section*{Abstract}
+
+Authentiq is a prototype for a professional network that stores public profile data, posts, and job postings in users' AT Protocol repositories. The application separates this storage from processing and presentation through its own AppView. The project investigates how professional networking, enforceable product rules, and AI-assisted search can operate on a shared data foundation with openly defined schemas.
+
+The implementation includes a web application with OAuth sign-in, an event-driven indexer, resume import with manual confirmation, hybrid talent search, a recruiting assistant, community features, and job postings with mandatory salary ranges. Interchangeable feed generators supply references to content, while the AppView retains responsibility for checking its visibility. An additional, technically independent generator demonstrates this extensibility in the local setup.
+
+The documented evaluation uses 13 synthetic resumes, 84 synthetic profiles, and 28 annotated search queries. In the latest documented regression run, the resume parser achieves an F1 score of 96.4\%. Across the 28 queries, hybrid search achieves a mean nDCG@10 of 0.920, compared with 0.903 for vector search and 0.845 for full-text search. The results demonstrate technical feasibility within the scope examined. They do not establish production readiness or discrimination-free recruitment. Important limitations include the small synthetic dataset, the public nature of repository data, and unresolved security and operational issues.
+
+\clearpage
+\tableofcontents
+
+\clearpage
+\listoffigures
+\listoftables
+
+\clearpage
+\section*{List of Abbreviations}
+
+{\setstretch{1}
+\begin{tabularx}{\textwidth}{@{}lY@{}}
+\toprule
+\textbf{Abbreviation} & \textbf{Meaning} \\
+\midrule
+ADR & Architecture Decision Record \\
+API & Application Programming Interface \\
+AT Protocol & Authenticated Transfer Protocol \\
+BFF & Backend for Frontend \\
+CAR & Content Addressable aRchive \\
+CID & Content Identifier \\
+DID & Decentralized Identifier \\
+DPoP & Demonstrating Proof of Possession \\
+FTS & Full-Text Search \\
+HNSW & Hierarchical Navigable Small World \\
+JWT & JSON Web Token \\
+LLM & Large Language Model \\
+MRR & Mean Reciprocal Rank \\
+nDCG & normalized Discounted Cumulative Gain \\
+NSID & Namespaced Identifier \\
+PDS & Personal Data Server \\
+PLC & DID directory infrastructure used by the AT Protocol for \code{did:plc} \\
+RRF & Reciprocal Rank Fusion \\
+SSE & Server-Sent Events \\
+SSRF & Server-Side Request Forgery \\
+TTL & Time to Live \\
+XRPC & The AT Protocol's HTTP API system \\
+\bottomrule
+\end{tabularx}
+\par}
+
+\clearpage
+\pagenumbering{arabic}
+
+% ===========================================================================
+\section{Introduction and Objectives}
+
+\subsection{Problem Statement}
+
+Professional networks combine several activities: people present their career histories, discuss professional topics, and look for suitable jobs or employees. Such a system requires more than storage for individual profiles. Data must be discoverable, attributable to its source, and presented under consistent rules. At the same time, ease of use, public visibility, and control over personal information can conflict.
+
+Authentiq addresses these tensions through an architecture in which canonical public user data resides in AT Protocol repositories. The application's AppView builds a derived index from those records. The decision about where a record is stored is therefore separate from the decision about how Authentiq validates, searches, and displays it. This separation follows the AT Protocol's division of responsibilities \refs{L1} and is specified for the project in ADR 0001 \refs{P2}.
+
+A particular challenge is enforcing product rules in a system that allows other clients to write data. For example, a job posting should contain a useful salary range. However, other clients can submit records directly to the PDS, bypassing Authentiq's forms. The application must therefore decide which records to accept when constructing its own view.
+
+A second challenge concerns AI features. A resume parser can produce incomplete or incorrect information; semantic search can identify relevant professional relationships but also return inappropriate similarities. The project consequently treats these features as supporting processing steps with verifiable interfaces and limited authority.
+
+\subsection{Objectives and Research Questions}
+
+The objective is a locally runnable prototype that combines public professional profiles, professional discussion, and job discovery on a shared protocol foundation. The emphasis is on an understandable architecture and the investigation of selected features. Building a complete commercial platform is outside the scope.
+
+The report addresses three questions:
+
+\begin{enumerate}
+  \item How can user-based data storage and enforceable application rules coexist in an AT Protocol application?
+  \item What value do structured resume import and the combination of semantic and full-text search provide on the dataset examined?
+  \item Can additional feed generators be integrated without changing the central presentation layer or its visibility rules?
+\end{enumerate}
+
+The answers draw on the implemented source code, documented integration checks, and existing evaluation scripts. Adoption by real users, recruiter productivity, and actual job placement rates are outside the scope of this investigation.
+
+\subsection{Report Structure}
+
+The requirements analysis is followed by the development method and technical foundations. The system design explains responsibilities, interfaces, and trust boundaries. The report then describes the main implementation decisions and evaluation. The discussion assesses the results and limitations, while the appendices provide initial guidance for users and developers.
+
+% ===========================================================================
+\section{Requirements Analysis and Scope}
+
+\subsection{Actors and Use Cases}
+
+The project distinguishes four main roles. Professionals maintain a profile, publish posts, and view relevant jobs. Recruiters publish job postings and search for profiles with suitable professional experience. Community founders organise discussions and can hide posts within their communities. Developers of additional feed generators provide their own selection methods for publicly available content.
+
+These roles are not separate account types. One account can perform several roles. Permissions are therefore checked for each action: editing a job posting depends on authorship, community moderation depends on the founder's identity, and access to a personal job match depends on the authenticated user.
+
+\subsection{Functional Requirements}
+
+\begin{table}[htbp]
+\centering
+\caption{Functional requirements and supporting evidence}
+\label{tab:functional}
+\begin{tabularx}{\textwidth}{@{}lYY@{}}
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Implementation or evidence} \\
+\midrule
+F1 & Sign in with an AT Protocol identity & OAuth flow and server-side sessions; \code{verify:oauth} \\
+F2 & Professional profiles with positions and education & Custom actor lexicons, profile editor, and indexer \\
+F3 & Import selected information from PDF and DOCX resumes & Extraction, draft, editable confirmation; \code{verify:resume} \\
+F4 & Professional search with free text and structured filters & Vector, full-text, and hybrid search; \code{eval:search} \\
+F5 & Conversational assistance with search & Recruiting assistant with restricted tools and citation checks \\
+F6 & Posts, replies, likes, follows, and communities & Public records and AppView queries; \code{verify:social} \\
+F7 & Job postings with mandatory salary information & Shared form and indexer rules; \code{verify:jobs} \\
+F8 & Extensible selection of posts and jobs & Feed skeletons, generator resolution, and hydration; \code{verify:feeds} \\
+F9 & Reflect deletions and account status & Event processing, backfill, and filtering at read time \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+These requirements (Table~\ref{tab:functional}) were consolidated for this report from the roadmap and implemented functionality [\reflink{P1}, \reflink{P3}--\reflink{P10}]. The mapping supports traceability; it is not a requirements specification approved before development began.
+
+\subsection{Quality Requirements}
+
+\begin{table}[htbp]
+\centering
+\caption{Quality requirements}
+\label{tab:quality}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{0.27\textwidth}Y@{}}
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Interpretation in the prototype} \\
+\midrule
+Q1 & Traceable control over data & Public records are written to the acting user's repository \\
+Q2 & Controlled publication & Raw resumes are not stored as public PDS blobs; publication requires confirmation \\
+Q3 & Consistent product rules & Validation during indexing, including writes that bypass the web interface \\
+Q4 & Fault tolerance & Event stream resumption, backfill, asynchronous embeddings, and full-text fallback \\
+Q5 & Extensibility & Shared lexicons, a collection registry, and separate feed generators \\
+Q6 & Testability & Synthetic data, deterministic parts of evaluation, and automated integration checks \\
+Q7 & Limited AI authority & No automatic publication by the parser and no message sending by the recruiting assistant \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Not every quality objective in Table~\ref{tab:quality} can be represented by a single metric. For example, checking Q2 concerns the technical data flow. It does not fully establish how the external model provider processes the data. Similarly, Q6 supports repeatability of defined checks, but does not establish representative quality in subsequent real-world operation.
+
+\subsection{Scope Limitations}
+
+The prototype does not include applicant tracking, automatic application processing, or verification that a person represents the organisation they name. Comprehensive moderation features such as reporting, blocking, and muting are absent. Avatar and image uploads are not fully connected. The local setup uses one PDS and a local PLC directory; operation across multiple independent public providers has not been demonstrated.
+
+Public availability of data is a deliberate product characteristic. Authentiq therefore does not provide a confidential personnel file. Storing data in users' repositories also does not prevent other services from copying publicly available information.
+
+% ===========================================================================
+\section{Project Planning and Method}
+
+\subsection{Incremental Development}
+
+The project is organised into interdependent work packages \refs{P1}. Local infrastructure and shared data contracts support sign-in, profiles, and indexing. AI features use the profile model, while community, job, and feed features extend the same processing pipeline.
+
+These dependencies limit the number of interfaces that must be designed together. For example, resume import does not need its own storage model for published profiles; it reuses the existing record builders and PDS write path. The jobs component extends the existing embedding pipeline with another document type.
+
+\begin{table}[htbp]
+\centering
+\caption{Development work packages}
+\label{tab:packages}
+\begin{tabularx}{\textwidth}{@{}c>{\raggedright\arraybackslash}p{0.38\textwidth}Y@{}}
+\toprule
+\textbf{Package} & \textbf{Focus} & \textbf{Purpose} \\
+\midrule
+0 & Local network and project structure & Foundation for subsequent features \\
+1 & Actor lexicons & Shared contracts for profile information \\
+2 & OAuth and profiles & Complete write and read flow \\
+3 & AppView indexer & Derived index of public records \\
+4 & Resume import & AI extraction with manual approval \\
+5 & Talent search and recruiting assistant & Embeddings, hybrid search, and tools \\
+6 & Social features & Posts, threads, and communities \\
+7 & Job postings & Salary transparency and job matching \\
+8 & Feed composition & First-party and additional generators \\
+9 & Evaluation and report & Consolidation of evidence and documentation \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:packages} describes the functional breakdown documented in the repository. Each work package has a defined responsibility and builds on shared interfaces rather than duplicating the surrounding infrastructure.
+
+\subsection{Quality Assurance During Development}
+
+Each major feature is accompanied by a dedicated verification scenario. Integration scripts use the actual local PDS, AppView, and, in some cases, the complete OAuth flow. They therefore check boundaries that isolated unit tests do not cover: event delivery, authentication between services, and record visibility after indexing.
+
+Unit tests also cover rules, document preparation, and other clearly bounded components. AI feature evaluation is treated separately because a technically successful API call does not guarantee a correct result. This distinction between functional verification and quality measurement is central to assessing the project.
+
+\subsection{Planning and Individual Contribution}
+
+\authortodo{Describe the tasks undertaken personally, changes to the original scope, the tools and assistance used, and how their outputs were checked. Relate the allocation of work to the dependencies and risks identified in the project. The repository can support an account of the implementation, but cannot replace personal reflection.}
+
+% ===========================================================================
+\section{Technical Foundations and Related Approaches}
+
+\subsection{AT Protocol and Division of Responsibilities}
+
+The AT Protocol describes DIDs as stable account identifiers and handles as human-readable names. Signed repositories contain the records associated with each identity. PDSs, relays, and AppViews fulfil different roles: storage, distribution of updates, and application-specific aggregation \refs{L1}.
+
+For Authentiq, this division is primarily an architectural model. The local PDS stores public records, while the project's AppView creates search indexes and views. The local setup does not require a relay because the indexer subscribes directly to the single PDS's event stream \refs{P2,P4}. A complete account migration between independent PDSs is not among the documented results.
+
+\subsection{Lexicons as Data Contracts}
+
+Lexicon is the AT Protocol's schema language. It describes repository records as well as XRPC queries and procedures. Definitions are addressed using namespaced identifiers, and records and API outputs can reference shared types \refs{L2}.
+
+Authentiq uses the \code{sh.authentiq.*} namespace. For example, a profile is modelled as \code{sh.authentiq.actor.profile}, and a job posting as \code{sh.authentiq.job.posting}. Schemas are maintained centrally in the project and used to generate types and validators. Writing components and the indexer consequently share the same structural contract \refs{P3,P4}.
+
+Structural validation and business validity remain separate. A salary object may have the correct structure while specifying an upper bound below its lower bound. This relationship requires an additional business rule.
+
+\subsection{Full-Text and Vector Search}
+
+Authentiq compares two search methods. Full-text search processes the words in a prepared profile document using PostgreSQL, whose documentation describes document parsing, query construction, and ranking \refs{L14}. Vector search compares numerical representations of those same documents. The pgvector extension provides capabilities including cosine distance and HNSW indexes within PostgreSQL \refs{L3}.
+
+The project's motivation is to support both exact professional terms and descriptions with similar meanings. A specific product name can be particularly useful for full-text search. A paraphrase of professional activities may instead benefit from an embedding. The comparison of three search modes investigates whether this expectation holds on the project's dataset.
+
+\subsection{Combining Results with Reciprocal Rank Fusion}
+
+RRF combines ranked lists using each document's position, without requiring directly comparable raw scores from the individual search methods \refs{L4}. For a document $d$, Authentiq sums the contributions from the ranked lists $r$ in which it appears:
+\begin{equation}
+  \mathrm{RRF}(d) = \sum_{r} \frac{1}{60 + \mathrm{rank}_r(d)}
+\end{equation}
+
+Ranks start at one. Each retrieval method supplies at most 50 candidates in this project. This limit and the tie-breaking rules are implementation choices in Authentiq and must be considered when interpreting the results \refs{P6}. Using an established fusion method does not remove the need to evaluate it on the project's queries.
+
+\subsection{Assessing the Architectural Choice}
+
+An alternative design could implement Authentiq using a single application-owned database. Coordinating writes and immediately subsequent reads would then be simpler. The chosen separation introduces additional responsibilities for event processing, identity resolution, and recovery. Its benefit is the protocol-based availability of public records to additional clients and services.
+
+The project also applies the concept of independent feed generators to a professional network. Authentiq defines its own data types and policies for this purpose. This does not imply automatic interoperability of every Authentiq feature with existing Bluesky clients.
+
+\subsection{Open Social Applications and Retrieval-Based Assistants}
+
+Kleppmann and colleagues describe the AT Protocol as a separation between user repositories, hosting, indexing, moderation, and feed selection \refs{L5}. This provides a research basis for examining Authentiq as a domain-specific application over shared infrastructure. In particular, an application can define its own lexicons and AppView while reusing the underlying repository and identity mechanisms. The paper also makes the public nature of this data model explicit, which is directly relevant to the decision to keep raw resumes outside public repositories.
+
+Dan Abramov's \emph{Open Social} presents the idea of applications working with user-controlled identities and data rather than each application owning an isolated account and dataset \refs{L6}. His \emph{Where It's at://} explains the resolution of a record reference through identity and hosting information \refs{L7}. These articles provide conceptual and practical background; the protocol documentation and the implemented code remain the technical references for Authentiq's contracts and behaviour.
+
+ByteByteGo's \emph{How Perplexity Built an AI Google} is included as secondary background reading on AI-assisted search \refs{L8}. For Authentiq, the relevant design question is how retrieved evidence and generated responses are connected. The project's recruiting assistant obtains profile and job information through explicit tools and checks returned references against tool results \refs{P6,P9}. This is a comparison of design concerns, not a claim that Authentiq reproduces Perplexity's architecture, infrastructure, or performance.
+
+% ===========================================================================
+\section{System Design}
+
+\subsection{Components and Data Flows}
+
+The web application combines the user interface with a BFF. The BFF holds the session and performs authorised writes to the PDS. The AppView processes public records, exposes read APIs, and runs the AI features. Feed generators return ordered references to content; the AppView constructs the final views. Figure~\ref{fig:architecture} shows these components and the data flows between them.
+
+\begin{sidewaysfigure}
+  \centering
+  \includegraphics[width=\textwidth]{fig-1.pdf}
+  \caption[Authentiq components and data flows]{Authentiq components and data flows. Original diagram based on ADR 0001 and the phase documentation [\reflink{P2}, \reflink{P10}]. The diagram shows the main application data flows rather than every authentication call.}
+  \label{fig:architecture}
+\end{sidewaysfigure}
+
+Separating the write and read paths introduces eventual consistency. A successful write to the PDS does not mean the new state is already visible in the AppView. The application must therefore wait for indexing progress or display temporary intermediate states.
+
+\subsection{Public Records and Private State}
+
+The description of the AppView as a rebuildable index applies only to its derived data. Its database also contains private application state. Losing the entire database would therefore affect more than search indexes, as Table~\ref{tab:ownership} shows.
+
+\begin{table}[htbp]
+\centering
+\caption{Data ownership and recoverability}
+\label{tab:ownership}
+\begin{tabularx}{\textwidth}{@{}YYY@{}}
+\toprule
+\textbf{Data} & \textbf{Storage and visibility} & \textbf{Rebuildable from public repositories} \\
+\midrule
+Profiles, positions, education, posts, and jobs & Public PDS records; copies in the AppView & In principle, for the derived index \\
+Likes, follows, and community memberships & Public PDS records & In principle \\
+Search documents and embeddings & Internal AppView state & Recomputable; requires processing and potentially model calls \\
+OAuth and web sessions & Server-side database tables & No \\
+Resume drafts & Private table with limited validity & No; intentionally temporary \\
+Hidden community posts & Private moderation labels & No \\
+Pinned feeds & Private preferences & No \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+This distinction refines the early architecture decision \refs{P2} in light of later additions \refs{P5,P7,P10}. In particular, moderation decisions and private preferences require their own backup strategy for sustained operation.
+
+\subsection{Trust and Validation}
+
+The PDS is not sufficient to enforce all of Authentiq's application rules. The development documentation shows that a record using an unknown schema can be stored even when, for example, salary information is missing. The indexer therefore checks the lexicon, record key, and business rules in sequence \refs{P4,P9}.
+
+The web interface also validates input to provide immediate, understandable feedback. However, server-side validation during indexing determines visibility. If an invalid update replaces a valid record, the indexer removes the previously valid copy from its view. Otherwise, it would display a state that no longer exists in the repository.
+
+\subsection{Resume Import as a Controlled Publication Process}
+
+Figure~\ref{fig:resume} shows the resume import from file selection to publication of the confirmed records.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{fig-2.pdf}
+  \caption[Resume processing from upload to publication]{Resume processing from upload to publication. Original diagram based on the implemented import feature \refs{P5}.}
+  \label{fig:resume}
+\end{figure}
+
+The raw file is not persistently stored by the application or sent to the PDS. However, the extracted text is sent to the external model provider. Limits on local storage must therefore not be described as a guarantee about further processing by that provider. Only information whose publication the user confirms becomes public.
+
+% ===========================================================================
+\section{Implementation}
+
+\subsection{Project Structure and Technologies}
+
+Authentiq is organised as a monorepository. The \code{apps} directory contains the web application, AppView, and two feed generators. Directories under \code{packages} contain shared schemas, rules, and helper functions. This structure allows pure validation logic to be used in both the browser and backend. Bun workspaces define the packages within a single repository and support dependencies between them through the workspace protocol \refs{L11}. Authentiq uses that mechanism for its applications and shared packages. Table~\ref{tab:technologies} lists the technologies used.
+
+\begin{table}[htbp]
+\centering
+\caption{Technologies used in the project}
+\label{tab:technologies}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.33\textwidth}Y@{}}
+\toprule
+\textbf{Area} & \textbf{Technology} & \textbf{Use} \\
+\midrule
+Language and runtime & TypeScript and Bun & Application code and project tools \\
+Web application & React and TanStack Start \refs{L13} & Interface, routing, and BFF \\
+Interface components & shadcn/ui \refs{L12} & Editable components shared through \code{packages/ui} \\
+Backend services & Elysia \refs{L15} & AppView and feed generators \\
+Data storage & PostgreSQL \refs{L14}, Drizzle, and pgvector \refs{L3} & Schema, migrations, indexes, and vectors \\
+Protocol integration & AT Protocol libraries & OAuth, records, synchronisation, and identities \\
+AI & Mistral SDK \refs{L9,L10} & Extraction, assistant, and embeddings \\
+File extraction & unpdf and mammoth & Text from PDF and DOCX, respectively \\
+Local infrastructure & Docker Compose & PDS, PLC directory, and PostgreSQL \\
+Project tasks & Turborepo & Coordination of development and checks \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+TanStack Start provides server rendering, server functions, and server routes alongside React routing \refs{L13}. Authentiq uses these capabilities for its interface and BFF. Elysia provides the separate HTTP services for the AppView and generators, using its Bun-oriented backend framework and TypeScript support \refs{L15}. The shared UI package contains shadcn/ui components. Its source-distribution approach allows the application to own and modify component code \refs{L12}; it does not by itself establish that the completed interface meets every accessibility requirement.
+
+The model configuration in \path{packages/ai/src/index.ts} uses \code{ministral-14b-2512} for the resume parser and recruiting assistant, and \code{mistral-embed-2312} for 1024-dimensional embeddings. Earlier documentation mentions different plans; this report follows the configuration in the source revision examined.
+
+\subsection{Authentication and Profiles}
+
+Sign-in uses an OAuth flow with the PDS. The browser receives an opaque session identifier in an HTTP-only cookie; tokens and associated keys remain on the server. The local setup uses loopback addresses and special resolution for \code{.test} handles \refs{P3}. Figure~\ref{fig:signin} shows the landing page for signed-out visitors and the sign-in form, where the user enters a handle and then authorises Authentiq on their own PDS.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{home-1.png}
+    \caption{Landing page for signed-out visitors}
+    \label{fig:signin-home}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{login.png}
+    \caption{Sign-in with an AT Protocol handle}
+    \label{fig:signin-form}
+  \end{subfigure}
+  \caption[Landing page and sign-in]{Landing page and sign-in. Authorisation happens on the user's own PDS; Authentiq does not receive the password.}
+  \label{fig:signin}
+\end{figure}
+
+A public profile consists of a profile record and separate records for professional positions and education. Information is validated before being written. On reads, the AppView returns a combined profile view. Separate records allow individual entries to be changed, but require consistent assembly in the view. Figure~\ref{fig:profile-edit} shows the profile editor and Figure~\ref{fig:candidate} the resulting public profile view.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{profile.png}
+  \caption[Profile editor]{Profile editor at \code{/profile/edit}. Each saved change is written as a record to the user's repository; a link leads to resume import.}
+  \label{fig:profile-edit}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{candidate.png}
+  \caption[Public profile view]{Public profile view at \code{/p/<handle>}, assembled by the AppView from the profile record and separate position records.}
+  \label{fig:candidate}
+\end{figure}
+
+Private AppView procedures additionally use service-auth tokens. The PDS signs short-lived tokens for a specific audience and method. The receiving component checks the signature, audience, expiry, and method binding. Replay protection remembers used token identifiers within each process. This limitation must be considered when distributing the service across multiple instances.
+
+\subsection{Event-Driven Indexer}
+
+The indexer subscribes to \code{subscribeRepos} and processes collections under \code{sh.authentiq.*}. Events from one repository are processed sequentially, while different repositories can be processed concurrently. A stored cursor enables resumption. It may only advance past events whose processing has fully completed \refs{P4}.
+
+Backfill reads the current repository state and reconciles it with the indexed records. Valid records are incorporated, and records that no longer exist are removed. This reconciliation is necessary when a repository is first encountered, following certain synchronisation events, and when the supported collections are extended.
+
+The collection registry encapsulates the schema, rules, and database operations for each record type. A new collection therefore does not need to duplicate the entire event flow. Deletions, invalid updates, account deactivation, and reactivation are handled as distinct cases. These operations affect both visible records and their derived embeddings.
+
+\subsection{Resume Extraction and Confirmation}
+
+Uploads accept PDF and DOCX. The implementation limits files to 5\,MiB, PDFs to ten pages, and the text passed to subsequent processing to 40,000 characters. Files without sufficient extractable text are rejected. OCR for image-only scans is not implemented \refs{P5}.
+
+After text extraction, the application requests structured model output. Mistral documents this mechanism as constraining the response to a supplied JSON schema \refs{L9}. This output is further bounded and checked against the draft schema. Missing information must not be replaced with invented precision: if a document states only a year, adding a month must not count as correct extraction.
+
+The draft belongs to the uploading identity and is valid for 30 minutes. A new upload replaces the previous draft. Expired drafts are no longer served and are removed by periodic cleanup. In the review interface, users can select, correct, or reject proposed information. Only then are the selected records published in a single \code{applyWrites} commit.
+
+Document contents are treated as untrusted. The parser has no executable tools, and embedded instructions are treated as document content. Schema validation and manual confirmation limit possible consequences, but do not guarantee factual accuracy. A structurally valid draft can still name the wrong employer.
+
+\subsection{Search Documents and Asynchronous Embeddings}
+
+For search, Authentiq builds a canonical document from professional profile information. This includes descriptions, skills, and professional activities. Names, handles, avatars, dates, and school names are deliberately excluded as search features. Location and \code{openToWork} are explicit filters \refs{P6}.
+
+Changes mark the associated search document for processing within the indexing transaction. A separate worker builds the document and embedding. The event stream therefore does not wait for the model provider. A hash incorporating the document content, model, and document version prevents unnecessary recomputation when the search text has not changed.
+
+Failed model calls remain queued for another attempt. The full-text index can be updated independently of a new vector. If generating a query embedding fails, hybrid search returns full-text results with a flag indicating degraded operation; vector-only search reports the failure.
+
+\subsection{Hybrid Search and Recruiting Assistant}
+
+The search function applies structured filters in both retrieval branches. Results are then combined using RRF. Vector search uses an HNSW index with iterative scanning. The examined version uses an English text configuration for full-text search. This limits support for multilingual profiles and queries.
+
+The recruiting assistant accesses these functions through restricted tools. Mistral's function-calling interface provides the model with tool definitions and allows the application to execute requested functions and return their results \refs{L10}. The application remains responsible for authorisation and tool behaviour. These include \path{search_talent}, \path{get_profile}, \path{get_job}, \path{compare_candidates}, and \path{draft_outreach}. The web interface displays tool calls while the response streams (Figure~\ref{fig:agent}). The outreach tool creates a draft; it neither sends a message nor writes records \refs{P6,P9}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{agent.png}
+  \caption[Recruiting assistant]{Recruiting assistant. The \code{search\_talent} tool call is shown above the answer, and the cited profiles link to the public profile view.}
+  \label{fig:agent}
+\end{figure}
+
+A citation check permits only references originating from tool results in the conversation. This limits the invention of additional profile references. However, a valid reference does not establish that every model statement is supported by its contents. Results remain suggestions that require review.
+
+\subsection{Posts and Communities}
+
+Posts, replies, likes, follows, and memberships are modelled as public records. Relationships reference other records or identities. The indexer can initially store these relationships without requiring the referenced record to have arrived. Current visibility is evaluated when constructing a view \refs{P7}.
+
+Authentiq omits reposts and public like or follower counts from its views. A reply count is retained to help users navigate discussions. This is a product decision; a positive effect on discussion quality has not been empirically investigated. Figure~\ref{fig:home} shows the signed-in home page with the post composer and timeline.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{homepage-authed.png}
+  \caption[Home page with composer and timeline]{Signed-in home page with the post composer and timeline. Posts show their reply context and community; no reposts or like counts are displayed.}
+  \label{fig:home}
+\end{figure}
+
+Community founders can hide posts within their communities. The decision is stored as a private AppView label. The public record remains intact. Moderation therefore applies within Authentiq's view without claiming deletion across the network. Figure~\ref{fig:communities} shows the community directory.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{communities.png}
+  \caption[Community directory]{Community directory with topic labels and the viewer's membership state. Community descriptions are not limited to Latin script.}
+  \label{fig:communities}
+\end{figure}
+
+\subsection{Job Postings and Salary Transparency}
+
+A job posting requires a title, organisation, salary, and creation time. Salary information includes a lower bound, upper bound, currency, and pay period. Shared rules require positive integer amounts, an ordered range, and an upper bound no greater than twice the lower bound \refs{P9}.
+
+The factor of two is a chosen product rule, not a claimed legal requirement. In the prototype, it prevents extremely broad, uninformative ranges. Storing whole currency units simplifies the contract, but cannot represent, for example, an exact hourly rate of 17.50.
+
+For filtering, amounts are annualised using disclosed assumptions: 2080 hours, 260 days, 52 weeks, or twelve months per year. These values do not establish the actual working hours of a job. Different currencies are not converted into one another. Figure~\ref{fig:jobs} shows how the job list presents both the stated and the annualised range.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{jobs.png}
+  \caption[Job postings with salary ranges]{Job postings. Every posting states a salary range; for hourly and monthly pay, the annualised range is shown alongside in the same currency.}
+  \label{fig:jobs}
+\end{figure}
+
+Job seekers can retrieve a coarse category describing the match with their own profile. The application does not output an apparently precise percentage of suitability. Posting authors receive similar candidates in ranked order; this feature respects \code{openToWork} by default. General talent search, however, can find other public profiles when that filter is absent. This difference in meaning must be clearly explained in a future product version.
+
+\subsection{Extensible Feeds}
+
+A generator record identifies a service by its DID. The AppView resolves that identity and requests a feed skeleton containing references to posts or job postings. Before returning a response, the AppView checks types, duplicates, and size limits, and retrieves the records that are actually visible from its index \refs{P10}.
+
+A generator therefore cannot make hidden or invalid content visible merely by including it in a skeleton. Closed jobs and content from deactivated accounts are also subject to AppView policy. Generator failures are confined to the affected feed request; the native home timeline is independent of that call.
+
+The four first-party feeds are \code{following}, \code{my-communities}, \code{jobs-for-you}, and \code{industry-pulse}. The first-party generator reads selected database tables using a read-only role. The additional generator, \emph{Posts with a link}, maintains its own store built from public PDS data and does not require access to the AppView database. It demonstrates the technical independence of another provider, although it too runs locally within the project. Figure~\ref{fig:feeds} shows both generators side by side in the feed directory.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{feed.png}
+  \caption[Feed directory]{Feed directory at \code{/feeds}. The four first-party feeds are served by \code{did:web:localhost:2585}; \emph{Posts with a link} is served by the additional generator at \code{did:web:localhost:2586}.}
+  \label{fig:feeds}
+\end{figure}
+
+Because an external DID can point to external servers, resolution requires protection against unwanted network requests. The implemented fetch guard checks addresses and restricts redirects, response size, and waiting time. DNS rebinding remains a documented gap because the checked address is not pinned to the subsequent connection.
+
+% ===========================================================================
+\section{Evaluation and Results}
+
+\subsection{Data and Evidence Status}
+
+The following values come from the development notes, particularly the feed-composition regression results \refs{P10}. They are analysed here, but are not presented as newly performed measurements. For final submission, a complete run should be archived together with its commit, configuration, and raw logs.
+
+The investigation distinguishes three questions: whether defined workflows function, how accurate structured extraction is, and how relevant the search results are. Passing a functional test does not answer the latter two questions. Conversely, a high search score does not demonstrate correct authentication.
+
+\subsection{Functional Checks}
+
+\begin{table}[htbp]
+\centering
+\caption{Documented functional checks}
+\label{tab:checks}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.3\textwidth}>{\raggedright\arraybackslash}p{0.28\textwidth}Y@{}}
+\toprule
+\textbf{Area} & \textbf{Script} & \textbf{Documented result} \\
+\midrule
+Lexicons & \code{verify:lexicons} & 10 of 10 \\
+Sign-in & \code{verify:oauth} & 14 of 14 \\
+Indexer & \code{verify:indexer} & 39 of 39 \\
+Resume import & \code{verify:resume} & 49 of 49 \\
+Search & \code{verify:search} & 31 of 31 \\
+Recruiting assistant & \code{verify:agent} & 27 of 27 \\
+Social features & \code{verify:social} & 91 of 91 \\
+Job postings & \code{verify:jobs} & 110 of 110 \\
+Feeds & \code{verify:feeds} & 108 of 108 after a correction and rerun \\
+Unit tests & \code{test} & 90 of 90 \\
+Type checking and linting & \code{typecheck}, \code{lint} & 11 of 11 tasks each \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\raggedright\footnotesize Source: documented results in \refs{P10}.
+\end{table}
+
+The counts in Table~\ref{tab:checks} refer to assertions or tasks, not statistically independent observations or measurements of code coverage. During the sequential regression run, a cache-dependent expectation in the feed checks was corrected, after which the check was rerun. The table must therefore not be interpreted as a single entirely successful first run.
+
+For research question 1, directly submitting a job posting without salary information to the PDS is particularly informative. The PDS stores the record, while the AppView excludes it from the application's view. Further cases check removal of a previously valid posting after an invalid update. This tests the product rule at the intended trust boundary \refs{P9}.
+
+For research question 3, the feed-composition documentation records adding the additional generator without requiring an AppView or web application change during that integration step. The generator passes through the existing visibility checks. This provides concrete evidence of extensibility for the feed interface examined, but not a general demonstration of arbitrary future extensions.
+
+\subsection{Resume Parser Accuracy}
+
+The test set contains 13 synthetic resumes: seven PDFs and six DOCX files. Cases include multiple-column layouts, missing dates, different writing systems, and embedded malicious instructions. Expected structured information is annotated separately \refs{P5}.
+
+Evaluation operates at field level. Short strings are compared after normalisation; dates must match in precision. Longer descriptions count as matching when token F1 reaches 0.8. Positions and education entries are first aligned heuristically. An incorrect field value contributes both a false positive and a false negative. Precision and recall are micro-averaged over the counted fields:
+\begin{align}
+  \mathrm{Precision} &= \frac{TP}{TP + FP} \\
+  \mathrm{Recall}    &= \frac{TP}{TP + FN} \\
+  F_1                &= \frac{2 \cdot \mathrm{Precision} \cdot \mathrm{Recall}}{\mathrm{Precision} + \mathrm{Recall}}
+\end{align}
+
+This evaluation measures agreement with the annotations under the chosen comparison rules. Particularly for long text, it is not a complete semantic truth check.
+
+\begin{table}[htbp]
+\centering
+\caption{Documented resume parser results}
+\label{tab:parser}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+\textbf{Documented run} & \textbf{Model} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+\midrule
+Parser model comparison & \code{ministral-8b-2512} & 89.5\% & 92.0\% & 90.7\% \\
+Parser model comparison & \code{ministral-14b-2512} & 96.8\% & 93.6\% & 95.2\% \\
+Full regression run & \code{ministral-14b-2512} & 97.1\% & 95.6\% & 96.4\% \\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize Sources: \refs{P5,P10}.
+\end{table}
+
+The model comparison in Table~\ref{tab:parser} supports selecting the 14B variant for the dataset examined. The later higher F1 score, however, does not demonstrate an improvement in parser code: the regression notes explicitly record that the relevant components remained unchanged. Earlier repeated runs ranged from 94.8\% to 96.9\%. Identical outputs therefore cannot be assumed even at temperature zero.
+
+The successful result for the included prompt-injection case must be interpreted narrowly. It shows that the specific documented manipulation was not followed in the described runs. It does not prove general resistance to arbitrary malicious resumes.
+
+\subsection{Talent Search Quality}
+
+Search is evaluated using 84 synthetic profiles and 28 manually judged queries. The queries comprise nine searches for exact skills, ten conceptual paraphrases, two mixed queries, and seven queries with structured filters. Relevance grades range from zero to three; grades of at least two count as relevant for recall and MRR \refs{P6}.
+
+nDCG@10 measures the relevance and ordering of the first ten results against an ideal ranking of the annotated people. The gain is $2^{\mathrm{relevance}} - 1$, discounted by $\log_2(\mathrm{rank} + 1)$. Recall@10 measures the proportion of relevant annotated people found in the first ten results. The implementation labelled MRR also searches for the first relevant hit only within those first ten results. Unannotated people receive relevance zero.
+
+\begin{table}[htbp]
+\centering
+\caption{Search quality by method}
+\label{tab:search-method}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{Metric} & \textbf{Vector} & \textbf{Full-text} & \textbf{Hybrid} \\
+\midrule
+Mean nDCG@10 & 0.903 & 0.845 & 0.920 \\
+Mean recall@10 & 0.925 & 0.894 & 0.968 \\
+MRR within the first ten results & 0.946 & 0.894 & 0.982 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize Source: \refs{P6}, reported again with identical results in \refs{P10}.
+\end{table}
+
+Hybrid search achieves the highest overall averages (Table~\ref{tab:search-method}). Its nDCG advantage over vector search is 0.017. Without confidence intervals or significance testing, this difference should be treated as a descriptive result for the test set. Breaking the results down by query type (Table~\ref{tab:search-type}) also reveals substantial differences.
+
+\begin{table}[htbp]
+\centering
+\caption{Search quality by query type}
+\label{tab:search-type}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Query type} & \textbf{Count} & \textbf{Vector nDCG@10} & \textbf{Full-text nDCG@10} & \textbf{Hybrid nDCG@10} \\
+\midrule
+Exact skills & 9 & 0.765 & 0.975 & 0.969 \\
+Conceptual paraphrases & 10 & 0.965 & 0.721 & 0.856 \\
+Mixed queries & 2 & 0.877 & 0.341 & 0.736 \\
+Structured filters & 7 & 0.999 & 0.999 & 0.999 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize Source: \refs{P6}.
+\end{table}
+
+Full-text search is particularly strong on exact terms in this dataset, while vector search performs well on paraphrases. Fusion is a useful general default, but can weaken a good semantic ranking by introducing less useful full-text hits. The near-perfect filtered-query scores suggest that this subset does little to distinguish the methods. Only two mixed queries also provide too little evidence for a robust conclusion about that query class.
+
+\subsection{Evaluation Limitations}
+
+The data is synthetic and was created within the project. Real resumes may have substantially different wording, layouts, and quality issues. Similarly, search queries and relevance judgements may reflect assumptions made during development. Independent annotation by multiple judges or an external benchmark dataset is not documented.
+
+The evaluation also includes no systematic load testing, long-term operation, or user study. Individual documented response times do not form reliable latency distributions. Evidence from security-related test cases is valuable, but does not replace a comprehensive security assessment.
+
+% ===========================================================================
+\section{Discussion and Reflection}
+
+\subsection{Control over Data and Public Visibility}
+
+For the prototype, the first research question is answered by separating storage from indexing. Users write their public data to their own repositories, while Authentiq determines the conditions under which it is displayed. The direct-write test for invalid job postings demonstrates why this validation must exist outside the web form.
+
+Control over data must nevertheless be interpreted within limits. Public records can be copied; deleting a record does not guarantee removal of all third-party copies. Private preferences and moderation labels also remain tied to the AppView. The architecture provides a foundation for alternative views of the same public data, but not complete portability of all user state.
+
+\subsection{Benefits and Limitations of AI Features}
+
+The documented parser comparison and search evaluation partially answer the second research question. Resume import can reduce manual data entry, although actual time savings were not measured. The high F1 score does not justify removing the confirmation step. Even rare errors in employers, dates, or qualifications can have substantial consequences for the person concerned.
+
+On average, search benefits from combining different methods. However, the subgroups show that a single fusion mechanism is not optimal for every query. A possible extension would investigate selecting or weighting methods according to query type. Such an approach would need evaluation on additional data to avoid adapting it to the existing 28 queries.
+
+\subsection{Fairness and Responsible Presentation}
+
+Authentiq removes certain sensitive attributes and proxies from search documents and cleans queries using patterns. This restricts some direct selection criteria. However, a term list can miss paraphrases and remove legitimate professional terminology. Remaining information about career history can also correlate indirectly with protected attributes.
+
+These measures should therefore be described as technical restrictions, not evidence of discrimination-free results. Suitable data and a dedicated study design for assessing outcomes across different groups are absent. Likewise, coarse job-match categories indicate similarity; they do not predict job performance or provide authoritative judgements of suitability.
+
+\subsection{Extensibility and Operational Limits}
+
+The additional feed generator provides concrete support for the third research question. Its selection method can be implemented independently, while the AppView completes the response under its own rules. This division supports extensions within the defined contract.
+
+Important tasks remain before public deployment. The documented DNS-rebinding gap must be closed, and local network exceptions must not be carried over unchanged. Process-local replay protection and rate limits require coordination across multiple instances. The additional generator uses in-memory storage and rereads existing records at startup. This demonstrates the interface, but not a scalable indexing system.
+
+The first-party generator is also coupled to the AppView schema through its database access. A read-only role restricts write permissions but does not remove this structural dependency. Maintaining a separate index would reduce coupling while increasing operational work.
+
+\subsection{Technical and Personal Reflection}
+
+Several technical lessons emerge from the development documentation. Shared contracts simplify extensions when structural validation and business rules remain distinct. Asynchronous processing prevents model failures from blocking core indexing. HTTP availability alone is insufficient for checking a web interface: a documented error caused by server-side dependencies reaching the browser was discovered only when the interface was actually rendered \refs{P5}.
+
+\authortodo{Personal reflection should connect these technical findings to the work performed: Which decisions were particularly difficult? Which estimates proved inaccurate? How were external libraries and AI tools used and verified? Which feature should have been scoped more narrowly or tested earlier? These statements must reflect actual project experience.}
+
+% ===========================================================================
+\section{Conclusion and Future Work}
+
+Authentiq implements a professional network as a local AT Protocol application. Profiles, social content, and job postings are described through shared lexicons and stored in public user repositories. The AppView constructs an application-specific view and enforces its rules there. The prototype combines this architecture with controlled resume import, hybrid search, and interchangeable feed generators.
+
+The documented results support the feasibility of the chosen architecture. Salary rules remain effective when records are written directly to the PDS, AI features are embedded in verifiable workflows, and an additional generator uses the existing interface. The search evaluation also shows that the highest overall average does not imply superiority for every query class.
+
+The next development steps should strengthen the evidence and resilience of the system: a more independent and multilingual evaluation dataset, systematic assessment of presentation and usability, fixes for known network and multi-instance issues, and a backup strategy for private state. A portability demonstration involving an actual second PDS would also add practical evidence for a claim currently supported primarily by the architecture.
+
+% ===========================================================================
+\section{References and Project Sources}
+
+\subsection{External Sources}
+
+\begin{reflist}
+\refitem{L1} Bluesky Social PBC. \href{https://atproto.com/guides/overview}{\emph{AT Protocol Documentation --- Protocol Overview}}.
+\refitem{L2} Bluesky Social PBC. \href{https://atproto.com/specs/lexicon}{\emph{Lexicon}}. AT Protocol schema language specification.
+\refitem{L3} pgvector project. \href{https://github.com/pgvector/pgvector}{\emph{pgvector --- Open-source vector similarity search for Postgres}}. Project documentation.
+\refitem{L4} Cormack, Gordon V.; Clarke, Charles L.\,A.; B\"uttcher, Stefan. \href{https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf}{\emph{Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods}}. SIGIR, authors' version.
+\refitem{L5} Kleppmann, Martin; Frazee, Paul; Gold, Jake; Graber, Jay; Holmgren, Daniel; Ivy, Devin; Johnson, Jeromy; Newbold, Bryan; Volpert, Jaz. \href{https://arxiv.org/html/2402.03239v2}{\emph{Bluesky and the AT Protocol: Usable Decentralized Social Media}}. arXiv:2402.03239v2.
+\refitem{L6} Abramov, Dan. \href{https://overreacted.io/open-social/}{\emph{Open Social}}. overreacted.
+\refitem{L7} Abramov, Dan. \href{https://overreacted.io/where-its-at/}{\emph{Where It's at://}}. overreacted.
+\refitem{L8} ByteByteGo. \href{https://blog.bytebytego.com/p/how-perplexity-built-an-ai-google}{\emph{How Perplexity Built an AI Google}}. ByteByteGo Newsletter. Secondary background article.
+\refitem{L9} Mistral AI. \href{https://docs.mistral.ai/studio/conversations/structured-output/custom}{\emph{Custom Structured Outputs}}. Official documentation.
+\refitem{L10} Mistral AI. \href{https://docs.mistral.ai/studio/conversations/function-calling}{\emph{Function Calling}}. Official documentation.
+\refitem{L11} Bun. \href{https://bun.sh/docs/pm/workspaces}{\emph{Workspaces}}. Official documentation for monorepositories and workspace dependencies.
+\refitem{L12} shadcn/ui. \href{https://ui.shadcn.com/docs}{\emph{Introduction}}. Official component and code-distribution documentation.
+\refitem{L13} TanStack. \href{https://tanstack.com/start/latest/docs/framework/react/overview}{\emph{TanStack Start Overview}}. Official React framework documentation.
+\refitem{L14} PostgreSQL Global Development Group. \href{https://www.postgresql.org/docs/17/textsearch-controls.html}{\emph{PostgreSQL 17 Documentation --- Controlling Text Search}}. Official documentation for parsing, querying, and ranking.
+\refitem{L15} ElysiaJS. \href{https://elysiajs.com/at-glance}{\emph{At a Glance}}. Official backend framework documentation.
+\end{reflist}
+
+\subsection{Project Sources}
+
+The following sources document Authentiq's requirements, architecture, implementation, and verification. The source code was also consulted for model choices, available features, and interfaces. Paths are relative to the project repository.
+
+\begin{reflist}
+\refitem{P1} Authentiq: Roadmap, \path{docs/roadmap.md}.
+\refitem{P2} Authentiq: ADR 0001 on the AppView and PDS split, \path{docs/adr/0001-appview-pds-split.md}.
+\refitem{P3} Authentiq: Lexicon design, \path{docs/phases/01-lexicons.md}, and Authentication and profiles, \path{docs/phases/02-auth-profiles.md}.
+\refitem{P4} Authentiq: AppView indexer, \path{docs/phases/03-appview-indexer.md}; implementation in \path{apps/appview/src/indexer/}.
+\refitem{P5} Authentiq: Resume import, \path{docs/phases/04-resume-parsing.md}; implementation in \path{apps/appview/src/resume/}; scoring rules in \path{infra/scripts/lib/resume-score.ts}.
+\refitem{P6} Authentiq: Talent search and recruiting assistant, \path{docs/phases/05-talent-search.md}; implementation in \path{apps/appview/src/search/talent.ts}, \path{apps/appview/src/agent/}, and \path{infra/scripts/eval-search.ts}.
+\refitem{P7} Authentiq: Social features, \path{docs/phases/06-social.md}.
+\refitem{P8} Authentiq: \path{README.md}, \path{package.json}, \path{packages/db/src/schema/index.ts}, and \path{packages/ai/src/index.ts}.
+\refitem{P9} Authentiq: Job postings, \path{docs/phases/07-jobs.md}; shared rules in \path{packages/rules/src/}.
+\refitem{P10} Authentiq: Feed composition, \path{docs/phases/08-feeds.md}, particularly regression results and known limitations.
+\end{reflist}
+
+% ===========================================================================
+\appendix
+
+\section{User Guide}
+
+\subsection{Sign-In and Profile}
+
+In the local setup, open the application at \url{http://127.0.0.1:3000}. Sign-in leads to authorisation through the local PDS (Figure~\ref{fig:signin}). The seeded demo accounts, for example \code{alice.test}, all use the password \code{password}. Profile information, professional positions, and education entries can be edited at \code{/profile/edit} (Figure~\ref{fig:profile-edit}). The public profile view is available at \code{/p/<handle or DID>} (Figure~\ref{fig:candidate}).
+
+Saving may complete shortly before the visible update because the AppView must first process the changes. Published profile fields are public network data. Confidential information should therefore not be entered as profile text.
+
+\subsection{Importing a Resume}
+
+At \code{/profile/import}, select a PDF or DOCX file. After processing, the application displays suggested information. Review each entry; incorrect values can be changed or deselected. Confirmation publishes the selected structured information. Image-only scans without extractable text are not supported.
+
+\subsection{Search and Jobs}
+
+At \code{/recruit}, a conversational assistant supports searches for public profiles (Figure~\ref{fig:agent}). Tool calls and source references help users check its results. Outreach text is a draft and is not sent.
+
+The \code{/jobs} page lists job postings with filters (Figure~\ref{fig:jobs}). Creating a posting requires a salary range, including currency and pay period. A displayed job match describes similarity to the user's own profile; it is neither an offer nor an assessment of professional suitability.
+
+\subsection{Communities and Feeds}
+
+Topic-based communities are available at \code{/communities} (Figure~\ref{fig:communities}). Founders can hide posts within their communities. Additional feeds can be discovered and pinned at \code{/feeds} (Figure~\ref{fig:feeds}). A pinned feed appears as an option on the home page. This preference is stored privately in the AppView and is not part of the public repository.
+
+\section{Developer Guide}
+
+\subsection{Preparing the Local Setup}
+
+Bun and Docker are required. AI features also require configured Mistral API access. Credentials belong in the designated local environment files, not in the report or version control. The following order follows the documented regression setup; the later seed scripts require running application services.
+
+\begin{lstlisting}
+bun install
+bun run infra:env
+bun run infra:up
+bun run seed
+bun run db:migrate
+bun run dev
+\end{lstlisting}
+
+While \code{bun run dev} is running, create demonstration data in a second terminal as needed:
+
+\begin{lstlisting}
+bun run seed:talent
+bun run seed:social
+bun run seed:jobs
+bun run seed:feeds
+bun run infra:status
+\end{lstlisting}
+
+Every account created by the seed scripts uses the password \code{password}. This includes \code{alice.test} to \code{noor.test}, the \code{tal-NNN.test} candidates, the demo cast, and the feed publishers \code{authentiq-feeds.test} and \code{link-roundup.test}. These credentials exist only on the local PDS.
+
+Generating environment files does not configure model access by itself. Before running AI checks, set \path{MISTRAL_API_KEY} for the AppView. Some integration checks additionally require \path{ADMIN_TOKEN}. Seed and verification commands are intended for the local development setup; some change test data, trigger indexing operations, or invoke paid model APIs.
+
+\subsection{Checks and Reproducibility}
+
+\begin{lstlisting}
+bun run test
+bun run typecheck
+bun run lint
+bun run verify:lexicons
+bun run verify:oauth
+bun run verify:indexer
+bun run verify:resume
+bun run verify:search
+bun run verify:agent
+bun run verify:social
+bun run verify:jobs
+bun run verify:feeds
+bun run eval:resume
+bun run eval:search
+\end{lstlisting}
+
+For the final run, retain the commit, model identifiers, dataset, and complete outputs together. Some verification scripts test failures by deliberately changing local service state. They should therefore run in a controlled development environment and a documented sequence.
+
+\subsection{Source Code Entry Points}
+
+Data contracts are in \path{packages/lexicons}, database definitions in \path{packages/db}, and shared business rules in \path{packages/rules}. The \path{apps/appview/src/indexer/} directory contains event processing and backfill. Resume processing, search documents, search, and the assistant are in the \code{resume}, \code{embed}, \code{search}, and \code{agent} subdirectories. Generator implementations are separate under \path{apps/feedgen} and \path{apps/feedgen-thirdparty}.
+
+\end{document}

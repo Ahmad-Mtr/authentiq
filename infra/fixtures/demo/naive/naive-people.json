@@ -1,0 +1,3658 @@
+{
+ "model": "mistral-medium-2604",
+ "temperature": 0.7,
+ "prompt": "Create 6 fictional professionals for the demo of a professional network, in any fields you like. Make the group diverse.\n\nFor each, also fill \"audit\" honestly: the gender you imagined, the world region their name is most common in, their field in a few words, and their seniority. Today is 2026-09; no date may be later.",
+ "people": [
+  {
+   "displayName": "Aisha Okafor",
+   "headline": "UX Researcher driving user-centered design in fintech.",
+   "about": "I uncover user pain points and translate them into actionable insights for product teams. My work involves conducting interviews, usability tests, and data analysis to improve customer experiences in digital financial services. I specialize in creating intuitive interfaces that address real user needs.",
+   "skills": [
+    "User Research",
+    "Usability Testing",
+    "Figma",
+    "Qualitative Analysis",
+    "Agile Methodologies",
+    "Wireframing",
+    "Survey Design",
+    "Stakeholder Interviews",
+    "Accessibility",
+    "Data Visualization"
+   ],
+   "positions": [
+    {
+     "title": "Senior UX Researcher",
+     "organization": "Luminar Financial",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Lagos, NG",
+     "startDate": "2023-01",
+     "endDate": null,
+     "description": "Lead a team of researchers to define user personas and journey maps for a mobile banking app. Collaborate with designers and developers to implement findings."
+    },
+    {
+     "title": "UX Researcher",
+     "organization": "Teal Solutions",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2020-06",
+     "endDate": "2022-12",
+     "description": "Conducted usability studies for a payment processing platform, identifying key friction points and improving user retention by 20%."
+    },
+    {
+     "title": "Research Assistant",
+     "organization": "Briarwood Institute of Design",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Accra, GH",
+     "startDate": "2019-03",
+     "endDate": "2019-08",
+     "description": "Supported senior researchers in collecting and analyzing user feedback for academic and commercial projects."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Elimere",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Human-Computer Interaction",
+     "startDate": "2018",
+     "endDate": "2020"
+    },
+    {
+     "school": "University of Elimere",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Psychology",
+     "startDate": "2014",
+     "endDate": "2018"
+    }
+   ],
+   "location": "Lagos, NG",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "West Africa",
+    "field": "UX Research, Fintech",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Diego Mendoza",
+   "headline": "Civil Engineer specializing in sustainable infrastructure.",
+   "about": "I design and oversee the construction of eco-friendly buildings and public works. My projects focus on reducing environmental impact while meeting budget and timeline constraints. I have expertise in green building materials and energy-efficient systems.",
+   "skills": [
+    "AutoCAD",
+    "Revit",
+    "Project Management",
+    "Sustainable Design",
+    "Structural Analysis",
+    "BIM 360",
+    "LEED Certification",
+    "Cost Estimation",
+    "Risk Assessment",
+    "Construction Safety"
+   ],
+   "positions": [
+    {
+     "title": "Project Manager",
+     "organization": "GreenHorizon Builders",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Bogotá, CO",
+     "startDate": "2021-05",
+     "endDate": null,
+     "description": "Manage a portfolio of sustainable infrastructure projects, ensuring compliance with environmental regulations and client specifications. Lead a team of 15 engineers and architects."
+    },
+    {
+     "title": "Senior Civil Engineer",
+     "organization": "TerraFirma Engineering",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Medellín, CO",
+     "startDate": "2017-08",
+     "endDate": "2021-04",
+     "description": "Designed and supervised the construction of a low-impact residential complex, reducing carbon footprint by 30% through innovative materials."
+    },
+    {
+     "title": "Civil Engineer",
+     "organization": "VistaClaro Developments",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Cali, CO",
+     "startDate": "2014-03",
+     "endDate": "2017-07",
+     "description": "Assisted in the planning and execution of urban development projects, focusing on community needs and sustainability."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Montelario",
+     "degree": "Master of Engineering",
+     "fieldOfStudy": "Civil Engineering",
+     "startDate": "2012",
+     "endDate": "2014"
+    }
+   ],
+   "location": "Bogotá, CO",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Latin America",
+    "field": "Civil Engineering, Sustainable Infrastructure",
+    "seniority": "lead"
+   }
+  },
+  {
+   "displayName": "Lena Petrov",
+   "headline": "Data Scientist transforming raw data into strategic insights.",
+   "about": "I build predictive models and machine learning pipelines to solve business challenges. My work includes cleaning and analyzing large datasets, developing algorithms, and presenting findings to stakeholders. I thrive in cross-functional teams that value data-driven decision-making.",
+   "skills": [
+    "Python",
+    "SQL",
+    "Machine Learning",
+    "TensorFlow",
+    "Pandas",
+    "Tableau",
+    "Data Visualization",
+    "Natural Language Processing",
+    "A/B Testing",
+    "Big Data"
+   ],
+   "positions": [
+    {
+     "title": "Data Science Lead",
+     "organization": "NexaCore Analytics",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2022-11",
+     "endDate": null,
+     "description": "Lead a team of data scientists to develop predictive models for a retail analytics platform. Collaborate with product and marketing teams to optimize customer engagement."
+    },
+    {
+     "title": "Senior Data Scientist",
+     "organization": "QuantumLeap Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Berlin, DE",
+     "startDate": "2019-07",
+     "endDate": "2022-10",
+     "description": "Designed and implemented machine learning models to forecast demand for an e-commerce client, improving inventory management and reducing costs by 15%."
+    },
+    {
+     "title": "Data Analyst",
+     "organization": "Stratford Data Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Munich, DE",
+     "startDate": "2017-02",
+     "endDate": "2019-06",
+     "description": "Analyzed customer behavior data to identify trends and inform marketing strategies for a subscription-based service."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Vellacourt",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Data Science",
+     "startDate": "2015",
+     "endDate": "2017"
+    },
+    {
+     "school": "University of Vellacourt",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Applied Mathematics",
+     "startDate": "2011",
+     "endDate": "2015"
+    }
+   ],
+   "location": "Berlin, DE",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Eastern Europe",
+    "field": "Data Science",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Rajiv Kapoor",
+   "headline": "Marketing Strategist crafting campaigns that connect brands with audiences.",
+   "about": "I develop and execute multi-channel marketing strategies to drive brand awareness and customer acquisition. My approach combines data analytics with creative storytelling to deliver impactful campaigns. I have a proven track record in digital and traditional marketing.",
+   "skills": [
+    "Digital Marketing",
+    "SEO/SEM",
+    "Content Strategy",
+    "Google Analytics",
+    "Social Media Marketing",
+    "Brand Management",
+    "Email Marketing",
+    "Market Research",
+    "CRM Systems",
+    "Copywriting"
+   ],
+   "positions": [
+    {
+     "title": "Head of Marketing",
+     "organization": "Lumen Advertising",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Mumbai, IN",
+     "startDate": "2020-09",
+     "endDate": null,
+     "description": "Lead the marketing department, overseeing brand strategy, digital campaigns, and customer engagement initiatives for a portfolio of clients in retail and tech."
+    },
+    {
+     "title": "Marketing Manager",
+     "organization": "BrightStar Media",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Delhi, IN",
+     "startDate": "2016-05",
+     "endDate": "2020-08",
+     "description": "Managed a team of marketers to execute integrated campaigns, increasing client ROI by 25% through targeted digital strategies."
+    },
+    {
+     "title": "Marketing Specialist",
+     "organization": "Eclat Communications",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Bangalore, IN",
+     "startDate": "2014-01",
+     "endDate": "2016-04",
+     "description": "Developed and implemented social media and email marketing campaigns, growing client followings and engagement rates."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Chandralok",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Marketing",
+     "startDate": "2012",
+     "endDate": "2014"
+    }
+   ],
+   "location": "Mumbai, IN",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "South Asia",
+    "field": "Marketing Strategy",
+    "seniority": "lead"
+   }
+  },
+  {
+   "displayName": "Sophie Dubois",
+   "headline": "Pediatric Nurse Practitioner providing compassionate, evidence-based care.",
+   "about": "I deliver primary and specialty care to children, focusing on preventive health, early intervention, and family education. My practice is rooted in the latest clinical guidelines and a patient-centered approach. I collaborate with multidisciplinary teams to ensure holistic care.",
+   "skills": [
+    "Pediatric Care",
+    "Patient Education",
+    "Health Promotion",
+    "Diagnostic Procedures",
+    "Electronic Health Records",
+    "Immunization",
+    "Chronic Disease Management",
+    "Developmental Screening",
+    "Family Counseling",
+    "Clinical Documentation"
+   ],
+   "positions": [
+    {
+     "title": "Pediatric Nurse Practitioner",
+     "organization": "Sunrise Family Health",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lyon, FR",
+     "startDate": "2021-03",
+     "endDate": null,
+     "description": "Provide comprehensive primary care to pediatric patients, including well-child visits, acute illness management, and developmental assessments."
+    },
+    {
+     "title": "Pediatric Nurse",
+     "organization": "Harmony Children's Clinic",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Paris, FR",
+     "startDate": "2018-07",
+     "endDate": "2021-02",
+     "description": "Administered care to children in a clinical setting, focusing on preventive health and chronic condition management. Educated families on best practices for child health."
+    },
+    {
+     "title": "Registered Nurse",
+     "organization": "Valeview General Hospital",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Marseille, FR",
+     "startDate": "2015-06",
+     "endDate": "2018-06",
+     "description": "Provided nursing care in a busy pediatric ward, assisting with procedures, monitoring patient progress, and supporting families during hospital stays."
+    }
+   ],
+   "education": [
+    {
+     "school": "Institute of Montclair",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Nursing (Pediatric Nurse Practitioner)",
+     "startDate": "2017",
+     "endDate": "2019"
+    },
+    {
+     "school": "University of Bellefont",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Nursing",
+     "startDate": "2011",
+     "endDate": "2015"
+    }
+   ],
+   "location": "Lyon, FR",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Western Europe",
+    "field": "Pediatric Nursing",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Ethan Carter",
+   "headline": "Mechanical Engineer designing innovative solutions for industrial challenges.",
+   "about": "I specialize in the design and development of mechanical systems for manufacturing and automation. My work involves prototyping, testing, and refining machinery to improve efficiency and safety. I have a strong background in CAD modeling and project management.",
+   "skills": [
+    "CAD Design",
+    "SolidWorks",
+    "Finite Element Analysis",
+    "Prototyping",
+    "Thermodynamics",
+    "Manufacturing Processes",
+    "Project Management",
+    "3D Printing",
+    "Material Selection",
+    "Robotics"
+   ],
+   "positions": [
+    {
+     "title": "Senior Mechanical Engineer",
+     "organization": "Precision Dynamics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Detroit, US",
+     "startDate": "2020-02",
+     "endDate": null,
+     "description": "Lead the design and development ofcustom industrial machinery, optimizing performance and reducing production costs. Manage a team of junior engineers and technicians."
+    },
+    {
+     "title": "Mechanical Engineer",
+     "organization": "Apex Manufacturing",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Chicago, US",
+     "startDate": "2016-09",
+     "endDate": "2020-01",
+     "description": "Designed and tested components for automated assembly lines, improving efficiency by 20% and reducing downtime."
+    },
+    {
+     "title": "Design Engineer",
+     "organization": "FusionTech Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Boston, US",
+     "startDate": "2014-05",
+     "endDate": "2016-08",
+     "description": "Assisted in the development of prototypes for consumer electronics, focusing on durability and user experience."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Harrowmere",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2012",
+     "endDate": "2014"
+    },
+    {
+     "school": "University of Harrowmere",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2008",
+     "endDate": "2012"
+    }
+   ],
+   "location": "Detroit, US",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "North America",
+    "field": "Mechanical Engineering",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Mira Kovač",
+   "headline": "Senior UX Designer crafting intuitive digital experiences",
+   "about": "I design user-centric digital products, from research to high-fidelity prototypes. I specialize in creating accessible, scalable design systems that bridge user needs with business goals. My work focuses on understanding user pain points and translating them into seamless interactions.",
+   "skills": [
+    "User Research",
+    "Figma",
+    "Design Systems",
+    "Accessibility (WCAG)",
+    "Wireframing",
+    "Usability Testing",
+    "Prototyping",
+    "Collaborative Design",
+    "Agile Workflows",
+    "Interaction Design"
+   ],
+   "positions": [
+    {
+     "title": "Senior UX Designer",
+     "organization": "Luminara Design Studio",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Zagreb, HR",
+     "startDate": "2021-06",
+     "endDate": null,
+     "description": "Leading the design of enterprise SaaS platforms, focusing on user flows and component libraries. Collaborated with product teams to improve user retention by 30%."
+    },
+    {
+     "title": "UX Designer",
+     "organization": "Vellacourt Institute of Technology",
+     "employmentType": "contract",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2018-09",
+     "endDate": "2021-05",
+     "description": "Designed and tested user interfaces for educational software, improving student engagement metrics by 25%."
+    },
+    {
+     "title": "Junior UX Designer",
+     "organization": "Harrowmere Digital",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Ljubljana, SI",
+     "startDate": "2016-03",
+     "endDate": "2018-08",
+     "description": "Assisted in the redesign of a mobile app, conducting user interviews and creating wireframes."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Harrowmere",
+     "degree": "Master of Design",
+     "fieldOfStudy": "Human-Computer Interaction",
+     "startDate": "2014",
+     "endDate": "2016"
+    },
+    {
+     "school": "Institute of Vellacourt",
+     "degree": "Bachelor of Fine Arts",
+     "fieldOfStudy": "Digital Media Design",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ],
+   "location": "Zagreb, HR",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Southeast Europe",
+    "field": "UX Design",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Jamal Nkosi",
+   "headline": "Data Engineer building scalable pipelines and warehouses",
+   "about": "I design, deploy, and maintain data architectures that enable organizations to extract insights efficiently. My work spans ETL processes, data lakes, and real-time analytics systems. I focus on optimizing performance and ensuring data reliability.",
+   "skills": [
+    "Python",
+    "SQL",
+    "Apache Spark",
+    "Snowflake",
+    "Airflow",
+    "Kubernetes",
+    "Data Modeling",
+    "ETL Pipelines",
+    "AWS",
+    "PostgreSQL"
+   ],
+   "positions": [
+    {
+     "title": "Lead Data Engineer",
+     "organization": "Brightstream Analytics",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2023-01",
+     "endDate": null,
+     "description": "Architected a cloud-based data warehouse, reducing query times by 60% and enabling real-time reporting for clients."
+    },
+    {
+     "title": "Data Engineer",
+     "organization": "Cedarstone Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Nairobi, KE",
+     "startDate": "2019-07",
+     "endDate": "2022-12",
+     "description": "Built and optimized data pipelines to support machine learning models for predictive analytics."
+    },
+    {
+     "title": "Junior Data Analyst",
+     "organization": "Marisport Tech",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Dar es Salaam, TZ",
+     "startDate": "2017-06",
+     "endDate": "2019-06",
+     "description": "Assisted in cleaning and analyzing large datasets to produce actionable business insights."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Marisport",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Data Science",
+     "startDate": "2015",
+     "endDate": "2017"
+    }
+   ],
+   "location": "Nairobi, KE",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "East Africa",
+    "field": "Data Engineering",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Ying Xu",
+   "headline": "Financial Controller ensuring accuracy and compliance",
+   "about": "I oversee financial reporting, budgeting, and regulatory compliance for mid-sized organizations. My expertise includes implementing accounting standards, streamlining financial processes, and managing audit preparations. I ensure financial data integrity and transparency.",
+   "skills": [
+    "IFRS",
+    "Financial Reporting",
+    "Budgeting",
+    "Internal Controls",
+    "Audit Preparation",
+    "Tax Compliance",
+    "ERP Systems",
+    "Excel Advanced",
+    "Forecasting",
+    "Stakeholder Management"
+   ],
+   "positions": [
+    {
+     "title": "Financial Controller",
+     "organization": "Silvercrest Capital Group",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Shanghai, CN",
+     "startDate": "2022-04",
+     "endDate": null,
+     "description": "Leading the finance team in implementing IFRS 16 and 17, improving reporting accuracy and reducing audit findings."
+    },
+    {
+     "title": "Senior Financial Analyst",
+     "organization": "Greenfield Holdings",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Beijing, CN",
+     "startDate": "2018-05",
+     "endDate": "2022-03",
+     "description": "Managed monthly and annual financial closings, and developed dashboards for executive decision-making."
+    },
+    {
+     "title": "Financial Analyst",
+     "organization": "Harrowmere Financial",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Hong Kong, HK",
+     "startDate": "2015-09",
+     "endDate": "2018-04",
+     "description": "Supported financial planning and analysis, including variance analysis and cost optimization projects."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Greenfield",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Finance",
+     "startDate": "2013",
+     "endDate": "2015"
+    },
+    {
+     "school": "Vellacourt Institute of Economics",
+     "degree": "Bachelor of Commerce",
+     "fieldOfStudy": "Accounting",
+     "startDate": "2009",
+     "endDate": "2013"
+    }
+   ],
+   "location": "Shanghai, CN",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "East Asia",
+    "field": "Finance",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Omar Farouk",
+   "headline": "DevOps Engineer automating infrastructure and deployments",
+   "about": "I specialize in building and maintaining CI/CD pipelines, managing cloud infrastructure, and ensuring system reliability. My work focuses on automating repetitive tasks, scaling systems efficiently, and improving deployment speed. I thrive in collaborative environments where infrastructure meets development.",
+   "skills": [
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "AWS",
+    "Jenkins",
+    "Ansible",
+    "Linux",
+    "GitLab CI",
+    "Monitoring (Prometheus)",
+    "Security Hardening"
+   ],
+   "positions": [
+    {
+     "title": "DevOps Engineer",
+     "organization": "Nexus Cloud Solutions",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2021-10",
+     "endDate": null,
+     "description": "Designed and implemented a fully automated CI/CD pipeline, reducing deployment time by 80% and improving system uptime."
+    },
+    {
+     "title": "Cloud Support Engineer",
+     "organization": "Stellar Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Cairo, EG",
+     "startDate": "2019-03",
+     "endDate": "2021-09",
+     "description": "Provided 24/7 support for cloud infrastructure, troubleshooting and resolving issues to maintain SLA compliance."
+    },
+    {
+     "title": "IT Support Specialist",
+     "organization": "Harrowmere Tech",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Alexandria, EG",
+     "startDate": "2016-08",
+     "endDate": "2019-02",
+     "description": "Managed on-premise servers and network infrastructure, ensuring minimal downtime and high availability."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Alexandria Heights",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Engineering",
+     "startDate": "2012",
+     "endDate": "2016"
+    }
+   ],
+   "location": "Cairo, EG",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "North Africa",
+    "field": "DevOps",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Clara Jensen",
+   "headline": "Environmental Consultant driving sustainable solutions",
+   "about": "I advise organizations on environmental compliance, sustainability strategies, and impact assessments. My work involves analyzing environmental data, developing mitigation plans, and engaging stakeholders to promote eco-friendly practices. I aim to balance business needs with environmental stewardship.",
+   "skills": [
+    "Environmental Impact Assessment",
+    "Sustainability Reporting",
+    "GIS",
+    "Regulatory Compliance",
+    "Carbon Footprint Analysis",
+    "Stakeholder Engagement",
+    "Life Cycle Assessment",
+    "Data Visualization",
+    "Policy Development",
+    "Project Management"
+   ],
+   "positions": [
+    {
+     "title": "Senior Environmental Consultant",
+     "organization": "GreenPath Consulting",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Copenhagen, DK",
+     "startDate": "2020-02",
+     "endDate": null,
+     "description": "Leading sustainability audits and developing action plans for clients to achieve net-zero emissions. Reduced client carbon footprints by an average of 20%."
+    },
+    {
+     "title": "Environmental Consultant",
+     "organization": "EcoVista Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Stockholm, SE",
+     "startDate": "2017-05",
+     "endDate": "2020-01",
+     "description": "Conducted environmental impact assessments for infrastructure projects, ensuring compliance with EU regulations."
+    },
+    {
+     "title": "Junior Environmental Analyst",
+     "organization": "Clearwater Solutions",
+     "employmentType": "contract",
+     "locationType": "onsite",
+     "location": "Oslo, NO",
+     "startDate": "2015-06",
+     "endDate": "2017-04",
+     "description": "Assisted in collecting and analyzing environmental data for water quality and air pollution studies."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Vellacourt",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Environmental Science",
+     "startDate": "2013",
+     "endDate": "2015"
+    },
+    {
+     "school": "Harrowmere College",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Biology",
+     "startDate": "2009",
+     "endDate": "2013"
+    }
+   ],
+   "location": "Copenhagen, DK",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Northern Europe",
+    "field": "Environmental Consulting",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Rafael Silva",
+   "headline": "Marketing Specialist creating data-driven campaigns",
+   "about": "I develop and execute marketing strategies that drive brand awareness and lead generation. My expertise includes digital marketing, content creation, and performance analysis. I leverage data to optimize campaigns and engage target audiences effectively.",
+   "skills": [
+    "Digital Marketing",
+    "SEO",
+    "Content Strategy",
+    "Google Analytics",
+    "Social Media Marketing",
+    "Email Marketing",
+    "CRM Management",
+    "A/B Testing",
+    "Brand Strategy",
+    "Market Research"
+   ],
+   "positions": [
+    {
+     "title": "Marketing Specialist",
+     "organization": "Pinnacle Media",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Sao Paulo, BR",
+     "startDate": "2023-11",
+     "endDate": null,
+     "description": "Leading digital marketing campaigns, increasing lead generation by 40% through targeted content and SEO strategies."
+    },
+    {
+     "title": "Digital Marketing Coordinator",
+     "organization": "Brightwave Agency",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Rio de Janeiro, BR",
+     "startDate": "2020-07",
+     "endDate": "2023-10",
+     "description": "Managed social media and email marketing campaigns, improving engagement rates by 25%."
+    },
+    {
+     "title": "Marketing Assistant",
+     "organization": "Stellar Marketing Group",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Belo Horizonte, BR",
+     "startDate": "2018-02",
+     "endDate": "2020-06",
+     "description": "Assisted in developing marketing materials and analyzing campaign performance metrics."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Brightwave",
+     "degree": "Bachelor of Business Administration",
+     "fieldOfStudy": "Marketing",
+     "startDate": "2014",
+     "endDate": "2018"
+    }
+   ],
+   "location": "Sao Paulo, BR",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Latin America",
+    "field": "Marketing",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Elara Voss",
+   "headline": "Sustainable Urban Planner | Community Engagement Specialist",
+   "about": "I design resilient urban spaces that balance ecological needs with community growth. My work focuses on participatory planning, green infrastructure, and policy development to create cities that thrive for generations. I collaborate with local stakeholders to turn visions into actionable plans.",
+   "skills": [
+    "Urban Design",
+    "GIS Mapping",
+    "Community Engagement",
+    "Sustainability Frameworks",
+    "Zoning Policy",
+    "Stakeholder Facilitation",
+    "AutoCAD",
+    "Environmental Impact Assessment",
+    "Public Space Design",
+    "Grant Writing"
+   ],
+   "positions": [
+    {
+     "title": "Senior Urban Planner",
+     "organization": "Greenway Collective",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Portland, US",
+     "startDate": "2022-07",
+     "endDate": null,
+     "description": "Lead a team of planners to develop sustainable neighborhood redevelopment projects, focusing on mixed-use spaces and green corridors. Engage with community groups to ensure plans align with local needs."
+    },
+    {
+     "title": "Urban Planner",
+     "organization": "Harborview Planning Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Seattle, US",
+     "startDate": "2018-03",
+     "endDate": "2022-06",
+     "description": "Designed zoning amendments and public space improvements for downtown revitalization. Collaborated with city councils and non-profits to integrate public feedback into urban policies."
+    },
+    {
+     "title": "Planning Intern",
+     "organization": "Riverton City Development",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Riverton, US",
+     "startDate": "2017-05",
+     "endDate": "2018-02",
+     "description": "Assisted in drafting environmental impact reports and conducting site analyses for proposed residential developments. Supported community workshops to gather input on urban projects."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Brantford",
+     "degree": "Master of Urban Planning",
+     "fieldOfStudy": "Sustainable Urban Development",
+     "startDate": "2015",
+     "endDate": "2017"
+    },
+    {
+     "school": "Lakewood Community College",
+     "degree": "Associate of Arts",
+     "fieldOfStudy": "Environmental Science",
+     "startDate": "2013",
+     "endDate": "2015"
+    }
+   ],
+   "location": "Portland, US",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Europe",
+    "field": "Urban Planning and Sustainability",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Kwame Adjei",
+   "headline": "Financial Analyst | Risk Management & Investment Strategies",
+   "about": "I specialize in analyzing market trends to optimize investment portfolios and mitigate financial risks. My approach combines quantitative modeling with qualitative insights to deliver data-driven recommendations. I work closely with clients to align financial strategies with their long-term goals.",
+   "skills": [
+    "Financial Modeling",
+    "Risk Assessment",
+    "Portfolio Optimization",
+    "Python",
+    "SQL",
+    "Excel Advanced",
+    "Bloomberg Terminal",
+    "IFRS Standards",
+    "Derivatives Pricing",
+    "Client Advisory"
+   ],
+   "positions": [
+    {
+     "title": "Senior Financial Analyst",
+     "organization": "Summit Capital Advisors",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Accra, GH",
+     "startDate": "2023-01",
+     "endDate": null,
+     "description": "Develop investment strategies for high-net-worth clients, focusing on emerging markets. Lead risk assessment initiatives and provide actionable insights to improve portfolio performance."
+    },
+    {
+     "title": "Financial Analyst",
+     "organization": "Meridian Investment Group",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Lagos, NG",
+     "startDate": "2019-06",
+     "endDate": "2022-12",
+     "description": "Conducted financial forecasting and scenario analysis for corporate clients. Prepared detailed reports on market conditions and recommended adjustments to investment portfolios."
+    },
+    {
+     "title": "Risk Analyst Intern",
+     "organization": "Apex Financial Services",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Nairobi, KE",
+     "startDate": "2018-02",
+     "endDate": "2019-05",
+     "description": "Assisted in evaluating credit and market risks for a diverse client base. Supported the development of risk management frameworks and tools for the team."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Kigali",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Finance and Investment",
+     "startDate": "2016",
+     "endDate": "2018"
+    }
+   ],
+   "location": "Accra, GH",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Africa",
+    "field": "Finance and Investment",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Mei Lin",
+   "headline": "UX/UI Designer | Creating Intuitive Digital Experiences",
+   "about": "I craft user-centered designs that blend aesthetics with functionality. My process involves deep user research, iterative prototyping, and collaboration with developers to bring ideas to life. I am passionate about accessible and inclusive design that serves diverse audiences.",
+   "skills": [
+    "User Research",
+    "Wireframing",
+    "Prototyping",
+    "Figma",
+    "Sketch",
+    "Adobe XD",
+    "Design Systems",
+    "Accessibility Standards",
+    "Frontend Basics",
+    "Usability Testing"
+   ],
+   "positions": [
+    {
+     "title": "Lead UX/UI Designer",
+     "organization": "Nexus Digital Studios",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Singapore, SG",
+     "startDate": "2021-10",
+     "endDate": null,
+     "description": "Oversee the design team to develop end-to-end user experiences for web and mobile applications. Conduct workshops to align stakeholders on design goals and user needs."
+    },
+    {
+     "title": "UX Designer",
+     "organization": "Horizon Tech Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Kuala Lumpur, MY",
+     "startDate": "2018-08",
+     "endDate": "2021-09",
+     "description": "Designed user interfaces and workflows for enterprise software, improving usability metrics by 30%. Collaborated with product managers to refine feature requirements based on user feedback."
+    },
+    {
+     "title": "Design Intern",
+     "organization": "PixelCraft Design Agency",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Bangkok, TH",
+     "startDate": "2017-06",
+     "endDate": "2018-07",
+     "description": "Supported senior designers in creating mockups and conducting usability tests for client projects. Gained hands-on experience in responsive design and user-centered methodologies."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Serendale",
+     "degree": "Bachelor of Fine Arts",
+     "fieldOfStudy": "Digital Design",
+     "startDate": "2013",
+     "endDate": "2017"
+    }
+   ],
+   "location": "Singapore, SG",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Asia",
+    "field": "UX/UI Design",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Luca Moretti",
+   "headline": "Mechanical Engineer | Robotics and Automation Specialist",
+   "about": "I develop advanced robotic systems and automation solutions for industrial and commercial applications. My expertise spans mechanical design, control systems, and integration of IoT technologies. I thrive in collaborative environments where innovation meets practical engineering.",
+   "skills": [
+    "Robotics Design",
+    "CAD (SolidWorks, AutoCAD)",
+    "Control Systems",
+    "Python",
+    "C++",
+    "IoT Integration",
+    "Prototype Testing",
+    "PLC Programming",
+    "3D Printing",
+    "Project Management"
+   ],
+   "positions": [
+    {
+     "title": "Senior Mechanical Engineer",
+     "organization": "Automata Dynamics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Milan, IT",
+     "startDate": "2020-05",
+     "endDate": null,
+     "description": "Lead the design and development of robotic arms for manufacturing automation. Oversee testing and validation phases to ensure systems meet performance and safety standards."
+    },
+    {
+     "title": "Mechanical Design Engineer",
+     "organization": "Precision Mechanics Ltd.",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Turin, IT",
+     "startDate": "2016-09",
+     "endDate": "2020-04",
+     "description": "Designed custom machinery components for automotive clients. Collaborated with cross-functional teams to optimize production efficiency and reduce costs by 15%."
+    },
+    {
+     "title": "Engineering Intern",
+     "organization": "Valley Forge Industrial",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Bergamo, IT",
+     "startDate": "2015-06",
+     "endDate": "2016-08",
+     "description": "Assisted in drafting technical specifications and conducting feasibility studies for new product lines. Gained exposure to lean manufacturing principles and quality control processes."
+    }
+   ],
+   "education": [
+    {
+     "school": "Institute of Technology of Veridia",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2013",
+     "endDate": "2015"
+    },
+    {
+     "school": "University of Montclair",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2009",
+     "endDate": "2013"
+    }
+   ],
+   "location": "Milan, IT",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Europe",
+    "field": "Mechanical Engineering and Robotics",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Fatima Al-Mansoori",
+   "headline": "Public Health Researcher | Epidemiology & Data Analysis",
+   "about": "I investigate health trends and disease patterns to inform public health policies and interventions. My work involves statistical analysis, field research, and collaboration with healthcare providers to address community health challenges. I am committed to bridging gaps in healthcare access through evidence-based solutions.",
+   "skills": [
+    "Epidemiology",
+    "Biostatistics",
+    "R Programming",
+    "SPSS",
+    "Public Health Policy",
+    "Data Visualization",
+    "Health Surveillance",
+    "Qualitative Research",
+    "Grant Writing",
+    "Community Health Education"
+   ],
+   "positions": [
+    {
+     "title": "Public Health Researcher",
+     "organization": "WellSpring Health Institute",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Dubai, AE",
+     "startDate": "2022-03",
+     "endDate": null,
+     "description": "Design and implement research studies on chronic disease prevalence in urban populations. Work with local health departments to develop targeted interventions based on findings."
+    },
+    {
+     "title": "Research Coordinator",
+     "organization": "Global Health Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Muscat, OM",
+     "startDate": "2018-11",
+     "endDate": "2022-02",
+     "description": "Managed multi-country health surveys to assess the impact of nutrition programs. Analyzed data to identify trends and presented findings to stakeholders and policymakers."
+    },
+    {
+     "title": "Research Assistant",
+     "organization": "Desert Bloom Public Health",
+     "employmentType": "contract",
+     "locationType": "onsite",
+     "location": "Abu Dhabi, AE",
+     "startDate": "2016-07",
+     "endDate": "2018-10",
+     "description": "Supported senior researchers in collecting and analyzing health data for a study on infectious disease outbreaks. Assisted in drafting reports and presentations for government health agencies."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Al-Safwa",
+     "degree": "Doctor of Philosophy",
+     "fieldOfStudy": "Epidemiology",
+     "startDate": "2014",
+     "endDate": "2018"
+    },
+    {
+     "school": "Institute of Health Sciences of Qadara",
+     "degree": "Master of Public Health",
+     "fieldOfStudy": "Global Health",
+     "startDate": "2012",
+     "endDate": "2014"
+    }
+   ],
+   "location": "Dubai, AE",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Middle East",
+    "field": "Public Health and Epidemiology",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Carlos Rivera",
+   "headline": "Software Engineer | Cloud Solutions & DevOps",
+   "about": "I build scalable and secure cloud infrastructure to support modern applications and services. My expertise includes cloud architecture, automation, and DevOps practices to streamline development and deployment. I am passionate about creating systems that are both robust and cost-effective.",
+   "skills": [
+    "Cloud Architecture (AWS, Azure)",
+    "Kubernetes",
+    "Docker",
+    "Terraform",
+    "CI/CD Pipelines",
+    "Python",
+    "Go",
+    "Linux",
+    "Infrastructure as Code",
+    "Monitoring and Logging"
+   ],
+   "positions": [
+    {
+     "title": "Cloud Solutions Architect",
+     "organization": "Stratosphere Tech",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Madrid, ES",
+     "startDate": "2023-04",
+     "endDate": null,
+     "description": "Design and implement cloud-native solutions for enterprise clients, focusing on scalability, security, and cost optimization. Lead a team of engineers to deliver high-availability systems."
+    },
+    {
+     "title": "DevOps Engineer",
+     "organization": "Nimbus Cloud Services",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Barcelona, ES",
+     "startDate": "2019-11",
+     "endDate": "2023-03",
+     "description": "Automated deployment pipelines to reduce release cycles by 40%. Managed cloud infrastructure and collaborated with development teams to improve system reliability and performance."
+    },
+    {
+     "title": "Software Engineer",
+     "organization": "Cumulus Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Valencia, ES",
+     "startDate": "2016-07",
+     "endDate": "2019-10",
+     "description": "Developed backend services for a SaaS platform, optimizing database queries and improving API response times. Worked closely with product teams to align technical solutions with business needs."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Solaria",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2014",
+     "endDate": "2016"
+    }
+   ],
+   "location": "Madrid, ES",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Europe",
+    "field": "Cloud Computing and DevOps",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Tariq Al-Farsi",
+   "headline": "Senior Cloud Solutions Architect designing scalable infrastructure",
+   "about": "I specialize in building and optimizing cloud-based systems for high-traffic applications. My work focuses on security, cost-efficiency, and seamless scalability. I thrive in collaborative environments where technical challenges meet business needs.",
+   "skills": [
+    "AWS",
+    "Terraform",
+    "Kubernetes",
+    "Docker",
+    "Python",
+    "PostgreSQL",
+    "Ansible",
+    "Prometheus",
+    "CI/CD pipelines",
+    "GitLab"
+   ],
+   "positions": [
+    {
+     "title": "Senior Cloud Solutions Architect",
+     "organization": "NexusCore Technologies",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Dubai, AE",
+     "startDate": "2021-06",
+     "endDate": null,
+     "description": "Lead the design and implementation of cloud infrastructure for enterprise clients, reducing operational costs by 30% through automation and efficient resource allocation."
+    },
+    {
+     "title": "Cloud Engineer",
+     "organization": "Stratiform Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Riyadh, SA",
+     "startDate": "2018-05",
+     "endDate": "2021-05",
+     "description": "Developed and maintained cloud-based solutions for mid-sized businesses, improving system uptime and performance monitoring."
+    },
+    {
+     "title": "DevOps Intern",
+     "organization": "CobaltLink",
+     "employmentType": "internship",
+     "locationType": "hybrid",
+     "location": "Muscat, OM",
+     "startDate": "2017-06",
+     "endDate": "2018-04",
+     "description": "Assisted in deploying and managing containerized applications, gaining hands-on experience with CI/CD workflows."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Al-Masdar",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Computer Engineering",
+     "startDate": "2015",
+     "endDate": "2017"
+    },
+    {
+     "school": "Institute of Zafran",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Information Technology",
+     "startDate": "2011",
+     "endDate": "2015"
+    }
+   ],
+   "location": "Dubai, AE",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Middle East",
+    "field": "Cloud Computing",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Amara Diop",
+   "headline": "Mid-Level UX Designer crafting user-centered digital experiences",
+   "about": "I design intuitive and accessible digital products that prioritize user needs. My process involves research, prototyping, and iterative testing to ensure solutions that are both functional and delightful. I enjoy bridging the gap between business goals and user expectations.",
+   "skills": [
+    "Figma",
+    "Adobe XD",
+    "User Research",
+    "Wireframing",
+    "Prototyping",
+    "Usability Testing",
+    "Accessibility Design",
+    "Design Systems",
+    "CSS",
+    "HTML"
+   ],
+   "positions": [
+    {
+     "title": "UX Designer",
+     "organization": "Lumina Interactive",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Dakar, SN",
+     "startDate": "2022-03",
+     "endDate": null,
+     "description": "Design and refine user interfaces for web and mobile applications, improving user satisfaction scores by 25% through iterative design processes."
+    },
+    {
+     "title": "UX/UI Intern",
+     "organization": "Creative Horizon",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Accra, GH",
+     "startDate": "2020-07",
+     "endDate": "2021-12",
+     "description": "Collaborated with cross-functional teams to develop user flows and wireframes for a suite of SaaS products."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Jollof",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Digital Design",
+     "startDate": "2016",
+     "endDate": "2020"
+    }
+   ],
+   "location": "Dakar, SN",
+   "openToWork": false,
+   "audit": {
+    "gender": "nonbinary",
+    "nameOrigin": "West Africa",
+    "field": "User Experience Design",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Evelina Petrovic",
+   "headline": "Lead Financial Analyst specializing in corporate strategy and risk management",
+   "about": "I provide data-driven insights to guide financial decision-making and long-term business strategy. My expertise lies in forecasting, financial modeling, and identifying growth opportunities. I work closely with leadership to align financial planning with organizational goals.",
+   "skills": [
+    "Financial Modeling",
+    "IFRS",
+    "Risk Assessment",
+    "Data Analysis",
+    "Excel",
+    "Power BI",
+    "SQL",
+    "Corporate Finance",
+    "Budgeting",
+    "Strategic Planning"
+   ],
+   "positions": [
+    {
+     "title": "Lead Financial Analyst",
+     "organization": "Vesper Holdings",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Belgrade, RS",
+     "startDate": "2020-01",
+     "endDate": null,
+     "description": "Oversee financial analysis and reporting for a portfolio of international clients, ensuring compliance with global standards and optimizing investment strategies."
+    },
+    {
+     "title": "Financial Analyst",
+     "organization": "Balkan Capital Group",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Sarajevo, BA",
+     "startDate": "2016-09",
+     "endDate": "2019-12",
+     "description": "Conducted market research and financial forecasting to support mergers and acquisitions, improving deal success rates by 15%."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Vranje",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Finance",
+     "startDate": "2014",
+     "endDate": "2016"
+    },
+    {
+     "school": "Institute of Drina",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Economics",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ],
+   "location": "Belgrade, RS",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Balkans",
+    "field": "Financial Analysis",
+    "seniority": "lead"
+   }
+  },
+  {
+   "displayName": "Nataniel Rojas",
+   "headline": "Junior Software Developer building robust backend systems",
+   "about": "I develop and maintain scalable backend services that power modern applications. My focus is on writing clean, efficient code and solving complex problems with a user-centric approach. I am passionate about continuous learning and staying updated with industry trends.",
+   "skills": [
+    "Java",
+    "Spring Boot",
+    "REST APIs",
+    "PostgreSQL",
+    "MongoDB",
+    "Docker",
+    "Git",
+    "JUnit",
+    "Microservices",
+    "Linux"
+   ],
+   "positions": [
+    {
+     "title": "Junior Software Developer",
+     "organization": "CodeHaven Solutions",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Lima, PE",
+     "startDate": "2024-01",
+     "endDate": null,
+     "description": "Collaborate with senior developers to design and implement backend features for a growing e-commerce platform, improving API response times by 20%."
+    },
+    {
+     "title": "Software Development Intern",
+     "organization": "TechPulse Innovations",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Santiago, CL",
+     "startDate": "2022-06",
+     "endDate": "2023-12",
+     "description": "Developed and tested backend components for a client management system, gaining experience in full-stack development."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Andina",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2018",
+     "endDate": "2022"
+    }
+   ],
+   "location": "Lima, PE",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Latin America",
+    "field": "Software Development",
+    "seniority": "junior"
+   }
+  },
+  {
+   "displayName": "Priya Chandrasekhar",
+   "headline": "Mid-Level Data Scientist turning data into actionable insights",
+   "about": "I analyze large datasets to uncover trends and provide actionable recommendations that drive business decisions. My work spans predictive modeling, statistical analysis, and data visualization. I enjoy translating complex data into clear, impactful stories.",
+   "skills": [
+    "Python",
+    "R",
+    "SQL",
+    "TensorFlow",
+    "Tableau",
+    "Machine Learning",
+    "Statistical Analysis",
+    "Data Cleaning",
+    "Jupyter",
+    "Pandas"
+   ],
+   "positions": [
+    {
+     "title": "Data Scientist",
+     "organization": "InsightFlow Analytics",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Bangalore, IN",
+     "startDate": "2021-04",
+     "endDate": null,
+     "description": "Develop machine learning models to optimize supply chain logistics, reducing delivery times by 18% through predictive analytics."
+    },
+    {
+     "title": "Data Analyst",
+     "organization": "QuantumMetrics",
+     "employmentType": "contract",
+     "locationType": "remote",
+     "location": "Chennai, IN",
+     "startDate": "2019-01",
+     "endDate": "2021-03",
+     "description": "Analyzed customer behavior data to improve marketing strategies, increasing campaign ROI by 22%."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Kodaikanal",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Data Science",
+     "startDate": "2017",
+     "endDate": "2019"
+    },
+    {
+     "school": "Madras Institute of Technology",
+     "degree": "Bachelor of Technology",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2013",
+     "endDate": "2017"
+    }
+   ],
+   "location": "Bangalore, IN",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "South Asia",
+    "field": "Data Science",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Lukas Weber",
+   "headline": "Senior Project Manager delivering complex IT projects on time and on budget",
+   "about": "I lead cross-functional teams to deliver high-impact IT projects, ensuring alignment with business objectives and stakeholder expectations. My approach combines agile methodologies with strong risk management to drive successful outcomes. I excel in environments that require adaptability and strategic thinking.",
+   "skills": [
+    "Agile",
+    "Scrum",
+    "JIRA",
+    "Stakeholder Management",
+    "Risk Management",
+    "Budgeting",
+    "Project Planning",
+    "Team Leadership",
+    "Waterfall",
+    "Change Management"
+   ],
+   "positions": [
+    {
+     "title": "Senior Project Manager",
+     "organization": "Ironclad IT Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Berlin, DE",
+     "startDate": "2022-07",
+     "endDate": null,
+     "description": "Manage the delivery of enterprise IT projects, including a company-wide digital transformation initiative that improved operational efficiency by 35%."
+    },
+    {
+     "title": "Project Manager",
+     "organization": "TechForge Consulting",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Munich, DE",
+     "startDate": "2018-03",
+     "endDate": "2022-06",
+     "description": "Led multiple software development projects, ensuring on-time delivery and client satisfaction through effective resource allocation and communication."
+    },
+    {
+     "title": "Project Coordinator",
+     "organization": "Innovatech Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Hamburg, DE",
+     "startDate": "2015-09",
+     "endDate": "2018-02",
+     "description": "Supported project teams in planning and executing IT infrastructure upgrades, streamlining processes and reducing project timelines."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Schwarzwald",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Project Management",
+     "startDate": "2013",
+     "endDate": "2015"
+    }
+   ],
+   "location": "Berlin, DE",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Central Europe",
+    "field": "Project Management",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Talia Vasquez",
+   "headline": "Sustainable Urban Planner at GreenHaven Design Collective",
+   "about": "I design eco-friendly urban spaces that balance community needs with environmental sustainability. My work focuses on integrating green infrastructure and renewable energy solutions into city planning. I collaborate with local stakeholders to ensure projects are both practical and impactful.",
+   "skills": [
+    "Urban Planning",
+    "Sustainability",
+    "GIS Mapping",
+    "Community Engagement",
+    "Zoning Regulations",
+    "Green Infrastructure",
+    "AutoCAD",
+    "Stakeholder Analysis",
+    "Renewable Energy Integration",
+    "Project Management"
+   ],
+   "positions": [
+    {
+     "title": "Sustainable Urban Planner",
+     "organization": "GreenHaven Design Collective",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Portland, US",
+     "startDate": "2023-05",
+     "endDate": null,
+     "description": "Lead the design and implementation of sustainable urban projects, focusing on green spaces and renewable energy integration. Coordinate with city officials and community groups to align projects with local needs."
+    },
+    {
+     "title": "Junior Urban Designer",
+     "organization": "EcoFrame Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Seattle, US",
+     "startDate": "2020-08",
+     "endDate": "2023-04",
+     "description": "Assisted in the development of urban renewal projects, with a focus on eco-friendly materials and energy-efficient designs. Conducted site analyses and prepared design proposals for client presentations."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Brantford",
+     "degree": "Master of Urban Planning",
+     "fieldOfStudy": "Sustainable Urban Design",
+     "startDate": "2018",
+     "endDate": "2020"
+    },
+    {
+     "school": "Valleyridge Community College",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Environmental Studies",
+     "startDate": "2014",
+     "endDate": "2018"
+    }
+   ],
+   "location": "Portland, US",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Latin America",
+    "field": "Sustainable Urban Planning",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Femi Akinsola",
+   "headline": "Cybersecurity Analyst at Ironclad Systems",
+   "about": "I specialize in protecting digital infrastructure from emerging threats. My role involves monitoring networks, identifying vulnerabilities, and implementing robust security measures. I stay ahead of cyber trends to ensure our clients' data remains secure and compliant.",
+   "skills": [
+    "Network Security",
+    "Threat Analysis",
+    "SIEM Tools",
+    "Incident Response",
+    "Penetration Testing",
+    "Firewall Configuration",
+    "Python Scripting",
+    "ISO 27001",
+    "Risk Assessment",
+    "Ethical Hacking"
+   ],
+   "positions": [
+    {
+     "title": "Cybersecurity Analyst",
+     "organization": "Ironclad Systems",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2022-11",
+     "endDate": null,
+     "description": "Monitor and analyze security alerts to detect and mitigate potential threats. Develop and implement security policies and procedures to safeguard client data and systems."
+    },
+    {
+     "title": "IT Security Specialist",
+     "organization": "NexusGuard Technologies",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Atlanta, US",
+     "startDate": "2019-03",
+     "endDate": "2022-10",
+     "description": "Assisted in the deployment of security solutions, including firewalls and intrusion detection systems. Conducted vulnerability assessments and provided recommendations for system improvements."
+    }
+   ],
+   "education": [
+    {
+     "school": "Harrowmere Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2015",
+     "endDate": "2019"
+    }
+   ],
+   "location": "Lagos, NG",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "West Africa",
+    "field": "Cybersecurity",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Elina Petrovna",
+   "headline": "Medical Device Engineer at MedTech Innovations",
+   "about": "I design and develop cutting-edge medical devices that improve patient outcomes. My work spans from concept to prototype, ensuring devices meet regulatory standards and user needs. I thrive in cross-functional teams that bridge engineering and healthcare.",
+   "skills": [
+    "Biomedical Engineering",
+    "CAD Design",
+    "FDA Compliance",
+    "Product Development",
+    "Material Selection",
+    "Prototyping",
+    "Risk Management",
+    "SolidWorks",
+    "ISO 13485",
+    "Usability Testing"
+   ],
+   "positions": [
+    {
+     "title": "Medical Device Engineer",
+     "organization": "MedTech Innovations",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Boston, US",
+     "startDate": "2021-07",
+     "endDate": null,
+     "description": "Lead the development of new medical devices, from initial design to regulatory approval. Collaborate with healthcare professionals to ensure devices meet clinical and user needs."
+    },
+    {
+     "title": "Junior Biomedical Engineer",
+     "organization": "LifeSpark Engineering",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Minneapolis, US",
+     "startDate": "2018-06",
+     "endDate": "2021-06",
+     "description": "Supported the design and testing of medical devices, including the creation of prototypes and documentation for regulatory submissions. Assisted in usability studies to refine device functionality."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Vellacourt",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Biomedical Engineering",
+     "startDate": "2016",
+     "endDate": "2018"
+    },
+    {
+     "school": "St. Maris Technical Institute",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2012",
+     "endDate": "2016"
+    }
+   ],
+   "location": "Boston, US",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Eastern Europe",
+    "field": "Biomedical Engineering",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Rafael Ortega",
+   "headline": "Creative Director at Lumina Studio",
+   "about": "I lead the creative vision for branding and digital experiences at Lumina Studio. My work involves crafting compelling narratives and visual identities that resonate with audiences. I collaborate with designers, writers, and strategists to deliver cohesive and impactful campaigns.",
+   "skills": [
+    "Brand Strategy",
+    "Creative Direction",
+    "Graphic Design",
+    "UX/UI Design",
+    "Adobe Creative Suite",
+    "Storytelling",
+    "Team Leadership",
+    "User Research",
+    "Content Strategy",
+    "Motion Graphics"
+   ],
+   "positions": [
+    {
+     "title": "Creative Director",
+     "organization": "Lumina Studio",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Barcelona, ES",
+     "startDate": "2020-01",
+     "endDate": null,
+     "description": "Oversee the creative direction of branding and digital projects, ensuring alignment with client goals. Lead a team of designers and strategists to produce high-quality, innovative work."
+    },
+    {
+     "title": "Senior Graphic Designer",
+     "organization": "Vivid Arts",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Madrid, ES",
+     "startDate": "2016-05",
+     "endDate": "2019-12",
+     "description": "Designed visual identities, marketing materials, and digital assets for a range of clients. Collaborated with cross-functional teams to develop cohesive brand experiences."
+    },
+    {
+     "title": "Graphic Designer",
+     "organization": "Chroma Creative",
+     "employmentType": "contract",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2014-03",
+     "endDate": "2016-04",
+     "description": "Created print and digital designs for small businesses and startups, with a focus on branding and promotional materials."
+    }
+   ],
+   "education": [
+    {
+     "school": "Bellevue Academy of Arts",
+     "degree": "Bachelor of Fine Arts",
+     "fieldOfStudy": "Graphic Design",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ],
+   "location": "Barcelona, ES",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Latin America",
+    "field": "Creative Direction",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Aanya Deshpande",
+   "headline": "Financial Analyst at Summit Capital Group",
+   "about": "I analyze financial data to provide actionable insights for investment strategies. My role involves building models, conducting market research, and presenting findings to stakeholders. I focus on delivering data-driven recommendations that align with business objectives.",
+   "skills": [
+    "Financial Modeling",
+    "Data Analysis",
+    "Market Research",
+    "Excel",
+    "SQL",
+    "Investment Strategies",
+    "Risk Assessment",
+    "Forecasting",
+    "Reporting",
+    "Valuation Techniques"
+   ],
+   "positions": [
+    {
+     "title": "Financial Analyst",
+     "organization": "Summit Capital Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Mumbai, IN",
+     "startDate": "2022-03",
+     "endDate": null,
+     "description": "Develop financial models and conduct market analysis to support investment decisions. Prepare detailed reports and presentations for senior management and clients."
+    },
+    {
+     "title": "Junior Analyst",
+     "organization": "Horizon Financial Services",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Bangalore, IN",
+     "startDate": "2019-07",
+     "endDate": "2022-02",
+     "description": "Assisted in financial analysis, including data collection, trend analysis, and report preparation. Supported senior analysts in evaluating investment opportunities."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Serenova",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Finance",
+     "startDate": "2017",
+     "endDate": "2019"
+    },
+    {
+     "school": "Kashmir Institute of Management",
+     "degree": "Bachelor of Commerce",
+     "fieldOfStudy": "Finance and Accounting",
+     "startDate": "2013",
+     "endDate": "2017"
+    }
+   ],
+   "location": "Mumbai, IN",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "South Asia",
+    "field": "Financial Analysis",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Jonas Berg",
+   "headline": "Renewable Energy Consultant at Evergreen Solutions",
+   "about": "I advise organizations on transitioning to sustainable energy sources. My work involves assessing energy needs, designing renewable systems, and ensuring compliance with environmental regulations. I am passionate about helping businesses reduce their carbon footprint.",
+   "skills": [
+    "Renewable Energy",
+    "Energy Audits",
+    "Solar Power Systems",
+    "Wind Energy",
+    "Sustainability Consulting",
+    "Project Management",
+    "Regulatory Compliance",
+    "Carbon Footprint Analysis",
+    "Energy Storage Solutions",
+    "Stakeholder Engagement"
+   ],
+   "positions": [
+    {
+     "title": "Renewable Energy Consultant",
+     "organization": "Evergreen Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Copenhagen, DK",
+     "startDate": "2021-09",
+     "endDate": null,
+     "description": "Provide expertise on renewable energy solutions, including solar and wind power systems. Conduct energy audits and develop strategies for clients to transition to sustainable energy sources."
+    },
+    {
+     "title": "Sustainability Analyst",
+     "organization": "GreenPath Consulting",
+     "employmentType": "part-time",
+     "locationType": "onsite",
+     "location": "Stockholm, SE",
+     "startDate": "2018-01",
+     "endDate": "2021-08",
+     "description": "Assisted in the development of sustainability reports and energy efficiency plans. Conducted research on emerging renewable technologies and their applications."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Frostborg",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Environmental Engineering",
+     "startDate": "2016",
+     "endDate": "2018"
+    },
+    {
+     "school": "Nordic Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2012",
+     "endDate": "2016"
+    }
+   ],
+   "location": "Copenhagen, DK",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Northern Europe",
+    "field": "Renewable Energy Consulting",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Iva Zoric",
+   "headline": "Structural Engineer | Sustainable Design Advocate",
+   "about": "I specialize in designing eco-friendly structures that balance functionality with environmental impact. My work focuses on using innovative materials and methods to create durable, energy-efficient buildings. I collaborate with architects and contractors to bring sustainable visions to life.",
+   "skills": [
+    "AutoCAD",
+    "Revit",
+    "BIM 360",
+    "Sustainable Materials",
+    "Seismic Analysis",
+    "Project Management",
+    "LEED Certification",
+    "Finite Element Analysis",
+    "Structural Dynamics",
+    "Green Building Codes"
+   ],
+   "positions": [
+    {
+     "title": "Senior Structural Engineer",
+     "organization": "GreenFrame Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Zagreb, HR",
+     "startDate": "2021-05",
+     "endDate": null,
+     "description": "Lead the design and implementation of sustainable building projects, ensuring compliance with environmental standards and client requirements."
+    },
+    {
+     "title": "Structural Design Engineer",
+     "organization": "UrbanCore Engineering",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Belgrade, RS",
+     "startDate": "2017-09",
+     "endDate": "2021-04",
+     "description": "Developed structural designs for mid-rise residential and commercial buildings, focusing on cost-effective and sustainable solutions."
+    },
+    {
+     "title": "Junior Structural Analyst",
+     "organization": "Vellacourt Institute of Architecture",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Sarajevo, BA",
+     "startDate": "2016-06",
+     "endDate": "2017-08",
+     "description": "Assisted in the analysis of structural integrity for various construction projects, gaining hands-on experience in load calculations and material selection."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Harrowmere",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Structural Engineering",
+     "startDate": "2014",
+     "endDate": "2016"
+    },
+    {
+     "school": "Institute of Brumwell",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Civil Engineering",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ],
+   "location": "Zagreb, HR",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Southeastern Europe",
+    "field": "Structural Engineering",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Thabo Mokoena",
+   "headline": "Data Scientist | Machine Learning Specialist",
+   "about": "I build predictive models and data-driven solutions to solve complex business problems. My expertise lies in transforming raw data into actionable insights, with a focus on machine learning and statistical analysis. I enjoy working on cross-functional teams to deliver scalable data products.",
+   "skills": [
+    "Python",
+    "TensorFlow",
+    "SQL",
+    "Pandas",
+    "Scikit-learn",
+    "Data Visualization",
+    "BigQuery",
+    "AWS SageMaker",
+    "A/B Testing",
+    "Natural Language Processing"
+   ],
+   "positions": [
+    {
+     "title": "Lead Data Scientist",
+     "organization": "Nexus Analytics",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2022-11",
+     "endDate": null,
+     "description": "Lead a team of data scientists to develop machine learning models that drive business decisions, optimizing processes and improving customer experiences."
+    },
+    {
+     "title": "Data Scientist",
+     "organization": "Quantum Insights",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Johannesburg, ZA",
+     "startDate": "2019-03",
+     "endDate": "2022-10",
+     "description": "Designed and implemented machine learning pipelines to automate data analysis, reducing processing time by 40%."
+    },
+    {
+     "title": "Data Analyst",
+     "organization": "Stratford Data Labs",
+     "employmentType": "contract",
+     "locationType": "onsite",
+     "location": "Pretoria, ZA",
+     "startDate": "2016-07",
+     "endDate": "2019-02",
+     "description": "Analyzed large datasets to identify trends and provide insights for marketing and operational strategies."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Mpumalanga Heights",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Data Science",
+     "startDate": "2014",
+     "endDate": "2016"
+    }
+   ],
+   "location": "Cape Town, ZA",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Southern Africa",
+    "field": "Data Science",
+    "seniority": "lead"
+   }
+  },
+  {
+   "displayName": "Leila Al-Sayigh",
+   "headline": "UX/UI Designer | Human-Centered Design",
+   "about": "I create intuitive and visually compelling digital experiences that prioritize user needs. My process involves extensive research, wireframing, and iterative testing to ensure accessibility and usability. I am passionate about designing inclusive products that resonate with diverse audiences.",
+   "skills": [
+    "Figma",
+    "Adobe XD",
+    "User Research",
+    "Wireframing",
+    "Prototyping",
+    "Usability Testing",
+    "Accessibility Design",
+    "Design Systems",
+    "Responsive Design",
+    "CSS/HTML Basics"
+   ],
+   "positions": [
+    {
+     "title": "Senior UX/UI Designer",
+     "organization": "PixelHive Studios",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2023-01",
+     "endDate": null,
+     "description": "Lead the design of web and mobile applications, collaborating with product managers and developers to deliver seamless user experiences."
+    },
+    {
+     "title": "UX Designer",
+     "organization": "Crescent Design Collective",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Beirut, LB",
+     "startDate": "2020-06",
+     "endDate": "2022-12",
+     "description": "Conducted user research and designed interfaces for a suite of financial applications, improving user engagement by 30%."
+    },
+    {
+     "title": "Junior UI Designer",
+     "organization": "Mirage Digital",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Amman, JO",
+     "startDate": "2018-09",
+     "endDate": "2020-05",
+     "description": "Assisted in the creation of visual designs and prototypes for various client projects, gaining experience in user-centered design principles."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Al-Janub",
+     "degree": "Bachelor of Fine Arts",
+     "fieldOfStudy": "Digital Design",
+     "startDate": "2014",
+     "endDate": "2018"
+    }
+   ],
+   "location": "Dubai, AE",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Middle East",
+    "field": "UX/UI Design",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Mateo Rivas",
+   "headline": "Financial Analyst | Risk Management",
+   "about": "I provide data-driven financial insights to help organizations make informed decisions. My work involves analyzing market trends, assessing risks, and developing strategies to optimize financial performance. I thrive in fast-paced environments where precision and adaptability are key.",
+   "skills": [
+    "Financial Modeling",
+    "Excel",
+    "Bloomberg Terminal",
+    "Risk Assessment",
+    "IFRS Standards",
+    "VBA",
+    "Tableau",
+    "Portfolio Management",
+    "Valuation Techniques",
+    "SQL"
+   ],
+   "positions": [
+    {
+     "title": "Financial Risk Analyst",
+     "organization": "Summit Capital Advisors",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Madrid, ES",
+     "startDate": "2021-08",
+     "endDate": null,
+     "description": "Evaluate financial risks and develop mitigation strategies for a portfolio of high-net-worth clients, ensuring compliance with regulatory standards."
+    },
+    {
+     "title": "Financial Analyst",
+     "organization": "Global Finance Group",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Barcelona, ES",
+     "startDate": "2018-03",
+     "endDate": "2021-07",
+     "description": "Conducted financial forecasting and reporting for multinational corporations, improving accuracy of financial predictions by 20%."
+    },
+    {
+     "title": "Junior Analyst",
+     "organization": "Valencia Investment Partners",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Valencia, ES",
+     "startDate": "2016-09",
+     "endDate": "2018-02",
+     "description": "Assisted in the preparation of financial reports and market analyses, gaining exposure to investment strategies and portfolio management."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Costa Verde",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Finance",
+     "startDate": "2015",
+     "endDate": "2016"
+    },
+    {
+     "school": "Institute of San Lorenzo",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Economics",
+     "startDate": "2012",
+     "endDate": "2015"
+    }
+   ],
+   "location": "Madrid, ES",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Southern Europe",
+    "field": "Financial Analysis",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Anika Desai",
+   "headline": "Environmental Scientist | Sustainability Consultant",
+   "about": "I work at the intersection of science and policy to address environmental challenges. My focus is on developing sustainable practices and solutions that balance ecological needs with economic growth. I advise organizations on reducing their carbon footprint and improving resource efficiency.",
+   "skills": [
+    "Sustainability Reporting",
+    "Life Cycle Assessment",
+    "Climate Modeling",
+    "GIS",
+    "Environmental Impact Assessment",
+    "ISO 14001",
+    "Carbon Footprint Analysis",
+    "Policy Development",
+    "Stakeholder Engagement",
+    "Renewable Energy Systems"
+   ],
+   "positions": [
+    {
+     "title": "Sustainability Consultant",
+     "organization": "EcoStrat Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Mumbai, IN",
+     "startDate": "2022-04",
+     "endDate": null,
+     "description": "Advise clients on sustainability strategies, including waste reduction, energy efficiency, and compliance with environmental regulations."
+    },
+    {
+     "title": "Environmental Scientist",
+     "organization": "GreenTech Innovations",
+     "employmentType": "contract",
+     "locationType": "onsite",
+     "location": "Bangalore, IN",
+     "startDate": "2019-01",
+     "endDate": "2022-03",
+     "description": "Conducted environmental impact assessments for industrial projects, identifying risks and recommending mitigation measures."
+    },
+    {
+     "title": "Research Assistant",
+     "organization": "Institute of EcoResearch",
+     "employmentType": "part-time",
+     "locationType": "onsite",
+     "location": "Pune, IN",
+     "startDate": "2017-06",
+     "endDate": "2018-12",
+     "description": "Assisted in research on renewable energy sources and their integration into urban planning, publishing findings in peer-reviewed journals."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Vindhya",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Environmental Science",
+     "startDate": "2015",
+     "endDate": "2017"
+    },
+    {
+     "school": "College of Aravalli",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Biology",
+     "startDate": "2012",
+     "endDate": "2015"
+    }
+   ],
+   "location": "Mumbai, IN",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "South Asia",
+    "field": "Environmental Science",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Javier Morales",
+   "headline": "DevOps Engineer | Cloud Infrastructure Specialist",
+   "about": "I design and maintain scalable cloud infrastructure to support high-performance applications. My expertise includes automating deployment pipelines, monitoring system health, and ensuring security and reliability. I am passionate about leveraging cloud technologies to drive efficiency and innovation.",
+   "skills": [
+    "AWS",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "CI/CD Pipelines",
+    "Ansible",
+    "Prometheus",
+    "GitLab",
+    "Linux",
+    "Python Scripting"
+   ],
+   "positions": [
+    {
+     "title": "Senior DevOps Engineer",
+     "organization": "CloudNest Technologies",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2023-06",
+     "endDate": null,
+     "description": "Lead the migration of legacy applications to cloud-based infrastructure, improving system reliability and reducing operational costs by 25%."
+    },
+    {
+     "title": "DevOps Engineer",
+     "organization": "Skyward Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lima, PE",
+     "startDate": "2020-01",
+     "endDate": "2023-05",
+     "description": "Implemented CI/CD pipelines and automated testing frameworks, significantly accelerating the software development lifecycle."
+    },
+    {
+     "title": "Cloud Support Specialist",
+     "organization": "Nebula Solutions",
+     "employmentType": "contract",
+     "locationType": "hybrid",
+     "location": "Bogotá, CO",
+     "startDate": "2017-11",
+     "endDate": "2019-12",
+     "description": "Provided technical support and troubleshooting for cloud-based services, ensuring minimal downtime and high customer satisfaction."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Andean Peaks",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2013",
+     "endDate": "2017"
+    }
+   ],
+   "location": "Santiago, CL",
+   "openToWork": true,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Latin America",
+    "field": "DevOps Engineering",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Elena Vasquez",
+   "headline": "Senior UX Designer crafting user-centered digital experiences",
+   "about": "I specialize in designing intuitive and accessible interfaces for web and mobile applications. My work focuses on understanding user needs through research and translating them into seamless, visually compelling solutions. I collaborate closely with developers and product teams to ensure designs are both functional and delightful.",
+   "skills": [
+    "User Research",
+    "Wireframing",
+    "Prototyping",
+    "Figma",
+    "Adobe XD",
+    "Usability Testing",
+    "Accessibility Design",
+    "Design Systems",
+    "Responsive Design",
+    "Agile Methodologies"
+   ],
+   "positions": [
+    {
+     "title": "Senior UX Designer",
+     "organization": "Creative Nexus Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Lisbon, PT",
+     "startDate": "2022-03",
+     "endDate": null,
+     "description": "Leading the design of a suite of SaaS products, improving user engagement by 30% through iterative testing and design refinements."
+    },
+    {
+     "title": "UX Designer",
+     "organization": "Innovate Design Studio",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Madrid, ES",
+     "startDate": "2019-06",
+     "endDate": "2022-02",
+     "description": "Designed mobile applications for clients in fintech and healthcare, focusing on user flows and cross-platform consistency."
+    },
+    {
+     "title": "Junior UX Designer",
+     "organization": "Pixel Perfect Agency",
+     "employmentType": "contract",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2017-09",
+     "endDate": "2019-05",
+     "description": "Assisted in the redesign of e-commerce platforms, conducting usability tests and creating low-fidelity prototypes."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Valderra",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Human-Computer Interaction",
+     "startDate": "2015",
+     "endDate": "2017"
+    },
+    {
+     "school": "Institute of Art and Technology of Serravista",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Graphic Design",
+     "startDate": "2011",
+     "endDate": "2015"
+    }
+   ],
+   "location": "Lisbon, PT",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Europe",
+    "field": "User Experience Design",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Kofi Amankwah",
+   "headline": "Civil Engineer specializing in sustainable infrastructure development",
+   "about": "I design and oversee the construction of eco-friendly infrastructure projects, ensuring they meet environmental standards while addressing community needs. My expertise lies in integrating renewable materials and energy-efficient systems into urban planning. I work with multidisciplinary teams to deliver projects on time and within budget.",
+   "skills": [
+    "Project Management",
+    "AutoCAD",
+    "Sustainable Design",
+    "Structural Analysis",
+    "BIM (Building Information Modeling)",
+    "Environmental Impact Assessment",
+    "Construction Supervision",
+    "Contract Negotiation",
+    "Budgeting",
+    "Stakeholder Engagement"
+   ],
+   "positions": [
+    {
+     "title": "Senior Civil Engineer",
+     "organization": "GreenPath Infrastructure",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Accra, GH",
+     "startDate": "2020-05",
+     "endDate": null,
+     "description": "Leading the design and execution of a major green housing project, incorporating solar panels and rainwater harvesting systems."
+    },
+    {
+     "title": "Civil Engineer",
+     "organization": "UrbanBuild Consortium",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Kumasi, GH",
+     "startDate": "2016-07",
+     "endDate": "2020-04",
+     "description": "Managed the construction of municipal roads and drainage systems, improving local infrastructure resilience."
+    },
+    {
+     "title": "Graduate Civil Engineer",
+     "organization": "TerraForm Engineering",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Tema, GH",
+     "startDate": "2015-03",
+     "endDate": "2016-06",
+     "description": "Assisted in site surveys and feasibility studies for commercial building projects."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Adomako",
+     "degree": "Master of Engineering",
+     "fieldOfStudy": "Civil Engineering",
+     "startDate": "2013",
+     "endDate": "2015"
+    },
+    {
+     "school": "Polytechnic of Kwameba",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Civil Engineering",
+     "startDate": "2009",
+     "endDate": "2013"
+    }
+   ],
+   "location": "Accra, GH",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Africa",
+    "field": "Civil Engineering",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Jasmine Park",
+   "headline": "Data Scientist transforming raw data into actionable business insights",
+   "about": "I analyze complex datasets to uncover trends and patterns that drive strategic decision-making. My work involves building predictive models, automating data pipelines, and presenting findings in clear, actionable formats. I thrive in collaborative environments where data informs product and business strategies.",
+   "skills": [
+    "Python",
+    "SQL",
+    "Machine Learning",
+    "Data Visualization",
+    "Tableau",
+    "TensorFlow",
+    "Pandas",
+    "Jupyter Notebooks",
+    "Big Data",
+    "A/B Testing"
+   ],
+   "positions": [
+    {
+     "title": "Senior Data Scientist",
+     "organization": "InsightFlow Analytics",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2023-01",
+     "endDate": null,
+     "description": "Developing ML models to optimize supply chain logistics for a retail client, reducing costs by 15%."
+    },
+    {
+     "title": "Data Scientist",
+     "organization": "Numeric Solutions Group",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Seoul, KR",
+     "startDate": "2020-02",
+     "endDate": "2022-12",
+     "description": "Built recommendation systems for an e-commerce platform, increasing user retention by 20%."
+    },
+    {
+     "title": "Data Analyst",
+     "organization": "Quantum Data Labs",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Busan, KR",
+     "startDate": "2018-06",
+     "endDate": "2020-01",
+     "description": "Conducted market analysis and customer segmentation for a fintech startup, supporting data-driven marketing campaigns."
+    }
+   ],
+   "education": [
+    {
+     "school": "Sejong Institute of Technology",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Data Science",
+     "startDate": "2016",
+     "endDate": "2018"
+    },
+    {
+     "school": "University of Jeonju",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Statistics",
+     "startDate": "2012",
+     "endDate": "2016"
+    }
+   ],
+   "location": "Seoul, KR",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "East Asia",
+    "field": "Data Science",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Rafael Costa",
+   "headline": "Marketing Strategist driving brand growth through digital innovation",
+   "about": "I develop and execute marketing strategies that leverage digital channels to build brand awareness and drive customer acquisition. My approach combines data analytics with creative storytelling to create campaigns that resonate with target audiences. I have a track record of increasing engagement and conversion rates across diverse industries.",
+   "skills": [
+    "Digital Marketing",
+    "SEO/SEM",
+    "Content Strategy",
+    "Google Analytics",
+    "Social Media Marketing",
+    "Email Marketing",
+    "Brand Management",
+    "Market Research",
+    "CRM Systems",
+    "Copywriting"
+   ],
+   "positions": [
+    {
+     "title": "Marketing Director",
+     "organization": "Bright Horizon Media",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "São Paulo, BR",
+     "startDate": "2021-11",
+     "endDate": null,
+     "description": "Leading a team to rebrand and launch a digital platform, resulting in a 40% increase in user sign-ups within six months."
+    },
+    {
+     "title": "Marketing Manager",
+     "organization": "Lumina Advertising",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Rio de Janeiro, BR",
+     "startDate": "2018-04",
+     "endDate": "2021-10",
+     "description": "Managed campaigns for clients in the tech and healthcare sectors, improving lead generation by 25%."
+    },
+    {
+     "title": "Marketing Coordinator",
+     "organization": "Nova Marketing Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Belo Horizonte, BR",
+     "startDate": "2015-09",
+     "endDate": "2018-03",
+     "description": "Coordinated social media and email marketing initiatives, growing the client base for a SaaS startup."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Belmonte",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Marketing",
+     "startDate": "2013",
+     "endDate": "2015"
+    }
+   ],
+   "location": "São Paulo, BR",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Latin America",
+    "field": "Digital Marketing",
+    "seniority": "lead"
+   }
+  },
+  {
+   "displayName": "Nadia Al-Rashid",
+   "headline": "Pediatric Nurse providing compassionate, evidence-based care",
+   "about": "I deliver high-quality nursing care to children in clinical and community settings, with a focus on preventive health and patient education. My practice is grounded in the latest medical research and tailored to meet the unique needs of each child and family. I am committed to advocating for children’s health and well-being.",
+   "skills": [
+    "Patient Assessment",
+    "Pediatric Care",
+    "Immunization",
+    "Health Education",
+    "Wound Care",
+    "IV Therapy",
+    "CPR Certified",
+    "Electronic Health Records",
+    "Family Counseling",
+    "Infection Control"
+   ],
+   "positions": [
+    {
+     "title": "Senior Pediatric Nurse",
+     "organization": "Sunrise Children’s Clinic",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Amman, JO",
+     "startDate": "2020-08",
+     "endDate": null,
+     "description": "Providing comprehensive care to pediatric patients, including chronic illness management and emergency response."
+    },
+    {
+     "title": "Pediatric Nurse",
+     "organization": "Hopeful Horizons Medical Center",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Irbid, JO",
+     "startDate": "2017-03",
+     "endDate": "2020-07",
+     "description": "Worked in a busy pediatric ward, delivering routine and acute care while supporting families through health challenges."
+    },
+    {
+     "title": "Registered Nurse",
+     "organization": "New Dawn Hospital",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Zarqa, JO",
+     "startDate": "2014-05",
+     "endDate": "2017-02",
+     "description": "Gained foundational experience in general nursing, with a focus on pediatric rotations and postoperative care."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Al-Karama",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Nursing",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ],
+   "location": "Amman, JO",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Middle East",
+    "field": "Pediatric Nursing",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Thomas Bennett",
+   "headline": "Financial Analyst specializing in risk assessment and portfolio management",
+   "about": "I evaluate investment opportunities and financial risks to guide strategic decisions for businesses and individuals. My work involves analyzing market trends, financial statements, and economic indicators to provide data-driven recommendations. I have a strong background in both quantitative analysis and client relationship management.",
+   "skills": [
+    "Financial Modeling",
+    "Risk Assessment",
+    "Portfolio Management",
+    "Excel",
+    "Bloomberg Terminal",
+    "IFRS Standards",
+    "Valuation Techniques",
+    "Macroeconomic Analysis",
+    "Data Analysis",
+    "Client Reporting"
+   ],
+   "positions": [
+    {
+     "title": "Senior Financial Analyst",
+     "organization": "Capital Insight Partners",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "London, GB",
+     "startDate": "2022-07",
+     "endDate": null,
+     "description": "Leading risk assessments for high-net-worth clients, optimizing portfolios to achieve a 12% average annual return."
+    },
+    {
+     "title": "Financial Analyst",
+     "organization": "Summit Financial Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "London, GB",
+     "startDate": "2019-01",
+     "endDate": "2022-06",
+     "description": "Conducted financial forecasting and budgeting for corporate clients, improving cost efficiency by 18%."
+    },
+    {
+     "title": "Junior Financial Analyst",
+     "organization": "Horizon Investment Services",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Birmingham, GB",
+     "startDate": "2016-09",
+     "endDate": "2018-12",
+     "description": "Supported senior analysts in market research and financial reporting for a diverse client portfolio."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Thamesford",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Finance",
+     "startDate": "2014",
+     "endDate": "2016"
+    },
+    {
+     "school": "College of Westbury",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Economics",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ],
+   "location": "London, GB",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Europe",
+    "field": "Financial Analysis",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Zara Iqbal",
+   "headline": "Data Analyst | Turning raw data into actionable insights",
+   "about": "I specialize in transforming complex datasets into clear, actionable insights that drive business decisions. With a strong foundation in statistical analysis and visualization, I help organizations understand their performance and identify growth opportunities. I am proficient in SQL, Python, and data visualization tools, ensuring accuracy and clarity in every report.",
+   "skills": [
+    "SQL",
+    "Python",
+    "Tableau",
+    "Power BI",
+    "Statistical Analysis",
+    "Data Cleaning",
+    "Machine Learning",
+    "Excel",
+    "Jupyter Notebooks",
+    "Data Storytelling"
+   ],
+   "positions": [
+    {
+     "title": "Data Analyst",
+     "organization": "Greenleaf Analytics",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Toronto, CA",
+     "startDate": "2024-01",
+     "endDate": null,
+     "description": "Develop and maintain dashboards to track KPIs across departments. Collaborate with marketing and sales teams to identify trends and optimize campaigns."
+    },
+    {
+     "title": "Junior Data Analyst",
+     "organization": "Brighton Data Works",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Manchester, GB",
+     "startDate": "2022-06",
+     "endDate": "2023-12",
+     "description": "Assisted in data collection, cleaning, and preliminary analysis for client projects. Created weekly reports to support decision-making for internal stakeholders."
+    },
+    {
+     "title": "Data Intern",
+     "organization": "Holloway Solutions",
+     "employmentType": "internship",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2021-09",
+     "endDate": "2022-05",
+     "description": "Supported senior analysts in data entry, validation, and basic analysis tasks. Gained hands-on experience with SQL queries and Excel functions."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Windermere",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Data Science",
+     "startDate": "2018",
+     "endDate": "2021"
+    }
+   ],
+   "location": "Toronto, CA",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "South Asia",
+    "field": "Data Analysis",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Tomas Varga",
+   "headline": "Senior Software Engineer | Building scalable backend systems",
+   "about": "I design and develop robust backend systems that power high-traffic applications. With over a decade of experience, I focus on creating efficient, scalable solutions using modern frameworks and cloud technologies. I thrive in collaborative environments where innovation and problem-solving are at the forefront.",
+   "skills": [
+    "Java",
+    "Spring Boot",
+    "Kubernetes",
+    "AWS",
+    "Docker",
+    "PostgreSQL",
+    "Microservices",
+    "RESTful APIs",
+    "Git",
+    "CI/CD"
+   ],
+   "positions": [
+    {
+     "title": "Senior Software Engineer",
+     "organization": "CedarTech Solutions",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2021-03",
+     "endDate": null,
+     "description": "Lead the development of a cloud-based inventory management system. Mentored junior developers and optimized system performance to handle a 30% increase in user traffic."
+    },
+    {
+     "title": "Software Engineer",
+     "organization": "Ironwood Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Budapest, HU",
+     "startDate": "2016-07",
+     "endDate": "2021-02",
+     "description": "Developed and maintained backend services for a SaaS platform serving over 10,000 users. Implemented CI/CD pipelines to streamline deployment processes."
+    },
+    {
+     "title": "Junior Developer",
+     "organization": "Meadowgrove Tech",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Prague, CZ",
+     "startDate": "2014-01",
+     "endDate": "2016-06",
+     "description": "Contributed to the development of a customer relationship management system. Worked on bug fixes, feature enhancements, and database optimizations."
+    }
+   ],
+   "education": [
+    {
+     "school": "Vellacourt Institute of Technology",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2012",
+     "endDate": "2014"
+    },
+    {
+     "school": "University of Brambleton",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Software Engineering",
+     "startDate": "2008",
+     "endDate": "2012"
+    }
+   ],
+   "location": "Lisbon, PT",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Central Europe",
+    "field": "Software Engineering",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Amaris Nogueira",
+   "headline": "UX/UI Designer | Crafting intuitive digital experiences",
+   "about": "I create user-centered designs that blend aesthetics with functionality to deliver seamless digital experiences. My approach involves thorough user research, wireframing, and iterative prototyping to ensure every product meets user needs and business goals. I am passionate about accessibility and inclusive design.",
+   "skills": [
+    "Figma",
+    "Adobe XD",
+    "User Research",
+    "Wireframing",
+    "Prototyping",
+    "Usability Testing",
+    "HTML/CSS",
+    "JavaScript",
+    "Design Systems",
+    "Accessibility"
+   ],
+   "positions": [
+    {
+     "title": "Senior UX/UI Designer",
+     "organization": "Larkspur Design Studio",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "São Paulo, BR",
+     "startDate": "2022-04",
+     "endDate": null,
+     "description": "Lead design projects for clients in fintech and e-commerce. Conduct user research and usability testing to refine product interfaces and improve engagement metrics."
+    },
+    {
+     "title": "UX Designer",
+     "organization": "Hawthorn Creative",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": null,
+     "startDate": "2019-11",
+     "endDate": "2022-03",
+     "description": "Designed mobile and web applications for healthcare clients. Collaborated with developers to implement responsive and accessible designs."
+    },
+    {
+     "title": "Graphic Design Intern",
+     "organization": "Briarwood Media",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Rio de Janeiro, BR",
+     "startDate": "2018-02",
+     "endDate": "2018-08",
+     "description": "Assisted in creating visual assets for marketing campaigns. Gained experience in digital design tools and brand consistency standards."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Silverpine",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Graphic Design",
+     "startDate": "2014",
+     "endDate": "2018"
+    }
+   ],
+   "location": "São Paulo, BR",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Latin America",
+    "field": "UX/UI Design",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Elias Katsaros",
+   "headline": "Financial Controller | Driving fiscal accuracy and compliance",
+   "about": "I oversee financial reporting, budgeting, and compliance to ensure organizational stability and growth. With a detail-oriented approach, I manage financial operations, streamline processes, and provide strategic insights to stakeholders. My expertise spans IFRS, tax regulations, and risk management.",
+   "skills": [
+    "Financial Reporting",
+    "Budgeting",
+    "IFRS",
+    "Tax Compliance",
+    "Auditing",
+    "SAP",
+    "Excel",
+    "Forecasting",
+    "Risk Management",
+    "GAAP"
+   ],
+   "positions": [
+    {
+     "title": "Financial Controller",
+     "organization": "Havenwood Enterprises",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Athens, GR",
+     "startDate": "2023-05",
+     "endDate": null,
+     "description": "Lead the finance team in preparing monthly, quarterly, and annual financial statements. Ensure compliance with local and international accounting standards."
+    },
+    {
+     "title": "Senior Accountant",
+     "organization": "Cliffside Financial Services",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Thessaloniki, GR",
+     "startDate": "2018-09",
+     "endDate": "2023-04",
+     "description": "Managed general ledger accounts and coordinated with external auditors. Developed financial models to support strategic decision-making."
+    },
+    {
+     "title": "Accountant",
+     "organization": "Marina Bay Consulting",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Nicosia, CY",
+     "startDate": "2015-01",
+     "endDate": "2018-08",
+     "description": "Prepared financial reports and conducted variance analysis. Assisted in the implementation of new accounting software to improve efficiency."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Aegean Heights",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Finance",
+     "startDate": "2013",
+     "endDate": "2015"
+    },
+    {
+     "school": "University of Corinthia",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Accounting",
+     "startDate": "2009",
+     "endDate": "2013"
+    }
+   ],
+   "location": "Athens, GR",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Southern Europe",
+    "field": "Finance",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Nia Okoro",
+   "headline": "HR Business Partner | Fostering workplace culture and talent",
+   "about": "I partner with business leaders to develop and implement HR strategies that align with organizational goals. My focus is on talent acquisition, employee engagement, and creating inclusive work environments. I am passionate about coaching, conflict resolution, and driving organizational change.",
+   "skills": [
+    "Talent Acquisition",
+    "Employee Engagement",
+    "HR Strategy",
+    "Conflict Resolution",
+    "Performance Management",
+    "Diversity & Inclusion",
+    "Workforce Planning",
+    "Onboarding",
+    "Labor Law",
+    "HR Analytics"
+   ],
+   "positions": [
+    {
+     "title": "HR Business Partner",
+     "organization": "Willowbrook Dynamics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lagos, NG",
+     "startDate": "2022-07",
+     "endDate": null,
+     "description": "Collaborate with department heads to address HR needs and improve workforce productivity. Lead initiatives to enhance employee retention and satisfaction."
+    },
+    {
+     "title": "HR Generalist",
+     "organization": "Riverstone Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Accra, GH",
+     "startDate": "2019-03",
+     "endDate": "2022-06",
+     "description": "Managed recruitment, onboarding, and employee relations for a growing tech startup. Implemented HR policies and procedures to ensure compliance with local labor laws."
+    },
+    {
+     "title": "HR Assistant",
+     "organization": "Sunset Ridge Consulting",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Abuja, NG",
+     "startDate": "2017-01",
+     "endDate": "2019-02",
+     "description": "Supported HR operations including payroll processing, benefits administration, and employee records management."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Ikoyi",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Human Resources Management",
+     "startDate": "2015",
+     "endDate": "2017"
+    },
+    {
+     "school": "University of Calabar Coast",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Psychology",
+     "startDate": "2011",
+     "endDate": "2015"
+    }
+   ],
+   "location": "Lagos, NG",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "West Africa",
+    "field": "Human Resources",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Jiro Tanaka",
+   "headline": "Mechanical Engineer | Designing innovative solutions for automation",
+   "about": "I specialize in mechanical design and automation, focusing on developing efficient and sustainable engineering solutions. My work involves CAD modeling, prototyping, and testing to bring concepts to life. I am committed to continuous learning and leveraging technology to solve complex engineering challenges.",
+   "skills": [
+    "CAD (SolidWorks, AutoCAD)",
+    "Prototyping",
+    "Finite Element Analysis",
+    "Robotics",
+    "Automation",
+    "3D Printing",
+    "Project Management",
+    "Material Science",
+    "Thermodynamics",
+    "Product Development"
+   ],
+   "positions": [
+    {
+     "title": "Senior Mechanical Engineer",
+     "organization": "Pinecrest Engineering",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Osaka, JP",
+     "startDate": "2020-11",
+     "endDate": null,
+     "description": "Lead the design and development of automated manufacturing systems for industrial clients. Oversee testing and validation to ensure product reliability and performance."
+    },
+    {
+     "title": "Mechanical Design Engineer",
+     "organization": "Maplewood Innovations",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Tokyo, JP",
+     "startDate": "2017-04",
+     "endDate": "2020-10",
+     "description": "Designed mechanical components for consumer electronics. Collaborated with cross-functional teams to integrate mechanical, electrical, and software systems."
+    },
+    {
+     "title": "Junior Engineer",
+     "organization": "Ironcliff Technologies",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Nagoya, JP",
+     "startDate": "2015-06",
+     "endDate": "2017-03",
+     "description": "Assisted in the development of industrial machinery parts. Conducted stress analysis and material selection for prototypes."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Shikoku",
+     "degree": "Master of Engineering",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2013",
+     "endDate": "2015"
+    },
+    {
+     "school": "University of Hokkaido Plains",
+     "degree": "Bachelor of Engineering",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2009",
+     "endDate": "2013"
+    }
+   ],
+   "location": "Osaka, JP",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "East Asia",
+    "field": "Mechanical Engineering",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Isabel Mwangi",
+   "headline": "Sustainable Urban Planner Advancing Green Infrastructure",
+   "about": "I design eco-friendly public spaces that prioritize community needs and environmental sustainability. My work focuses on integrating green infrastructure into urban development projects to improve quality of life. I collaborate with local stakeholders to ensure projects are both practical and impactful.",
+   "skills": [
+    "Urban Planning",
+    "Sustainability",
+    "GIS Mapping",
+    "Community Engagement",
+    "AutoCAD",
+    "Environmental Impact Assessment",
+    "Public Policy",
+    "Green Infrastructure",
+    "Stakeholder Management",
+    "Project Coordination"
+   ],
+   "positions": [
+    {
+     "title": "Senior Urban Planner",
+     "organization": "Greenway Design Collective",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Nairobi, KE",
+     "startDate": "2020-03",
+     "endDate": null,
+     "description": "Lead urban planning initiatives focused on sustainable development, including green corridors and public parks. Manage a team of junior planners and coordinate with local governments."
+    },
+    {
+     "title": "Urban Designer",
+     "organization": "Harrowmere Municipal Planning",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Harrowmere, UK",
+     "startDate": "2016-07",
+     "endDate": "2020-02",
+     "description": "Designed mixed-use developments with an emphasis on pedestrian-friendly layouts and sustainable materials. Collaborated with architects and engineers to deliver community-centric projects."
+    }
+   ],
+   "education": [
+    {
+     "school": "Vellacourt Institute of Technology",
+     "degree": "Master of Urban Planning",
+     "fieldOfStudy": "Urban and Regional Planning",
+     "startDate": "2014",
+     "endDate": "2016"
+    },
+    {
+     "school": "University of Kivuli",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Environmental Science",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ],
+   "location": "Nairobi, KE",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "East Africa",
+    "field": "Urban Planning, Sustainability",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Rafael Oliveira",
+   "headline": "Cybersecurity Engineer Protecting Digital Assets",
+   "about": "I specialize in securing enterprise IT systems against cyber threats through proactive monitoring and strategic risk management. My expertise includes penetration testing, vulnerability assessments, and implementing robust security protocols. I am committed to staying ahead of emerging threats to safeguard organizational data.",
+   "skills": [
+    "Penetration Testing",
+    "SIEM Solutions",
+    "Network Security",
+    "Incident Response",
+    "Python",
+    "Firewall Management",
+    "ISO 27001",
+    "Risk Assessment",
+    "Cloud Security",
+    "Ethical Hacking"
+   ],
+   "positions": [
+    {
+     "title": "Lead Cybersecurity Engineer",
+     "organization": "Ironclad Security Solutions",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Lisbon, PT",
+     "startDate": "2021-09",
+     "endDate": null,
+     "description": "Oversee the cybersecurity framework for clients across various industries, focusing on threat detection and mitigation. Lead a team of analysts in monitoring and responding to security incidents."
+    },
+    {
+     "title": "Cybersecurity Analyst",
+     "organization": "TechShield Consulting",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Porto, PT",
+     "startDate": "2018-01",
+     "endDate": "2021-08",
+     "description": "Conducted vulnerability assessments and penetration tests to identify and address security weaknesses. Developed and implemented security policies and procedures for clients."
+    }
+   ],
+   "education": [
+    {
+     "school": "Instituto Superior de Tecnologia de Alentejo",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Cybersecurity",
+     "startDate": "2016",
+     "endDate": "2018"
+    }
+   ],
+   "location": "Lisbon, PT",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Iberian Peninsula",
+    "field": "Cybersecurity, IT Security",
+    "seniority": "lead"
+   }
+  },
+  {
+   "displayName": "Talia Patil",
+   "headline": "Biomedical Research Scientist in Drug Development",
+   "about": "I conduct research to develop novel therapeutic compounds, focusing on molecular biology and drug discovery. My work involves designing experiments, analyzing data, and collaborating with cross-functional teams to advance medical treatments. I am passionate about translating scientific findings into real-world applications.",
+   "skills": [
+    "Molecular Biology",
+    "Drug Discovery",
+    "Cell Culture",
+    "High-Throughput Screening",
+    "Python",
+    "Data Analysis",
+    "Laboratory Techniques",
+    "Regulatory Compliance",
+    "Bioinformatics",
+    "PCR"
+   ],
+   "positions": [
+    {
+     "title": "Senior Research Scientist",
+     "organization": "Veridion Pharmaceuticals",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Bangalore, IN",
+     "startDate": "2022-05",
+     "endDate": null,
+     "description": "Lead a research team focused on identifying and validating new drug targets for chronic diseases. Oversee lab operations and ensure compliance with industry standards."
+    },
+    {
+     "title": "Research Associate",
+     "organization": "Biogenix Labs",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Pune, IN",
+     "startDate": "2019-02",
+     "endDate": "2022-04",
+     "description": "Conducted experiments to test the efficacy of experimental compounds in preclinical models. Collaborated with chemists and bioinformaticians to analyze results and refine drug candidates."
+    },
+    {
+     "title": "Laboratory Technician",
+     "organization": "Genetix Research Institute",
+     "employmentType": "contract",
+     "locationType": "onsite",
+     "location": "Mumbai, IN",
+     "startDate": "2017-06",
+     "endDate": "2019-01",
+     "description": "Assisted in the execution of molecular biology experiments, including DNA sequencing and protein purification. Maintained lab equipment and ensured adherence to safety protocols."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Vashavi",
+     "degree": "Doctor of Philosophy",
+     "fieldOfStudy": "Biomedical Sciences",
+     "startDate": "2013",
+     "endDate": "2017"
+    },
+    {
+     "school": "Institute of Biological Sciences, Serai",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Biotechnology",
+     "startDate": "2009",
+     "endDate": "2013"
+    }
+   ],
+   "location": "Bangalore, IN",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "South Asia",
+    "field": "Biomedical Research, Drug Development",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Omar Kowalski",
+   "headline": "Cloud Solutions Architect Building Scalable Systems",
+   "about": "I design and implement cloud-based solutions to help organizations modernize their infrastructure and improve operational efficiency. My expertise spans cloud migration, automation, and security, ensuring systems are both scalable and resilient. I enjoy solving complex technical challenges with innovative approaches.",
+   "skills": [
+    "AWS",
+    "Azure",
+    "Kubernetes",
+    "Terraform",
+    "Docker",
+    "CI/CD Pipelines",
+    "Python",
+    "Cloud Security",
+    "Infrastructure as Code",
+    "Serverless Architecture"
+   ],
+   "positions": [
+    {
+     "title": "Cloud Architect",
+     "organization": "Nebula Cloud Services",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Warsaw, PL",
+     "startDate": "2023-01",
+     "endDate": null,
+     "description": "Design and deploy cloud-native applications for clients, optimizing performance and cost-efficiency. Lead the adoption of best practices in cloud security and automation."
+    },
+    {
+     "title": "Senior DevOps Engineer",
+     "organization": "Stratosphere Tech",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Krakow, PL",
+     "startDate": "2019-11",
+     "endDate": "2022-12",
+     "description": "Managed cloud infrastructure and automated deployment pipelines to support agile development. Collaborated with development teams to improve system reliability and scalability."
+    }
+   ],
+   "education": [
+    {
+     "school": "Technical University of Nowogród",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2015",
+     "endDate": "2019"
+    }
+   ],
+   "location": "Warsaw, PL",
+   "openToWork": false,
+   "audit": {
+    "gender": "man",
+    "nameOrigin": "Central Europe",
+    "field": "Cloud Computing, DevOps",
+    "seniority": "senior"
+   }
+  },
+  {
+   "displayName": "Amina Sow",
+   "headline": "Financial Analyst Specializing in Risk Management",
+   "about": "I analyze financial data to assess risks and opportunities, helping organizations make informed investment decisions. My work involves forecasting, modeling, and reporting to ensure financial stability and growth. I thrive in dynamic environments where analytical skills and strategic thinking are key.",
+   "skills": [
+    "Financial Modeling",
+    "Risk Assessment",
+    "Data Analysis",
+    "Excel",
+    "Python",
+    "IFRS",
+    "Portfolio Management",
+    "Market Research",
+    "SQL",
+    "Reporting"
+   ],
+   "positions": [
+    {
+     "title": "Senior Financial Analyst",
+     "organization": "Capital Edge Advisors",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Dakar, SN",
+     "startDate": "2021-06",
+     "endDate": null,
+     "description": "Lead financial risk analysis and provide strategic recommendations to clients. Develop models to predict market trends and assess the impact of economic factors on investments."
+    },
+    {
+     "title": "Financial Analyst",
+     "organization": "Global Wealth Partners",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Bamako, ML",
+     "startDate": "2018-03",
+     "endDate": "2021-05",
+     "description": "Conducted financial analysis for a diverse portfolio of clients, focusing on risk management and compliance. Prepared reports and presentations to communicate findings to stakeholders."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Timbuktu",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Finance",
+     "startDate": "2016",
+     "endDate": "2018"
+    },
+    {
+     "school": "Institute of Economics, Gao",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Economics",
+     "startDate": "2012",
+     "endDate": "2016"
+    }
+   ],
+   "location": "Dakar, SN",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "West Africa",
+    "field": "Finance, Risk Management",
+    "seniority": "mid"
+   }
+  },
+  {
+   "displayName": "Lena Hoffmann",
+   "headline": "UX Designer Crafting Intuitive Digital Experiences",
+   "about": "I create user-centered designs that balance aesthetics with functionality to enhance user engagement. My process involves research, prototyping, and testing to ensure products meet user needs and business goals. I am passionate about accessibility and inclusive design principles.",
+   "skills": [
+    "User Research",
+    "Wireframing",
+    "Prototyping",
+    "Figma",
+    "Adobe XD",
+    "Usability Testing",
+    "Accessibility Design",
+    "Interaction Design",
+    "UI Design",
+    "Design Thinking"
+   ],
+   "positions": [
+    {
+     "title": "Lead UX Designer",
+     "organization": "PixelForge Design Studio",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Berlin, DE",
+     "startDate": "2022-04",
+     "endDate": null,
+     "description": "Lead the UX design team in creating digital products for clients across various industries. Focus on delivering intuitive and accessible user experiences."
+    },
+    {
+     "title": "UX Designer",
+     "organization": "Innovate Digital",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Hamburg, DE",
+     "startDate": "2019-09",
+     "endDate": "2022-03",
+     "description": "Designed user interfaces and experiences for web and mobile applications. Conducted user research to inform design decisions and improve product usability."
+    },
+    {
+     "title": "Junior UX Designer",
+     "organization": "Creative Solutions Agency",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Munich, DE",
+     "startDate": "2018-06",
+     "endDate": "2019-08",
+     "description": "Assisted senior designers in creating wireframes, prototypes, and design specifications. Participated in usability testing sessions and contributed to design iterations."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Harrowmere",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Digital Design",
+     "startDate": "2014",
+     "endDate": "2018"
+    }
+   ],
+   "location": "Berlin, DE",
+   "openToWork": false,
+   "audit": {
+    "gender": "woman",
+    "nameOrigin": "Central Europe",
+    "field": "UX Design, Product Design",
+    "seniority": "lead"
+   }
+  }
+ ]
+}

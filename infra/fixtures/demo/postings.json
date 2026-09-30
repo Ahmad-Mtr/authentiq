@@ -1,0 +1,504 @@
+{
+ "postings": [
+  {
+   "key": "posting-0",
+   "by": "yosra-chabane.test",
+   "field": "backend",
+   "record": {
+    "title": "Backend Software Engineer - APIs and Distributed Systems",
+    "organization": "Kouamé & Associates Logistics Tech",
+    "description": "Join our engineering team to design, build, and scale backend services powering our logistics and supply chain management platform. You will work on high-performance APIs, distributed databases, and microservices that handle real-time tracking, inventory management, and data analytics. The team consists of six engineers and two product managers, collaborating closely with stakeholders to deliver reliable, scalable solutions. We need someone with strong experience in distributed systems, database optimization, and cloud infrastructure to help us evolve our platform for growing demand.",
+    "location": "Abidjan, CI",
+    "locationType": "remote",
+    "employmentType": "full-time",
+    "skills": [
+     "Go or Python backend development",
+     "PostgreSQL and database design",
+     "RESTful and gRPC APIs",
+     "Docker and Kubernetes",
+     "AWS or GCP cloud services",
+     "Distributed systems architecture",
+     "CI/CD pipelines"
+    ],
+    "salary": {
+     "min": 18000000,
+     "max": 24000000,
+     "currency": "XOF",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-1",
+   "by": "ephrem-kebede.test",
+   "field": "pm",
+   "record": {
+    "title": "Senior Product Manager",
+    "organization": "Kafue River Solutions",
+    "description": "Lead the development and refinement of our core product suite for agricultural supply chain optimization. You will work with a cross-functional team of engineers, data analysts, and UX designers to define product vision, prioritize features, and ensure alignment with market needs. The team values data-driven decision-making and close collaboration with clients in Lusaka and across southern Africa. We need a strategic thinker with a track record of delivering scalable B2B products and navigating complex stakeholder landscapes.",
+    "location": "Lusaka, ZM",
+    "locationType": "onsite",
+    "employmentType": "full-time",
+    "skills": [
+     "product roadmapping",
+     "agile methodologies",
+     "stakeholder management",
+     "market analysis",
+     "SQL",
+     "JIRA",
+     "B2B SaaS"
+    ],
+    "salary": {
+     "min": 360000,
+     "max": 520000,
+     "currency": "ZMW",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-2",
+   "by": "yoon-seung-ah.test",
+   "field": "recruiting",
+   "record": {
+    "title": "Head of Talent Acquisition",
+    "organization": "Al Marjan Global Logistics",
+    "description": "Lead the end-to-end recruiting function for a growing logistics firm headquartered in Dubai. You will design and execute talent strategies to attract, assess, and hire top professionals across operations, finance, and engineering. Manage a small in-house team and external partners to fill 30-40 roles annually, from junior analysts to senior managers. Work closely with department heads to forecast hiring needs, refine job profiles, and ensure a seamless candidate experience. The team needs a strategic leader with deep sourcing expertise, strong stakeholder management, and a data-driven approach to measuring hiring effectiveness.",
+    "location": "Dubai, AE",
+    "locationType": "remote",
+    "employmentType": "full-time",
+    "skills": [
+     "full-cycle recruiting",
+     "employer branding",
+     "talent pipeline development",
+     "ATS management",
+     "interview best practices",
+     "workforce planning",
+     "hiring metrics and analytics"
+    ],
+    "salary": {
+     "min": 42000,
+     "max": 56000,
+     "currency": "AED",
+     "period": "month"
+    }
+   }
+  },
+  {
+   "key": "posting-3",
+   "by": "baraka-mwangi.test",
+   "field": "sre",
+   "record": {
+    "title": "Junior Site Reliability Engineer (Remote, Contract)",
+    "organization": "Baechun Infrastructure Solutions",
+    "description": "Join our Seoul-based team as a Junior Site Reliability Engineer, supporting cloud infrastructure and observability for high-traffic web services. You’ll work alongside senior SREs to monitor systems, automate deployment pipelines, and respond to on-call incidents, ensuring 99.9% uptime. The team values proactive problem-solving and collaboration across time zones. We need someone with foundational experience in cloud platforms, scripting, and monitoring tools to help us scale efficiently. This contract role offers hands-on exposure to Kubernetes, CI/CD, and observability stacks.",
+    "location": "Seoul, KR",
+    "locationType": "remote",
+    "employmentType": "contract",
+    "skills": [
+     "Kubernetes",
+     "Python or Bash scripting",
+     "Prometheus or Grafana",
+     "AWS or GCP",
+     "CI/CD pipelines",
+     "Linux system administration",
+     "Incident response"
+    ],
+    "salary": {
+     "min": 52000000,
+     "max": 78000000,
+     "currency": "KRW",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-4",
+   "by": "ephrem-kebede.test",
+   "field": "finance",
+   "record": {
+    "title": "Financial Controller",
+    "organization": "Seremban Capital Partners",
+    "description": "Join our team in Kuala Lumpur as a Financial Controller, working closely with our reporting and audit groups to ensure accuracy and compliance across all financial processes. You will prepare monthly and quarterly financial statements, analyze variances, and support internal and external audits. The team consists of six professionals, including two senior accountants and a reporting manager, and you will collaborate with department heads to align financial data with business objectives. We need someone with strong technical accounting skills, experience in financial reporting, and the ability to communicate findings clearly to non-finance stakeholders.",
+    "location": "Kuala Lumpur, MY",
+    "locationType": "hybrid",
+    "employmentType": "full-time",
+    "skills": [
+     "IFRS",
+     "financial reporting",
+     "audit support",
+     "budgeting and forecasting",
+     "SAP",
+     "Excel (advanced)",
+     "internal controls"
+    ],
+    "salary": {
+     "min": 60,
+     "max": 90,
+     "currency": "MYR",
+     "period": "hour"
+    }
+   }
+  },
+  {
+   "key": "posting-5",
+   "by": "yoon-seung-ah.test",
+   "field": "civileng",
+   "record": {
+    "title": "Senior Civil and Structural Engineer (Infrastructure)",
+    "organization": "Caribbean Infrastructure Partners",
+    "description": "Lead the design, analysis, and oversight of critical infrastructure projects across Jamaica, focusing on bridges, roads, and public utilities. Work closely with a multidisciplinary team of engineers, architects, and project managers to ensure compliance with local and international standards. Responsibilities include feasibility studies, structural modeling, and construction supervision. The team values precision, innovation, and a proactive approach to problem-solving in a fast-paced, remote work environment.",
+    "location": "Kingston, JM",
+    "locationType": "remote",
+    "employmentType": "part-time",
+    "skills": [
+     "AutoCAD Civil 3D",
+     "finite element analysis",
+     "project management",
+     "Jamaican building codes",
+     "seismic design",
+     "construction supervision",
+     "BIM (Building Information Modeling)"
+    ],
+    "salary": {
+     "min": 8500000,
+     "max": 12000000,
+     "currency": "JMD",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-6",
+   "by": "claire-whitmore.test",
+   "field": "design",
+   "record": {
+    "title": "Lead Product and UX Designer",
+    "organization": "Marina Design Collective",
+    "description": "Lead the end-to-end design process for our suite of B2B SaaS tools, from user research to high-fidelity prototypes and final visual delivery. Work alongside a cross-functional team of product managers, engineers, and researchers to define user needs, iterate on designs, and ensure seamless experiences. The team values collaboration, data-driven decisions, and a deep understanding of user-centric design principles. They need a leader who can mentor junior designers, advocate for UX best practices, and align design strategy with business goals.",
+    "location": "Barcelona, ES",
+    "locationType": "onsite",
+    "employmentType": "full-time",
+    "skills": [
+     "User research",
+     "Interaction design",
+     "Visual design",
+     "Prototyping (Figma)",
+     "Design systems",
+     "Stakeholder management",
+     "Agile workflows"
+    ],
+    "salary": {
+     "min": 55000,
+     "max": 78000,
+     "currency": "EUR",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-7",
+   "by": "ephrem-kebede.test",
+   "field": "teaching",
+   "record": {
+    "title": "Primary and Secondary School Teacher",
+    "organization": "Fossheim Skole og Læringsenter",
+    "description": "Join our dedicated team at Fossheim Skole og Læringsenter in Oslo, where you will teach students across primary and secondary levels in a collaborative and innovative environment. You will work alongside experienced educators to develop engaging lesson plans, foster a positive learning atmosphere, and support students in achieving their academic and personal growth. The team values creativity, adaptability, and a student-centered approach. We are looking for someone with a passion for teaching, strong classroom management skills, and the ability to collaborate effectively with colleagues and parents.",
+    "location": "Oslo, NO",
+    "locationType": "hybrid",
+    "employmentType": "full-time",
+    "skills": [
+     "Classroom management",
+     "Curriculum development",
+     "Student assessment",
+     "Interpersonal communication",
+     "Lesson planning",
+     "Classroom technology integration"
+    ],
+    "salary": {
+     "min": 45000,
+     "max": 67500,
+     "currency": "NOK",
+     "period": "month"
+    }
+   }
+  },
+  {
+   "key": "posting-8",
+   "by": "yoon-seung-ah.test",
+   "field": "mobile",
+   "record": {
+    "title": "Mobile Application Developer",
+    "organization": "Longhorn Tech Solutions",
+    "description": "Join our team at Longhorn Tech Solutions as a Mobile Application Developer to design and build innovative mobile applications for iOS and Android platforms. You will collaborate with a cross-functional team of designers, product managers, and backend developers to deliver high-quality, user-friendly apps. The ideal candidate will have a strong foundation in mobile development, a passion for creating seamless user experiences, and the ability to work in a fast-paced environment. Responsibilities include developing new features, optimizing performance, and ensuring application security. We are looking for someone who thrives in a collaborative setting and is eager to contribute to impactful projects.",
+    "location": "Austin, US",
+    "locationType": "onsite",
+    "employmentType": "full-time",
+    "skills": [
+     "Kotlin",
+     "Swift",
+     "React Native",
+     "Mobile UI/UX Design",
+     "RESTful APIs",
+     "Git",
+     "Agile Methodologies"
+    ],
+    "salary": {
+     "min": 95000,
+     "max": 142500,
+     "currency": "USD",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-9",
+   "by": "yosra-chabane.test",
+   "field": "marketing",
+   "record": {
+    "title": "Senior Growth Marketing Manager",
+    "organization": "Kaya & Co. Creative Agency",
+    "description": "Lead the growth marketing strategy for Kaya & Co., a boutique agency specializing in brand storytelling and digital campaigns. You will oversee content creation, SEO optimization, and performance marketing to drive client acquisition and retention. The team consists of content writers, SEO specialists, and designers who collaborate to deliver data-driven campaigns. We need a strategic thinker with a proven track record in scaling brands through organic and paid channels, who can analyze metrics, refine messaging, and mentor junior marketers.",
+    "location": "Accra, GH",
+    "locationType": "remote",
+    "employmentType": "full-time",
+    "skills": [
+     "SEO strategy",
+     "content marketing",
+     "Google Analytics",
+     "paid advertising",
+     "brand positioning",
+     "A/B testing",
+     "marketing automation"
+    ],
+    "salary": {
+     "min": 85,
+     "max": 120,
+     "currency": "GHS",
+     "period": "hour"
+    }
+   }
+  },
+  {
+   "key": "posting-10",
+   "by": "ephrem-kebede.test",
+   "field": "supplychain",
+   "record": {
+    "title": "Head of Supply Chain and Logistics Operations",
+    "organization": "Veldt Stream Logistics",
+    "description": "Lead the end-to-end supply chain and logistics strategy for Veldt Stream Logistics, a Johannesburg-based provider of cold-chain and time-sensitive freight solutions. You will oversee a team of 15 planners, warehouse managers and transport coordinators, ensuring on-time delivery and cost efficiency across a network of regional depots. The role involves negotiating with carriers, optimising routing software, and maintaining compliance with South African and SADC customs regulations. We need a hands-on leader with a track record of reducing transit times and improving inventory accuracy in fast-moving goods sectors.",
+    "location": "Johannesburg, ZA",
+    "locationType": "onsite",
+    "employmentType": "contract",
+    "skills": [
+     "supply chain management",
+     "warehouse operations",
+     "transport logistics",
+     "inventory optimisation",
+     "vendor negotiation",
+     "customs compliance",
+     "route planning software"
+    ],
+    "salary": {
+     "min": 1200000,
+     "max": 1800000,
+     "currency": "ZAR",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-11",
+   "by": "yoon-seung-ah.test",
+   "field": "datascience",
+   "record": {
+    "title": "Junior Data Science and Machine Learning Specialist",
+    "organization": "Jofra Analytics",
+    "description": "Join our growing data science team at Jofra Analytics in Amman to develop and refine machine learning models that drive actionable insights for our clients. You will collaborate with data engineers and senior data scientists to preprocess data, design experiments, and evaluate model performance. The team works on a mix of supervised and unsupervised learning projects, with a focus on practical, scalable solutions. We need someone with a strong foundation in statistics, programming, and a curiosity for solving complex problems with data.",
+    "location": "Amman, JO",
+    "locationType": "onsite",
+    "employmentType": "full-time",
+    "skills": [
+     "Python",
+     "SQL",
+     "scikit-learn",
+     "pandas",
+     "data visualization",
+     "experimental design",
+     "machine learning algorithms"
+    ],
+    "salary": {
+     "min": 12000,
+     "max": 17000,
+     "currency": "JOD",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-12",
+   "by": "tama-ropati.test",
+   "field": "nursing",
+   "record": {
+    "title": "Community and Hospital Care Nurse",
+    "organization": "Lanka Haven Healthcare",
+    "description": "Join our compassionate team at Lanka Haven Healthcare as a Community and Hospital Care Nurse. You will provide high-quality nursing care to patients in both hospital and community settings, collaborating with a multidisciplinary team to deliver holistic treatment. Your role will involve patient assessments, medication administration, wound care, and health education. The team consists of experienced nurses, healthcare assistants, and specialists focused on improving patient outcomes. We are seeking a dedicated professional with strong clinical skills and the ability to adapt to diverse healthcare environments.",
+    "location": "Colombo, LK",
+    "locationType": "remote",
+    "employmentType": "full-time",
+    "skills": [
+     "patient assessment",
+     "medication administration",
+     "wound care management",
+     "health education",
+     "electronic health records",
+     "team collaboration",
+     "emergency response"
+    ],
+    "salary": {
+     "min": 85000,
+     "max": 120000,
+     "currency": "LKR",
+     "period": "month"
+    }
+   }
+  },
+  {
+   "key": "posting-13",
+   "by": "ephrem-kebede.test",
+   "field": "frontend",
+   "record": {
+    "title": "Senior Frontend Engineer - UI & Accessibility",
+    "organization": "Kota Intan Digital Studios",
+    "description": "Lead the frontend development of our design system and ensure accessibility across all user interfaces. You will collaborate with a cross-functional team of designers, product managers, and backend engineers to refine and scale our component library. The team values clean, maintainable code and a user-first approach, and they need someone with deep expertise in semantic HTML, ARIA, and modern CSS to champion inclusive design. Your work will directly impact the usability and performance of our flagship products, used by clients across Southeast Asia.",
+    "location": "Jakarta, ID",
+    "locationType": "remote",
+    "employmentType": "full-time",
+    "skills": [
+     "React",
+     "TypeScript",
+     "Semantic HTML/CSS",
+     "Web Accessibility (WCAG, ARIA)",
+     "Design Systems",
+     "Storybook",
+     "Performance Optimization"
+    ],
+    "salary": {
+     "min": 600000000,
+     "max": 900000000,
+     "currency": "IDR",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-14",
+   "by": "yoon-seung-ah.test",
+   "field": "sales",
+   "record": {
+    "title": "Senior B2B Sales and Account Management Lead",
+    "organization": "Andes Global Partners",
+    "description": "Lead the B2B sales and account management team for Andes Global Partners, a Lima-based firm specializing in cross-border trade solutions. The role involves driving revenue growth by nurturing client relationships, identifying expansion opportunities, and overseeing a team of account managers. The team works closely with logistics, finance, and customer support to deliver tailored solutions for enterprise clients. Candidates must have a proven track record in B2B sales, strong negotiation skills, and the ability to analyze market trends to refine strategies. Experience in international trade or logistics is a plus.",
+    "location": "Lima, PE",
+    "locationType": "remote",
+    "employmentType": "full-time",
+    "skills": [
+     "B2B Sales",
+     "Account Management",
+     "Negotiation",
+     "Market Analysis",
+     "Client Relations",
+     "Team Leadership"
+    ],
+    "salary": {
+     "min": 45,
+     "max": 63,
+     "currency": "PEN",
+     "period": "hour"
+    }
+   }
+  },
+  {
+   "key": "posting-17",
+   "by": "yoon-seung-ah.test",
+   "field": "legal",
+   "record": {
+    "title": "Senior In-House Legal Counsel",
+    "organization": "Peachtree Business Solutions",
+    "description": "Peachtree Business Solutions seeks a Senior In-House Legal Counsel to lead commercial contracts, privacy compliance, and employment law matters for our growing Atlanta-based operations. You will draft, review, and negotiate complex agreements, ensure adherence to data protection regulations, and advise on workforce-related legal issues. The team consists of two junior counsel members and reports directly to the General Counsel. We need a seasoned professional with deep expertise in contract law, privacy frameworks (e.g., GDPR, CCPA), and employment regulations to provide strategic guidance and mitigate risk.",
+    "location": "Atlanta, US",
+    "locationType": "onsite",
+    "employmentType": "contract",
+    "skills": [
+     "Commercial Contracts",
+     "Privacy Law",
+     "Employment Law",
+     "Regulatory Compliance",
+     "Risk Management",
+     "Negotiation"
+    ],
+    "salary": {
+     "min": 18000,
+     "max": 24000,
+     "currency": "USD",
+     "period": "month"
+    }
+   }
+  },
+  {
+   "key": "posting-18",
+   "by": "yosra-chabane.test",
+   "field": "backend",
+   "record": {
+    "title": "Lead Backend Engineer",
+    "organization": "Marina Bay Logistics",
+    "description": "Lead the design and evolution of our high-throughput distributed systems that power Marina Bay Logistics’ freight coordination platform. You will guide a team of five backend engineers, set architectural direction for APIs, microservices, and data pipelines, and ensure scalability for 10,000+ daily transactions. The team values collaborative problem-solving and expects you to mentor peers while contributing code. They need expertise in system design, performance tuning, and cloud-native deployment to meet growing demand.",
+    "location": "Brisbane, AU",
+    "locationType": "hybrid",
+    "employmentType": "full-time",
+    "skills": [
+     "Distributed systems architecture",
+     "PostgreSQL",
+     "Go or Java",
+     "Kubernetes",
+     "RESTful API design",
+     "Observability and monitoring",
+     "Team leadership"
+    ],
+    "salary": {
+     "min": 160000,
+     "max": 224000,
+     "currency": "AUD",
+     "period": "year"
+    }
+   }
+  },
+  {
+   "key": "posting-19",
+   "by": "ephrem-kebede.test",
+   "field": "pm",
+   "record": {
+    "title": "Junior Product Manager",
+    "organization": "Tana River Logistics",
+    "description": "Join our Addis Ababa team at Tana River Logistics to shape the next generation of supply chain solutions. You will assist in defining product roadmaps, gathering stakeholder requirements, and translating them into actionable features. The team of five product managers, designers, and engineers works closely with clients in agriculture and manufacturing to streamline logistics workflows. We need someone detail-oriented, curious, and able to balance technical constraints with user needs. Prior experience in product development or project coordination is a plus, but we value the right mindset and eagerness to learn.",
+    "location": "Addis Ababa, ET",
+    "locationType": "onsite",
+    "employmentType": "full-time",
+    "skills": [
+     "Agile methodologies",
+     "Stakeholder management",
+     "User story mapping",
+     "Data analysis with Excel or SQL",
+     "Backlog prioritization",
+     "Market research"
+    ],
+    "salary": {
+     "min": 120,
+     "max": 180,
+     "currency": "ETB",
+     "period": "hour"
+    }
+   }
+  }
+ ]
+}

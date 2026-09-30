@@ -2,6 +2,8 @@ import type { Agent } from "@atproto/api"
 import { sh } from "@workspace/lexicons"
 import { z } from "zod"
 import { ApiError, appViewError, callAppView } from "./appview.ts"
+import { env } from "./env.ts"
+import { waitFor } from "./social.ts"
 import {
   buildEducationRecord,
   buildPositionRecord,
@@ -179,13 +181,34 @@ export async function confirmResume(agent: Agent, raw: unknown) {
   }
 
   let uris: Array<string> = []
+  let indexed = true
   if (writes.length > 0) {
     const { data } = await agent.com.atproto.repo.applyWrites({
       repo: did,
       writes,
     })
     uris = (data.results ?? []).flatMap((r) => ("uri" in r ? [r.uri] : []))
+    // Read-after-write, as the social routes do: wait until the AppView
+    // serves the new records, so the profile the user opens next shows them.
+    const profileWrite = writes.find((w) => w.collection === PROFILE.$nsid)
+    const displayName =
+      profileWrite && "value" in profileWrite
+        ? (profileWrite.value as { displayName?: string }).displayName
+        : undefined
+    const entries = uris.filter((u) => !u.endsWith(`/${PROFILE.$nsid}/self`))
+    indexed = await waitFor(async () => {
+      const res = await fetch(
+        `${env.APPVIEW_URL}/xrpc/sh.authentiq.actor.getProfile?actor=${encodeURIComponent(did)}`
+      )
+      if (!res.ok) return false
+      const text = await res.text()
+      const view = JSON.parse(text) as { displayName?: string }
+      return (
+        (!displayName || view.displayName === displayName) &&
+        entries.every((u) => text.includes(u))
+      )
+    })
   }
   await discardDraft(agent, input.draftId)
-  return { written: writes.length, uris }
+  return { written: writes.length, uris, indexed }
 }

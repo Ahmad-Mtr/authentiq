@@ -1,0 +1,4109 @@
+{
+ "people": [
+  {
+   "handle": "fadwa-benali.test",
+   "plan": {
+    "index": 0,
+    "field": "backend",
+    "seniority": "junior",
+    "gender": "woman",
+    "region": "North Africa",
+    "location": "Tunis, TN",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Fadwa Benali",
+    "headline": "Backend Engineer Building Scalable APIs and Distributed Systems",
+    "about": "I design and implement scalable backend services, focusing on RESTful APIs, database optimization, and cloud-native architectures. I enjoy solving performance challenges in distributed systems and contributing to robust, maintainable codebases.",
+    "location": "Tunis, TN",
+    "openToWork": true,
+    "skills": [
+     "Python",
+     "PostgreSQL",
+     "Docker",
+     "Kubernetes",
+     "REST API Design",
+     "Microservices",
+     "Git",
+     "AWS",
+     "CI/CD Pipelines",
+     "SQL Optimization"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Backend Engineer",
+     "organization": "MedinaTech Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Tunis, TN",
+     "startDate": "2025-02",
+     "description": "Develop and maintain backend services for a fintech platform, focusing on API performance and database scalability. Collaborate with frontend teams to integrate new features and optimize existing workflows."
+    },
+    {
+     "title": "Junior Backend Developer",
+     "organization": "Sahara Data Systems",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Tunis, TN",
+     "startDate": "2023-06",
+     "endDate": "2025-01",
+     "description": "Contributed to the development of a distributed data processing pipeline, improving query response times by 30%. Assisted in migrating legacy systems to a microservices architecture."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Quiniaenne",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2020",
+     "endDate": "2023"
+    }
+   ]
+  },
+  {
+   "handle": "karim-zouaoui.test",
+   "plan": {
+    "index": 1,
+    "field": "backend",
+    "seniority": "mid",
+    "gender": "man",
+    "region": "North Africa",
+    "location": "Cairo, EG",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Karim Zouaoui",
+    "headline": "Backend Engineer building scalable APIs and distributed systems",
+    "about": "I design and maintain high-performance backend services, databases, and RESTful APIs to support large-scale applications. My work focuses on improving system reliability, latency, and developer experience through clean architecture and efficient data models. I enjoy solving complex problems in distributed systems and mentoring junior engineers.",
+    "location": "Cairo, EG",
+    "openToWork": true,
+    "skills": [
+     "Python",
+     "PostgreSQL",
+     "FastAPI",
+     "Kubernetes",
+     "Docker",
+     "Redis",
+     "gRPC",
+     "CI/CD pipelines",
+     "Prometheus",
+     "Microservices"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Backend Engineer",
+     "organization": "Miravista Tech Solutions",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Cairo, EG",
+     "startDate": "2024-01",
+     "description": "Developed and optimized backend services for a SaaS platform, reducing API latency by 30%. Led the migration of monolithic services to microservices architecture, improving scalability and fault tolerance."
+    },
+    {
+     "title": "Software Engineer",
+     "organization": "Kaleidora Systems",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Cairo, EG",
+     "startDate": "2021-06",
+     "endDate": "2023-12",
+     "description": "Built and maintained RESTful APIs and database schemas for a customer-facing application. Collaborated with frontend teams to integrate backend services, ensuring seamless data flow and performance."
+    },
+    {
+     "title": "Junior Backend Developer",
+     "organization": "Vexel Dynamics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Cairo, EG",
+     "startDate": "2019-09",
+     "endDate": "2021-05",
+     "description": "Contributed to the development of internal tools and APIs, improving data processing efficiency. Assisted in troubleshooting and optimizing database queries to enhance application performance."
+    }
+   ],
+   "education": [
+    {
+     "school": "Joristan University",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2015",
+     "endDate": "2019"
+    },
+    {
+     "school": "Ishanbury Institute of Technology",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Software Engineering",
+     "startDate": "2023",
+     "endDate": "2025"
+    }
+   ]
+  },
+  {
+   "handle": "alina-vaduva.test",
+   "plan": {
+    "index": 2,
+    "field": "backend",
+    "seniority": "senior",
+    "gender": "woman",
+    "region": "Eastern Europe",
+    "location": "Prague, CZ",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Alina Văduva",
+    "headline": "Senior Backend Engineer | Distributed Systems & API Design",
+    "about": "I design and scale backend services that power high-traffic applications, with a focus on performance, reliability, and clean API contracts. My work spans distributed systems, database optimization, and cloud-native architectures. I mentor junior engineers and advocate for best practices in code maintainability and observability.",
+    "location": "Prague, CZ",
+    "openToWork": true,
+    "skills": [
+     "Go",
+     "PostgreSQL",
+     "Kubernetes",
+     "gRPC",
+     "Docker",
+     "Terraform",
+     "Prometheus",
+     "Elasticsearch",
+     "Distributed Systems",
+     "Microservices"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Backend Engineer",
+     "organization": "Vexora Systems",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Prague, CZ",
+     "startDate": "2022-06",
+     "description": "Lead the development of a microservices-based platform for real-time data processing, improving throughput by 40%. Designed and maintained REST and gRPC APIs, and introduced observability tools to reduce incident resolution time."
+    },
+    {
+     "title": "Backend Engineer",
+     "organization": "Tivon Data Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Brno, CZ",
+     "startDate": "2019-03",
+     "endDate": "2022-05",
+     "description": "Developed and optimized database schemas and queries for a SaaS product, reducing latency by 35%. Collaborated with frontend teams to deliver new features and improve system scalability."
+    },
+    {
+     "title": "Software Engineer",
+     "organization": "Merodale Computing",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Prague, CZ",
+     "startDate": "2016-07",
+     "endDate": "2019-02",
+     "description": "Built and maintained backend services for a financial analytics platform, focusing on data integrity and API performance. Implemented caching layers to improve response times for high-frequency requests."
+    },
+    {
+     "title": "Junior Backend Developer",
+     "organization": "Ulaenne Tech",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Prague, CZ",
+     "startDate": "2015-01",
+     "endDate": "2016-06",
+     "description": "Contributed to the development of a monolithic application, refactoring legacy code and introducing unit tests to improve stability. Assisted in database migrations and optimizations."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Uletor",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2012",
+     "endDate": "2014"
+    },
+    {
+     "school": "Ulaenne Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Software Engineering",
+     "startDate": "2008",
+     "endDate": "2012"
+    }
+   ]
+  },
+  {
+   "handle": "jemal-getahun.test",
+   "plan": {
+    "index": 3,
+    "field": "frontend",
+    "seniority": "junior",
+    "gender": "man",
+    "region": "East Africa",
+    "location": "Taipei, TW",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Jemal Getahun",
+    "headline": "Junior Frontend Developer | UI Engineering & Accessibility Specialist",
+    "about": "I build responsive, accessible web interfaces with a focus on clean code and user-centered design. I collaborate closely with designers to implement design systems and ensure consistency across applications. Passionate about improving web accessibility and performance.",
+    "location": "Taipei, TW",
+    "openToWork": true,
+    "skills": [
+     "HTML5",
+     "CSS3",
+     "JavaScript (ES6+)",
+     "React",
+     "TypeScript",
+     "Figma",
+     "Web Accessibility (WCAG)",
+     "Tailwind CSS",
+     "Git",
+     "Storybook"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Frontend Developer",
+     "organization": "Brightwave Digital",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Taipei, TW",
+     "startDate": "2025-04",
+     "description": "Develop and maintain web applications using React and TypeScript, with a focus on accessibility and responsive design. Work within a cross-functional team to implement UI components from Figma designs."
+    },
+    {
+     "title": "UI Engineering Intern",
+     "organization": "Havenly Tech",
+     "employmentType": "internship",
+     "locationType": "hybrid",
+     "location": "Taipei, TW",
+     "startDate": "2024-06",
+     "endDate": "2025-03",
+     "description": "Assisted in the development of a design system and contributed to building reusable, accessible UI components. Gained hands-on experience with modern frontend frameworks and best practices."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Nolouford",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2020",
+     "endDate": "2024"
+    }
+   ]
+  },
+  {
+   "handle": "ananya-kapoor.test",
+   "plan": {
+    "index": 4,
+    "field": "frontend",
+    "seniority": "mid",
+    "gender": "woman",
+    "region": "South Asia",
+    "location": "Dhaka, BD",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Ananya Kapoor",
+    "headline": "Mid-level Frontend Engineer specializing in accessible UI and design systems",
+    "about": "I build responsive, accessible web interfaces and contribute to scalable design systems. My work focuses on clean, semantic code and collaboration with designers to bridge the gap between visual design and technical implementation. I continuously refine my approach to performance and usability.",
+    "location": "Dhaka, BD",
+    "openToWork": false,
+    "skills": [
+     "HTML5",
+     "CSS3",
+     "JavaScript (ES6+)",
+     "React",
+     "TypeScript",
+     "Accessibility (WCAG, ARIA)",
+     "Design Systems",
+     "Storybook",
+     "Figma",
+     "Git"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Frontend Developer",
+     "organization": "Brisban Design Cooperative",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Dhaka, BD",
+     "startDate": "2023-07",
+     "description": "Develop and maintain a component library for a multi-product platform, ensuring consistency and accessibility across applications. Collaborate with UX designers to implement and refine interface designs."
+    },
+    {
+     "title": "UI Engineer",
+     "organization": "Loriria Interactive Media",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Loriria, BD",
+     "startDate": "2021-03",
+     "endDate": "2023-06",
+     "description": "Built and optimized frontend solutions for client projects, focusing on responsive design and cross-browser compatibility. Introduced a modular CSS architecture to improve maintainability."
+    },
+    {
+     "title": "Junior Frontend Developer",
+     "organization": "Aisanona Digital Studios",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Aisanona, BD",
+     "startDate": "2019-11",
+     "endDate": "2021-02",
+     "description": "Assisted in developing and testing user interfaces for web applications, with a focus on implementing accessibility best practices and improving site performance."
+    }
+   ],
+   "education": [
+    {
+     "school": "Aisiford Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2015",
+     "endDate": "2019"
+    }
+   ]
+  },
+  {
+   "handle": "remy-voss.test",
+   "plan": {
+    "index": 5,
+    "field": "frontend",
+    "seniority": "senior",
+    "gender": "nonbinary",
+    "region": "Western Europe",
+    "location": "Dubai, AE",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Remy Voss",
+    "headline": "Senior UI Engineer | Accessibility Advocate | Design Systems Specialist",
+    "about": "I build scalable, accessible frontend architectures and maintain design systems that bridge the gap between design and development. My focus is on inclusive UI engineering, ensuring seamless experiences across devices and user needs. I mentor junior developers and collaborate with cross-functional teams to deliver high-impact solutions.",
+    "location": "Dubai, AE",
+    "openToWork": true,
+    "skills": [
+     "React",
+     "TypeScript",
+     "Web Accessibility (WCAG)",
+     "Design Systems",
+     "Figma",
+     "Tailwind CSS",
+     "Storybook",
+     "Jest",
+     "Git",
+     "Responsive Design"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior UI Engineer",
+     "organization": "Veythorn Design Collective",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Dubai, AE",
+     "startDate": "2023-07",
+     "description": "Leading the development and maintenance of a design system used across multiple products, focusing on accessibility and performance. Mentoring junior engineers and working closely with UX designers to refine component libraries."
+    },
+    {
+     "title": "Frontend Developer",
+     "organization": "Harkness Interactive",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Dubai, AE",
+     "startDate": "2020-03",
+     "endDate": "2023-07",
+     "description": "Developed and optimized responsive web applications using React and TypeScript, improving load times and accessibility compliance. Collaborated with product teams to implement UI/UX designs with a focus on user-centric solutions."
+    },
+    {
+     "title": "UI Developer",
+     "organization": "Mertain Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Dubai, AE",
+     "startDate": "2017-09",
+     "endDate": "2020-03",
+     "description": "Built interactive web interfaces using modern JavaScript frameworks, ensuring cross-browser compatibility and adherence to design specifications. Contributed to the establishment of early design system practices."
+    }
+   ],
+   "education": [
+    {
+     "school": "Peliwick Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2013",
+     "endDate": "2017"
+    }
+   ]
+  },
+  {
+   "handle": "ama-serwaa-mensah.test",
+   "plan": {
+    "index": 6,
+    "field": "mobile",
+    "seniority": "mid",
+    "gender": "woman",
+    "region": "West Africa",
+    "location": "Lagos, NG",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Ama Serwaa Mensah",
+    "headline": "Mid-Level Mobile App Developer | iOS & Android Specialist",
+    "about": "I design and build native mobile applications for iOS and Android, focusing on performance, scalability, and user experience. With a strong foundation in cross-platform frameworks, I deliver robust solutions that meet business and user needs. I thrive in collaborative environments where innovation and problem-solving drive development.",
+    "location": "Lagos, NG",
+    "openToWork": true,
+    "skills": [
+     "Kotlin",
+     "Swift",
+     "React Native",
+     "Firebase",
+     "Git",
+     "RESTful APIs",
+     "UI/UX Best Practices",
+     "Unit Testing",
+     "Agile Methodologies",
+     "PostgreSQL"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Mobile Application Developer",
+     "organization": "GreenHill Digital Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Lagos, NG",
+     "startDate": "2024-03",
+     "description": "Develop and maintain mobile applications for clients in e-commerce and fintech, improving app performance by 30% through code optimization and efficient database queries."
+    },
+    {
+     "title": "Junior Mobile Developer",
+     "organization": "BlueWave Tech Innovations",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lagos, NG",
+     "startDate": "2022-07",
+     "endDate": "2024-02",
+     "description": "Collaborated on cross-platform mobile projects, implementing new features and debugging issues while adhering to best practices in UI/UX design."
+    },
+    {
+     "title": "Mobile Development Intern",
+     "organization": "StarLight Software Labs",
+     "employmentType": "internship",
+     "locationType": "remote",
+     "startDate": "2021-06",
+     "endDate": "2022-06",
+     "description": "Assisted in the development of a health-tracking app, gaining hands-on experience with Kotlin, Swift, and RESTful API integrations."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Pelator",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2018",
+     "endDate": "2021"
+    },
+    {
+     "school": "Ishubury Institute of Technology",
+     "degree": "Diploma",
+     "fieldOfStudy": "Software Engineering",
+     "startDate": "2016",
+     "endDate": "2018"
+    }
+   ]
+  },
+  {
+   "handle": "budi-santoso.test",
+   "plan": {
+    "index": 7,
+    "field": "mobile",
+    "seniority": "senior",
+    "gender": "man",
+    "region": "Southeast Asia",
+    "location": "Dubai, AE",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Budi Santoso",
+    "headline": "Senior Mobile Developer | iOS & Android Expert | Dubai",
+    "about": "I design and build high-performance mobile applications for iOS and Android, focusing on clean architecture, scalability, and seamless user experiences. With over a decade of experience, I specialize in optimizing app performance and integrating cutting-edge features. I lead cross-functional teams to deliver robust solutions for complex business needs.",
+    "location": "Dubai, AE",
+    "openToWork": false,
+    "skills": [
+     "Kotlin",
+     "Swift",
+     "React Native",
+     "Firebase",
+     "Restful APIs",
+     "Git",
+     "JIRA",
+     "UI/UX Principles",
+     "Agile Methodologies",
+     "CI/CD Pipelines"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Mobile Developer",
+     "organization": "Redstone Digital",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Dubai, AE",
+     "startDate": "2019-06",
+     "description": "Develop and maintain native mobile apps for iOS and Android, leading a team of developers to deliver high-quality, scalable solutions. Focus on performance optimization and integrating new features based on user feedback."
+    },
+    {
+     "title": "Mobile Application Developer",
+     "organization": "Waverly Tech Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Dubai, AE",
+     "startDate": "2015-03",
+     "endDate": "2019-05",
+     "description": "Built and deployed cross-platform mobile applications using React Native and native frameworks. Collaborated with designers and product managers to ensure seamless user experiences and timely project delivery."
+    },
+    {
+     "title": "Junior Mobile Developer",
+     "organization": "Tallgrass Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Dubai, AE",
+     "startDate": "2012-08",
+     "endDate": "2015-02",
+     "description": "Assisted in the development and testing of mobile applications for iOS and Android. Gained proficiency in Swift and Kotlin while contributing to the improvement of app performance and user interfaces."
+    }
+   ],
+   "education": [
+    {
+     "school": "Coriwick Institute of Technology",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2010",
+     "endDate": "2012"
+    },
+    {
+     "school": "University of Quinuford",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Software Engineering",
+     "startDate": "2006",
+     "endDate": "2010"
+    }
+   ]
+  },
+  {
+   "handle": "valeria-mendoza.test",
+   "plan": {
+    "index": 8,
+    "field": "mobile",
+    "seniority": "lead",
+    "gender": "woman",
+    "region": "Latin America",
+    "location": "Lima, PE",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Valeria Mendoza",
+    "headline": "Lead Mobile Engineer Building Scalable iOS and Android Apps",
+    "about": "I design and lead the development of high-performance mobile applications for iOS and Android, focusing on clean architecture and seamless user experiences. With over a decade in mobile development, I mentor teams to deliver robust, maintainable solutions. My work emphasizes performance optimization, cross-platform consistency, and integrating modern tooling.",
+    "location": "Lima, PE",
+    "openToWork": false,
+    "skills": [
+     "Swift",
+     "Kotlin",
+     "React Native",
+     "Flutter",
+     "Firebase",
+     "RESTful APIs",
+     "Git",
+     "Jira",
+     "Unit Testing",
+     "CI/CD"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Lead Mobile Engineer",
+     "organization": "Cedrion Labs",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Lima, PE",
+     "startDate": "2020-03",
+     "description": "Leading a team of mobile developers to build and refine cross-platform applications, overseeing architecture decisions, code reviews, and deployment pipelines. Focus on improving scalability and reducing latency for 500K+ active users."
+    },
+    {
+     "title": "Senior Mobile Developer",
+     "organization": "Marvello Systems",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Lima, PE",
+     "startDate": "2017-06",
+     "endDate": "2020-02",
+     "description": "Developed and maintained native iOS and Android apps for enterprise clients, implementing complex features like offline-first functionality and real-time data synchronization."
+    },
+    {
+     "title": "Mobile Developer",
+     "organization": "Veythro Dynamics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lima, PE",
+     "startDate": "2014-01",
+     "endDate": "2017-05",
+     "description": "Built consumer-facing mobile applications from concept to launch, collaborating with designers and backend engineers to deliver polished, user-centric products."
+    },
+    {
+     "title": "Junior Mobile Developer",
+     "organization": "Korvina Tech",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lima, PE",
+     "startDate": "2011-08",
+     "endDate": "2013-12",
+     "description": "Contributed to the development of early-stage mobile apps, focusing on UI implementation and bug fixes while learning best practices in mobile development."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Dunoara",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2009",
+     "endDate": "2011"
+    },
+    {
+     "school": "Orustan Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Software Engineering",
+     "startDate": "2005",
+     "endDate": "2009"
+    }
+   ]
+  },
+  {
+   "handle": "jouni-lehtimaki.test",
+   "plan": {
+    "index": 9,
+    "field": "sre",
+    "seniority": "mid",
+    "gender": "man",
+    "region": "Nordics",
+    "location": "Atlanta, US",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Jouni Lehtimäki",
+    "headline": "Mid-Level Site Reliability Engineer | Cloud & Observability Specialist",
+    "about": "I design and maintain resilient cloud infrastructure, ensuring high availability and performance for mission-critical systems. I focus on observability, automation, and incident response to minimize downtime and improve system reliability. My work includes on-call rotations, capacity planning, and optimizing cloud costs.",
+    "location": "Atlanta, US",
+    "openToWork": true,
+    "skills": [
+     "Kubernetes",
+     "Terraform",
+     "Prometheus",
+     "Grafana",
+     "AWS",
+     "PostgreSQL",
+     "Bash",
+     "Python",
+     "CI/CD Pipelines",
+     "On-Call Incident Response"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Site Reliability Engineer",
+     "organization": "Veythorn Systems",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Atlanta, US",
+     "startDate": "2024-03",
+     "description": "Maintain and scale cloud infrastructure for a SaaS platform, reducing incident resolution time by 40% through improved observability and automation. Lead on-call rotations and collaborate with development teams to implement best practices for reliability."
+    },
+    {
+     "title": "Cloud Infrastructure Engineer",
+     "organization": "Hillcrest Data Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Atlanta, US",
+     "startDate": "2022-06",
+     "endDate": "2024-02",
+     "description": "Designed and deployed containerized applications using Kubernetes and Terraform, improving deployment frequency and reducing infrastructure costs. Implemented monitoring and alerting systems to enhance visibility into system health."
+    },
+    {
+     "title": "DevOps Engineer",
+     "organization": "Lindale Tech Works",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Atlanta, US",
+     "startDate": "2021-01",
+     "endDate": "2022-05",
+     "description": "Automated CI/CD pipelines and managed cloud resources, enabling faster and more reliable software releases. Assisted in on-call duties and troubleshooting production issues to ensure uptime."
+    }
+   ],
+   "education": [
+    {
+     "school": "Braouwen Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2017",
+     "endDate": "2021"
+    }
+   ]
+  },
+  {
+   "handle": "puleng-sekgobela.test",
+   "plan": {
+    "index": 10,
+    "field": "sre",
+    "seniority": "senior",
+    "gender": "woman",
+    "region": "Southern Africa",
+    "location": "Port of Spain, TT",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Puleng Sekgobela",
+    "headline": "Senior Site Reliability Engineer | Cloud Infrastructure & Observability",
+    "about": "I design and maintain highly available cloud infrastructure, ensuring systems are observable and resilient under load. I lead on-call rotations, optimize performance, and automate deployment pipelines to reduce incident response times. My focus is on building scalable, self-healing systems that minimize downtime.",
+    "location": "Port of Spain, TT",
+    "openToWork": false,
+    "skills": [
+     "Kubernetes",
+     "Terraform",
+     "Prometheus",
+     "Grafana",
+     "AWS",
+     "PostgreSQL",
+     "Ansible",
+     "Docker",
+     "Incident Response",
+     "SRE Best Practices"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Site Reliability Engineer",
+     "organization": "Maris Tech Solutions",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Port of Spain, TT",
+     "startDate": "2021-05",
+     "description": "Leading the design and implementation of cloud-native infrastructure, improving observability with Prometheus and Grafana. Reduced incident resolution time by 40% through automation and on-call best practices."
+    },
+    {
+     "title": "Infrastructure Engineer",
+     "organization": "Veyra Cloud Services",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Port of Spain, TT",
+     "startDate": "2018-03",
+     "endDate": "2021-04",
+     "description": "Managed Kubernetes clusters and automated CI/CD pipelines, enhancing system reliability. Collaborated with development teams to deploy scalable microservices architecture."
+    },
+    {
+     "title": "Systems Administrator",
+     "organization": "Tallon Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Port of Spain, TT",
+     "startDate": "2015-07",
+     "endDate": "2018-02",
+     "description": "Maintained on-premise servers and migrated legacy systems to cloud infrastructure. Implemented monitoring tools to proactively detect and resolve issues."
+    }
+   ],
+   "education": [
+    {
+     "school": "Dunoenne Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Engineering",
+     "startDate": "2011",
+     "endDate": "2015"
+    },
+    {
+     "school": "Meranbury College",
+     "degree": "Associate Degree",
+     "fieldOfStudy": "Information Technology",
+     "startDate": "2009",
+     "endDate": "2011"
+    }
+   ]
+  },
+  {
+   "handle": "baraka-mwangi.test",
+   "plan": {
+    "index": 11,
+    "field": "sre",
+    "seniority": "lead",
+    "gender": "man",
+    "region": "East Africa",
+    "location": "Kampala, UG",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Baraka Mwangi",
+    "headline": "Lead Site Reliability Engineer | Cloud Infrastructure & Observability",
+    "about": "I design and maintain highly available cloud infrastructure, leading on-call rotations and improving observability to minimize downtime. I architect scalable systems, automate deployments, and mentor engineers to ensure reliable operations. My focus is on proactive monitoring, incident response, and continuous improvement in distributed environments.",
+    "location": "Kampala, UG",
+    "openToWork": false,
+    "skills": [
+     "Kubernetes",
+     "Terraform",
+     "Prometheus",
+     "Grafana",
+     "AWS",
+     "PostgreSQL",
+     "CI/CD pipelines",
+     "Ansible",
+     "Incident Response",
+     "Distributed Systems"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Lead Site Reliability Engineer",
+     "organization": "Ventura Cloud Solutions",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Kampala, UG",
+     "startDate": "2019-06",
+     "description": "Lead a team of SREs to manage cloud infrastructure across multiple regions, reducing incident resolution time by 40% through improved observability. Designed and implemented automated deployment pipelines and on-call best practices."
+    },
+    {
+     "title": "Senior Infrastructure Engineer",
+     "organization": "Marisys Technologies",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Kampala, UG",
+     "startDate": "2015-03",
+     "endDate": "2019-05",
+     "description": "Optimized cloud resources and managed large-scale Kubernetes clusters, improving system reliability and reducing costs by 25%. Introduced monitoring tools to enhance visibility into application performance."
+    },
+    {
+     "title": "Infrastructure Engineer",
+     "organization": "Sylphar Data Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Kampala, UG",
+     "startDate": "2011-08",
+     "endDate": "2015-02",
+     "description": "Built and maintained scalable infrastructure for high-traffic applications, focusing on automation and disaster recovery. Collaborated with development teams to streamline deployments and minimize downtime."
+    }
+   ],
+   "education": [
+    {
+     "school": "Sabanara Institute of Technology",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Computer Engineering",
+     "startDate": "2009",
+     "endDate": "2011"
+    },
+    {
+     "school": "University of Braeyara",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2005",
+     "endDate": "2009"
+    }
+   ]
+  },
+  {
+   "handle": "sofia-lindholm.test",
+   "plan": {
+    "index": 12,
+    "field": "dataeng",
+    "seniority": "senior",
+    "gender": "woman",
+    "region": "Nordics",
+    "location": "Oslo, NO",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Sofia Lindholm",
+    "headline": "Senior Data Engineer | Building Scalable Pipelines and Warehouses",
+    "about": "I design and implement robust data pipelines and cloud-based data warehouses to enable analytics and decision-making. With a focus on orchestration and performance, I turn raw data into reliable, actionable insights for businesses. My work spans ETL optimization, schema design, and cross-team collaboration to ensure data integrity and accessibility.",
+    "location": "Oslo, NO",
+    "openToWork": true,
+    "skills": [
+     "Apache Airflow",
+     "Snowflake",
+     "dbt",
+     "Python",
+     "SQL",
+     "AWS Redshift",
+     "Kafka",
+     "Data Modeling",
+     "Terraform",
+     "CI/CD"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Data Engineer",
+     "organization": "Vaelora Analytics",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Oslo, NO",
+     "startDate": "2021-03",
+     "description": "Leading the development of scalable data pipelines and warehouses using Snowflake and Airflow. Focused on optimizing ETL processes and collaborating with data scientists to improve data quality and accessibility."
+    },
+    {
+     "title": "Data Engineer",
+     "organization": "Korvane Data Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Bergen, NO",
+     "startDate": "2018-06",
+     "endDate": "2021-02",
+     "description": "Built and maintained data pipelines for internal analytics, integrating multiple data sources into a centralized warehouse. Implemented CI/CD practices to streamline deployment and monitoring."
+    },
+    {
+     "title": "Junior Data Engineer",
+     "organization": "Tremor Systems",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Trondheim, NO",
+     "startDate": "2016-01",
+     "endDate": "2018-05",
+     "description": "Assisted in the migration of legacy data systems to cloud-based solutions, using Python and SQL to transform and load data. Worked closely with senior engineers to improve data workflows and automation."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Meroria",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Data Engineering",
+     "startDate": "2014",
+     "endDate": "2016"
+    },
+    {
+     "school": "Kaleygard Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ]
+  },
+  {
+   "handle": "rajesh-mehta.test",
+   "plan": {
+    "index": 13,
+    "field": "dataeng",
+    "seniority": "lead",
+    "gender": "man",
+    "region": "South Asia",
+    "location": "São Paulo, BR",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Rajesh Mehta",
+    "headline": "Lead Data Engineer | Building Scalable Pipelines and Warehouses",
+    "about": "I design and lead the development of data pipelines and warehouses that turn raw data into actionable insights. With over a decade of experience, I specialize in orchestrating complex workflows and optimizing data architectures for performance and scalability. I mentor teams to deliver reliable, maintainable solutions.",
+    "location": "São Paulo, BR",
+    "openToWork": true,
+    "skills": [
+     "Apache Airflow",
+     "Snowflake",
+     "dbt",
+     "Python",
+     "Spark",
+     "Kubernetes",
+     "PostgreSQL",
+     "Terraform",
+     "Data Modeling",
+     "CI/CD"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Lead Data Engineer",
+     "organization": "Clarith Data Systems",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "São Paulo, BR",
+     "startDate": "2021-04",
+     "description": "Lead a team of five engineers to build and maintain data pipelines for a multi-tenant SaaS platform. Designed and implemented a scalable data warehouse, reducing query times by 40%."
+    },
+    {
+     "title": "Senior Data Engineer",
+     "organization": "Brenmire Analytics",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "startDate": "2017-06",
+     "endDate": "2021-03",
+     "description": "Developed and optimized ETL processes for a global retail client, enabling real-time analytics. Introduced orchestration tools that improved pipeline reliability and reduced downtime."
+    },
+    {
+     "title": "Data Engineer",
+     "organization": "Kestral Dataworks",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Rio de Janeiro, BR",
+     "startDate": "2013-09",
+     "endDate": "2017-05",
+     "description": "Built and managed data pipelines for a financial services provider, supporting reporting and analytics. Automated data quality checks, reducing errors by 25%."
+    },
+    {
+     "title": "Junior Data Analyst",
+     "organization": "Vexel Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Belo Horizonte, BR",
+     "startDate": "2011-01",
+     "endDate": "2013-08",
+     "description": "Assisted in the development of data processing scripts and basic reporting dashboards. Gained foundational experience in SQL, data cleaning, and visualization."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Zelevik",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2008",
+     "endDate": "2010"
+    },
+    {
+     "school": "Varuwen Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Information Technology",
+     "startDate": "2004",
+     "endDate": "2008"
+    }
+   ]
+  },
+  {
+   "handle": "priyanka-deshmukh.test",
+   "plan": {
+    "index": 14,
+    "field": "dataeng",
+    "seniority": "junior",
+    "gender": "woman",
+    "region": "South Asia",
+    "location": "Tunis, TN",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Priyanka Deshmukh",
+    "headline": "Junior Data Engineer | Building Scalable Pipelines and Warehouses",
+    "about": "I design, develop, and maintain data pipelines to ensure accurate and timely data flow across systems. I focus on optimizing ETL processes and managing data warehouses to support analytics. Currently expanding my expertise in orchestration and data modeling.",
+    "location": "Tunis, TN",
+    "openToWork": false,
+    "skills": [
+     "Python",
+     "SQL",
+     "Apache Airflow",
+     "PostgreSQL",
+     "ETL Pipelines",
+     "Data Warehousing",
+     "Docker",
+     "Pandas",
+     "Snowflake",
+     "Data Modeling"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Junior Data Engineer",
+     "organization": "Tunis DataWorks",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Tunis, TN",
+     "startDate": "2025-01",
+     "description": "Develop and maintain data pipelines for business intelligence. Collaborate with teams to integrate and clean data from multiple sources."
+    },
+    {
+     "title": "Data Engineering Intern",
+     "organization": "Medina Analytics",
+     "employmentType": "internship",
+     "locationType": "hybrid",
+     "location": "Tunis, TN",
+     "startDate": "2024-06",
+     "endDate": "2024-12",
+     "description": "Assisted in building and optimizing ETL workflows. Gained hands-on experience with Airflow and PostgreSQL for data processing."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Holowen",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2021",
+     "endDate": "2024"
+    }
+   ]
+  },
+  {
+   "handle": "ethan-calloway.test",
+   "plan": {
+    "index": 15,
+    "field": "datascience",
+    "seniority": "senior",
+    "gender": "man",
+    "region": "North America",
+    "location": "Vancouver, CA",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Ethan Calloway",
+    "headline": "Senior Data Scientist | ML Modeling & Experimentation Specialist",
+    "about": "I design and deploy machine learning models to solve complex business problems, focusing on rigorous experimentation and scalable solutions. My work spans feature engineering, model validation, and A/B testing frameworks to drive data-informed decision-making.",
+    "location": "Vancouver, CA",
+    "openToWork": false,
+    "skills": [
+     "Python",
+     "TensorFlow",
+     "Scikit-learn",
+     "SQL",
+     "PostgreSQL",
+     "A/B Testing",
+     "Feature Engineering",
+     "Model Validation",
+     "Jupyter Notebook",
+     "Docker"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Data Scientist",
+     "organization": "Marble Bay Analytics",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Vancouver, CA",
+     "startDate": "2022-03",
+     "description": "Lead end-to-end development of predictive models for customer behavior, improving conversion rates by 15%. Designed and deployed experimentation frameworks to validate model performance in production."
+    },
+    {
+     "title": "Data Scientist",
+     "organization": "Crestline Insights",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Toronto, CA",
+     "startDate": "2019-07",
+     "endDate": "2022-02",
+     "description": "Built recommendation systems using collaborative filtering and NLP, increasing user engagement by 20%. Automated data pipelines to reduce processing time by 30%."
+    },
+    {
+     "title": "Junior Data Scientist",
+     "organization": "Holloway Data Labs",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "startDate": "2017-01",
+     "endDate": "2019-06",
+     "description": "Developed classification models for fraud detection, reducing false positives by 25%. Collaborated with cross-functional teams to refine data collection and preprocessing workflows."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Jorodale",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Data Science",
+     "startDate": "2015",
+     "endDate": "2016"
+    },
+    {
+     "school": "Velubury Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2011",
+     "endDate": "2015"
+    }
+   ]
+  },
+  {
+   "handle": "meera-chandrasekar.test",
+   "plan": {
+    "index": 16,
+    "field": "datascience",
+    "seniority": "lead",
+    "gender": "woman",
+    "region": "South Asia",
+    "location": "Colombo, LK",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Meera Chandrasekar",
+    "headline": "Lead Data Scientist | ML Modeling & Experimentation",
+    "about": "I lead end-to-end machine learning projects, from data exploration to model deployment and monitoring. My work focuses on designing scalable experimentation frameworks and refining predictive models to drive actionable insights. I mentor junior team members to build robust, reproducible pipelines.",
+    "location": "Colombo, LK",
+    "openToWork": false,
+    "skills": [
+     "Python",
+     "TensorFlow",
+     "PyTorch",
+     "scikit-learn",
+     "A/B Testing",
+     "Feature Engineering",
+     "PostgreSQL",
+     "Kubernetes",
+     "MLflow",
+     "Data Visualization"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Lead Data Scientist",
+     "organization": "Verde Analytics",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Colombo, LK",
+     "startDate": "2021-05",
+     "description": "Leading a team of data scientists to develop and deploy ML models for business forecasting. Designed a scalable experimentation platform to validate model performance in production."
+    },
+    {
+     "title": "Senior Data Scientist",
+     "organization": "Havenor Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Colombo, LK",
+     "startDate": "2017-03",
+     "endDate": "2021-04",
+     "description": "Built and optimized machine learning models for customer behavior prediction. Collaborated with engineering teams to integrate models into live systems."
+    },
+    {
+     "title": "Data Scientist",
+     "organization": "Luminar Data Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Colombo, LK",
+     "startDate": "2014-06",
+     "endDate": "2017-02",
+     "description": "Developed statistical models and data pipelines to support business decision-making. Conducted extensive A/B testing to refine product features."
+    },
+    {
+     "title": "Junior Data Analyst",
+     "organization": "Stratford Analytics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Colombo, LK",
+     "startDate": "2012-01",
+     "endDate": "2014-05",
+     "description": "Supported data-driven projects by cleaning, analyzing, and visualizing large datasets. Assisted in building early-stage ML prototypes."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Keriawen",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Data Science",
+     "startDate": "2010",
+     "endDate": "2012"
+    },
+    {
+     "school": "Ishegard Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science and Statistics",
+     "startDate": "2006",
+     "endDate": "2010"
+    }
+   ]
+  },
+  {
+   "handle": "tomasz-nowicki.test",
+   "plan": {
+    "index": 17,
+    "field": "datascience",
+    "seniority": "junior",
+    "gender": "man",
+    "region": "Eastern Europe",
+    "location": "Accra, GH",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Tomasz Nowicki",
+    "headline": "Junior Data Scientist | Machine Learning & Experimentation",
+    "about": "I build and iterate on predictive models, design experiments to validate hypotheses, and translate data insights into actionable recommendations. My work focuses on improving model performance and deploying scalable solutions for real-world applications.",
+    "location": "Accra, GH",
+    "openToWork": false,
+    "skills": [
+     "Python",
+     "SQL",
+     "scikit-learn",
+     "TensorFlow",
+     "Pandas",
+     "Jupyter Notebooks",
+     "A/B Testing",
+     "Feature Engineering",
+     "Data Visualization",
+     "Model Evaluation"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Junior Data Scientist",
+     "organization": "Cedarfield Analytics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Accra, GH",
+     "startDate": "2025-03",
+     "description": "Develop and refine machine learning models for customer behavior analysis, and collaborate with cross-functional teams to deploy solutions that enhance decision-making processes."
+    },
+    {
+     "title": "Data Science Intern",
+     "organization": "Marlow & Vexley Consulting",
+     "employmentType": "internship",
+     "locationType": "remote",
+     "startDate": "2024-06",
+     "endDate": "2025-02",
+     "description": "Supported senior data scientists in building and testing predictive models, and conducted exploratory data analysis to identify trends in large datasets."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Eldanwen",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Data Science",
+     "startDate": "2022",
+     "endDate": "2024"
+    },
+    {
+     "school": "Holubury Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2018",
+     "endDate": "2022"
+    }
+   ]
+  },
+  {
+   "handle": "claire-whitmore.test",
+   "plan": {
+    "index": 18,
+    "field": "design",
+    "seniority": "lead",
+    "gender": "woman",
+    "region": "North America",
+    "location": "Montréal, CA",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Claire Whitmore",
+    "headline": "Lead Product & UX Designer | Research, Interaction & Visual Design",
+    "about": "I lead cross-functional teams to deliver user-centered product experiences, from research to final design. I specialize in translating complex user needs into intuitive interfaces and scalable design systems. My work focuses on balancing business goals with human-centered design principles.",
+    "location": "Montréal, CA",
+    "openToWork": true,
+    "skills": [
+     "User Research",
+     "Interaction Design",
+     "Visual Design",
+     "Design Systems",
+     "Figma",
+     "Usability Testing",
+     "Wireframing",
+     "Prototyping",
+     "Accessibility Design",
+     "Stakeholder Alignment"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Lead Product & UX Designer",
+     "organization": "Havenwood Design Collective",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Montréal, CA",
+     "startDate": "2020-05",
+     "description": "Lead a team of designers and researchers to define and deliver product experiences for enterprise clients. Established design systems and processes to ensure consistency and scalability across projects."
+    },
+    {
+     "title": "Senior UX Designer",
+     "organization": "Briarstone Digital",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Toronto, CA",
+     "startDate": "2016-08",
+     "endDate": "2020-04",
+     "description": "Designed and refined user experiences for web and mobile applications, collaborating with product and engineering teams to implement solutions. Conducted user research to inform design decisions and improve usability."
+    },
+    {
+     "title": "UX Designer",
+     "organization": "Cedarport Solutions",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "startDate": "2014-03",
+     "endDate": "2016-07",
+     "description": "Created wireframes, prototypes, and visual designs for client projects, focusing on usability and accessibility. Worked closely with developers to ensure designs were implemented as intended."
+    },
+    {
+     "title": "Junior Product Designer",
+     "organization": "Maplewood Interactive",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Vancouver, CA",
+     "startDate": "2012-06",
+     "endDate": "2014-02",
+     "description": "Assisted in the design of user interfaces and experiences for early-stage products. Learned foundational UX principles and contributed to the development of design guidelines."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Lorouford",
+     "degree": "Master of Design",
+     "fieldOfStudy": "Interaction Design",
+     "startDate": "2010",
+     "endDate": "2012"
+    },
+    {
+     "school": "Wenowick Institute of Technology",
+     "degree": "Bachelor of Fine Arts",
+     "fieldOfStudy": "Digital Media Design",
+     "startDate": "2006",
+     "endDate": "2010"
+    }
+   ]
+  },
+  {
+   "handle": "ren-jiawei.test",
+   "plan": {
+    "index": 19,
+    "field": "design",
+    "seniority": "junior",
+    "gender": "man",
+    "region": "East Asia",
+    "location": "Seoul, KR",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Ren Jiawei",
+    "headline": "Junior Product & UX Designer crafting intuitive, user-centered digital experiences",
+    "about": "I design and prototype user interfaces with a focus on research-driven interaction and visual design. I collaborate with cross-functional teams to turn insights into seamless product experiences, balancing usability and aesthetics. Currently expanding my expertise in accessibility and design systems.",
+    "location": "Seoul, KR",
+    "openToWork": true,
+    "skills": [
+     "Figma",
+     "User Research",
+     "Interaction Design",
+     "Visual Design",
+     "Usability Testing",
+     "Design Systems",
+     "Wireframing",
+     "Prototyping",
+     "Accessibility (WCAG)",
+     "Agile Methodologies"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Junior UX Designer",
+     "organization": "Vexis Design Collective",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Seoul, KR",
+     "startDate": "2025-03",
+     "description": "Design end-to-end user flows for a SaaS platform, conducting user interviews and iterating on prototypes based on feedback. Work closely with developers to ensure design fidelity in implementation."
+    },
+    {
+     "title": "Product Design Intern",
+     "organization": "Lorven Studios",
+     "employmentType": "internship",
+     "locationType": "remote",
+     "startDate": "2024-06",
+     "endDate": "2025-02",
+     "description": "Assisted in redesigning a mobile app’s onboarding experience, contributing to wireframes, high-fidelity mockups, and usability testing sessions."
+    }
+   ],
+   "education": [
+    {
+     "school": "Mereholm Institute of Technology",
+     "degree": "Bachelor of Design",
+     "fieldOfStudy": "Interaction Design",
+     "startDate": "2021",
+     "endDate": "2024"
+    },
+    {
+     "school": "Holiaara College",
+     "degree": "Associate Degree",
+     "fieldOfStudy": "Visual Arts",
+     "startDate": "2019",
+     "endDate": "2021"
+    }
+   ]
+  },
+  {
+   "handle": "xiao-mei-lin.test",
+   "plan": {
+    "index": 20,
+    "field": "design",
+    "seniority": "mid",
+    "gender": "nonbinary",
+    "region": "East Asia",
+    "location": "Shenzhen, CN",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Xiao Mei Lin",
+    "headline": "Mid-level Product & UX Designer specializing in user research and interaction design",
+    "about": "I design intuitive digital products by blending user research with interaction and visual design. My work focuses on creating seamless experiences that solve real user problems while aligning with business goals. I thrive in collaborative environments, iterating based on data and feedback.",
+    "location": "Shenzhen, CN",
+    "openToWork": true,
+    "skills": [
+     "User Research",
+     "Interaction Design",
+     "Visual Design",
+     "Prototyping",
+     "Usability Testing",
+     "Figma",
+     "Design Systems",
+     "User Flows",
+     "Accessibility",
+     "Agile Methodologies"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Product Designer",
+     "organization": "Harmonix Design Studio",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Shenzhen, CN",
+     "startDate": "2024-01",
+     "description": "Leading the design of mobile and web applications, conducting user research, and collaborating with cross-functional teams to deliver user-centered solutions."
+    },
+    {
+     "title": "UX Designer",
+     "organization": "Viventech Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Dongguan, CN",
+     "startDate": "2022-06",
+     "endDate": "2023-12",
+     "description": "Designed and iterated on user interfaces for enterprise software, improving usability through testing and stakeholder feedback."
+    },
+    {
+     "title": "Junior UX Designer",
+     "organization": "Lumenara Creatives",
+     "employmentType": "contract",
+     "locationType": "remote",
+     "location": "Guangzhou, CN",
+     "startDate": "2020-09",
+     "endDate": "2022-05",
+     "description": "Assisted in designing user experiences for consumer-facing applications, contributing to wireframes, prototypes, and usability studies."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Silistan",
+     "degree": "Bachelor of Design",
+     "fieldOfStudy": "Digital Design and Interaction",
+     "startDate": "2016",
+     "endDate": "2020"
+    },
+    {
+     "school": "Sabeystan Institute of Technology",
+     "degree": "Certificate",
+     "fieldOfStudy": "Human-Computer Interaction",
+     "startDate": "2019",
+     "endDate": "2020"
+    }
+   ]
+  },
+  {
+   "handle": "hone-tamaiparea.test",
+   "plan": {
+    "index": 21,
+    "field": "pm",
+    "seniority": "lead",
+    "gender": "man",
+    "region": "Oceania",
+    "location": "Seoul, KR",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Hone Tamaiparea",
+    "headline": "Lead Product Manager driving user-centric innovation and team growth",
+    "about": "I lead cross-functional product teams to deliver solutions that align with business goals and user needs. With over a decade of experience, I specialize in translating complex requirements into actionable roadmaps. My focus is on fostering collaboration between engineering, design, and business stakeholders to create impactful products.",
+    "location": "Seoul, KR",
+    "openToWork": false,
+    "skills": [
+     "Agile methodologies",
+     "Product roadmapping",
+     "User story mapping",
+     "Stakeholder management",
+     "Data-driven decision making",
+     "JIRA",
+     "Confluence",
+     "SQL",
+     "A/B testing",
+     "Prioritization frameworks"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Lead Product Manager",
+     "organization": "Havenbridge Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Seoul, KR",
+     "startDate": "2020-03",
+     "description": "Lead a team of product managers and designers to develop and launch a suite of enterprise tools. Responsible for strategic planning, resource allocation, and mentoring junior team members."
+    },
+    {
+     "title": "Senior Product Manager",
+     "organization": "Miravalle Tech",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Busan, KR",
+     "startDate": "2016-07",
+     "endDate": "2020-02",
+     "description": "Managed the end-to-end lifecycle of a customer-facing analytics platform, increasing user engagement by 40%. Collaborated with engineering to streamline development processes."
+    },
+    {
+     "title": "Product Manager",
+     "organization": "Crestline Systems",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Incheon, KR",
+     "startDate": "2013-05",
+     "endDate": "2016-06",
+     "description": "Led the redesign of a legacy product, improving usability and reducing support tickets by 25%. Worked closely with UX researchers to refine product features."
+    },
+    {
+     "title": "Associate Product Manager",
+     "organization": "Verdant Innovations",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Daegu, KR",
+     "startDate": "2010-09",
+     "endDate": "2013-04",
+     "description": "Supported the launch of two major product releases, contributing to market research and feature prioritization."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Sabeyford",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Technology Management",
+     "startDate": "2008",
+     "endDate": "2010"
+    },
+    {
+     "school": "Aisuvik Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2004",
+     "endDate": "2008"
+    }
+   ]
+  },
+  {
+   "handle": "keshawn-mcintosh.test",
+   "plan": {
+    "index": 22,
+    "field": "pm",
+    "seniority": "junior",
+    "gender": "woman",
+    "region": "Caribbean",
+    "location": "Karachi, PK",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Keshawn McIntosh",
+    "headline": "Junior Product Manager driving user-centric solutions in agile environments",
+    "about": "I collaborate with cross-functional teams to define product requirements and prioritize features based on user feedback and market analysis. I focus on delivering incremental value while learning from data-driven insights to refine product strategy. Currently deepening my expertise in roadmapping and stakeholder alignment.",
+    "location": "Karachi, PK",
+    "openToWork": false,
+    "skills": [
+     "Agile methodologies",
+     "Scrum",
+     "User story mapping",
+     "Jira",
+     "Confluence",
+     "Product backlog grooming",
+     "Stakeholder communication",
+     "A/B testing",
+     "Figma",
+     "SQL"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Associate Product Manager",
+     "organization": "Firoda Analytics",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Karachi, PK",
+     "startDate": "2025-04",
+     "description": "Assist in defining product vision and roadmaps for a data analytics platform, working closely with engineering and design teams to deliver features that improve user engagement."
+    },
+    {
+     "title": "Product Management Intern",
+     "organization": "Veythara Solutions",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Karachi, PK",
+     "startDate": "2024-01",
+     "endDate": "2024-12",
+     "description": "Supported the product team in gathering user requirements, conducting market research, and drafting product specifications for a customer relationship tool."
+    },
+    {
+     "title": "Business Analyst Trainee",
+     "organization": "Trelmon Systems",
+     "employmentType": "contract",
+     "locationType": "hybrid",
+     "location": "Karachi, PK",
+     "startDate": "2023-06",
+     "endDate": "2023-12",
+     "description": "Assisted in analyzing business processes and translating them into functional requirements for a digital workflow management system."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Braotor",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Computer Science",
+     "startDate": "2020",
+     "endDate": "2023"
+    },
+    {
+     "school": "Holibury Institute of Technology",
+     "degree": "Diploma",
+     "fieldOfStudy": "Business Analysis",
+     "startDate": "2019",
+     "endDate": "2020"
+    }
+   ]
+  },
+  {
+   "handle": "kwasi-adjei.test",
+   "plan": {
+    "index": 23,
+    "field": "pm",
+    "seniority": "mid",
+    "gender": "man",
+    "region": "West Africa",
+    "location": "Chicago, US",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Kwasi Adjei",
+    "headline": "Product Manager driving user-centric solutions in agile environments",
+    "about": "I specialize in translating market needs into scalable product strategies. With a focus on cross-functional collaboration, I lead product development from ideation to launch, ensuring alignment with business goals and user experience. My approach blends data-driven decision-making with iterative testing to refine features.",
+    "location": "Chicago, US",
+    "openToWork": false,
+    "skills": [
+     "Agile methodologies",
+     "Scrum",
+     "Product roadmapping",
+     "User story development",
+     "Jira",
+     "SQL",
+     "A/B testing",
+     "Stakeholder management",
+     "Prioritization frameworks",
+     "Wireframing"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Product Manager",
+     "organization": "Harlow & Vale Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Chicago, US",
+     "startDate": "2023-08",
+     "description": "Lead the product lifecycle for a SaaS tool used by mid-sized retail chains, improving feature adoption by 30% through targeted user onboarding and iterative feedback loops. Collaborate with engineering, design, and marketing to align product vision with customer needs."
+    },
+    {
+     "title": "Associate Product Manager",
+     "organization": "Brightstone Analytics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Chicago, US",
+     "startDate": "2021-05",
+     "endDate": "2023-07",
+     "description": "Supported the development of a data analytics platform, working closely with engineers to refine feature specifications and with clients to gather requirements. Streamlined the backlog prioritization process, reducing time-to-market for key updates."
+    },
+    {
+     "title": "Product Analyst",
+     "organization": "Crestview Systems",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Chicago, US",
+     "startDate": "2020-01",
+     "endDate": "2021-04",
+     "description": "Analyzed user behavior data to identify trends and inform product decisions. Assisted in creating user personas and journey maps to guide feature development."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Rosastan",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Business Administration",
+     "startDate": "2016",
+     "endDate": "2020"
+    }
+   ]
+  },
+  {
+   "handle": "nadia-el-amrani.test",
+   "plan": {
+    "index": 24,
+    "field": "sales",
+    "seniority": "junior",
+    "gender": "woman",
+    "region": "North Africa",
+    "location": "Gaborone, BW",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Nadia El Amrani",
+    "headline": "B2B Account Manager driving client growth and retention in Southern Africa",
+    "about": "I specialize in building long-term relationships with business clients, understanding their needs, and delivering tailored solutions. My focus is on driving revenue growth and ensuring high satisfaction through proactive account management and strategic upselling.",
+    "location": "Gaborone, BW",
+    "openToWork": false,
+    "skills": [
+     "B2B Sales",
+     "Account Management",
+     "CRM Software",
+     "Negotiation",
+     "Client Retention",
+     "Market Analysis",
+     "Sales Presentations",
+     "Contract Management",
+     "Customer Needs Assessment",
+     "Revenue Growth Strategies"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Account Manager",
+     "organization": "VeldtTrade Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Gaborone, BW",
+     "startDate": "2024-06",
+     "description": "Manage a portfolio of 30+ B2B clients, focusing on retention and growth. Develop and implement account strategies that increased client spend by 15% within a year."
+    },
+    {
+     "title": "Sales Associate",
+     "organization": "Bushveld Business Partners",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Francistown, BW",
+     "startDate": "2023-01",
+     "endDate": "2024-05",
+     "description": "Supported senior account managers in client outreach and contract negotiations. Assisted in onboarding 20 new clients and contributed to a 10% increase in quarterly sales."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Roseona",
+     "degree": "Bachelor of Commerce",
+     "fieldOfStudy": "Business Management",
+     "startDate": "2019",
+     "endDate": "2022"
+    }
+   ]
+  },
+  {
+   "handle": "tapiwa-nkosi.test",
+   "plan": {
+    "index": 25,
+    "field": "sales",
+    "seniority": "mid",
+    "gender": "man",
+    "region": "Southern Africa",
+    "location": "Lusaka, ZM",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Tapiwa Nkosi",
+    "headline": "B2B Sales & Account Management Professional | Driving Client Growth in Lusaka",
+    "about": "I specialize in building long-term relationships with B2B clients, focusing on understanding their needs and delivering tailored solutions. My approach combines strategic account planning with data-driven insights to expand client portfolios and exceed revenue targets. I thrive in collaborative environments where client success is the priority.",
+    "location": "Lusaka, ZM",
+    "openToWork": false,
+    "skills": [
+     "B2B Sales",
+     "Account Management",
+     "Client Retention Strategies",
+     "CRM Systems (Salesforce)",
+     "Contract Negotiation",
+     "Market Analysis",
+     "Revenue Growth Planning",
+     "Stakeholder Communication",
+     "Pipeline Development",
+     "Sales Forecasting"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Account Manager",
+     "organization": "Zambia Trade Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lusaka, ZM",
+     "startDate": "2023-04",
+     "description": "Manage a portfolio of key B2B accounts, focusing on retention and growth. Develop and implement account strategies to increase client satisfaction and revenue."
+    },
+    {
+     "title": "Sales Executive",
+     "organization": "Lusaka Business Alliance",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lusaka, ZM",
+     "startDate": "2021-01",
+     "endDate": "2023-03",
+     "description": "Prospected and closed new B2B deals while nurturing existing client relationships. Collaborated with marketing to refine value propositions for target industries."
+    },
+    {
+     "title": "Sales Associate",
+     "organization": "Kapenta Industries",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lusaka, ZM",
+     "startDate": "2019-06",
+     "endDate": "2020-12",
+     "description": "Supported senior sales staff in client onboarding and contract management. Conducted market research to identify new business opportunities."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Pelostan",
+     "degree": "Bachelor of Business Administration",
+     "fieldOfStudy": "Marketing and Sales",
+     "startDate": "2015",
+     "endDate": "2019"
+    }
+   ]
+  },
+  {
+   "handle": "miriam-chen.test",
+   "plan": {
+    "index": 26,
+    "field": "sales",
+    "seniority": "senior",
+    "gender": "woman",
+    "region": "North America",
+    "location": "Kingston, JM",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Miriam Chen",
+    "headline": "Senior B2B Sales & Account Management Professional | Driving Growth in Jamaica and Beyond",
+    "about": "I specialize in building and nurturing long-term B2B relationships, with a focus on understanding client needs and delivering tailored solutions. My approach blends strategic planning with hands-on execution to drive revenue growth and client satisfaction. I thrive in dynamic environments where collaboration and problem-solving are key.",
+    "location": "Kingston, JM",
+    "openToWork": true,
+    "skills": [
+     "B2B Sales",
+     "Account Management",
+     "Client Retention",
+     "Negotiation",
+     "CRM Systems",
+     "Market Analysis",
+     "Contract Management",
+     "Revenue Growth",
+     "Stakeholder Engagement",
+     "Sales Strategy"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Account Manager",
+     "organization": "Maris & Co. Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Kingston, JM",
+     "startDate": "2022-05",
+     "description": "Lead a portfolio of key accounts, driving revenue growth through strategic upselling and cross-selling initiatives. Collaborate with internal teams to ensure seamless delivery of solutions and maintain high client satisfaction rates."
+    },
+    {
+     "title": "B2B Sales Specialist",
+     "organization": "Tralinor Enterprises",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Montego Bay, JM",
+     "startDate": "2019-03",
+     "endDate": "2022-04",
+     "description": "Developed and executed sales strategies to expand the client base, focusing on mid-sized businesses in the Caribbean region. Consistently exceeded quarterly targets by identifying and capitalizing on emerging market opportunities."
+    },
+    {
+     "title": "Account Executive",
+     "organization": "Veximor Group",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "startDate": "2016-07",
+     "endDate": "2019-02",
+     "description": "Managed client accounts across multiple industries, ensuring retention and growth through proactive relationship management and solution-oriented consulting."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Fenabury",
+     "degree": "MBA",
+     "fieldOfStudy": "Business Administration",
+     "startDate": "2014",
+     "endDate": "2016"
+    },
+    {
+     "school": "Quinebury College",
+     "degree": "Bachelor of Commerce",
+     "fieldOfStudy": "Marketing and Sales",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ]
+  },
+  {
+   "handle": "tau-mpofu.test",
+   "plan": {
+    "index": 27,
+    "field": "marketing",
+    "seniority": "junior",
+    "gender": "man",
+    "region": "Southern Africa",
+    "location": "Auckland, NZ",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Tau Mpofu",
+    "headline": "Content & SEO Specialist | Driving Organic Growth Through Data-Informed Storytelling",
+    "about": "I create and optimize content that connects with audiences and ranks well, using SEO best practices and performance analytics to refine messaging. My focus is on building scalable content strategies that support brand growth and lead generation. I thrive in fast-paced environments where creativity meets data-driven decision-making.",
+    "location": "Auckland, NZ",
+    "openToWork": true,
+    "skills": [
+     "SEO optimization",
+     "Content strategy",
+     "Google Analytics",
+     "Keyword research",
+     "Content management systems",
+     "Copywriting",
+     "Ahrefs",
+     "Marketing automation",
+     "Brand storytelling",
+     "A/B testing"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Content & SEO Coordinator",
+     "organization": "Larkspur Media Group",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Auckland, NZ",
+     "startDate": "2025-03",
+     "description": "Develop and execute SEO-optimized content for blogs, social media, and email campaigns. Monitor performance metrics and adjust strategies to improve organic reach and engagement."
+    },
+    {
+     "title": "Marketing Assistant",
+     "organization": "Briarwood Communications",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Auckland, NZ",
+     "startDate": "2023-07",
+     "endDate": "2025-02",
+     "description": "Supported the marketing team in content creation, social media management, and campaign analysis. Contributed to SEO audits and keyword strategy improvements."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Eldanford",
+     "degree": "Bachelor of Business",
+     "fieldOfStudy": "Marketing and Digital Media",
+     "startDate": "2020",
+     "endDate": "2023"
+    }
+   ]
+  },
+  {
+   "handle": "layla-al-farsi.test",
+   "plan": {
+    "index": 28,
+    "field": "marketing",
+    "seniority": "mid",
+    "gender": "woman",
+    "region": "Middle East",
+    "location": "Beirut, LB",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Layla Al-Farsi",
+    "headline": "Content Marketing Specialist Driving Brand Growth through SEO and Storytelling",
+    "about": "I develop data-driven content strategies that elevate brand visibility and engagement. By blending SEO insights with compelling storytelling, I help businesses connect with their audience and achieve sustainable growth.",
+    "location": "Beirut, LB",
+    "openToWork": false,
+    "skills": [
+     "SEO optimization",
+     "Content strategy",
+     "Google Analytics",
+     "Brand storytelling",
+     "Social media marketing",
+     "Email marketing",
+     "Keyword research",
+     "Content management systems",
+     "A/B testing",
+     "Marketing automation"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Content Marketing Specialist",
+     "organization": "BrightHue Marketing",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Beirut, LB",
+     "startDate": "2024-03",
+     "description": "Lead content creation and SEO optimization for clients across various industries, increasing organic traffic by 40% within a year."
+    },
+    {
+     "title": "Digital Marketing Coordinator",
+     "organization": "Veleystan Media Works",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Veleystan, LB",
+     "startDate": "2022-06",
+     "endDate": "2024-03",
+     "description": "Managed social media campaigns, email marketing, and content calendars, improving lead generation by 25%."
+    },
+    {
+     "title": "Marketing Assistant",
+     "organization": "Aisoudale Brand Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Aisoudale, LB",
+     "startDate": "2020-09",
+     "endDate": "2022-06",
+     "description": "Supported marketing initiatives, including content creation, SEO research, and campaign analysis."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Sabomere",
+     "degree": "Bachelor of Business Administration",
+     "fieldOfStudy": "Marketing",
+     "startDate": "2016",
+     "endDate": "2020"
+    }
+   ]
+  },
+  {
+   "handle": "thijs-van-der-meer.test",
+   "plan": {
+    "index": 29,
+    "field": "marketing",
+    "seniority": "senior",
+    "gender": "man",
+    "region": "Western Europe",
+    "location": "Berlin, DE",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Thijs van der Meer",
+    "headline": "Senior Growth Marketer Driving Scalable Brand and Demand Strategies",
+    "about": "I design and execute data-driven growth campaigns that blend content, SEO, and performance marketing to acquire and retain high-value audiences. My focus is on measurable impact—from lead generation to lifecycle engagement—while aligning brand messaging with scalable demand generation. I’ve led cross-functional teams to optimize funnels and improve conversion rates by 30% or more in each role.",
+    "location": "Berlin, DE",
+    "openToWork": false,
+    "skills": [
+     "SEO & SEM",
+     "Content Strategy",
+     "Google Analytics 4",
+     "Marketing Automation (HubSpot)",
+     "A/B Testing",
+     "Conversion Rate Optimization",
+     "Brand Positioning",
+     "Google Ads",
+     "Ahrefs & SEMrush",
+     "Growth Hacking"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Head of Growth Marketing",
+     "organization": "Verdeo Analytics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Berlin, DE",
+     "startDate": "2023-05",
+     "description": "Leading the growth marketing team to scale demand through integrated campaigns, SEO, and content. Built a performance dashboard that reduced CAC by 22% in 12 months."
+    },
+    {
+     "title": "Senior Marketing Manager",
+     "organization": "Clarion Media Group",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Hamburg, DE",
+     "startDate": "2020-09",
+     "endDate": "2023-04",
+     "description": "Developed and executed multi-channel campaigns, increasing organic traffic by 45% and improving lead quality through targeted content and SEO optimizations."
+    },
+    {
+     "title": "Marketing Specialist",
+     "organization": "Briarwood Digital",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Munich, DE",
+     "startDate": "2017-06",
+     "endDate": "2020-08",
+     "description": "Managed paid and organic channels, focusing on user acquisition and engagement. Grew social media following by 200% and improved email open rates by 35%."
+    },
+    {
+     "title": "Content Marketing Coordinator",
+     "organization": "Pinegrove Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Cologne, DE",
+     "startDate": "2015-03",
+     "endDate": "2017-05",
+     "description": "Created and distributed content across blog, social, and email, increasing inbound leads by 50% and establishing the company’s thought leadership in B2B tech."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Siludale",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Digital Marketing and Analytics",
+     "startDate": "2013",
+     "endDate": "2015"
+    },
+    {
+     "school": "Oriamere Institute of Technology",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Business Communication",
+     "startDate": "2009",
+     "endDate": "2013"
+    }
+   ]
+  },
+  {
+   "handle": "adwoa-addo.test",
+   "plan": {
+    "index": 30,
+    "field": "finance",
+    "seniority": "mid",
+    "gender": "woman",
+    "region": "West Africa",
+    "location": "Istanbul, TR",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Adwoa Addo",
+    "headline": "Mid-level Financial Controller | Accurate Reporting & Auditing Specialist",
+    "about": "I specialize in financial controlling, ensuring accurate reporting and compliance with accounting standards. My work focuses on streamlining processes, conducting internal audits, and providing actionable insights to support financial decision-making.",
+    "location": "Istanbul, TR",
+    "openToWork": true,
+    "skills": [
+     "IFRS",
+     "GAAP",
+     "SAP FI/CO",
+     "Excel (Advanced)",
+     "Financial Forecasting",
+     "Internal Audit",
+     "Cost Accounting",
+     "Power BI",
+     "Account Reconciliation",
+     "Budgeting"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Financial Controller",
+     "organization": "BryteHaven Financial Services",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Istanbul, TR",
+     "startDate": "2024-07",
+     "description": "Oversee monthly and quarterly financial closings, prepare consolidated financial statements, and ensure compliance with local and international accounting standards. Lead process improvements to enhance reporting accuracy and efficiency."
+    },
+    {
+     "title": "Senior Financial Analyst",
+     "organization": "VistraLink Consulting",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Istanbul, TR",
+     "startDate": "2022-03",
+     "endDate": "2024-06",
+     "description": "Conducted financial analysis, supported budgeting processes, and assisted in internal audits. Developed financial models to optimize cost structures and improve profitability."
+    },
+    {
+     "title": "Financial Reporting Specialist",
+     "organization": "Kelvar & Co.",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Istanbul, TR",
+     "startDate": "2020-01",
+     "endDate": "2022-02",
+     "description": "Prepared monthly and annual financial reports, ensured compliance with regulatory requirements, and collaborated with cross-functional teams to align financial data with business objectives."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Ulouholm",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Finance and Accounting",
+     "startDate": "2018",
+     "endDate": "2020"
+    },
+    {
+     "school": "Noleywick Institute of Technology",
+     "degree": "Bachelor of Business Administration",
+     "fieldOfStudy": "Accounting",
+     "startDate": "2014",
+     "endDate": "2018"
+    }
+   ]
+  },
+  {
+   "handle": "rami-al-hakim.test",
+   "plan": {
+    "index": 31,
+    "field": "finance",
+    "seniority": "senior",
+    "gender": "man",
+    "region": "Middle East",
+    "location": "Vancouver, CA",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Rami Al-Hakim",
+    "headline": "Senior Financial Controller | Expert in Audit, Reporting & Cost Optimization",
+    "about": "I design and implement robust financial controls, ensuring accuracy in reporting and compliance with regulatory standards. With a decade of experience, I lead cross-functional audits, streamline budgeting processes, and deliver actionable insights to drive cost efficiency. My focus is on transforming data into strategic financial decisions.",
+    "location": "Vancouver, CA",
+    "openToWork": true,
+    "skills": [
+     "IFRS",
+     "GAAP",
+     "SAP ERP",
+     "Power BI",
+     "Financial Auditing",
+     "Budget Forecasting",
+     "Internal Controls",
+     "Excel Advanced",
+     "Cost Analysis",
+     "SOX Compliance"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Financial Controller",
+     "organization": "Briarcliff Financial Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Vancouver, CA",
+     "startDate": "2021-04",
+     "description": "Oversee financial reporting, internal audits, and compliance for a mid-sized firm. Lead a team of 5 in optimizing cost structures and improving forecasting accuracy."
+    },
+    {
+     "title": "Financial Reporting Manager",
+     "organization": "Havenwood Capital Advisors",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Toronto, CA",
+     "startDate": "2017-08",
+     "endDate": "2021-03",
+     "description": "Managed monthly, quarterly, and annual financial statements, ensuring adherence to IFRS and GAAP. Automated reporting processes, reducing turnaround time by 30%."
+    },
+    {
+     "title": "Audit Supervisor",
+     "organization": "Mossgrove & Associates",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Calgary, CA",
+     "startDate": "2015-01",
+     "endDate": "2017-07",
+     "description": "Planned and executed internal and external audits for clients in retail and manufacturing. Identified control weaknesses and recommended remediation strategies."
+    },
+    {
+     "title": "Accountant",
+     "organization": "Willowbrook Financial Services",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Edmonton, CA",
+     "startDate": "2012-06",
+     "endDate": "2014-12",
+     "description": "Prepared financial statements, reconciled accounts, and supported month-end close processes. Collaborated with senior staff on ad-hoc financial analysis."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Ulumere",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Accounting and Financial Management",
+     "startDate": "2010",
+     "endDate": "2012"
+    },
+    {
+     "school": "Oraholm Institute of Technology",
+     "degree": "Bachelor of Commerce",
+     "fieldOfStudy": "Finance",
+     "startDate": "2006",
+     "endDate": "2010"
+    }
+   ]
+  },
+  {
+   "handle": "linh-thi-nguyen.test",
+   "plan": {
+    "index": 32,
+    "field": "finance",
+    "seniority": "lead",
+    "gender": "woman",
+    "region": "Southeast Asia",
+    "location": "Cape Town, ZA",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Linh Thi Nguyen",
+    "headline": "Lead Financial Controller | Strategic Reporting & Audit Oversight",
+    "about": "I design and implement financial controls, lead audit readiness initiatives, and streamline reporting for multi-entity organizations. My focus is on delivering accurate, actionable insights to executive leadership while ensuring compliance with IFRS and local regulations.",
+    "location": "Cape Town, ZA",
+    "openToWork": false,
+    "skills": [
+     "IFRS 15 & 16",
+     "Financial Reporting",
+     "Internal Audit",
+     "SAP S/4HANA",
+     "Power BI",
+     "Budgeting & Forecasting",
+     "Risk Management",
+     "Consolidation",
+     "SOX Compliance",
+     "Tax Optimization"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Director of Financial Controlling",
+     "organization": "Veldt & Co Financial Services",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Cape Town, ZA",
+     "startDate": "2020-03",
+     "description": "Lead a team of controllers to oversee financial planning, variance analysis, and regulatory reporting for a portfolio of clients. Spearheaded the transition to automated consolidation processes, reducing close cycles by 30%."
+    },
+    {
+     "title": "Senior Financial Reporting Manager",
+     "organization": "Havenbrook Capital Advisors",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Cape Town, ZA",
+     "startDate": "2016-07",
+     "endDate": "2020-02",
+     "description": "Managed month-end and year-end reporting, ensuring accuracy and timeliness for a mid-sized investment firm. Developed standardized templates for intercompany reconciliations."
+    },
+    {
+     "title": "Audit Supervisor",
+     "organization": "Marlden & Voss Audit Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Johannesburg, ZA",
+     "startDate": "2012-04",
+     "endDate": "2016-06",
+     "description": "Led audit engagements for clients in manufacturing and services, identifying control gaps and recommending process improvements. Trained junior auditors on risk assessment methodologies."
+    },
+    {
+     "title": "Financial Analyst",
+     "organization": "Crestline Financial Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Pretoria, ZA",
+     "startDate": "2009-01",
+     "endDate": "2012-03",
+     "description": "Prepared monthly financial statements and conducted ad-hoc analyses to support decision-making. Assisted in the implementation of a new ERP system."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Galeymere",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Accounting and Financial Management",
+     "startDate": "2006",
+     "endDate": "2008"
+    },
+    {
+     "school": "Eldeyara College",
+     "degree": "Bachelor of Commerce",
+     "fieldOfStudy": "Finance",
+     "startDate": "2002",
+     "endDate": "2005"
+    }
+   ]
+  },
+  {
+   "handle": "diego-rojas.test",
+   "plan": {
+    "index": 33,
+    "field": "legal",
+    "seniority": "mid",
+    "gender": "man",
+    "region": "Latin America",
+    "location": "Gaborone, BW",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Diego Rojas",
+    "headline": "In-house Legal Counsel | Commercial Contracts & Privacy Specialist",
+    "about": "I advise on commercial contracts, data privacy, and employment law, ensuring compliance while supporting business objectives. My work involves drafting and negotiating agreements, implementing privacy frameworks, and providing legal guidance to internal teams.",
+    "location": "Gaborone, BW",
+    "openToWork": false,
+    "skills": [
+     "Commercial Contracts",
+     "GDPR Compliance",
+     "Employment Law",
+     "Data Privacy",
+     "Contract Negotiation",
+     "Regulatory Compliance",
+     "Corporate Governance",
+     "Risk Management",
+     "Legal Research",
+     "Policy Development"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Legal Counsel",
+     "organization": "Mokolodi Trade Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Gaborone, BW",
+     "startDate": "2023-07",
+     "description": "Lead legal advice on commercial contracts, privacy policies, and employment matters. Implement compliance frameworks and support cross-functional teams in regulatory adherence."
+    },
+    {
+     "title": "Legal Advisor",
+     "organization": "Kgalagadi Logistics Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Gaborone, BW",
+     "startDate": "2021-03",
+     "endDate": "2023-06",
+     "description": "Provided legal support for logistics contracts, data protection, and internal policies. Conducted risk assessments and ensured alignment with local and international regulations."
+    },
+    {
+     "title": "Associate Legal Counsel",
+     "organization": "Tshabong Business Services",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Gaborone, BW",
+     "startDate": "2019-08",
+     "endDate": "2021-02",
+     "description": "Assisted in drafting and reviewing commercial agreements, advising on employment law, and supporting compliance initiatives for small and mid-sized enterprises."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Silanwen",
+     "degree": "LLM",
+     "fieldOfStudy": "Commercial Law",
+     "startDate": "2017",
+     "endDate": "2019"
+    },
+    {
+     "school": "Fenisund College",
+     "degree": "LLB",
+     "fieldOfStudy": "Law",
+     "startDate": "2014",
+     "endDate": "2017"
+    }
+   ]
+  },
+  {
+   "handle": "abena-oforiwaa.test",
+   "plan": {
+    "index": 34,
+    "field": "legal",
+    "seniority": "senior",
+    "gender": "woman",
+    "region": "West Africa",
+    "location": "Dublin, IE",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Abena Oforiwaa",
+    "headline": "Senior In-House Legal Counsel | Commercial Contracts & Privacy Expert",
+    "about": "I advise on complex commercial agreements, data privacy compliance, and employment law matters for mid-sized enterprises. With over eight years of in-house experience, I design practical legal solutions that align with business goals. I also lead cross-functional training on regulatory changes and risk mitigation.",
+    "location": "Dublin, IE",
+    "openToWork": false,
+    "skills": [
+     "commercial contracts",
+     "GDPR compliance",
+     "employment law",
+     "privacy policies",
+     "contract negotiation",
+     "risk assessment",
+     "regulatory analysis",
+     "corporate governance",
+     "dispute resolution",
+     "legal research"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Legal Counsel",
+     "organization": "Harkin & Veyne Manufacturing",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Dublin, IE",
+     "startDate": "2020-05",
+     "description": "Lead legal advisor for commercial and operational matters, overseeing contract drafting, compliance audits, and employment disputes. Developed company-wide data protection frameworks and trained teams on regulatory updates."
+    },
+    {
+     "title": "Legal Advisor",
+     "organization": "Fenwick Logistics Group",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Galway, IE",
+     "startDate": "2017-03",
+     "endDate": "2020-04",
+     "description": "Provided legal support for supply chain contracts, vendor agreements, and privacy law compliance. Resolved employment-related legal queries and supported HR on policy development."
+    },
+    {
+     "title": "Junior Legal Counsel",
+     "organization": "Marlin Industrial Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Limerick, IE",
+     "startDate": "2015-06",
+     "endDate": "2017-02",
+     "description": "Assisted senior counsel in reviewing commercial contracts, conducting compliance checks, and advising on employment law matters."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Dunanwick",
+     "degree": "LLB (Bachelor of Laws)",
+     "fieldOfStudy": "Law",
+     "startDate": "2011",
+     "endDate": "2015"
+    },
+    {
+     "school": "Corastan Institute of Technology",
+     "degree": "LLM (Master of Laws)",
+     "fieldOfStudy": "Commercial and Corporate Law",
+     "startDate": "2015",
+     "endDate": "2016"
+    }
+   ]
+  },
+  {
+   "handle": "camila-paredes.test",
+   "plan": {
+    "index": 35,
+    "field": "legal",
+    "seniority": "lead",
+    "gender": "nonbinary",
+    "region": "Latin America",
+    "location": "Amsterdam, NL",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Camila Paredes",
+    "headline": "Lead In-House Counsel | Commercial Contracts & Compliance",
+    "about": "I specialize in drafting and negotiating high-value commercial contracts, ensuring compliance with privacy and employment laws. I lead a team of legal professionals, advising on risk management and corporate governance. My focus is on aligning legal strategy with business objectives to drive sustainable growth.",
+    "location": "Amsterdam, NL",
+    "openToWork": false,
+    "skills": [
+     "Commercial Contract Drafting",
+     "GDPR Compliance",
+     "Employment Law",
+     "Risk Management",
+     "Corporate Governance",
+     "Contract Negotiation",
+     "Data Privacy",
+     "Regulatory Compliance",
+     "Team Leadership",
+     "Legal Strategy"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Head of Legal",
+     "organization": "Veldrin Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Amsterdam, NL",
+     "startDate": "2019-06",
+     "description": "Lead the legal department, overseeing contract negotiations, compliance programs, and employment law matters. Advise executive leadership on legal risks and strategic initiatives."
+    },
+    {
+     "title": "Senior Legal Counsel",
+     "organization": "Temren Industries",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Utrecht, NL",
+     "startDate": "2014-03",
+     "endDate": "2019-05",
+     "description": "Managed a portfolio of commercial contracts and provided guidance on privacy regulations. Represented the company in employment disputes and internal investigations."
+    },
+    {
+     "title": "Legal Advisor",
+     "organization": "Bryon & Partners",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Rotterdam, NL",
+     "startDate": "2010-01",
+     "endDate": "2014-02",
+     "description": "Advised clients on contract law, data protection, and employment issues. Supported senior counsel in complex litigation and compliance audits."
+    },
+    {
+     "title": "Junior Legal Associate",
+     "organization": "Farris Corporate Services",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "The Hague, NL",
+     "startDate": "2007-09",
+     "endDate": "2009-12",
+     "description": "Assisted in drafting contracts, conducting legal research, and supporting compliance initiatives for corporate clients."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Holuwick",
+     "degree": "Master of Laws (LLM)",
+     "fieldOfStudy": "Corporate and Commercial Law",
+     "startDate": "2005",
+     "endDate": "2007"
+    },
+    {
+     "school": "Wenaona Institute of Technology",
+     "degree": "Bachelor of Laws (LLB)",
+     "fieldOfStudy": "Law",
+     "startDate": "2001",
+     "endDate": "2005"
+    }
+   ]
+  },
+  {
+   "handle": "samira-hazemi.test",
+   "plan": {
+    "index": 36,
+    "field": "nursing",
+    "seniority": "senior",
+    "gender": "woman",
+    "region": "Middle East",
+    "location": "Istanbul, TR",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Samira Hazemi",
+    "headline": "Senior Nurse Specializing in Community and Hospital Care",
+    "about": "I deliver patient-centered nursing care in both hospital and community settings, focusing on chronic disease management and health education. With nearly a decade of experience, I design and implement care plans that improve patient outcomes and streamline clinical workflows.",
+    "location": "Istanbul, TR",
+    "openToWork": true,
+    "skills": [
+     "Patient Care Planning",
+     "Chronic Disease Management",
+     "Wound Care",
+     "IV Therapy",
+     "Health Education",
+     "Electronic Health Records (EHR)",
+     "CPR Certified",
+     "Infection Control",
+     "Palliative Care",
+     "Team Leadership"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Community Health Nurse",
+     "organization": "Istanbul Wellness Clinics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Istanbul, TR",
+     "startDate": "2022-05",
+     "description": "Lead community health initiatives, providing home visits and preventive care to underserved populations. Collaborate with local organizations to improve public health outcomes."
+    },
+    {
+     "title": "Senior Staff Nurse",
+     "organization": "Bosphorus General Hospital",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Istanbul, TR",
+     "startDate": "2018-09",
+     "endDate": "2022-04",
+     "description": "Managed a 20-bed ward, overseeing patient care and mentoring junior nurses. Implemented new protocols that reduced hospital-acquired infections by 15%."
+    },
+    {
+     "title": "Registered Nurse",
+     "organization": "Anatolian Medical Center",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Istanbul, TR",
+     "startDate": "2015-06",
+     "endDate": "2018-08",
+     "description": "Provided direct patient care in a fast-paced emergency department, handling trauma cases and coordinating with multidisciplinary teams."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Dunistan",
+     "degree": "Bachelor of Science in Nursing",
+     "fieldOfStudy": "Nursing",
+     "startDate": "2011",
+     "endDate": "2015"
+    },
+    {
+     "school": "Duneyford College",
+     "degree": "Diploma",
+     "fieldOfStudy": "Community Health Nursing",
+     "startDate": "2014",
+     "endDate": "2015"
+    }
+   ]
+  },
+  {
+   "handle": "tama-ropati.test",
+   "plan": {
+    "index": 37,
+    "field": "nursing",
+    "seniority": "lead",
+    "gender": "man",
+    "region": "Oceania",
+    "location": "Dhaka, BD",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Tama Ropati",
+    "headline": "Lead Nurse Specializing in Community and Acute Care",
+    "about": "I design and implement patient-centered care programs for both hospital and community settings, focusing on chronic disease management and preventive health strategies. With over a decade of experience, I lead nursing teams to improve care standards and patient outcomes. My work emphasizes evidence-based practice and interdisciplinary collaboration.",
+    "location": "Dhaka, BD",
+    "openToWork": false,
+    "skills": [
+     "Patient Assessment",
+     "Care Plan Development",
+     "Chronic Disease Management",
+     "Team Leadership",
+     "Infection Control",
+     "Health Education",
+     "Electronic Health Records",
+     "IV Therapy",
+     "Palliative Care",
+     "Community Outreach"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Lead Nurse",
+     "organization": "Dhaka Community Health Alliance",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Dhaka, BD",
+     "startDate": "2021-03",
+     "description": "Oversee nursing staff across three community clinics and coordinate with local hospitals to streamline patient transitions. Developed a chronic care program that reduced readmission rates by 20%."
+    },
+    {
+     "title": "Senior Nurse",
+     "organization": "Bengal River Healthcare",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Dhaka, BD",
+     "startDate": "2017-05",
+     "endDate": "2021-02",
+     "description": "Managed a 25-bed ward specializing in post-surgical and geriatric care. Trained junior nurses in advanced wound management and infection prevention protocols."
+    },
+    {
+     "title": "Nurse",
+     "organization": "Saboford General Infirmary",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Saboford, BD",
+     "startDate": "2014-08",
+     "endDate": "2017-04",
+     "description": "Provided direct patient care in the emergency department, handling trauma and acute medical cases. Collaborated with physicians to develop rapid response protocols."
+    },
+    {
+     "title": "Nursing Assistant",
+     "organization": "Pelowick District Clinic",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Pelowick, BD",
+     "startDate": "2012-01",
+     "endDate": "2014-07",
+     "description": "Supported senior nursing staff in patient examinations, medication administration, and record-keeping. Assisted in organizing community health screenings."
+    }
+   ],
+   "education": [
+    {
+     "school": "Coranvik Institute of Health Sciences",
+     "degree": "Master of Science in Nursing",
+     "fieldOfStudy": "Advanced Nursing Practice",
+     "startDate": "2010",
+     "endDate": "2012"
+    },
+    {
+     "school": "University of Pelowick",
+     "degree": "Bachelor of Science in Nursing",
+     "fieldOfStudy": "Nursing",
+     "startDate": "2006",
+     "endDate": "2010"
+    }
+   ]
+  },
+  {
+   "handle": "tasheka-belnavis.test",
+   "plan": {
+    "index": 38,
+    "field": "nursing",
+    "seniority": "junior",
+    "gender": "woman",
+    "region": "Caribbean",
+    "location": "Kuala Lumpur, MY",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Tasheka Belnavis",
+    "headline": "Junior Nurse Delivering Compassionate Patient-Centered Care in Hospital and Community Settings",
+    "about": "I provide hands-on nursing care in both hospital wards and community health programs, focusing on patient comfort and recovery. My experience spans clinical support, health education, and coordination with multidisciplinary teams to ensure high-quality care.",
+    "location": "Kuala Lumpur, MY",
+    "openToWork": false,
+    "skills": [
+     "Patient Assessment",
+     "Wound Care",
+     "IV Therapy",
+     "Medication Administration",
+     "Health Education",
+     "Electronic Health Records",
+     "Infection Control",
+     "CPR Certified",
+     "Vital Signs Monitoring",
+     "Care Plan Development"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Staff Nurse",
+     "organization": "Greenleaf Community Health Services",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Kuala Lumpur, MY",
+     "startDate": "2024-06",
+     "description": "Deliver primary care and health education to patients in community clinics, focusing on chronic disease management and preventive care. Collaborate with local health teams to conduct outreach programs."
+    },
+    {
+     "title": "Graduate Nurse",
+     "organization": "Harborview General Hospital",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Kuala Lumpur, MY",
+     "startDate": "2023-01",
+     "endDate": "2024-05",
+     "description": "Assisted in patient care on medical and surgical wards, performed routine therapies, and supported senior nurses in care planning and documentation."
+    }
+   ],
+   "education": [
+    {
+     "school": "Eldandale University",
+     "degree": "Bachelor of Science in Nursing",
+     "fieldOfStudy": "Nursing",
+     "startDate": "2019",
+     "endDate": "2022"
+    }
+   ]
+  },
+  {
+   "handle": "chen-weiqiang.test",
+   "plan": {
+    "index": 39,
+    "field": "teaching",
+    "seniority": "senior",
+    "gender": "man",
+    "region": "East Asia",
+    "location": "Taipei, TW",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Chen Weiqiang",
+    "headline": "Senior Primary School Educator and Curriculum Developer",
+    "about": "I design and deliver engaging primary school curricula with a focus on inquiry-based learning. My work involves mentoring new teachers and integrating technology into classroom activities to enhance student outcomes. I continuously refine teaching methods based on student feedback and educational research.",
+    "location": "Taipei, TW",
+    "openToWork": false,
+    "skills": [
+     "Lesson Planning",
+     "Classroom Management",
+     "Inquiry-Based Learning",
+     "Educational Technology",
+     "Teacher Mentoring",
+     "Curriculum Design",
+     "Assessment Strategies",
+     "Differentiated Instruction",
+     "Parent-Teacher Communication",
+     "Early Literacy Development"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Primary School Teacher",
+     "organization": "Bright Horizons Academy",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Taipei, TW",
+     "startDate": "2021-09",
+     "description": "Lead the development of a new STEM-focused curriculum for grades 1-3 and mentor junior teachers in classroom management techniques."
+    },
+    {
+     "title": "Primary School Teacher",
+     "organization": "Lakeview Educational Services",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Taipei, TW",
+     "startDate": "2018-03",
+     "endDate": "2021-08",
+     "description": "Taught core subjects to diverse classrooms and implemented project-based learning initiatives to improve student engagement."
+    },
+    {
+     "title": "Teaching Assistant",
+     "organization": "Sunrise Learning Center",
+     "employmentType": "part-time",
+     "locationType": "onsite",
+     "location": "Taipei, TW",
+     "startDate": "2016-09",
+     "endDate": "2018-02",
+     "description": "Supported lead teachers in lesson delivery and provided one-on-one tutoring to students requiring additional assistance."
+    }
+   ],
+   "education": [
+    {
+     "school": "Feniona University",
+     "degree": "Master of Education",
+     "fieldOfStudy": "Primary Education",
+     "startDate": "2014",
+     "endDate": "2016"
+    },
+    {
+     "school": "Kalouona College",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Elementary Education",
+     "startDate": "2010",
+     "endDate": "2014"
+    }
+   ]
+  },
+  {
+   "handle": "zahra-al-mansouri.test",
+   "plan": {
+    "index": 40,
+    "field": "teaching",
+    "seniority": "lead",
+    "gender": "woman",
+    "region": "Middle East",
+    "location": "Dubai, AE",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Zahra Al-Mansouri",
+    "headline": "Lead Educator & Curriculum Strategist in Primary and Secondary Education",
+    "about": "I design and implement innovative teaching methodologies that enhance student engagement and learning outcomes. With over a decade of experience, I lead teams of educators in developing curriculum frameworks and fostering inclusive classroom environments. My focus is on mentoring teachers and aligning educational practices with evolving pedagogical standards.",
+    "location": "Dubai, AE",
+    "openToWork": false,
+    "skills": [
+     "Classroom Management",
+     "Curriculum Development",
+     "Differentiated Instruction",
+     "Educational Leadership",
+     "Teacher Mentoring",
+     "Assessment Design",
+     "Project-Based Learning",
+     "Digital Literacy Integration",
+     "Student-Centered Pedagogy",
+     "Special Educational Needs Support"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Head of Academic Development",
+     "organization": "The Learning Archipelago",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Dubai, AE",
+     "startDate": "2020-03",
+     "description": "Leading a team of 20+ educators to refine and implement a progressive curriculum for primary and secondary levels. Spearheaded professional development programs to elevate teaching standards and student performance."
+    },
+    {
+     "title": "Senior Curriculum Designer",
+     "organization": "Saboria Educational Trust",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Dubai, AE",
+     "startDate": "2015-08",
+     "endDate": "2020-02",
+     "description": "Developed and evaluated cross-disciplinary curriculum frameworks for grades 1–12. Collaborated with subject specialists to integrate technology and inquiry-based learning into classroom practices."
+    },
+    {
+     "title": "Lead Primary Teacher",
+     "organization": "Uloustan Academy",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Dubai, AE",
+     "startDate": "2010-09",
+     "endDate": "2015-07",
+     "description": "Taught diverse classes of 25+ students, focusing on literacy, numeracy, and social development. Piloted a mentorship program for new teachers, improving retention and classroom effectiveness."
+    },
+    {
+     "title": "Classroom Teacher",
+     "organization": "Aisouona Preparatory School",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Dubai, AE",
+     "startDate": "2007-01",
+     "endDate": "2010-08",
+     "description": "Delivered engaging lessons in core subjects while fostering a positive and inclusive classroom culture. Introduced collaborative learning techniques that enhanced student participation and outcomes."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Saboria",
+     "degree": "Master of Education",
+     "fieldOfStudy": "Educational Leadership",
+     "startDate": "2004",
+     "endDate": "2006"
+    },
+    {
+     "school": "Aisouona College",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Primary Education",
+     "startDate": "2000",
+     "endDate": "2004"
+    }
+   ]
+  },
+  {
+   "handle": "dwayne-mcclean.test",
+   "plan": {
+    "index": 41,
+    "field": "teaching",
+    "seniority": "junior",
+    "gender": "man",
+    "region": "Caribbean",
+    "location": "Kingston, JM",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Dwayne McClean",
+    "headline": "Primary and Secondary Educator | Curriculum Development | Student Engagement",
+    "about": "I design and deliver engaging lessons for primary and secondary students, focusing on differentiated instruction to meet diverse learning needs. My approach emphasizes interactive learning, classroom management, and continuous assessment to support student growth.",
+    "location": "Kingston, JM",
+    "openToWork": true,
+    "skills": [
+     "Lesson Planning",
+     "Classroom Management",
+     "Differentiated Instruction",
+     "Student Assessment",
+     "Curriculum Development",
+     "Behavioral Strategies",
+     "Parent-Teacher Communication",
+     "Educational Technology",
+     "Literacy Development",
+     "Project-Based Learning"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Junior Teacher",
+     "organization": "Harmony Learning Academy",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Kingston, JM",
+     "startDate": "2024-09",
+     "description": "Teach core subjects to grades 4-6, develop lesson plans aligned with school standards, and collaborate with colleagues to enhance teaching strategies."
+    },
+    {
+     "title": "Teaching Assistant",
+     "organization": "Bright Futures Educational Services",
+     "employmentType": "contract",
+     "locationType": "onsite",
+     "location": "Montego Bay, JM",
+     "startDate": "2023-01",
+     "endDate": "2024-08",
+     "description": "Supported lead teachers in classroom activities, provided one-on-one tutoring, and assisted in curriculum adaptation for students with varying learning abilities."
+    },
+    {
+     "title": "Student Teacher",
+     "organization": "River Valley School",
+     "employmentType": "internship",
+     "locationType": "onsite",
+     "location": "Ocho Rios, JM",
+     "startDate": "2022-09",
+     "endDate": "2022-12",
+     "description": "Completed a practicum in a secondary school setting, delivering lessons under supervision and receiving feedback to refine instructional techniques."
+    }
+   ],
+   "education": [
+    {
+     "school": "Wenator University",
+     "degree": "Bachelor of Education",
+     "fieldOfStudy": "Primary and Secondary Education",
+     "startDate": "2019",
+     "endDate": "2023"
+    },
+    {
+     "school": "Rosouara College",
+     "degree": "Associate Degree",
+     "fieldOfStudy": "General Education",
+     "startDate": "2017",
+     "endDate": "2019"
+    }
+   ]
+  },
+  {
+   "handle": "yosra-chabane.test",
+   "plan": {
+    "index": 42,
+    "field": "recruiting",
+    "seniority": "lead",
+    "gender": "woman",
+    "region": "North Africa",
+    "location": "Bucharest, RO",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Yosra Chabane",
+    "headline": "Lead Talent Acquisition Specialist | Building High-Performance Teams",
+    "about": "I specialize in designing and executing end-to-end talent acquisition strategies that attract, engage, and retain top-tier professionals. With over a decade of experience, I lead teams to deliver scalable hiring solutions aligned with business growth. I thrive in fast-paced environments, focusing on candidate experience and data-driven decision-making.",
+    "location": "Bucharest, RO",
+    "openToWork": false,
+    "skills": [
+     "Full-Cycle Recruiting",
+     "Talent Pipeline Development",
+     "Employer Branding",
+     "Boolean Search",
+     "ATS Management",
+     "Diversity Hiring",
+     "Stakeholder Engagement",
+     "Workforce Planning",
+     "Interview Training",
+     "HR Metrics & Analytics"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Head of Talent Acquisition",
+     "organization": "Veyra Group",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Bucharest, RO",
+     "startDate": "2022-03",
+     "description": "Leading a team of recruiters to develop and implement global talent acquisition strategies. Focus on scaling hiring efforts, improving candidate experience, and optimizing recruitment processes for a growing tech organization."
+    },
+    {
+     "title": "Senior Talent Acquisition Manager",
+     "organization": "Korvell Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Cluj-Napoca, RO",
+     "startDate": "2018-07",
+     "endDate": "2022-02",
+     "description": "Managed full-cycle recruiting for mid-to-senior level roles across multiple departments. Built and nurtured talent pipelines, reducing time-to-hire by 30% through targeted sourcing and process improvements."
+    },
+    {
+     "title": "Talent Acquisition Specialist",
+     "organization": "Brennotech",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "startDate": "2014-09",
+     "endDate": "2018-06",
+     "description": "Sourced, screened, and hired candidates for technical and non-technical roles. Collaborated with hiring managers to define role requirements and improve offer acceptance rates."
+    },
+    {
+     "title": "Recruiting Coordinator",
+     "organization": "Dunouwick Staffing",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Iași, RO",
+     "startDate": "2012-05",
+     "endDate": "2014-08",
+     "description": "Supported recruitment operations by coordinating interviews, managing candidate communications, and maintaining ATS records. Assisted in campus hiring initiatives and early-career programs."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Talugard",
+     "degree": "Master of Business Administration",
+     "fieldOfStudy": "Human Resources Management",
+     "startDate": "2010",
+     "endDate": "2012"
+    },
+    {
+     "school": "Sileysund College",
+     "degree": "Bachelor of Arts",
+     "fieldOfStudy": "Business Administration",
+     "startDate": "2006",
+     "endDate": "2010"
+    }
+   ]
+  },
+  {
+   "handle": "ephrem-kebede.test",
+   "plan": {
+    "index": 43,
+    "field": "recruiting",
+    "seniority": "junior",
+    "gender": "man",
+    "region": "East Africa",
+    "location": "Shenzhen, CN",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Ephrem Kebede",
+    "headline": "Junior Talent Acquisition Specialist | Sourcing & Recruiting in Shenzhen",
+    "about": "I specialize in identifying and engaging top talent for growing organizations, with a focus on building strong candidate pipelines. My experience includes sourcing, screening, and coordinating interviews to ensure a smooth hiring process. I thrive in fast-paced environments and am passionate about connecting people with meaningful opportunities.",
+    "location": "Shenzhen, CN",
+    "openToWork": true,
+    "skills": [
+     "Boolean Search",
+     "LinkedIn Recruiter",
+     "ATS Management",
+     "Candidate Sourcing",
+     "Interview Coordination",
+     "Talent Pipelining",
+     "Employer Branding",
+     "Behavioral Interviewing",
+     "Job Posting Optimization",
+     "HR Analytics"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Junior Talent Acquisition Specialist",
+     "organization": "Brighton Talent Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Shenzhen, CN",
+     "startDate": "2025-01",
+     "description": "Source and engage candidates for mid-level technical and non-technical roles, manage the end-to-end recruitment process, and collaborate with hiring managers to refine job descriptions."
+    },
+    {
+     "title": "Recruitment Coordinator",
+     "organization": "Harborview Staffing Group",
+     "employmentType": "contract",
+     "locationType": "hybrid",
+     "location": "Shenzhen, CN",
+     "startDate": "2023-06",
+     "endDate": "2024-12",
+     "description": "Supported recruitment efforts by scheduling interviews, maintaining candidate databases, and assisting with onboarding processes for new hires."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Quinogard",
+     "degree": "Bachelor of Business Administration",
+     "fieldOfStudy": "Human Resource Management",
+     "startDate": "2020",
+     "endDate": "2023"
+    }
+   ]
+  },
+  {
+   "handle": "yoon-seung-ah.test",
+   "plan": {
+    "index": 44,
+    "field": "recruiting",
+    "seniority": "mid",
+    "gender": "woman",
+    "region": "East Asia",
+    "location": "Shenzhen, CN",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Yoon Seung-ah",
+    "headline": "Talent Acquisition Specialist | Building High-Performing Teams in Tech and Finance",
+    "about": "I specialize in sourcing and hiring top talent for fast-growing teams in technology and financial services. My approach combines data-driven strategies with a focus on candidate experience to ensure long-term fits. I thrive in dynamic environments where scaling teams is a priority.",
+    "location": "Shenzhen, CN",
+    "openToWork": false,
+    "skills": [
+     "Candidate Sourcing",
+     "Technical Recruiting",
+     "Interview Coordination",
+     "LinkedIn Recruiter",
+     "Boolean Search",
+     "Talent Pipelining",
+     "Offer Negotiation",
+     "ATS Management",
+     "Employer Branding",
+     "Diversity Hiring"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Talent Acquisition Partner",
+     "organization": "VelaCore Systems",
+     "employmentType": "full-time",
+     "locationType": "remote",
+     "location": "Shenzhen, CN",
+     "startDate": "2024-06",
+     "description": "Lead full-cycle recruitment for engineering and product teams, focusing on mid to senior-level hires. Collaborate with hiring managers to refine job descriptions and streamline interview processes."
+    },
+    {
+     "title": "Talent Acquisition Specialist",
+     "organization": "Meridian Talent Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Shenzhen, CN",
+     "startDate": "2022-03",
+     "endDate": "2024-05",
+     "description": "Managed end-to-end hiring for finance and operations roles, reducing time-to-fill by 30% through targeted sourcing and process improvements."
+    },
+    {
+     "title": "Recruiting Coordinator",
+     "organization": "Briarwood Staffing Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Guangzhou, CN",
+     "startDate": "2020-08",
+     "endDate": "2022-02",
+     "description": "Supported high-volume hiring initiatives, coordinated interviews, and maintained candidate databases while ensuring a positive candidate experience."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Taliara",
+     "degree": "Bachelor of Business Administration",
+     "fieldOfStudy": "Human Resources Management",
+     "startDate": "2016",
+     "endDate": "2020"
+    }
+   ]
+  },
+  {
+   "handle": "wiremu-rangi.test",
+   "plan": {
+    "index": 45,
+    "field": "mecheng",
+    "seniority": "lead",
+    "gender": "man",
+    "region": "Oceania",
+    "location": "Stockholm, SE",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Wiremu Rangi",
+    "headline": "Lead Mechanical Engineer | Product Design & Manufacturing Innovation",
+    "about": "I specialize in leading cross-functional teams to design and manufacture high-precision mechanical systems. My work focuses on optimizing production processes, reducing costs, and ensuring product reliability. I thrive in environments that demand technical expertise and strategic problem-solving.",
+    "location": "Stockholm, SE",
+    "openToWork": true,
+    "skills": [
+     "SolidWorks",
+     "ANSYS",
+     "DFMEA",
+     "Lean Manufacturing",
+     "GD&T",
+     "Additive Manufacturing",
+     "Finite Element Analysis",
+     "Product Lifecycle Management",
+     "Six Sigma",
+     "CAD/CAM"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Lead Mechanical Engineer",
+     "organization": "Vargen Industrial Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Stockholm, SE",
+     "startDate": "2020-03",
+     "description": "Leading a team of engineers to develop next-generation industrial equipment, focusing on modular design and scalable manufacturing processes."
+    },
+    {
+     "title": "Senior Mechanical Design Engineer",
+     "organization": "Tolbert Machinery",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Gothenburg, SE",
+     "startDate": "2015-06",
+     "endDate": "2020-02",
+     "description": "Designed and optimized heavy machinery components, reducing material usage by 15% while maintaining structural integrity."
+    },
+    {
+     "title": "Mechanical Engineer",
+     "organization": "Hargrove Precision Works",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Malmö, SE",
+     "startDate": "2012-01",
+     "endDate": "2015-05",
+     "description": "Developed custom mechanical solutions for industrial clients, improving assembly efficiency and product durability."
+    },
+    {
+     "title": "Junior Design Engineer",
+     "organization": "Bracken Engineering",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Linköping, SE",
+     "startDate": "2009-09",
+     "endDate": "2011-12",
+     "description": "Supported senior engineers in prototyping and testing mechanical systems for automotive applications."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Variria",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2007",
+     "endDate": "2009"
+    },
+    {
+     "school": "Peleyria Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2003",
+     "endDate": "2007"
+    }
+   ]
+  },
+  {
+   "handle": "maya-sariwong.test",
+   "plan": {
+    "index": 46,
+    "field": "mecheng",
+    "seniority": "junior",
+    "gender": "woman",
+    "region": "Southeast Asia",
+    "location": "Ho Chi Minh City, VN",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Maya Sariwong",
+    "headline": "Junior Mechanical Engineer | Product Design & Manufacturing",
+    "about": "I design and develop mechanical components for consumer products, focusing on cost-effective materials and scalable manufacturing processes. I collaborate with cross-functional teams to turn concepts into production-ready prototypes with attention to tolerances and assembly efficiency.",
+    "location": "Ho Chi Minh City, VN",
+    "openToWork": false,
+    "skills": [
+     "SolidWorks",
+     "AutoCAD",
+     "Finite Element Analysis",
+     "GD&T",
+     "Injection Molding",
+     "CN Machining",
+     "Prototype Testing",
+     "BOM Management",
+     "DFM/DFA",
+     "Material Selection"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Junior Mechanical Engineer",
+     "organization": "VinhLoi Precision Works",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Ho Chi Minh City, VN",
+     "startDate": "2024-06",
+     "description": "Design mechanical assemblies for small household appliances, optimizing parts for mass production. Work closely with suppliers to validate prototypes and refine designs for manufacturability."
+    },
+    {
+     "title": "Design Engineering Intern",
+     "organization": "Havenport Industrial Design",
+     "employmentType": "internship",
+     "locationType": "hybrid",
+     "location": "Ho Chi Minh City, VN",
+     "startDate": "2023-07",
+     "endDate": "2024-05",
+     "description": "Assisted in the development of ergonomic product enclosures, performed stress analysis on mechanical parts, and prepared technical drawings for manufacturing."
+    }
+   ],
+   "education": [
+    {
+     "school": "Taleenne University of Technology",
+     "degree": "Bachelor of Engineering",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2019",
+     "endDate": "2023"
+    }
+   ]
+  },
+  {
+   "handle": "erik-solbakken.test",
+   "plan": {
+    "index": 47,
+    "field": "mecheng",
+    "seniority": "mid",
+    "gender": "man",
+    "region": "Nordics",
+    "location": "Lagos, NG",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Erik Solbakken",
+    "headline": "Mechanical Engineer Specializing in Product Design and Manufacturing Optimization",
+    "about": "I design and refine mechanical systems for industrial applications, focusing on efficiency and cost-effective manufacturing. My work spans from prototyping to production, ensuring functional and durable solutions. I collaborate with cross-functional teams to integrate engineering principles with practical constraints.",
+    "location": "Lagos, NG",
+    "openToWork": false,
+    "skills": [
+     "SolidWorks",
+     "ANSYS",
+     "Finite Element Analysis",
+     "GD&T",
+     "CNCC Machining",
+     "Lean Manufacturing",
+     "Material Selection",
+     "AutoCAD",
+     "Project Management",
+     "DFM"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Mechanical Design Engineer",
+     "organization": "Vexford Precision Works",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lagos, NG",
+     "startDate": "2023-07",
+     "description": "Leading the design and testing of custom mechanical components for industrial machinery. Optimizing manufacturing processes to reduce material waste and improve assembly efficiency."
+    },
+    {
+     "title": "Product Development Engineer",
+     "organization": "Keromere Engineering Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Ibadan, NG",
+     "startDate": "2021-03",
+     "endDate": "2023-06",
+     "description": "Developed and refined product designs from concept to prototype, collaborating with production teams to ensure scalability. Conducted feasibility studies and cost analysis for new mechanical systems."
+    },
+    {
+     "title": "Junior Mechanical Engineer",
+     "organization": "Mereyvik Fabrication Labs",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Port Harcourt, NG",
+     "startDate": "2019-06",
+     "endDate": "2021-02",
+     "description": "Assisted in the design and testing of mechanical assemblies, supporting senior engineers in troubleshooting and refining manufacturing processes."
+    }
+   ],
+   "education": [
+    {
+     "school": "Oroford Institute of Technology",
+     "degree": "Master of Engineering",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2017",
+     "endDate": "2019"
+    },
+    {
+     "school": "Keromere University",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Mechanical Engineering",
+     "startDate": "2013",
+     "endDate": "2017"
+    }
+   ]
+  },
+  {
+   "handle": "dewi-lestari.test",
+   "plan": {
+    "index": 48,
+    "field": "supplychain",
+    "seniority": "junior",
+    "gender": "woman",
+    "region": "Southeast Asia",
+    "location": "Ho Chi Minh City, VN",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Dewi Lestari",
+    "headline": "Junior Supply Chain Coordinator | Logistics Operations Specialist",
+    "about": "I streamline inventory and distribution processes to improve efficiency in supply chain operations. I analyze logistics data to identify bottlenecks and implement cost-saving solutions. My focus is on optimizing workflows and maintaining high service levels in fast-paced environments.",
+    "location": "Ho Chi Minh City, VN",
+    "openToWork": true,
+    "skills": [
+     "Inventory Management",
+     "Logistics Coordination",
+     "Supply Chain Analytics",
+     "Warehouse Management Systems",
+     "Demand Forecasting",
+     "Excel",
+     "ERP Systems",
+     "Process Optimization",
+     "Vendor Coordination",
+     "Lean Principles"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Supply Chain Coordinator",
+     "organization": "Vientra Logistics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Ho Chi Minh City, VN",
+     "startDate": "2025-03",
+     "description": "Coordinate daily logistics operations, manage inventory tracking, and collaborate with vendors to ensure timely deliveries. Support process improvements to reduce lead times and operational costs."
+    },
+    {
+     "title": "Logistics Assistant",
+     "organization": "Orasund Freight Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Ho Chi Minh City, VN",
+     "startDate": "2023-06",
+     "endDate": "2025-02",
+     "description": "Assisted in managing shipment schedules, tracking goods in transit, and resolving discrepancies in inventory records. Contributed to the implementation of a new warehouse management system."
+    }
+   ],
+   "education": [
+    {
+     "school": "Loreholm Institute of Technology",
+     "degree": "Bachelor of Science",
+     "fieldOfStudy": "Supply Chain Management",
+     "startDate": "2020",
+     "endDate": "2023"
+    }
+   ]
+  },
+  {
+   "handle": "lukas-bauer.test",
+   "plan": {
+    "index": 49,
+    "field": "supplychain",
+    "seniority": "mid",
+    "gender": "man",
+    "region": "Western Europe",
+    "location": "Oslo, NO",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Lukas Bauer",
+    "headline": "Mid-Level Supply Chain & Logistics Specialist Optimizing Global Operations",
+    "about": "I design and implement efficient logistics workflows to reduce costs and improve delivery timelines. My focus is on data-driven decision-making and cross-functional collaboration to streamline supply chains. I continuously adapt to industry advancements to maintain operational excellence.",
+    "location": "Oslo, NO",
+    "openToWork": false,
+    "skills": [
+     "Inventory Management",
+     "Demand Forecasting",
+     "ERP Systems",
+     "Warehouse Optimization",
+     "Transportation Planning",
+     "Supplier Negotiation",
+     "Lean Six Sigma",
+     "Data Analytics",
+     "SAP MM",
+     "Procurement"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Logistics Operations Manager",
+     "organization": "Baltro Freight Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Oslo, NO",
+     "startDate": "2024-03",
+     "description": "Oversee daily logistics operations, including route optimization and carrier management, to ensure on-time deliveries. Lead a team to refine warehouse processes and reduce operational costs by 12%."
+    },
+    {
+     "title": "Supply Chain Analyst",
+     "organization": "Vesterhagen Distribution",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Bergen, NO",
+     "startDate": "2022-06",
+     "endDate": "2024-03",
+     "description": "Analyzed supply chain data to identify inefficiencies and proposed solutions to improve inventory turnover. Collaborated with procurement and transportation teams to enhance vendor performance."
+    },
+    {
+     "title": "Logistics Coordinator",
+     "organization": "Fjordline Logistics",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Stavanger, NO",
+     "startDate": "2020-01",
+     "endDate": "2022-06",
+     "description": "Managed shipments, tracked inventory, and coordinated with suppliers to ensure timely material availability. Implemented a new tracking system that reduced errors by 20%."
+    }
+   ],
+   "education": [
+    {
+     "school": "Malanvik Institute of Technology",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Supply Chain Management",
+     "startDate": "2018",
+     "endDate": "2020"
+    },
+    {
+     "school": "University of Ishiavik",
+     "degree": "Bachelor of Business Administration",
+     "fieldOfStudy": "Logistics and Operations",
+     "startDate": "2014",
+     "endDate": "2018"
+    }
+   ]
+  },
+  {
+   "handle": "alexandru-dima.test",
+   "plan": {
+    "index": 50,
+    "field": "supplychain",
+    "seniority": "senior",
+    "gender": "nonbinary",
+    "region": "Eastern Europe",
+    "location": "Gaborone, BW",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Alexandru Dima",
+    "headline": "Senior Supply Chain & Logistics Operations Specialist",
+    "about": "I design and optimize end-to-end supply chain networks, reducing lead times and costs while improving service levels. I lead cross-functional teams to implement lean logistics processes and data-driven inventory management. My focus is on operational efficiency, risk mitigation, and continuous improvement in complex logistics environments.",
+    "location": "Gaborone, BW",
+    "openToWork": false,
+    "skills": [
+     "Inventory Optimization",
+     "Demand Forecasting",
+     "Warehouse Management Systems (WMS)",
+     "Transportation Logistics",
+     "Lean Six Sigma",
+     "KPI Development",
+     "Supplier Relationship Management",
+     "ERP Systems",
+     "Route Optimization",
+     "Supply Chain Analytics"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Supply Chain Operations Manager",
+     "organization": "Veldrin Logistics Solutions",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Gaborone, BW",
+     "startDate": "2022-03",
+     "description": "Oversee daily logistics operations, including inventory control, transportation coordination, and supplier performance management. Lead a team of 12 to streamline distribution processes, achieving a 20% reduction in delivery times and a 15% decrease in operational costs."
+    },
+    {
+     "title": "Logistics Coordinator",
+     "organization": "Tembo Freight Systems",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Francistown, BW",
+     "startDate": "2018-06",
+     "endDate": "2022-02",
+     "description": "Managed regional transportation schedules, optimized route planning, and coordinated with third-party logistics providers to ensure on-time deliveries. Implemented a new tracking system that improved shipment visibility by 30%."
+    },
+    {
+     "title": "Supply Chain Analyst",
+     "organization": "Mokolodi Distribution Network",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Gaborone, BW",
+     "startDate": "2015-01",
+     "endDate": "2018-05",
+     "description": "Analyzed supply chain data to identify inefficiencies and proposed cost-saving measures. Worked closely with procurement and warehouse teams to enhance inventory turnover and reduce stockouts."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Keranenne",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Supply Chain Management",
+     "startDate": "2013",
+     "endDate": "2014"
+    },
+    {
+     "school": "Rosanona Institute of Technology",
+     "degree": "Bachelor of Business Administration",
+     "fieldOfStudy": "Logistics and Operations Management",
+     "startDate": "2009",
+     "endDate": "2012"
+    }
+   ]
+  },
+  {
+   "handle": "moses-omondi.test",
+   "plan": {
+    "index": 51,
+    "field": "civileng",
+    "seniority": "junior",
+    "gender": "man",
+    "region": "East Africa",
+    "location": "Osaka, JP",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Moses Omondi",
+    "headline": "Junior Civil Engineer | Structural Design & Site Coordination",
+    "about": "I design and analyze structural components for infrastructure projects, ensuring compliance with safety standards and client specifications. I collaborate with cross-functional teams to deliver efficient and durable solutions, from concept to construction.",
+    "location": "Osaka, JP",
+    "openToWork": false,
+    "skills": [
+     "AutoCAD Civil 3D",
+     "Revit Structure",
+     "STAAD.Pro",
+     "Concrete and Steel Design",
+     "Site Inspection",
+     "Load Analysis",
+     "BIM Modeling",
+     "Project Coordination",
+     "Technical Reporting",
+     "Japanese Building Codes"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Junior Structural Engineer",
+     "organization": "Kuramo Infrastructure Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Osaka, JP",
+     "startDate": "2024-06",
+     "description": "Assist in the design and review of structural frameworks for residential and commercial projects. Conduct site visits to verify construction adherence to plans."
+    },
+    {
+     "title": "Graduate Civil Engineer",
+     "organization": "Teshora Construction Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Osaka, JP",
+     "startDate": "2023-01",
+     "endDate": "2024-05",
+     "description": "Supported structural analysis and drafting for infrastructure projects, including bridges and retaining walls. Prepared technical reports and coordinated with contractors."
+    }
+   ],
+   "education": [
+    {
+     "school": "Yarevik Institute of Technology",
+     "degree": "Bachelor of Engineering",
+     "fieldOfStudy": "Civil Engineering",
+     "startDate": "2019",
+     "endDate": "2022"
+    }
+   ]
+  },
+  {
+   "handle": "mpho-molefe.test",
+   "plan": {
+    "index": 52,
+    "field": "civileng",
+    "seniority": "mid",
+    "gender": "woman",
+    "region": "Southern Africa",
+    "location": "Suva, FJ",
+    "openToWork": true
+   },
+   "profile": {
+    "displayName": "Mpho Molefe",
+    "headline": "Civil Engineer Specializing in Sustainable Infrastructure Development",
+    "about": "I design and oversee the construction of resilient infrastructure projects, focusing on sustainable materials and efficient structural systems. My work ensures durable, cost-effective solutions that meet regulatory and environmental standards. I collaborate with multidisciplinary teams to deliver projects from concept to completion.",
+    "location": "Suva, FJ",
+    "openToWork": true,
+    "skills": [
+     "AutoCAD Civil 3D",
+     "Revit Structure",
+     "Finite Element Analysis",
+     "Project Management",
+     "Concrete and Steel Design",
+     "BIM 360",
+     "Geotechnical Investigations",
+     "Sustainable Construction",
+     "Building Codes Compliance",
+     "Cost Estimation"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Civil Engineer",
+     "organization": "Pacifica Construction Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Suva, FJ",
+     "startDate": "2024-03",
+     "description": "Lead the design and implementation of municipal infrastructure projects, ensuring compliance with local building codes and sustainability standards. Manage site inspections and coordinate with contractors to deliver projects on time and within budget."
+    },
+    {
+     "title": "Structural Design Engineer",
+     "organization": "Marisola Engineering Solutions",
+     "employmentType": "full-time",
+     "locationType": "hybrid",
+     "location": "Nadi, FJ",
+     "startDate": "2022-01",
+     "endDate": "2024-02",
+     "description": "Developed structural designs for residential and commercial buildings, focusing on seismic resilience and material efficiency. Conducted finite element analysis to optimize structural performance."
+    },
+    {
+     "title": "Junior Civil Engineer",
+     "organization": "Vitora Infrastructure Services",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Lautoka, FJ",
+     "startDate": "2020-06",
+     "endDate": "2021-12",
+     "description": "Assisted in the planning and execution of road and bridge construction projects. Performed site surveys, prepared technical reports, and ensured adherence to safety protocols."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Sabeyria",
+     "degree": "Master of Science",
+     "fieldOfStudy": "Civil Engineering",
+     "startDate": "2018",
+     "endDate": "2020"
+    },
+    {
+     "school": "Loroford Institute of Technology",
+     "degree": "Bachelor of Engineering",
+     "fieldOfStudy": "Structural Engineering",
+     "startDate": "2014",
+     "endDate": "2018"
+    }
+   ]
+  },
+  {
+   "handle": "mateo-quiros.test",
+   "plan": {
+    "index": 53,
+    "field": "civileng",
+    "seniority": "senior",
+    "gender": "man",
+    "region": "Latin America",
+    "location": "Melbourne, AU",
+    "openToWork": false
+   },
+   "profile": {
+    "displayName": "Mateo Quirós",
+    "headline": "Senior Civil Engineer | Infrastructure & Structural Design Specialist",
+    "about": "I design and oversee the construction of large-scale infrastructure projects, ensuring structural integrity and compliance with industry standards. My work focuses on delivering sustainable, cost-effective solutions from concept to completion. I lead collaborative teams to solve complex engineering challenges.",
+    "location": "Melbourne, AU",
+    "openToWork": false,
+    "skills": [
+     "AutoCAD Civil 3D",
+     "Revit Structure",
+     "Finite Element Analysis",
+     "BIM 360",
+     "Project Management",
+     "Concrete & Steel Design",
+     "Geotechnical Engineering",
+     "Sustainable Construction",
+     "Building Codes Compliance",
+     "Risk Assessment"
+    ]
+   },
+   "positions": [
+    {
+     "title": "Senior Civil Engineer",
+     "organization": "Marblepoint Infrastructure Group",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Melbourne, AU",
+     "startDate": "2020-05",
+     "description": "Lead the design and execution of major infrastructure projects, including bridges and highways. Manage multidisciplinary teams and ensure adherence to safety and regulatory standards."
+    },
+    {
+     "title": "Civil Engineer",
+     "organization": "Stratford & Vale Engineering",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Sydney, AU",
+     "startDate": "2016-03",
+     "endDate": "2020-04",
+     "description": "Developed structural designs for commercial and residential buildings. Conducted site inspections and coordinated with contractors to ensure project specifications were met."
+    },
+    {
+     "title": "Graduate Structural Engineer",
+     "organization": "Holeholm Design Collective",
+     "employmentType": "full-time",
+     "locationType": "onsite",
+     "location": "Brisbane, AU",
+     "startDate": "2013-07",
+     "endDate": "2016-02",
+     "description": "Assisted in the preparation of structural drawings and calculations for mid-sized construction projects. Supported senior engineers in site assessments and material testing."
+    }
+   ],
+   "education": [
+    {
+     "school": "University of Oriaria",
+     "degree": "Master of Engineering",
+     "fieldOfStudy": "Structural Engineering",
+     "startDate": "2011",
+     "endDate": "2013"
+    },
+    {
+     "school": "Tesiona Institute of Technology",
+     "degree": "Bachelor of Engineering",
+     "fieldOfStudy": "Civil Engineering",
+     "startDate": "2007",
+     "endDate": "2011"
+    }
+   ]
+  }
+ ]
+}

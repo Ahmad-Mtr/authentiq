@@ -1,0 +1,35 @@
+{
+ "source": "hand-written, not generated: alice.test is the demo's main account. Her profile record comes from `bun run seed` (phase 2's); these give her repo the positions and education the portability demo lists.",
+ "positions": [
+  {
+   "title": "Senior Backend Engineer",
+   "organization": "Tessford Payments",
+   "employmentType": "full-time",
+   "locationType": "hybrid",
+   "location": "Amman, JO",
+   "startDate": "2023-03",
+   "description": "Owns the ledger and payout services: idempotent APIs in TypeScript on Postgres, and the on-call rotation for them."
+  },
+  {
+   "title": "Backend Engineer",
+   "organization": "Orvik Logistics",
+   "employmentType": "full-time",
+   "locationType": "onsite",
+   "location": "Amman, JO",
+   "startDate": "2019-06",
+   "endDate": "2023-02",
+   "description": "Built the shipment-tracking API and the event pipeline behind it."
+  }
+ ],
+ "education": [
+  {
+   "school": "University of Malanvik",
+   "degree": "BSc",
+   "fieldOfStudy": "Computer Science",
+   "startDate": "2015",
+   "endDate": "2019"
+  }
+ ],
+ "joins": ["data-analytics"],
+ "follows": ["rajesh-mehta.test", "sofia-lindholm.test", "valeria-mendoza.test"]
+}

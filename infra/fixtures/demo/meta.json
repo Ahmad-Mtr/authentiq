@@ -1,0 +1,47 @@
+{
+ "generatedAt": "2026-09-30T09:14:41.985Z",
+ "model": "mistral-medium-2604",
+ "temperature": 0.7,
+ "seed": 20260930,
+ "script": "infra/scripts/gen-demo-data.ts (bun run fixtures:demo)",
+ "prompts": {
+  "system": "You write realistic, entirely fictional material for the demo of a professional network.\n\nEverything you write must be invented:\n- People: invented people. Never a real, well-known person.\n- Employers: invented organisation names that do not exist. Never a real company, brand, government body, hospital, school district or NGO. Plausible, specific and varied names, like a real small or mid-sized organisation might have; not generic tech words (Nexus, Nexora, Lumina, Luminary, Apex, Synergy).\n- Schools: invented schools, named only after the invented place names you are given. Never a real university, and never a real place (in any language or transliteration) in a school's name.\nTools, methods and technologies (PostgreSQL, Figma, IFRS 16, Kubernetes, CPR) are fine: they are skills, not organisations.\n\nWrite about work: what people do, how, and what they have learned. Do not mention anyone's age, birth year, family, religion, ethnicity, nationality, health, disability, sexuality or gender. No links, no hashtags, no @mentions, no emoji.",
+  "name": "Give one invented person's full name: a name common in West Africa (e.g. Nigeria, Ghana, Senegal, Côte d'Ivoire), for a woman. Vary your choices: avoid the most stereotypical names for the region. These are taken, and so are their given names: …names already taken.",
+  "person": "Write one person's profile. Their name is given elsewhere: do not write it.\n\n- Invented place names for their schools (use one per school, as \"University of X\", \"X Institute of Technology\", \"X College\" and so on): Quiniaenne, Taleara, Vareford\n- Field: backend software engineering (APIs, databases, distributed services)\n- Seniority: mid (junior: under 3 years of experience; mid: 3–6; senior: 6–12; lead: 10 or more and leads others)\n- Lives in: Lagos, NG\n- Open to new roles.\n- Today is 2026-09. No date may be later than 2026-09.\n\nCareers are consistent with the seniority: dates, titles and the number of roles. Employers are invented and differ from each other. Education fits the field.",
+  "community": "see COMMUNITIES and the community prompt in the script",
+  "posting": "see postingPlan and the posting prompt in the script"
+ },
+ "usage": {
+  "calls": 140,
+  "prompt": 62643,
+  "completion": 43645,
+  "costUsd": 0.421302
+ },
+ "dropped": [
+  "data-analytics thread 3: names a real organisation (“AWS”)",
+  "posting 3 (Junior Site Reliability Engineer, attempt 1): lexicon: grapheme too big (maximum 40, got 56) at $.skills[2]",
+  "posting 5 (Senior Civil and Structural Engineer, attempt 1): pay per year (8000000) disagrees with its own yearly figure (16000000)",
+  "posting 15 (Junior Mechanical Design Engineer, attempt 1): lexicon: grapheme too big (maximum 40, got 41) at $.skills[2]",
+  "posting 17 (Senior In-House Legal Counsel, attempt 1): lexicon: grapheme too big (maximum 40, got 44) at $.skills[0]",
+  "posting 16 (Data Pipeline Engineer, attempt 1): pay per year (840000) disagrees with its own yearly figure (1680000)",
+  "posting 15 (Junior Mechanical Design Engineer, attempt 2): lexicon: grapheme too big (maximum 40, got 43) at $.skills[2]",
+  "posting 16 (Data Pipeline Engineer, attempt 2): pay per year (850000) disagrees with its own yearly figure (1700000)",
+  "posting 16 (Data Pipeline Engineer, attempt 3): pay per year (850000) disagrees with its own yearly figure (1700000)",
+  "posting 16: no valid posting after 3 attempts",
+  "posting 15 (Junior Mechanical Design Engineer, attempt 3): lexicon: grapheme too big (maximum 40, got 43) at $.skills[3]",
+  "posting 15: no valid posting after 3 attempts"
+ ],
+ "audit": [
+  "people: 54",
+  "gender: woman 25, man 25, nonbinary 4",
+  "name region: North Africa 4, East Africa 4, South Asia 4, West Africa 4, Southeast Asia 4, Latin America 4, Southern Africa 4, East Asia 4, Middle East 4, Eastern Europe 3, Western Europe 3, Nordics 3, North America 3, Oceania 3, Caribbean 3",
+  "seniority × gender: junior 7/7/0, mid 6/7/1, senior 6/6/2, lead 6/5/1  (w/m/nb)",
+  "open to work × gender: woman 10/25, man 10/25, nonbinary 2/4",
+  "fields with only one gender (of ≥ 2 people): none",
+  "senior + lead by name region: Latin America 3, North America 3, Oceania 3, Middle East 3, Eastern Europe 2, Western Europe 2, Southeast Asia 2, South Asia 2, Southern Africa 1, East Africa 1, Nordics 1, West Africa 1, East Asia 1, North Africa 1",
+  "gendered words in profile text: 0",
+  "“nurturing” wording: woman 3/25, man 1/25, nonbinary 0/4",
+  "“assertive” wording: woman 5/25, man 6/25, nonbinary 1/4",
+  "protected terms (the matching list) in profile text: 0"
+ ]
+}

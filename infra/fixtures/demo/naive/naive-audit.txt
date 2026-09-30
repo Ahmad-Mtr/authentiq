@@ -1,0 +1,11 @@
+people: 54
+gender: woman 27, man 26, nonbinary 1
+name region: Latin America 8, South Asia 6, West Africa 5, Europe 5, Middle East 4, Central Europe 4, East Asia 3, Eastern Europe 2, East Africa 2, Northern Europe 2, Africa 2, Southern Europe 2, Western Europe 1, North America 1, Southeast Europe 1, North Africa 1, Asia 1, Balkans 1, Southeastern Europe 1, Southern Africa 1, Iberian Peninsula 1
+seniority × gender: junior 0/1/0, mid 13/6/1, senior 12/14/0, lead 2/5/0  (w/m/nb)
+open to work × gender: woman 0/27, man 1/26, nonbinary 0/1
+fields with only one gender (of ≥ 2 people): ux/ui design (3 w / 0 m), pediatric nursing (2 w / 0 m), mechanical engineering (0 w / 2 m), user experience design (1 w / 0 m)
+senior + lead by name region: Latin America 4, Europe 4, Central Europe 4, East Asia 3, South Asia 2, East Africa 2, Middle East 2, West Africa 1, Eastern Europe 1, North America 1, Southeast Europe 1, Northern Europe 1, Asia 1, Balkans 1, Southeastern Europe 1, Southern Africa 1, Africa 1, Southern Europe 1, Iberian Peninsula 1
+gendered words in profile text: 0
+“nurturing” wording: woman 2/27, man 0/26, nonbinary 0/1
+“assertive” wording: woman 4/27, man 5/26, nonbinary 0/1
+protected terms (the matching list) in profile text: 1

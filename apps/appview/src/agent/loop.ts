@@ -1,4 +1,4 @@
-import { MODELS, getMistral, mistralRetries } from "@workspace/ai"
+import { MODELS, getMistral, mistralRetries, recordUsage } from "@workspace/ai"
 import type { ChatMessage, ToolCall } from "@workspace/ai"
 import { MAX_TURNS, contextMessages } from "./conversations.ts"
 import type { Candidate, Conversation } from "./conversations.ts"
@@ -30,6 +30,10 @@ Rules:
 
 export type Emit = (event: string, data: unknown) => void
 
+/** `RECRUITING_AGENT_MODEL` overrides the default, e.g. to compare models in `eval:agent`. */
+export const agentModel = () =>
+  process.env.RECRUITING_AGENT_MODEL ?? MODELS.recruitingAgent
+
 export async function runTurn(
   conversation: Conversation,
   message: string,
@@ -55,7 +59,7 @@ export async function runTurn(
     const lastStep = steps === MAX_STEPS
     const stream = await getMistral().chat.stream(
       {
-        model: MODELS.recruitingAgent,
+        model: agentModel(),
         temperature: 0,
         maxTokens: MAX_OUTPUT_TOKENS,
         messages: [
@@ -83,6 +87,7 @@ export async function runTurn(
       if (event.data.usage) {
         tokens.prompt += event.data.usage.promptTokens ?? 0
         tokens.completion += event.data.usage.completionTokens ?? 0
+        recordUsage(agentModel(), event.data.usage)
       }
     }
     if (content) text += (text ? "\n\n" : "") + content

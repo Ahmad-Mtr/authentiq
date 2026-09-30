@@ -1,4 +1,4 @@
-import { MODELS, getMistral, mistralRetries } from "@workspace/ai"
+import { MODELS, getMistral, mistralRetries, recordUsage } from "@workspace/ai"
 import { sh } from "@workspace/lexicons"
 import { z } from "zod"
 import { checkDateRange } from "../indexer/rules.ts"
@@ -150,6 +150,7 @@ export async function parseResumeText(resumeText: string): Promise<{
     promptTokens: res.usage.promptTokens ?? 0,
     completionTokens: res.usage.completionTokens ?? 0,
   }
+  recordUsage(parserModel(), usage)
   if (!choice?.message?.parsed) {
     // Truncated or off-schema output. Report the reason, not the content.
     throw new ResumeParseError(

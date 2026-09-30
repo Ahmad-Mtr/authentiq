@@ -62,6 +62,10 @@ function EditProfile() {
       ) : null}
 
       <form
+        // Uncontrolled fields take their defaults once. When the record
+        // changes under them (a resume import, a save that reloads), remount
+        // so they show it, instead of keeping stale values.
+        key={JSON.stringify(profile ?? null)}
         className="mt-8 grid gap-4"
         onSubmit={(e) => {
           e.preventDefault()

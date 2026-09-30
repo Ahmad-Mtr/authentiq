@@ -4,10 +4,12 @@
  *   feed.generator record → DID document → #authentiq_fg endpoint
  *     → getFeedSkeleton → clamp → hydrate under the AppView's policy
  *
- * It uses the seeded feeds (`bun run seed:feeds`) and accounts, plus six
+ * It uses the seeded feeds (`bun run seed:feeds`) and accounts, plus seven
  * throwaway accounts it deletes at the end: a viewer (A), three posters
- * (B, C, D), one to deactivate (E) and a publisher (P) of test generator
- * records. To test what the AppView does with a generator it cannot trust,
+ * (B, C, D), one to deactivate (E), a publisher (P) of test generator
+ * records, and W, who writes today's community threads. industry-pulse only
+ * looks back 90 days and the seeded posts have fixed dates, so without W
+ * the pulse checks would start failing 90 days after seed:social's dates. To test what the AppView does with a generator it cannot trust,
  * the script runs its own services on the ports the AppView's development
  * allowlist names (FETCH_ALLOW):
  *
@@ -382,7 +384,8 @@ try {
   const [A, B, C, D, E, P] = await Promise.all(
     ["a", "b", "c", "d", "e", "p"].map((n) => createAccount(n))
   )
-  const all = [A!, B!, C!, D!, E!, P!]
+  const W = await createAccount("w")
+  const all = [A!, B!, C!, D!, E!, P!, W]
   const seen = await until(async () => {
     const [row] =
       await db`select count(*)::int as n from actor where did in ${db(all.map((a) => a.did))}`
@@ -390,11 +393,65 @@ try {
   })
   check(
     Boolean(seen.value),
-    "six throwaway accounts created on the PDS",
+    "seven throwaway accounts created on the PDS",
     `${all.map((a) => a.handle.split("-")[0]).join(", ")} (-${suffix}.test), ${took(seen)}`
   )
   A!.web = await signInToWeb({ web: WEB, pds: PDS, handle: A!.handle, password: "password" })
   check(true, "A signed in to the web app over OAuth")
+
+  // Today's community threads, so the pulse checks never depend on when the
+  // seeds were dated. W's profile is a copy of alice.test's: identical
+  // documents embed identically, so W is her nearest profile and W's threads
+  // are in her pulse too.
+  const aliceProfile = await call(PDS, "com.atproto.repo.getRecord", {
+    params: { repo: "alice.test", collection: `${NS}.actor.profile`, rkey: "self" },
+  })
+  if (aliceProfile.ok) {
+    await call(PDS, "com.atproto.repo.putRecord", {
+      body: {
+        repo: W.did,
+        collection: `${NS}.actor.profile`,
+        rkey: "self",
+        record: { ...aliceProfile.body.value, createdAt: new Date().toISOString() },
+      },
+      auth: W.jwt,
+    })
+  }
+  const [seededCommunity] =
+    await db`select uri, cid from community order by sort_at, uri limit 1`
+  if (!seededCommunity) throw new Error("no community indexed — run bun run seed:social")
+  await createRecord(W, `${NS}.community.membership`, {
+    $type: `${NS}.community.membership`,
+    community: { uri: seededCommunity.uri, cid: seededCommunity.cid },
+    createdAt: new Date().toISOString(),
+  })
+  const todays = []
+  for (const n of [1, 2, 3]) {
+    todays.push(
+      (
+        await createRecord(
+          W,
+          POST,
+          post(`Today's thread ${n} (${suffix}): what changed in how we run on-call this quarter?`, {
+            community: { uri: seededCommunity.uri, cid: seededCommunity.cid },
+          })
+        )
+      ).body.uri as string
+    )
+  }
+  const qReady = await until(async () => {
+    const [row] = await db`
+      select
+        (select count(*)::int from post where uri in ${db(todays)}) as posts,
+        (select count(*)::int from embedding where subject = ${W.did}
+          and vector is not null and dirty_at is null) as embedded`
+    return row.posts === todays.length && (!aliceProfile.ok || row.embedded === 1)
+  }, EMBED_TIMEOUT_MS)
+  check(
+    Boolean(qReady.value),
+    "W wrote three community threads today (the pulse's 90-day window never runs out)",
+    `in ${seededCommunity.uri.split("/").pop()}; W's profile ${aliceProfile.ok ? "copies alice's" : "is empty: alice has none"}, ${took(qReady, EMBED_TIMEOUT_MS)}`
+  )
 
   // ---------------------------------------------------------------------------
   section("1. identity: the feedgen's did:web, and record → DID → endpoint through the AppView")

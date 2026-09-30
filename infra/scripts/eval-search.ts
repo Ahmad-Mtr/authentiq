@@ -9,7 +9,15 @@
  *   recall@10 share of the query's relevant people (grade ≥ 2) in the top 10.
  *   MRR       1 / rank of the first relevant (grade ≥ 2) result, 0 if none.
  *
- * Unlabelled people count as grade 0. Needs the corpus (`bun run seed:talent`)
+ * Unlabelled people count as grade 0. That holds only while the index is
+ * the corpus the labels were written for. Anyone else in the index (the
+ * demo cast from `bun run seed:demo`, alice.test's profile) is not judged,
+ * and a relevant but unjudged person pushes a labelled one down and scores
+ * as a miss. So the script also reports "judged only" figures: the same
+ * rankings with everyone outside the corpus removed before the top 10 is
+ * taken (a condensed list, the usual treatment of incomplete judgments),
+ * and how many top-10 slots went to unjudged people. With only the corpus
+ * indexed the two sets of figures are equal. Needs the corpus (`bun run seed:talent`)
  * and the AppView running. The endpoint is rate limited (60 a minute per IP);
  * the script waits out a 429 rather than going around it.
  *
@@ -18,9 +26,13 @@
  */
 import { join } from "node:path"
 import { LOCAL_NETWORK } from "@workspace/atproto"
+import { buildCorpus } from "../fixtures/talent/corpus.ts"
 
 const APPVIEW = process.env.APPVIEW_URL ?? LOCAL_NETWORK.appviewUrl
 const K = 10
+/** Deep enough that the judged-only top 10 is still ten people deep. */
+const DEPTH = 50
+const CORPUS = new Set(buildCorpus().map((p) => p.handle))
 const MODES = ["vector", "fts", "hybrid"] as const
 type Mode = (typeof MODES)[number]
 const verbose = process.argv.includes("--verbose")
@@ -54,7 +66,7 @@ async function search(query: Query, mode: Mode) {
   const url = new URL("/xrpc/sh.authentiq.actor.searchTalent", APPVIEW)
   url.searchParams.set("q", query.q)
   url.searchParams.set("mode", mode)
-  url.searchParams.set("limit", String(K))
+  url.searchParams.set("limit", String(DEPTH))
   if (query.filters.location)
     url.searchParams.set("location", query.filters.location)
   if (query.filters.openToWork !== undefined) {
@@ -105,6 +117,8 @@ function metrics(query: Query, handles: Array<string>) {
 type Row = {
   query: Query
   scores: Record<Mode, ReturnType<typeof metrics>>
+  judged: Record<Mode, ReturnType<typeof metrics>>
+  unjudged: Record<Mode, number>
   hybridOnlyOne: number
 }
 const rows: Array<Row> = []
@@ -116,13 +130,21 @@ console.log(
 )
 for (const query of queries) {
   const scores = {} as Row["scores"]
+  const judged = {} as Row["judged"]
+  const unjudged = {} as Row["unjudged"]
   let hybridOnlyOne = 0
   for (const mode of MODES) {
-    const results = await search(query, mode)
+    const all = await search(query, mode)
+    const results = all.slice(0, K)
     scores[mode] = metrics(
       query,
       results.map((r) => r.handle)
     )
+    judged[mode] = metrics(
+      query,
+      all.map((r) => r.handle).filter((h) => CORPUS.has(h))
+    )
+    unjudged[mode] = results.filter((r) => !CORPUS.has(r.handle)).length
     if (mode === "hybrid") {
       hybridOnlyOne = results.filter((r) => r.matchedBy.length === 1).length
     }
@@ -131,13 +153,15 @@ for (const query of queries) {
         `     ${mode.padEnd(6)} ${results
           .map(
             (r) =>
-              `${r.handle.slice(4, 7)}${query.relevance[r.handle] ? `(${query.relevance[r.handle]})` : ""}`
+              CORPUS.has(r.handle)
+                ? `${r.handle.slice(4, 7)}${query.relevance[r.handle] ? `(${query.relevance[r.handle]})` : ""}`
+                : `[${r.handle.replace(/\.test$/, "")}]`
           )
           .join(" ")}`
       )
     }
   }
-  rows.push({ query, scores, hybridOnlyOne })
+  rows.push({ query, scores, judged, unjudged, hybridOnlyOne })
   const best = Math.max(...MODES.map((m) => scores[m].ndcg))
   const cell = (m: Mode, w: number) =>
     `${scores[m].ndcg === best ? "*" : " "}${fmt(scores[m].ndcg)}`.padStart(w)
@@ -163,6 +187,19 @@ for (const [label, metric] of [
 ] as const) {
   console.log(
     `${`${label} (all)`.padEnd(16)} ${MODES.map((m) => fmt(mean(rows.map((r) => r.scores[m][metric]))).padStart(8)).join(" ")}`
+  )
+}
+const unjudgedSlots = MODES.map((m) => rows.reduce((a, r) => a + r.unjudged[m], 0))
+console.log(
+  `\n${"unjudged in top 10".padEnd(16)} ${unjudgedSlots.map((n) => String(n).padStart(8)).join(" ")}   (of ${rows.length * K} slots each: people outside the labelled corpus)`
+)
+for (const [label, metric] of [
+  ["nDCG@10", "ndcg"],
+  ["recall@10", "recall"],
+  ["MRR", "mrr"],
+] as const) {
+  console.log(
+    `${`${label} judged`.padEnd(16)} ${MODES.map((m) => fmt(mean(rows.map((r) => r.judged[m][metric]))).padStart(8)).join(" ")}`
   )
 }
 console.log("")

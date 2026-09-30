@@ -7,14 +7,18 @@
       "devDependencies": {
         "@atproto/api": "^0.20.44",
         "@atproto/crypto": "^0.5.5",
+        "@atproto/repo": "^0.10.14",
+        "@workspace/ai": "workspace:*",
         "@workspace/atproto": "workspace:*",
         "@workspace/lexicons": "workspace:*",
+        "@workspace/rules": "workspace:*",
         "docx": "^9.8.1",
         "pdf-lib": "^1.17.1",
         "prettier": "^3.8.3",
         "prettier-plugin-tailwindcss": "^0.8.0",
         "turbo": "^2.9.18",
         "typescript": "^6",
+        "zod": "^4.4.3",
       },
     },
     "apps/appview": {
@@ -185,6 +189,7 @@
       "version": "0.0.0",
       "dependencies": {
         "@base-ui/react": "^1.8.0",
+        "@fontsource-variable/mona-sans": "^5.3.0",
         "@fontsource-variable/noto-sans": "^5.3.0",
         "@fontsource-variable/raleway": "^5.3.0",
         "@phosphor-icons/react": "^2.1.10",
@@ -445,6 +450,8 @@
     "@floating-ui/react-dom": ["@floating-ui/react-dom@2.1.9", "", { "dependencies": { "@floating-ui/dom": "^1.8.0" }, "peerDependencies": { "react": ">=16.8.0", "react-dom": ">=16.8.0" } }, "sha512-JDjEFGCpImxDCA7JJKviA0M9+RtmJdj0m/NVU5IMgBK+AmZouAQQ7/+2GLH0GXXY0YMw9oXPB8hKdbPYg5QLYg=="],
 
     "@floating-ui/utils": ["@floating-ui/utils@0.2.12", "", {}, "sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww=="],
+
+    "@fontsource-variable/mona-sans": ["@fontsource-variable/mona-sans@5.3.0", "", {}, "sha512-PkxRB3KI4z9Gjpk7vVqgO3GMSyQuOIIj4TaRDbvbcDj8SzWwI38jvLTQxJM/cTRorhcT7h8qjcllR+qjRtM/Fg=="],
 
     "@fontsource-variable/noto-sans": ["@fontsource-variable/noto-sans@5.3.0", "", {}, "sha512-e3ZuxzY9AL2psXPZlhwhnYrHUHv6PMoyK9MQ7croF0CUgURLqu9EMjW7q2FgVLwij1tjLsIHQrnwQ8aUcg4BiA=="],
 

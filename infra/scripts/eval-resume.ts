@@ -12,12 +12,13 @@
  *   bun run eval:resume                      # all fixtures
  *   bun run eval:resume -- --verbose         # also print every mismatch
  *   bun run eval:resume -- --only 02,09      # a subset, by prefix
- *   RESUME_PARSER_MODEL=ministral-14b-2512 bun run eval:resume
+ *   RESUME_PARSER_MODEL=ministral-14b-2512 bun run eval:resume   # compare another model
  *
  * Needs MISTRAL_API_KEY, read from apps/appview/.env. Calls the model once
  * per fixture, one at a time.
  */
 import { join } from "node:path"
+import { costOf } from "@workspace/ai"
 import { sh } from "@workspace/lexicons"
 import {
   extractResumeText,
@@ -40,15 +41,6 @@ import type { Draft, FieldCounts } from "./lib/resume-score.ts"
 
 const root = join(import.meta.dir, "..", "..")
 const FIXTURES = join(root, "infra", "fixtures", "resumes")
-
-/** USD per million tokens, input / output. mistral.ai/pricing/api, 2026-09-29. */
-const PRICES: Record<string, [number, number]> = {
-  "ministral-3b-2512": [0.1, 0.1],
-  "ministral-8b-2512": [0.15, 0.15],
-  "ministral-14b-2512": [0.2, 0.2],
-  "mistral-small-2603": [0.15, 0.6],
-  "mistral-medium-2604": [1.5, 7.5],
-}
 
 const args = process.argv.slice(2)
 const verbose = args.includes("--verbose")
@@ -167,8 +159,7 @@ row("  education", (k) => k.startsWith("education."))
 console.log("")
 row("overall (micro)", () => true)
 
-const [inPrice, outPrice] = PRICES[model] ?? [Number.NaN, Number.NaN]
-const cost = (usage.prompt * inPrice + usage.completion * outPrice) / 1e6
+const cost = costOf(model, usage.prompt, usage.completion)
 console.log(
   `\nentries: ${entityMissed} expected entries missed, ${entityExtra} extra entries proposed`
 )

@@ -100,9 +100,12 @@ function ProfilePage() {
                 <span className="font-medium">{e.school}</span>
                 {e.degree ? ` · ${e.degree}` : ""}
                 {e.fieldOfStudy ? `, ${e.fieldOfStudy}` : ""}
-                <span className="text-muted-foreground block text-xs">
-                  {e.startDate} – {e.endDate ?? "present"}
-                </span>
+                {/* Education dates are optional; with none there is no range to show. */}
+                {e.startDate || e.endDate ? (
+                  <span className="text-muted-foreground block text-xs">
+                    {e.startDate ?? "?"} – {e.endDate ?? "present"}
+                  </span>
+                ) : null}
               </li>
             ))}
           </ul>

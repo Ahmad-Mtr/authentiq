@@ -7,6 +7,10 @@ import {
 } from "@tanstack/react-router"
 
 import appCss from "@workspace/ui/globals.css?url"
+import { SidebarProvider, SidebarTrigger } from "@workspace/ui/components/sidebar"
+import { TooltipProvider } from "@workspace/ui/components/tooltip"
+import { AppSidebar } from "../components/app-sidebar.tsx"
+import { LogoMark } from "../components/logo.tsx"
 import { getViewer } from "../server/profile.ts"
 
 export const Route = createRootRoute({
@@ -16,7 +20,10 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Authentiq" },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+    ],
   }),
   loader: () => getViewer(),
   notFoundComponent: () => (
@@ -34,62 +41,28 @@ export const Route = createRootRoute({
 function RootLayout() {
   const viewer = Route.useLoaderData()
   return (
-    <div className="min-h-svh">
-      <header className="border-b">
-        <nav className="mx-auto flex max-w-3xl items-center gap-4 px-6 py-3 text-sm">
-          <Link to="/" className="font-semibold">
-            Authentiq
-          </Link>
-          <span className="text-muted-foreground text-xs">
-            professional identity you own
-          </span>
-          <div className="ml-auto flex items-center gap-3">
-            <Link to="/jobs" className="hover:underline">
-              Jobs
+    <TooltipProvider>
+      <SidebarProvider defaultOpen={false}>
+        <AppSidebar viewer={viewer} />
+        {/* Not SidebarInset: that renders a <main>, and every page has its own. */}
+        <div className="flex min-h-svh min-w-0 flex-1 flex-col">
+          <header className="flex items-center gap-2 border-b px-3 py-2 md:hidden">
+            <SidebarTrigger />
+            <Link to="/" className="flex items-center gap-2">
+              <LogoMark className="size-7" />
+              <span className="font-semibold tracking-tight">authentiq</span>
             </Link>
-            <Link to="/communities" className="hover:underline">
-              Communities
-            </Link>
-            <Link to="/feeds" className="hover:underline">
-              Feeds
-            </Link>
-            {viewer ? (
-              <>
-                <Link
-                  to="/p/$actor"
-                  params={{ actor: viewer.did }}
-                  className="hover:underline"
-                >
-                  My profile
-                </Link>
-                <Link to="/profile/edit" className="hover:underline">
-                  Edit
-                </Link>
-                <Link to="/recruit" className="hover:underline">
-                  Recruit
-                </Link>
-                <form method="post" action="/api/auth/logout">
-                  <button className="text-muted-foreground hover:underline">
-                    Sign out
-                  </button>
-                </form>
-              </>
-            ) : (
-              <Link to="/login" className="hover:underline">
-                Sign in
-              </Link>
-            )}
-          </div>
-        </nav>
-      </header>
-      <Outlet />
-    </div>
+          </header>
+          <Outlet />
+        </div>
+      </SidebarProvider>
+    </TooltipProvider>
   )
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>

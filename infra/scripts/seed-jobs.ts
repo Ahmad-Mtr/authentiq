@@ -11,6 +11,11 @@
  * unknown period, no currency). They are written raw: the PDS stores them,
  * and the script then checks the AppView indexed none of them.
  *
+ * It also restores the salary-less posting phase 0 wrote into alice.test's
+ * repo by hand, at the same record key (`3mvvqk2qn5s2k`). `verify:jobs`
+ * checks that it is still there and still not shown, so a clean start needs
+ * it back.
+ *
  * Idempotent: record keys are deterministic TIDs and createdAt is fixed, so
  * a second run writes nothing. A posting that changed since the last run is
  * replaced in place with putRecord (postings are editable). Needs `bun run
@@ -119,8 +124,37 @@ for (const [i, p] of POSTINGS.entries()) {
   if (p.invalid) invalid.push({ key: p.key, uri: uri!, why: p.invalid })
   else valid.push({ key: p.key, uri: uri! })
 }
+// alice's phase 0 record: no salary, no organization, written raw.
+{
+  const record = {
+    $type: POSTING.$type,
+    title: "No salary listed",
+    createdAt: "2026-09-20T00:00:00Z",
+  }
+  const rkey = "3mvvqk2qn5s2k"
+  const s = await session("alice.test")
+  const existing = await xrpc("com.atproto.repo.getRecord", {
+    params: { repo: s.did, collection: POSTING.$nsid, rkey },
+  })
+  if (existing.ok && canonical(existing.body.value) === canonical(record)) {
+    unchanged++
+  } else {
+    const res = await xrpc("com.atproto.repo.putRecord", {
+      body: { repo: s.did, collection: POSTING.$nsid, rkey, record },
+      auth: s.jwt,
+    })
+    if (!res.ok) throw new Error(`alice.test phase 0 posting: ${res.body.message}`)
+    written++
+  }
+  invalid.push({
+    key: "alice-phase0",
+    uri: `at://${s.did}/${POSTING.$nsid}/${rkey}`,
+    why: "no salary (alice's phase 0 record)",
+  })
+}
+
 console.log(
-  `✓ ${POSTINGS.length} postings (${valid.length} valid, ${invalid.length} invalid on purpose): ${written} written, ${unchanged} already up to date`
+  `✓ ${POSTINGS.length + 1} postings (${valid.length} valid, ${invalid.length} invalid on purpose): ${written} written, ${unchanged} already up to date`
 )
 
 // --- wait for the index and the embeddings ----------------------------------------

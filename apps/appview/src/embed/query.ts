@@ -3,6 +3,7 @@ import {
   MODELS,
   getMistral,
   mistralRetries,
+  recordUsage,
 } from "@workspace/ai"
 
 /**
@@ -32,6 +33,7 @@ export async function embedQuery(text: string): Promise<Array<number>> {
     { timeoutMs: 10_000, ...mistralRetries(4000) }
   )
   queryStats.tokens += res.usage.promptTokens ?? 0
+  recordUsage(MODELS.embedding, res.usage)
   const vector = res.data[0]?.embedding
   if (!vector || vector.length !== EMBEDDING_DIMENSIONS) {
     throw new Error("query embedding missing or wrong size")

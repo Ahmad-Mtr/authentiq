@@ -49,6 +49,10 @@ function Board() {
       </p>
 
       <form
+        // The fields are uncontrolled and take the URL's values once. Remount
+        // when the URL changes (Clear, back, a link) so they show its filters,
+        // not the last ones typed.
+        key={JSON.stringify(search)}
         method="get"
         action="/jobs"
         className="mt-6 grid gap-3 rounded-lg border p-4 sm:grid-cols-6"

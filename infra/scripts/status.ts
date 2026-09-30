@@ -35,10 +35,15 @@ try {
 
 try {
   const health = await getJson("http://localhost:2583/xrpc/_health")
-  const repos = await getJson(
-    "http://localhost:2583/xrpc/com.atproto.sync.listRepos?limit=100"
-  )
-  const count = (repos.repos as unknown[]).length
+  let count = 0
+  let cursor: unknown
+  do {
+    const page = await getJson(
+      `http://localhost:2583/xrpc/com.atproto.sync.listRepos?limit=1000${cursor ? `&cursor=${cursor}` : ""}`
+    )
+    count += (page.repos as unknown[]).length
+    cursor = (page.repos as unknown[]).length ? page.cursor : undefined
+  } while (cursor)
   report(true, "pds", `http://localhost:2583 v${health.version}, ${count} repos`)
 } catch (e) {
   report(false, "pds", String(e))

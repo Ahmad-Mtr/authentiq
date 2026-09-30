@@ -5,6 +5,7 @@ import {
   getMistral,
   getMistralServerURL,
   mistralRetries,
+  recordUsage,
   setMistralServerURL,
 } from "@workspace/ai"
 import { schema } from "@workspace/db"
@@ -130,6 +131,7 @@ export function createEmbedder() {
         { timeoutMs: 30_000, ...mistralRetries(10_000) }
       )
       stats.tokens += res.usage.promptTokens ?? 0
+      recordUsage(MODELS.embedding, res.usage)
       for (const [i, { row, hash }] of toEmbed.entries()) {
         const vector =
           res.data.find((d) => d.index === i)?.embedding ??

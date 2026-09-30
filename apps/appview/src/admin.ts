@@ -1,4 +1,5 @@
 import { timingSafeEqual } from "node:crypto"
+import { usageTotals } from "@workspace/ai"
 import { Elysia, status, t } from "elysia"
 import { env } from "./env.ts"
 import type { Embedder } from "./embed/worker.ts"
@@ -10,6 +11,8 @@ import type { Indexer } from "./indexer/index.ts"
  * unset. `bun run verify:indexer` uses stop/start to prove the saved cursor
  * survives a restart; `bun run verify:search` points the embedding client at
  * a dead URL to prove an outage delays vectors without blocking indexing.
+ * `bun run verify:all` reads `/usage` before and after each script to report
+ * what the model calls the AppView made on its behalf cost.
  */
 export const admin = (indexer: Indexer, embedder: Embedder) =>
   new Elysia({ prefix: "/_admin" })
@@ -30,6 +33,7 @@ export const admin = (indexer: Indexer, embedder: Embedder) =>
       { body: t.Object({ did: t.String({ pattern: "^did:" }) }) }
     )
     .get("/embedder", () => embedder.status())
+    .get("/usage", () => usageTotals())
     .post(
       "/embedder/endpoint",
       async ({ body }) => {
